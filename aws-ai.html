@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS智能AI模型服务 - AWSDO.COM</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0SXZXT6FBM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0SXZXT6FBM');
+    </script>
+    
+    <style>
+        /* General Styles */
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f8f9fa; color: #343a40; }
+        .container { width: 85%; max-width: 1200px; margin: auto; overflow: hidden; }
+        .section { padding: 60px 0; }
+        .section-title { text-align: center; margin-bottom: 50px; font-size: 32px; color: #343a40; font-weight: 600; }
+        .section-subtitle { text-align:center; max-width:800px; margin:-30px auto 50px auto; color: #6c757d; }
+
+        /* Header & Navigation */
+        header { background: #ffffff; padding: 15px 0; border-bottom: 1px solid #e9ecef; text-align: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        header .logo img { max-width: 200px; vertical-align: middle; }
+        nav { margin-top: 15px; }
+        nav ul { padding: 0; list-style: none; }
+        nav ul li { display: inline; margin: 0 15px; }
+        nav a { color: #495057; text-decoration: none; font-size: 16px; font-weight: 500; transition: color 0.3s ease; }
+        nav a:hover, nav a.active { color: #007bff; }
+
+        /* Hero Section */
+        .hero { background: linear-gradient(45deg, #6f42c1, #007bff); color: #ffffff; padding: 80px 20px; text-align: center; }
+        .hero h1 { font-size: 42px; margin-bottom: 15px; font-weight: 700; }
+        .hero p { font-size: 20px; font-weight: 300; max-width: 800px; margin: 0 auto; }
+
+        /* Form Section */
+        .form-section { background: #fff; padding: 50px 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.07); }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 10px; font-size: 16px; }
+        .form-group input[type="text"], .form-group input[type="email"], .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 4px; font-size: 16px; box-sizing: border-box; }
+        .radio-group { display: flex; flex-direction: column; gap: 10px; }
+        .radio-label { display: flex; align-items: center; background: #f8f9fa; border: 1px solid #dee2e6; padding: 12px 18px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease-in-out; }
+        .radio-label:hover { border-color: #007bff; }
+        .radio-label input[type="radio"] { margin-right: 12px; }
+        .radio-label.checked { background-color: #e9f5ff; border-color: #007bff; font-weight: bold; }
+        .submit-button { display: block; width: 100%; background: #28a745; color: #fff; padding: 15px 35px; text-decoration: none; border-radius: 5px; font-size: 20px; font-weight: bold; transition: background-color 0.3s ease; cursor: pointer; border: none; text-align: center; margin-top: 10px; }
+        .submit-button:hover { background: #218838; }
+
+        /* Model Info Section */
+        .model-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .model-card { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.07); }
+        .model-card h3 { font-size: 22px; color: #007bff; margin-top: 0; }
+        .model-card p strong { color: #343a40; }
+
+        /* Spotlight Section */
+        .spotlight-section { background: #ffffff; border: 1px solid #e9ecef; border-radius: 8px; padding: 40px; }
+        .spotlight-section h4 { font-size: 20px; color: #343a40; border-bottom: 2px solid #e9ecef; padding-bottom: 8px; margin-top: 30px; margin-bottom: 15px; }
+        .spotlight-section ul { padding-left: 20px; }
+        
+        .pricing-breakdown { background: #e9f5ff; border: 1px solid #b8daff; border-radius: 8px; padding: 25px; margin-top: 20px; }
+        .pricing-breakdown .price-final { font-size: 20px; font-weight: bold; color: #dc3545; }
+        .pricing-breakdown p { margin: 10px 0; }
+
+        /* Footer */
+        footer { background: #343a40; color: #f8f9fa; text-align: center; padding: 30px 0; margin-top: 60px; }
+        footer p { margin: 8px 0; }
+        .footer-contact { margin-top: 15px; }
+        .footer-contact a { color: #ffffff; text-decoration: none; transition: color 0.3s; margin: 0 15px; display: inline-flex; align-items: center; }
+        .footer-contact a:hover { color: #007bff; }
+        .footer-contact svg { width: 20px; height: 20px; margin-right: 8px; fill: currentColor; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="https://hosting.sunke.info/whmcs/awsdo11192.png" alt="AWSDO.COM Logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="linux-server.html">Linux云服务器</a></li>
+                    <li><a href="windows-server.html">Windows服务器</a></li>
+                    <li><a href="residential-ip-server.html">住宅IP服务器</a></li>
+                    <li><a href="performance-server.html">高性能服务器</a></li>
+                    <li><a href="aws-billing.html">AWS账单代付</a></li>
+                    <li><a href="aws-ai.html" class="active">AWS智能AI</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>AWS 智能AI模型服务</h1>
+            <p>通过单一API访问来自全球顶尖AI公司的基础模型，包括 Anthropic, Meta, Stability AI 等，并享受独家账单折扣与积分优惠。</p>
+        </div>
+    </section>
+
+    <div class="main-content container">
+        <div class="section">
+            <h2 class="section-title">AI模型调用申请表</h2>
+            <form action="https://formspree.io/f/xdklkdwd" method="POST" class="form-section">
+                <div class="form-group">
+                    <label>1. 选择您需要的AI模型 <span style="color:red;">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="AI模型" value="Anthropic Claude系列" checked><span>Claude 3 Opus, Claude 3.7 Sonnet, Claude 3 Haiku 等Anthropic Claude 系列</span></label>
+                        <label class="radio-label"><input type="radio" name="AI模型" value="Meta Llama系列"><span>Llama 3、Llama 3.1 等Meta系列</span></label>
+                        <label class="radio-label"><input type="radio" name="AI模型" value="Stable Diffusion系列"><span>Stable Diffusion 3 (SD3), Stable Image Ultra, SDXL</span></label>
+                        <label class="radio-label"><input type="radio" name="AI模型" value="Amazon Titan/Nova系列"><span>Amazon Titan Text、Titan Image Generator、Titan Multimodal Embeddings，以及最新的 Amazon Nova 系列</span></label>
+                        <label class="radio-label"><input type="radio" name="AI模型" value="Mistral AI系列"><span>Mistral Large、Mixtral 8x7B Instruct</span></label>
+                        <label class="radio-label"><input type="radio" name="AI模型" value="其他"><span>其他 (请在联系时说明)</span></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>2. 您是否自带AWS额度账户 <span style="color:red;">*</span></label>
+                     <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="账户情况" value="是，自带账户，希望享受折扣" checked><span>是，我在我自己的AWS账户使用AI模型，希望享受账单折扣和积分优惠</span></label>
+                        <label class="radio-label"><input type="radio" name="账户情况" value="不，需要开通新账号"><span>不，我没有AWS账户，我希望开通一个新账号，我能预充值，并获得账单折扣</span></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="usage-history">3. 您曾经在哪里使用过AI模型，每月消费多少？ <span style="color:red;">*</span></label>
+                    <textarea id="usage-history" name="AI使用历史和消费" required placeholder="例如：之前在OpenAI平台使用GPT-4，每月消费约500美元。"></textarea>
+                </div>
+                <div class="form-group"><label>4. 选择付款方式</label><div class="radio-group"><label class="radio-label"><input type="radio" name="付款方式" value="USDT 数字加密货币" checked><span>USDT 数字加密货币</span></label><label class="radio-label"><input type="radio" name="付款方式" value="转数快– FPS 香港"><span>轉数快– FPS 香港</span></label><label class="radio-label"><input type="radio" name="付款方式" value="信用卡"><span>信用卡</span></label><label class="radio-label"><input type="radio" name="付款方式" value="在线商城"><span>在线商城</span></label><label class="radio-label"><input type="radio" name="付款方式" value="支付宝/微信"><span>支付宝/微信</span></label></div></div>
+                <div class="form-group">
+                    <label for="email">5. 您的Email邮箱 (必填) <span style="color:red;">*</span></label>
+                    <input type="email" id="email" name="email" required placeholder="我们将通过此邮箱与您联系">
+                </div>
+                <div class="form-group">
+                    <label for="contact">您的其他联系方式 (Telegram/QQ等)</label>
+                    <input type="text" id="contact" name="其他联系方式" placeholder="选填，例如 Telegram: @your_id">
+                </div>
+                <button type="submit" class="submit-button">提交申请</button>
+            </form>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">通过 AWS Bedrock 探索顶级AI模型</h2>
+            <p class="section-subtitle">AWS Bedrock 是一项完全托管的服务，让您可以轻松访问来自世界领先AI公司的高性能基础模型（FMs），无需管理任何基础设施。</p>
+            <div class="model-grid">
+                <div class="model-card"><h3>1. Anthropic Claude 系列</h3><p><strong>模型:</strong> Claude 3 Opus, Claude 3.7 Sonnet, Claude 3 Haiku<br><strong>特点:</strong> 性能卓越，尤其擅长复杂推理和长文本理解。具备强大的多模态能力，并以行业领先的安全性和可靠性著称。</p></div>
+                <div class="model-card"><h3>2. Meta Llama 系列</h3><p><strong>模型:</strong> Llama 3, Llama 3.1 (8B, 70B, 405B)<br><strong>特点:</strong> 最强大的开源模型之一，拥有庞大的开发者社区支持。提供多种规模，可在性能与成本之间灵活选择。</p></div>
+                <div class="model-card"><h3>3. Stability AI Stable Diffusion</h3><p><strong>模型:</strong> Stable Diffusion 3 (SD3), SDXL<br><strong>特点:</strong> 业界领先的文生图模型，能够生成高质量、高分辨率的图像，并能精准理解复杂的文本提示，包括文字渲染。</p></div>
+                <div class="model-card"><h3>4. Amazon Titan & Nova</h3><p><strong>模型:</strong> Titan Text, Image, Embeddings; Nova 系列<br><strong>特点:</strong> 亚马逊原生模型，与AWS生态无缝集成。功能全面，并以强大的企业级安全和内容过滤能力著称。</p></div>
+                <div class="model-card"><h3>5. Mistral AI</h3><p><strong>模型:</strong> Mistral Large, Mixtral 8x7B<br><strong>特点:</strong> 以高性能和高效率著称。其混合专家模型（MoE）架构能以更低的成本提供与更大模型相当的性能。</p></div>
+            </div>
+        </div>
+
+        <div class="section spotlight-section">
+            <h2 class="section-title">深度聚焦：Claude 3.7 Sonnet</h2>
+            <p class="section-subtitle">Anthropic 在 Bedrock 上提供的最新、功能最强大的模型之一，独特的混合推理能力使其在处理复杂问题时表现超群。</p>
+            
+            <h4>主要特性</h4>
+            <ul>
+                <li><strong>混合推理能力:</strong> 拥有标准模式（快速响应）和扩展思考模式（深度分析），在处理数学、编程等复杂任务时准确性显著提高。</li>
+                <li><strong>超长上下文窗口:</strong> 支持高达 128K 的 token 输出，非常适合处理长篇报告生成等任务。</li>
+                <li><strong>卓越的编码能力:</strong> 在理解上下文和创造性解决编程问题方面表现出色。</li>
+            </ul>
+
+            <h4>如何在 AWS Bedrock 上使用</h4>
+            <p>您无需关心复杂的配置。一旦申请通过，您可以通过我们提供的API凭证或在您的AWS账户内直接通过Boto3等SDK进行调用。我们将全程提供技术支持，确保您顺利接入。</p>
+
+            <h4>定价与 AWSDO.COM 独家优惠</h4>
+            <div class="pricing-breakdown">
+                <p><strong>原始定价 (美元):</strong> 输入 $3 /百万tokens, 输出 $15 /百万tokens</p>
+                <p><strong>人民币换算 (汇率按 1:7.2):</strong> 输入 ¥21.6 /百万tokens, 输出 ¥108 /百万tokens</p>
+                <hr>
+                <p><strong>通过 AWSDO.COM 可享 6 折巨额优惠！</strong></p>
+                <p><strong>折后输入价格:</strong> <span class="price-final">¥12.96 / 百万 tokens</span></p>
+                <p><strong>折后输出价格:</strong> <span class="price-final">¥64.8 / 百万 tokens</span></p>
+                <hr>
+                <p><strong>成本示例:</strong> 每月处理 1000 万输入 tokens 和 200 万输出 tokens，您的总成本仅为 (10 * 12.96) + (2 * 64.8) = <strong>¥259.2 人民币</strong>，为您节省大量开支。</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>版权所有 &copy; 2025 AWSDO.COM</p>
+            <div class="footer-contact">
+                <a href="mailto:support@awsdo.com"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> support@awsdo.com</a>
+                <a href="https://t.me/ilovesunkeinfo" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 2L11 13H2l1.67-5.01L22 2zm-2.48 18.51L17 14l-4.2 4.13-1.67-5.01L2 13h9l2-2-8.5-8.5L22 2l-2.48 18.51z"/></svg> @ilovesunkeinfo</a>
+            </div>
+        </div>
+    </footer>
+
+    <!--聊天模块-->
+    <script>
+      window.chatwootSettings = {"position":"right","type":"expanded_bubble","launcherTitle":"在线聊天"};
+      (function(d,t) { var BASE_URL="https://app.chatwoot.com/"; var g=d.createElement(t),s=d.getElementsByTagName(t)[0]; g.src=BASE_URL+"/packs/js/sdk.js"; g.defer = true; g.async = true; s.parentNode.insertBefore(g,s); g.onload=function(){ window.chatwootSDK.run({ websiteToken: 'c3stLVCV9GDjtvHcBMLdjRjU', baseUrl: BASE_URL }) } })(document,"script");
+    </script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const radioGroups = document.querySelectorAll('.radio-group');
+            radioGroups.forEach(group => {
+                const updateStyles = () => {
+                    const labels = group.querySelectorAll('.radio-label');
+                    labels.forEach(label => {
+                        const radio = label.querySelector('input[type="radio"]');
+                        label.classList.toggle('checked', radio.checked);
+                    });
+                };
+                group.addEventListener('change', updateStyles);
+                updateStyles();
+            });
+        });
+    </script>
+
+</body>
+</html>
