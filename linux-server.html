@@ -174,12 +174,6 @@
         .radio-label input[type="radio"] {
             display: none;
         }
-        .radio-label input[type="radio"]:checked + span {
-            color: #fff;
-        }
-        .radio-label input[type="radio"]:checked {
-            background-color: #007bff;
-        }
         .radio-label.checked {
             background-color: #007bff;
             color: #fff;
@@ -286,11 +280,11 @@
                 <ul>
                     <li><a href="index.html">首页</a></li>
                     <li><a href="linux-server.html" class="active">Linux云服务器</a></li>
-                    <li><a href="#">Windows服务器</a></li>
-                    <li><a href="#">住宅IP服务器</a></li>
-                    <li><a href="#">高性能服务器</a></li>
-                    <li><a href="#">AWS账单代付</a></li>
-                    <li><a href="#">AWS智能AI</a></li>
+                    <li><a href="windows-server.html">Windows服务器</a></li>
+                    <li><a href="residential-ip-server.html">住宅IP服务器</a></li>
+                    <li><a href="performance-server.html">高性能服务器</a></li>
+                    <li><a href="aws-billing.html">AWS账单代付</a></li>
+                    <li><a href="aws-ai.html">AWS智能AI</a></li>
                 </ul>
             </nav>
         </div>
@@ -543,7 +537,7 @@
             // Style for checked radio buttons in groups
             const radioGroups = document.querySelectorAll('.radio-group');
             radioGroups.forEach(group => {
-                group.addEventListener('change', function(event) {
+                const updateStyles = () => {
                     const labels = group.querySelectorAll('.radio-label');
                     labels.forEach(label => {
                         const radio = label.querySelector('input[type="radio"]');
@@ -553,7 +547,8 @@
                             label.classList.remove('checked');
                         }
                     });
-                });
+                };
+                group.addEventListener('change', updateStyles);
                 // Initial check
                 const initiallyChecked = group.querySelector('input[type="radio"]:checked');
                 if(initiallyChecked) {
