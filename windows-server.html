@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows云桌面服务器 - AWSDO.COM</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0SXZXT6FBM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0SXZXT6FBM');
+    </script>
+    
+    <style>
+        /* General Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+        .section {
+            padding: 60px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 32px;
+            color: #343a40;
+            font-weight: 600;
+        }
+        .section-subtitle {
+            text-align:center; 
+            max-width:800px; 
+            margin:-30px auto 50px auto; 
+            color: #6c757d;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: #ffffff;
+            padding: 15px 0;
+            border-bottom: 1px solid #e9ecef;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        header .logo img { max-width: 200px; vertical-align: middle; }
+        nav { margin-top: 15px; }
+        nav ul { padding: 0; list-style: none; }
+        nav ul li { display: inline; margin: 0 15px; }
+        nav a { color: #495057; text-decoration: none; font-size: 16px; font-weight: 500; transition: color 0.3s ease; }
+        nav a:hover, nav a.active { color: #007bff; }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(45deg, #17a2b8, #007bff);
+            color: #ffffff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .hero h1 { font-size: 42px; margin-bottom: 15px; font-weight: 700; }
+        .hero p { font-size: 20px; font-weight: 300; max-width: 800px; margin: 0 auto; }
+
+        /* Advantages Grid */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+        .advantage-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+        }
+        .advantage-card h3 { font-size: 20px; color: #007bff; margin-top: 0; }
+
+        /* Order Form Section */
+        .form-section {
+            background: #fff;
+            padding: 50px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+        }
+        .form-step { margin-bottom: 40px; }
+        .form-step h3 { font-size: 24px; color: #007bff; border-bottom: 2px solid #e9ecef; padding-bottom: 10px; margin-bottom: 20px; }
+
+        /* Form elements styling */
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; }
+        .form-group input[type="text"], .form-group input[type="email"], .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .radio-group { display: flex; flex-wrap: wrap; gap: 15px; }
+        .radio-label {
+            display: flex; align-items: center; background: #f8f9fa; border: 1px solid #dee2e6;
+            padding: 10px 20px; border-radius: 20px; cursor: pointer; transition: all 0.2s ease-in-out;
+        }
+        .radio-label:hover { border-color: #007bff; }
+        .radio-label input[type="radio"] { display: none; }
+        .radio-label.checked { background-color: #007bff; color: #fff; border-color: #007bff; }
+
+        /* Pricing Table within Form */
+        .pricing-table-container { margin-top: 20px; overflow-x: auto; }
+        .pricing-table { width: 100%; border-collapse: collapse; text-align: center; }
+        .pricing-table th, .pricing-table td { padding: 15px; border: 1px solid #e9ecef; }
+        .pricing-table th { background-color: #e9ecef; font-weight: 600; }
+        .pricing-table tbody tr { cursor: pointer; transition: background-color 0.2s; }
+        .pricing-table tbody tr:hover { background-color: #e9f5ff; }
+        .pricing-table tbody tr.selected { background-color: #d1e7ff; box-shadow: inset 0 0 0 2px #007bff; }
+        .price { font-size: 20px; font-weight: bold; color: #dc3545; }
+        .original-price { text-decoration: line-through; color: #6c757d; font-size: 14px; }
+        .price-note { font-size: 12px; color: #6c757d; display: block; }
+        .popular-badge { background: #ffc107; color: #343a40; padding: 3px 8px; font-size: 12px; border-radius: 10px; font-weight: bold; display: inline-block; margin-left: 8px; }
+
+        /* Submit Button */
+        .submit-button {
+            display: block; width: 100%; background: #28a745; color: #fff; padding: 15px 35px;
+            text-decoration: none; border-radius: 5px; font-size: 20px; font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease; cursor: pointer; border: none; text-align: center; margin-top: 30px;
+        }
+        .submit-button:hover { background: #218838; transform: scale(1.02); }
+        
+        /* Footer */
+        footer { background: #343a40; color: #f8f9fa; text-align: center; padding: 30px 0; margin-top: 60px; }
+        footer p { margin: 8px 0; }
+        .footer-contact { margin-top: 15px; }
+        .footer-contact a { color: #ffffff; text-decoration: none; transition: color 0.3s; margin: 0 15px; display: inline-flex; align-items: center; }
+        .footer-contact a:hover { color: #007bff; }
+        .footer-contact svg { width: 20px; height: 20px; margin-right: 8px; fill: currentColor; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="https://hosting.sunke.info/whmcs/awsdo11192.png" alt="AWSDO.COM Logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="linux-server.html">Linux云服务器</a></li>
+                    <li><a href="windows-server.html" class="active">Windows服务器</a></li>
+                    <li><a href="#">住宅IP服务器</a></li>
+                    <li><a href="#">高性能服务器</a></li>
+                    <li><a href="#">AWS账单代付</a></li>
+                    <li><a href="#">AWS智能AI</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>AWSDO.COM 云桌面</h1>
+            <p>您的专属云端办公室。随时随地，使用任何设备安全访问您的办公桌面和应用，助力企业轻松实现远程和移动办公。</p>
+        </div>
+    </section>
+
+    <div class="main-content container">
+        <div class="section">
+            <h2 class="section-title">为什么选择 AWSDO.COM 云桌面？</h2>
+            <p class="section-subtitle">我们基于全球领先的AWS基础设施，为您提供无与伦比的云桌面体验，兼具安全性、灵活性与成本效益。</p>
+            <div class="advantages-grid">
+                <div class="advantage-card"><h3>企业级安全保障</h3><p>您的所有数据均存储在云端，而非终端设备，杜绝因设备丢失或损坏造成的数据泄露风险，提供多重安全管控。</p></div>
+                <div class="advantage-card"><h3>随时随地访问</h3><p>支持通过电脑、平板、手机甚至电视等任意设备接入，获得与本地电脑一致的完整Windows桌面体验。</p></div>
+                <div class="advantage-card"><h3>弹性资源配置</h3><p>根据您的业务需求，随时按需扩展或缩减计算、内存和存储资源，实现成本最优化，按月付费，无后顾之忧。</p></div>
+                <div class="advantage-card"><h3>简化IT管理</h3><p>作为完全托管的服务，您无需关心底层硬件和运维。轻松创建、部署和统一管理所有桌面，释放IT团队压力。</p></div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">完美适配多种业务场景</h2>
+             <p class="section-subtitle">无论您是何种角色，云桌面都能为您提供量身定制的解决方案，提升工作效率与安全性。</p>
+            <div class="advantages-grid">
+                <div class="advantage-card"><h3>混合与远程办公</h3><p>使员工能够从任何地点安全访问办公环境，确保业务连续性。</p></div>
+                 <div class="advantage-card"><h3>安全开发与测试</h3><p>为开发者提供高性能的云端开发环境，保护核心代码和设计安全。</p></div>
+                <div class="advantage-card"><h3>联络与客服中心</h3><p>让客服人员在任何地方都能安全、稳定地接入工作系统，提供优质服务。</p></div>
+                <div class="advantage-card"><h3>在线教育与培训</h3><p>为学生和教师提供统一、标准的教学和实验环境，无需配置本地电脑。</p></div>
+                <div class="advantage-card"><h3>临时员工与合作伙伴</h3><p>快速为临时人员或外部伙伴分配安全的桌面环境，项目结束后即刻回收。</p></div>
+                <div class="advantage-card"><h3>访问敏感数据</h3><p>在隔离的云环境中处理敏感数据，确保数据不落地，符合合规性要求。</p></div>
+            </div>
+        </div>
+
+        <!-- Order Form Section -->
+        <div class="section">
+            <h2 class="section-title">立即开启您的云端办公室</h2>
+            <form action="https://formspree.io/f/xdklkdwd" method="POST" class="form-section">
+                
+                <div class="form-step">
+                    <h3>第一步：选择套餐和接入点</h3>
+                    <div class="form-group">
+                        <label for="location">选择离您最近的接入点 (数据中心)</label>
+                        <select id="location" name="云桌面机房位置" required>
+                           <option value="" disabled selected>--请选择一个数据中心--</option>
+                           <optgroup label="美洲">
+                                <option value="美国东部 (弗吉尼亚北部)">美国东部 (弗吉尼亚北部)</option>
+                                <option value="美国西部 (俄勒冈)">美国西部 (俄勒冈)</option>
+                                <option value="加拿大 (中部)">加拿大 (中部)</option>
+                                <option value="南美洲 (圣保罗)">南美洲 (圣保罗)</option>
+                           </optgroup>
+                           <optgroup label="亚太地区">
+                                <option value="东京 (日本)">东京 (日本)</option>
+                                <option value="首尔 (韩国)">首尔 (韩国)</option>
+                                <option value="新加坡">新加坡</option>
+                                <option value="悉尼 (澳大利亚)">悉尼 (澳大利亚)</option>
+                                <option value="孟买 (印度)">孟买 (印度)</option>
+                           </optgroup>
+                           <optgroup label="欧洲、中东 & 非洲">
+                                <option value="法兰克福 (德国)">法兰克福 (德国)</option>
+                                <option value="爱尔兰">爱尔兰</option>
+                                <option value="伦敦 (英国)">伦敦 (英国)</option>
+                                <option value="巴黎 (法国)">巴黎 (法国)</option>
+                                <option value="开普敦 (非洲)">开普敦 (非洲)</option>
+                           </optgroup>
+                        </select>
+                    </div>
+                     <div class="form-group">
+                        <label>选择 Windows 云桌面定价方案 (所有套餐均享4折优惠)</label>
+                         <div class="pricing-table-container">
+                            <table class="pricing-table">
+                                <thead>
+                                    <tr>
+                                        <th>选择</th>
+                                        <th>套餐类型</th>
+                                        <th>核心配置</th>
+                                        <th>推荐用途</th>
+                                        <th>月流量</th>
+                                        <th>优惠价格</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="radio" name="云桌面套餐" value="入门版: 2vCPU/1GB/40GB, ¥35/月 (三个月起付)" required></td>
+                                        <td>入门版</td>
+                                        <td>2 vCPU / 1GB 内存 / 40GB SSD</td>
+                                        <td>轻量级办公、文本处理</td>
+                                        <td>2TB</td>
+                                        <td><span class="price">¥35 /月</span><br><span class="original-price">¥87/月</span><span class="price-note">三个月起付</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="radio" name="云桌面套餐" value="标准版: 2vCPU/2GB/60GB, ¥58/月"></td>
+                                        <td>标准版</td>
+                                        <td>2 vCPU / 2GB 内存 / 60GB SSD</td>
+                                        <td>日常办公、网页浏览</td>
+                                        <td>3TB</td>
+                                        <td><span class="price">¥58 /月</span><br><span class="original-price">¥145/月</span></td>
+                                    </tr>
+                                    <tr class="popular-row">
+                                        <td><input type="radio" name="云桌面套餐" value="性能版: 2vCPU/4GB/80GB, ¥116/月"></td>
+                                        <td>性能版 <span class="popular-badge">最受欢迎</span></td>
+                                        <td>2 vCPU / 4GB 内存 / 80GB SSD</td>
+                                        <td>复杂文档处理、多任务操作</td>
+                                        <td>4TB</td>
+                                        <td><span class="price">¥116 /月</span><br><span class="original-price">¥290/月</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="radio" name="云桌面套餐" value="增强版: 2vCPU/8GB/160GB, ¥203/月"></td>
+                                        <td>增强版</td>
+                                        <td>2 vCPU / 8GB 内存 / 160GB SSD</td>
+                                        <td>软件开发、数据分析</td>
+                                        <td>5TB</td>
+                                        <td><span class="price">¥203 /月</span><br><span class="original-price">¥508/月</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="radio" name="云桌面套餐" value="专业版: 4vCPU/16GB/320GB, ¥348/月"></td>
+                                        <td>专业版</td>
+                                        <td>4 vCPU / 16GB 内存 / 320GB SSD</td>
+                                        <td>高性能计算、设计渲染</td>
+                                        <td>6TB</td>
+                                        <td><span class="price">¥348 /月</span><br><span class="original-price">¥870/月</span></td>
+                                    </tr>
+                                     <tr>
+                                        <td><input type="radio" name="云桌面套餐" value="旗舰版: 8vCPU/32GB/640GB, ¥696/月"></td>
+                                        <td>旗舰版</td>
+                                        <td>8 vCPU / 32GB 内存 / 640GB SSD</td>
+                                        <td>大型应用、视频处理</td>
+                                        <td>7TB</td>
+                                        <td><span class="price">¥696 /月</span><br><span class="original-price">¥1740/月</span></td>
+                                    </tr>
+                                     <tr>
+                                        <td><input type="radio" name="云桌面套餐" value="至尊版: 16vCPU/64GB/1280GB, ¥1653/月"></td>
+                                        <td>至尊版</td>
+                                        <td>16 vCPU / 64GB 内存 / 1280GB SSD</td>
+                                        <td>图形工作站、大规模计算</td>
+                                        <td>8TB</td>
+                                        <td><span class="price">¥1653 /月</span><br><span class="original-price">¥4133/月</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-step">
+                    <h3>第二步：选择付款并留下联系方式</h3>
+                     <div class="form-group">
+                         <label>我们支持的付款方式</label>
+                         <div class="radio-group payment-group">
+                            <label class="radio-label"><input type="radio" name="付款方式" value="USDT 数字货币" checked> <span>USDT 数字货币</span></label>
+                            <label class="radio-label"><input type="radio" name="付款方式" value="转数快 (FPS HK)"> <span>转数快 (FPS HK)</span></label>
+                            <label class="radio-label"><input type="radio" name="付款方式" value="信用卡"> <span>信用卡</span></label>
+                             <label class="radio-label"><input type="radio" name="付款方式" value="微信支付"> <span>微信支付</span></label>
+                             <label class="radio-label"><input type="radio" name="付款方式" value="支付宝"> <span>支付宝</span></label>
+                            <label class="radio-label"><input type="radio" name="付款方式" value="在线商城"> <span>在线商城</span></label>
+                         </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="email">您的Email邮箱 (必填)</label>
+                        <input type="email" id="email" name="email" required placeholder="我们的专家将通过此邮箱与您联系">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">您的Telegram或其他联系方式</label>
+                        <input type="text" id="contact" name="其他联系方式" placeholder="选填，例如 Telegram: @your_id">
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-button">提交需求，开启云桌面之旅</button>
+            </form>
+        </div>
+        
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>版权所有 &copy; 2025 AWSDO.COM</p>
+            <div class="footer-contact">
+                <a href="mailto:support@awsdo.com">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    support@awsdo.com
+                </a>
+                <a href="https://t.me/ilovesunkeinfo" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 2L11 13H2l1.67-5.01L22 2zm-2.48 18.51L17 14l-4.2 4.13-1.67-5.01L2 13h9l2-2-8.5-8.5L22 2l-2.48 18.51z"/></svg>
+                    @ilovesunkeinfo
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!--聊天模块-->
+    <script>
+      window.chatwootSettings = {"position":"right","type":"expanded_bubble","launcherTitle":"在线聊天"};
+      (function(d,t) {
+        var BASE_URL="https://app.chatwoot.com/";
+        var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=BASE_URL+"/packs/js/sdk.js";
+        g.defer = true;
+        g.async = true;
+        s.parentNode.insertBefore(g,s);
+        g.onload=function(){
+          window.chatwootSDK.run({
+            websiteToken: 'c3stLVCV9GDjtvHcBMLdjRjU',
+            baseUrl: BASE_URL
+          })
+        }
+      })(document,"script");
+    </script>
+    
+    <script>
+        // JavaScript for better user experience
+        document.addEventListener('DOMContentLoaded', function() {
+            // Make pricing table rows clickable
+            const pricingTableRows = document.querySelectorAll('.pricing-table tbody tr');
+            pricingTableRows.forEach(row => {
+                row.addEventListener('click', function() {
+                    pricingTableRows.forEach(r => r.classList.remove('selected'));
+                    this.classList.add('selected');
+                    const radio = this.querySelector('input[type="radio"]');
+                    if (radio) { radio.checked = true; }
+                });
+            });
+             // Pre-select the popular row
+            const popularRow = document.querySelector('.popular-row');
+            if(popularRow) {
+                popularRow.click();
+            }
+
+            // Style for checked radio buttons in groups
+            const radioGroups = document.querySelectorAll('.radio-group');
+            radioGroups.forEach(group => {
+                group.addEventListener('change', function(event) {
+                    const labels = group.querySelectorAll('.radio-label');
+                    labels.forEach(label => {
+                        const radio = label.querySelector('input[type="radio"]');
+                        label.classList.toggle('checked', radio.checked);
+                    });
+                });
+                // Initial check
+                const initiallyChecked = group.querySelector('input[type="radio"]:checked');
+                if(initiallyChecked) {
+                    initiallyChecked.closest('.radio-label').classList.add('checked');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
