@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AWSDO.COM - 您的 AWS 云服务专家</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0SXZXT6FBM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0SXZXT6FBM');
+    </script>
+    
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -161,6 +171,8 @@
             font-size: 18px;
             font-weight: bold;
             transition: background-color 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+            border: none;
         }
         .cta-button:hover {
             background: #218838;
@@ -278,7 +290,7 @@
         <div class="cta-section">
             <h2>想了解更多吗？</h2>
             <p>立即与我们联系，开启您的专属云服务之旅吧！</p>
-            <a href="mailto:support@awsdo.com" class="cta-button">立即咨询</a>
+            <a href="#" class="cta-button" onclick="if(window.chatwootSDK) { window.chatwootSDK.toggle(); return false; }">立即咨询</a>
         </div>
     </div>
 
@@ -297,6 +309,25 @@
             </div>
         </div>
     </footer>
+
+    <!--聊天模块-->
+    <script>
+      window.chatwootSettings = {"position":"right","type":"expanded_bubble","launcherTitle":"在线聊天"};
+      (function(d,t) {
+        var BASE_URL="https://app.chatwoot.com/";
+        var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=BASE_URL+"/packs/js/sdk.js";
+        g.defer = true;
+        g.async = true;
+        s.parentNode.insertBefore(g,s);
+        g.onload=function(){
+          window.chatwootSDK.run({
+            websiteToken: 'c3stLVCV9GDjtvHcBMLdjRjU',
+            baseUrl: BASE_URL
+          })
+        }
+      })(document,"script");
+    </script>
 
 </body>
 </html>
