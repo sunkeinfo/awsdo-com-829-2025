@@ -173,12 +173,50 @@
             transition: background-color 0.3s ease, transform 0.3s ease;
             cursor: pointer;
             border: none;
-            font-family: inherit; /* Ensure button inherits font */
+            font-family: inherit;
         }
         .cta-button:hover {
             background: #218838;
             transform: scale(1.05);
         }
+        
+        /* New Contact Form Styles */
+        .contact-form {
+            max-width: 700px;
+            margin: 30px auto 0;
+            text-align: left;
+        }
+        .contact-form .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .contact-form .form-row input {
+            flex: 1;
+        }
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 600px) {
+            .contact-form .form-row {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+        
         footer {
             background: #343a40;
             color: #f8f9fa;
@@ -289,9 +327,16 @@
         </div>
         
         <div class="cta-section">
-            <h2>想了解更多吗？</h2>
-            <p>立即与我们联系，开启您的专属云服务之旅吧！</p>
-            <button class="cta-button" onclick="if(window.chatwootSDK) { window.chatwootSDK.toggle(); }">立即咨询</button>
+            <h2>联系我们</h2>
+            <p>有任何问题或需要定制方案？请给我们留言，我们的专家将尽快与您联系。</p>
+            <form class="contact-form" action="https://formspree.io/f/xdklkdwd" method="POST">
+                <div class="form-row">
+                    <input type="text" name="名字" placeholder="您的名字" required>
+                    <input type="email" name="email" placeholder="您的电子邮箱" required>
+                </div>
+                <textarea name="信息" placeholder="您想咨询的内容..." required></textarea>
+                <button type="submit" class="cta-button">发送消息</button>
+            </form>
         </div>
     </div>
 
