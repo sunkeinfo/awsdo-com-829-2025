@@ -210,6 +210,16 @@
             resize: vertical;
             margin-bottom: 20px;
         }
+        #contact-form-status {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            background-color: #d4edda; /* Light green for success */
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
         @media (max-width: 600px) {
             .contact-form .form-row {
                 flex-direction: column;
@@ -329,7 +339,7 @@
         <div class="cta-section">
             <h2>联系我们</h2>
             <p>有任何问题或需要定制方案？请给我们留言，我们的专家将尽快与您联系。</p>
-            <form class="contact-form" action="https://formspree.io/f/xdklkdwd" method="POST">
+            <form id="contact-form" class="contact-form" action="https://formspree.io/f/xdklkdwd" method="POST">
                 <div class="form-row">
                     <input type="text" name="名字" placeholder="您的名字" required>
                     <input type="email" name="email" placeholder="您的电子邮箱" required>
@@ -337,6 +347,7 @@
                 <textarea name="信息" placeholder="您想咨询的内容..." required></textarea>
                 <button type="submit" class="cta-button">发送消息</button>
             </form>
+            <p id="contact-form-status"></p>
         </div>
     </div>
 
@@ -373,6 +384,49 @@
           })
         }
       })(document,"script");
+    </script>
+
+    <!-- AJAX Form Submission Script -->
+    <script>
+        var form = document.getElementById("contact-form");
+        
+        async function handleSubmit(event) {
+          event.preventDefault();
+          var status = document.getElementById("contact-form-status");
+          var data = new FormData(event.target);
+          fetch(event.target.action, {
+            method: form.method,
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+          }).then(response => {
+            if (response.ok) {
+              status.innerHTML = "感谢您的留言，我们已收到您的消息！";
+              status.style.display = 'block';
+              form.reset()
+            } else {
+              response.json().then(data => {
+                if (Object.hasOwn(data, 'errors')) {
+                  status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+                } else {
+                  status.innerHTML = "糟糕！提交时出现问题，请稍后再试。";
+                }
+                status.style.display = 'block';
+                status.style.backgroundColor = '#f8d7da'; // Red for error
+                status.style.borderColor = '#f5c6cb';
+                status.style.color = '#721c24';
+              })
+            }
+          }).catch(error => {
+            status.innerHTML = "糟糕！提交时出现网络错误，请检查您的连接。";
+            status.style.display = 'block';
+            status.style.backgroundColor = '#f8d7da'; // Red for error
+            status.style.borderColor = '#f5c6cb';
+            status.style.color = '#721c24';
+          });
+        }
+        form.addEventListener("submit", handleSubmit)
     </script>
 
 </body>
