@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>独享静态住宅IP云服务器 - AWSDO.COM</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0SXZXT6FBM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0SXZXT6FBM');
+    </script>
+    
+    <style>
+        /* General Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+        .section { padding: 60px 0; }
+        .section-title { text-align: center; margin-bottom: 50px; font-size: 32px; color: #343a40; font-weight: 600; }
+        .section-subtitle { text-align:center; max-width:800px; margin:-30px auto 50px auto; color: #6c757d; }
+
+        /* Header & Navigation */
+        header { background: #ffffff; padding: 15px 0; border-bottom: 1px solid #e9ecef; text-align: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        header .logo img { max-width: 200px; vertical-align: middle; }
+        nav { margin-top: 15px; }
+        nav ul { padding: 0; list-style: none; }
+        nav ul li { display: inline; margin: 0 15px; }
+        nav a { color: #495057; text-decoration: none; font-size: 16px; font-weight: 500; transition: color 0.3s ease; }
+        nav a:hover, nav a.active { color: #007bff; }
+
+        /* Hero Section */
+        .hero { background: linear-gradient(45deg, #28a745, #20c997); color: #ffffff; padding: 80px 20px; text-align: center; }
+        .hero h1 { font-size: 42px; margin-bottom: 15px; font-weight: 700; }
+        .hero p { font-size: 20px; font-weight: 300; max-width: 800px; margin: 0 auto; }
+
+        /* Advantages Grid */
+        .advantages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
+        .advantage-card { background: #ffffff; padding: 30px; border-radius: 8px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.07); }
+        .advantage-card h3 { font-size: 20px; color: #007bff; margin-top: 0; }
+        
+        /* Locations Grid */
+        .locations-section { background: #fff; border-radius: 8px; padding: 50px; }
+        .locations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
+        .locations-grid h4 { margin-bottom: 10px; color: #495057; border-bottom: 2px solid #e9ecef; padding-bottom: 5px; }
+        .locations-grid ul { list-style: none; padding: 0; margin: 0; }
+        .locations-grid li { margin-bottom: 8px; font-size: 15px; }
+
+        /* IP Examples */
+        .ip-examples { margin-top: 40px; }
+        .ip-example-item { background: #f8f9fa; border: 1px solid #e9ecef; padding: 15px; border-radius: 5px; margin-bottom: 10px; font-family: 'Courier New', Courier, monospace; }
+        .ip-example-item strong { color: #007bff; }
+        .disclaimer { font-size: 14px; color: #6c757d; margin-top: 20px; text-align: center; }
+
+        /* Special Note Callout */
+        .special-note { background: #e9f5ff; border-left: 5px solid #007bff; padding: 20px; margin: 40px 0; border-radius: 5px; }
+        .special-note p { margin: 0; font-weight: 500; }
+
+        /* Order Form Section */
+        .form-section { background: #fff; padding: 50px 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.07); }
+        .form-step { margin-bottom: 40px; }
+        .form-step h3 { font-size: 24px; color: #007bff; border-bottom: 2px solid #e9ecef; padding-bottom: 10px; margin-bottom: 20px; }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 10px; font-size: 18px; }
+        .form-group input[type="text"], .form-group input[type="email"] { width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 4px; font-size: 16px; box-sizing: border-box; }
+        .radio-group { display: flex; flex-wrap: wrap; gap: 15px; }
+        .radio-label { display: flex; align-items: center; background: #f8f9fa; border: 1px solid #dee2e6; padding: 12px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease-in-out; flex-grow: 1; justify-content: center; }
+        .radio-label:hover { border-color: #007bff; transform: translateY(-2px); }
+        .radio-label input[type="radio"] { display: none; }
+        .radio-label.checked { background-color: #007bff; color: #fff; border-color: #007bff; box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3); }
+
+        /* Submit Button */
+        .submit-button { display: block; width: 100%; background: #28a745; color: #fff; padding: 15px 35px; text-decoration: none; border-radius: 5px; font-size: 20px; font-weight: bold; transition: background-color 0.3s ease, transform 0.3s ease; cursor: pointer; border: none; text-align: center; margin-top: 30px; }
+        .submit-button:hover { background: #218838; transform: scale(1.02); }
+        
+        /* Footer */
+        footer { background: #343a40; color: #f8f9fa; text-align: center; padding: 30px 0; margin-top: 60px; }
+        footer p { margin: 8px 0; }
+        .footer-contact { margin-top: 15px; }
+        .footer-contact a { color: #ffffff; text-decoration: none; transition: color 0.3s; margin: 0 15px; display: inline-flex; align-items: center; }
+        .footer-contact a:hover { color: #007bff; }
+        .footer-contact svg { width: 20px; height: 20px; margin-right: 8px; fill: currentColor; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="https://hosting.sunke.info/whmcs/awsdo11192.png" alt="AWSDO.COM Logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="linux-server.html">Linux云服务器</a></li>
+                    <li><a href="windows-server.html">Windows服务器</a></li>
+                    <li><a href="residential-ip-server.html" class="active">住宅IP服务器</a></li>
+                    <li><a href="#">高性能服务器</a></li>
+                    <li><a href="#">AWS账单代付</a></li>
+                    <li><a href="#">AWS智能AI</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>独享静态住宅IP云服务器</h1>
+            <p>为您提供高匿名、高稳定、高速的全球网络环境，是TikTok运营、跨境电商、游戏工作室和AI应用的理想之选。</p>
+        </div>
+    </section>
+
+    <div class="main-content container">
+        <div class="section">
+            <h2 class="section-title">我们的核心优势</h2>
+            <p class="section-subtitle">我们致力于提供业界领先的网络解决方案，确保您的业务在全球范围内畅通无阻、安全可靠。</p>
+            <div class="advantages-grid">
+                <div class="advantage-card"><h3>独享纯净IP</h3><p>100%独享高质量IP资源池，所有IP都经过严格筛选，确保纯净无滥用记录，每个IP都是您的专属资产。</p></div>
+                <div class="advantage-card"><h3>真实家庭住宅IP</h3><p>IP均来自知名运营商提供的真实家庭宽带，如Verizon、KDDI等，有效规避机房IP常见的风控问题。</p></div>
+                <div class="advantage-card"><h3>高达10Gbps极速带宽</h3><p>提供高达10Gbps的网络带宽，确保您的网络操作流畅、稳定，远超其他服务商的低速带宽，体验无延迟的操作。</p></div>
+                <div class="advantage-card"><h3>全球顶级运营商合作</h3><p>我们与全球知名运营商合作，包括美国Verizon、日本KDDI、韩国SK Telecom等，保证IP来源的质量与稳定性。</p></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">灵活的产品配置与服务</h2>
+            <p class="section-subtitle">无论是基础应用还是高性能计算，我们都有相应的配置满足您的需求，并提供完整的管理权限。</p>
+             <div class="advantages-grid">
+                <div class="advantage-card"><h3>强大的基础配置</h3><p>标准云服务器配备英特尔至强铂金系列处理器（2核/4GB/60GB），性能卓越，轻松应对日常任务。</p></div>
+                <div class="advantage-card"><h3>高性能套餐可选</h3><p>新增4核心/16GB内存和8核心/64GB内存的高性能选项，满足您更复杂的数据处理和多任务计算需求。</p></div>
+                <div class="advantage-card"><h3>多种操作系统支持</h3><p>您可以选择Windows桌面系统或CentOS、Ubuntu、Debian等主流Linux系统，并拥有完全的管理权限。</p></div>
+                <div class="advantage-card"><h3>慷慨的流量政策</h3><p>每台服务器每月提供1TB的免费出站流量，入站流量完全免费，让您无需担心流量成本。</p></div>
+            </div>
+        </div>
+        
+        <div class="section locations-section">
+            <h2 class="section-title">遍布全球的物理节点</h2>
+             <p class="section-subtitle">我们的服务节点覆盖全球主要经济区域，您可以根据业务需求选择最合适的地理位置以获得最佳网络性能。</p>
+             <div class="locations-grid">
+                <div><h4>美国西部</h4><ul><li>旧金山湾区</li><li>拉斯维加斯</li><li>洛杉矶</li><li>丹佛</li><li>西雅图</li><li>菲尼克斯</li></ul></div>
+                <div><h4>美国中部</h4><ul><li>达拉斯</li><li>休斯顿</li><li>芝加哥</li><li>明尼阿波利斯</li><li>纳什维尔</li></ul></div>
+                <div><h4>美国东部</h4><ul><li>波士顿</li><li>纽约市</li><li>华盛顿特区</li><li>迈阿密</li><li>夏洛特</li><li>底特律</li><li>坦帕</li></ul></div>
+                <div><h4>加拿大</h4><ul><li>多伦多</li></ul><h4>英国</h4><ul><li>伦敦</li><li>曼彻斯特</li></ul></div>
+                <div><h4>德国</h4><ul><li>多特蒙德</li><li>柏林</li><li>慕尼黑</li></ul></div>
+                <div><h4>日本</h4><ul><li>东京</li><li>大阪</li></ul><h4>韩国</h4><ul><li>首尔</li><li>大田</li></ul></div>
+            </div>
+            <div class="ip-examples">
+                <div class="ip-example-item"><strong>美国 (Verizon):</strong> 155.146.10.111</div>
+                <div class="ip-example-item"><strong>加拿大 (Bell):</strong> 207.61.170.56</div>
+                <div class="ip-example-item"><strong>英国 (Vodafone):</strong> 185.213.x.x / 212.183.y.y</div>
+                <div class="ip-example-item"><strong>德国 (Deutsche Telekom):</strong> 87.161.x.x / 91.65.y.y</div>
+                <div class="ip-example-item"><strong>日本 (KDDI):</strong> 203.138.bb.bb / 101.110.cc.cc</div>
+                <div class="ip-example-item"><strong>韩国 (SK Telecom):</strong> 210.95.dd.dd / 121.78.ee.ee</div>
+            </div>
+            <p class="disclaimer">请注意：以上仅为IP段示例，实际分配的IP会在此类高质量地址池中随机选择。</p>
+            <div class="special-note">
+                <p>了解更多：来自AWSDO.COM的韩国票务专用独享家庭住宅静态IP云服务器，为您的抢票操作提供极致助力！</p>
+            </div>
+        </div>
+
+        <!-- Order Form Section -->
+        <div class="section">
+            <h2 class="section-title">立即订购您的专属服务器</h2>
+            <form action="https://formspree.io/f/xdklkdwd" method="POST" class="form-section">
+                
+                <div class="form-step">
+                    <div class="form-group"><label>1. 选择IP所在地区</label><div class="radio-group"><label class="radio-label"><input type="radio" name="IP地区" value="美国" checked><span>美国</span></label><label class="radio-label"><input type="radio" name="IP地区" value="日本"><span>日本</span></label><label class="radio-label"><input type="radio" name="IP地区" value="韩国"><span>韩国</span></label><label class="radio-label"><input type="radio" name="IP地区" value="英国"><span>英国</span></label><label class="radio-label"><input type="radio" name="IP地区" value="德国"><span>德国</span></label><label class="radio-label"><input type="radio" name="IP地区" value="加拿大"><span>加拿大</span></label><label class="radio-label"><input type="radio" name="IP地区" value="其他"><span>其他</span></label></div></div>
+                    <div class="form-group"><label>2. 选择服务器操作系统</label><div class="radio-group"><label class="radio-label"><input type="radio" name="操作系统" value="Windows 2022" checked><span>Windows 2022</span></label><label class="radio-label"><input type="radio" name="操作系统" value="CentOS 9"><span>CentOS 9</span></label><label class="radio-label"><input type="radio" name="操作系统" value="Ubuntu 22"><span>Ubuntu 22</span></label><label class="radio-label"><input type="radio" name="操作系统" value="Debian 11"><span>Debian 11</span></label><label class="radio-label"><input type="radio" name="操作系统" value="其他"><span>其他</span></label></div></div>
+                    <div class="form-group"><label>3. 选择服务器配置和规格</label><div class="radio-group"><label class="radio-label"><input type="radio" name="配置规格" value="2核/4G内存, 5Gbps带宽" checked><span>2核心/4G内存, 5Gbps带宽</span></label><label class="radio-label"><input type="radio" name="配置规格" value="4核/16G内存, 5Gbps带宽"><span>4核心/16G内存, 5Gbps带宽</span></label><label class="radio-label"><input type="radio" name="配置规格" value="8核/64G内存, 10Gbps带宽"><span>8核心/64G内存, 10Gbps带宽</span></label></div></div>
+                    <div class="form-group"><label>4. 选择付款方式</label><div class="radio-group"><label class="radio-label"><input type="radio" name="付款方式" value="USDT 数字加密货币" checked><span>USDT 数字加密货币</span></label><label class="radio-label"><input type="radio" name="付款方式" value="转数快– FPS 香港"><span>轉數快– FPS 香港</span></label><label class="radio-label"><input type="radio" name="付款方式" value="信用卡"><span>信用卡</span></label><label class="radio-label"><input type="radio" name="付款方式" value="在线商城"><span>在线商城</span></label><label class="radio-label"><input type="radio" name="付款方式" value="支付宝/微信"><span>支付宝/微信</span></label></div></div>
+                    <div class="form-group"><label for="email">5. 您的Email邮箱 (必填)</label><input type="email" id="email" name="email" required placeholder="我们将通过此邮箱与您联系"></div>
+                    <div class="form-group"><label for="contact">您的Telegram或其他联系方式 (选填)</label><input type="text" id="contact" name="其他联系方式" placeholder="例如 Telegram: @your_id"></div>
+                </div>
+
+                <button type="submit" class="submit-button">提交订单</button>
+            </form>
+        </div>
+        
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>版权所有 &copy; 2025 AWSDO.COM</p>
+            <div class="footer-contact">
+                <a href="mailto:support@awsdo.com"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> support@awsdo.com</a>
+                <a href="https://t.me/ilovesunkeinfo" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 2L11 13H2l1.67-5.01L22 2zm-2.48 18.51L17 14l-4.2 4.13-1.67-5.01L2 13h9l2-2-8.5-8.5L22 2l-2.48 18.51z"/></svg> @ilovesunkeinfo</a>
+            </div>
+        </div>
+    </footer>
+
+    <!--聊天模块-->
+    <script>
+      window.chatwootSettings = {"position":"right","type":"expanded_bubble","launcherTitle":"在线聊天"};
+      (function(d,t) { var BASE_URL="https://app.chatwoot.com/"; var g=d.createElement(t),s=d.getElementsByTagName(t)[0]; g.src=BASE_URL+"/packs/js/sdk.js"; g.defer = true; g.async = true; s.parentNode.insertBefore(g,s); g.onload=function(){ window.chatwootSDK.run({ websiteToken: 'c3stLVCV9GDjtvHcBMLdjRjU', baseUrl: BASE_URL }) } })(document,"script");
+    </script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const radioGroups = document.querySelectorAll('.radio-group');
+            radioGroups.forEach(group => {
+                // Function to update styles
+                const updateStyles = () => {
+                    const labels = group.querySelectorAll('.radio-label');
+                    labels.forEach(label => {
+                        const radio = label.querySelector('input[type="radio"]');
+                        label.classList.toggle('checked', radio.checked);
+                    });
+                };
+                // Add change event listener
+                group.addEventListener('change', updateStyles);
+                // Set initial styles
+                updateStyles();
+            });
+        });
+    </script>
+
+</body>
+</html>
