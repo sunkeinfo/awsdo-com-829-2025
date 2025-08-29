@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单Linux云服务器 - AWSDO.COM</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0SXZXT6FBM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0SXZXT6FBM');
+    </script>
+    
+    <style>
+        /* General Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+        .section {
+            padding: 60px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 32px;
+            color: #343a40;
+            font-weight: 600;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: #ffffff;
+            padding: 15px 0;
+            border-bottom: 1px solid #e9ecef;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        header .logo img {
+            max-width: 200px;
+            vertical-align: middle;
+        }
+        nav {
+            margin-top: 15px;
+        }
+        nav ul {
+            padding: 0;
+            list-style: none;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav a {
+            color: #495057;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        nav a:hover, nav a.active {
+            color: #007bff;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            color: #ffffff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 20px;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Advantages Grid */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .advantage-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+        }
+        .advantage-card h3 {
+            font-size: 20px;
+            color: #007bff;
+            margin-top: 0;
+        }
+
+        /* Order Form Section */
+        .form-section {
+            background: #fff;
+            padding: 50px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+        }
+        .form-step {
+            margin-bottom: 40px;
+        }
+        .form-step h3 {
+            font-size: 24px;
+            color: #007bff;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Form elements styling */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .radio-label {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+        .radio-label:hover {
+            border-color: #007bff;
+        }
+        .radio-label input[type="radio"] {
+            display: none;
+        }
+        .radio-label input[type="radio"]:checked + span {
+            color: #fff;
+        }
+        .radio-label input[type="radio"]:checked {
+            background-color: #007bff;
+        }
+        .radio-label.checked {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
+
+        /* Pricing Table within Form */
+        .pricing-table-container {
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        .pricing-table th, .pricing-table td {
+            padding: 15px;
+            border: 1px solid #e9ecef;
+        }
+        .pricing-table th {
+            background-color: #e9ecef;
+            font-weight: 600;
+        }
+        .pricing-table tbody tr {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .pricing-table tbody tr:hover {
+            background-color: #e9f5ff;
+        }
+        .pricing-table tbody tr.selected {
+            background-color: #d1e7ff;
+            box-shadow: inset 0 0 0 2px #007bff;
+        }
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #dc3545;
+        }
+        .original-price {
+            text-decoration: line-through;
+            color: #6c757d;
+            font-size: 14px;
+        }
+        .price-note {
+            font-size: 12px;
+            color: #6c757d;
+            display: block;
+        }
+
+        /* Submit Button */
+        .submit-button {
+            display: block;
+            width: 100%;
+            background: #28a745;
+            color: #fff;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 20px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .submit-button:hover {
+            background: #218838;
+            transform: scale(1.02);
+        }
+        
+        /* Footer */
+        footer {
+            background: #343a40;
+            color: #f8f9fa;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+        footer p { margin: 8px 0; }
+        .footer-contact { margin-top: 15px; }
+        .footer-contact a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s;
+            margin: 0 15px;
+            display: inline-flex;
+            align-items: center;
+        }
+        .footer-contact a:hover { color: #007bff; }
+        .footer-contact svg { width: 20px; height: 20px; margin-right: 8px; fill: currentColor; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="https://hosting.sunke.info/whmcs/awsdo11192.png" alt="AWSDO.COM Logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="linux-server.html" class="active">Linux云服务器</a></li>
+                    <li><a href="#">Windows服务器</a></li>
+                    <li><a href="#">住宅IP服务器</a></li>
+                    <li><a href="#">高性能服务器</a></li>
+                    <li><a href="#">AWS账单代付</a></li>
+                    <li><a href="#">AWS智能AI</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>AWSDO.COM 轻量应用服务器</h1>
+            <p>专为个人开发者和中小型企业设计，适用于网站建设、开发测试和小型应用等场景。轻量、易用、经济，助您轻松开启云计算之旅。</p>
+        </div>
+    </section>
+
+    <div class="main-content container">
+        <div class="section">
+            <h2 class="section-title">轻量应用服务器核心优势</h2>
+            <div class="advantages-grid">
+                <div class="advantage-card"><h3>性能灵活可突增</h3><p>T系列实例提供稳定的基准CPU性能，并能在需要时爆发式突增以应对流量高峰，完美平衡成本与性能。</p></div>
+                <div class="advantage-card"><h3>极高成本效益</h3><p>提供从纳型到大型等多种规格，您可以按需选择，避免资源浪费。最低配置也能满足基础需求，显著节约成本。</p></div>
+                <div class="advantage-card"><h3>计费简单透明</h3><p>采用按月付费模式，账单清晰可预测，无任何隐藏费用。预算尽在掌握，尤其适合初学者入门。</p></div>
+                <div class="advantage-card"><h3>支持平滑扩展</h3><p>随着业务发展，您可以随时轻松升级到更高规格或迁移至其他实例类型，确保业务的持续、无缝增长。</p></div>
+            </div>
+        </div>
+
+        <!-- Order Form Section -->
+        <div class="section">
+            <h2 class="section-title">立即配置您的云服务器</h2>
+            <form action="https://formspree.io/f/xdklkdwd" method="POST" class="form-section">
+                
+                <!-- Step 1: Configuration -->
+                <div class="form-step">
+                    <h3>第一步：选择您的配置</h3>
+                    <div class="form-group">
+                        <label for="location">选择机房位置</label>
+                        <select id="location" name="机房位置" required>
+                           <option value="" disabled selected>--请选择一个机房--</option>
+                           <optgroup label="美洲">
+                                <option value="加拿大 (卡加利)">加拿大 (卡加利)</option>
+                                <option value="加拿大 (中部)">加拿大 (中部)</option>
+                                <option value="墨西哥 (中部)">墨西哥 (中部)</option>
+                                <option value="南美洲 (圣保罗)">南美洲 (圣保罗)</option>
+                                <option value="美国 (北维吉尼亚)">美国 (北维吉尼亚)</option>
+                                <option value="美国 (俄亥俄州)">美国 (俄亥俄州)</option>
+                                <option value="美国 (北加州)">美国 (北加州)</option>
+                                <option value="美国 (奥勒冈州)">美国 (奥勒冈州)</option>
+                           </optgroup>
+                           <optgroup label="亚太地区">
+                                <option value="香港">香港</option>
+                                <option value="台北">台北</option>
+                                <option value="海德拉巴">海德拉巴</option>
+                                <option value="雅加达">雅加达</option>
+                                <option value="墨尔本">墨尔本</option>
+                                <option value="马来西亚">马来西亚</option>
+                                <option value="泰国">泰国</option>
+                                <option value="东京">东京</option>
+                                <option value="首尔">首尔</option>
+                                <option value="大阪">大阪</option>
+                                <option value="孟买">孟买</option>
+                                <option value="新加坡">新加坡</option>
+                                <option value="雪梨">雪梨</option>
+                           </optgroup>
+                           <optgroup label="欧洲">
+                                <option value="苏黎世">苏黎世</option>
+                                <option value="米兰">米兰</option>
+                                <option value="西班牙">西班牙</option>
+                                <option value="法兰克福">法兰克福</option>
+                                <option value="斯德哥尔摩">斯德哥尔摩</option>
+                                <option value="爱尔兰">爱尔兰</option>
+                                <option value="伦敦">伦敦</option>
+                                <option value="巴黎">巴黎</option>
+                           </optgroup>
+                           <optgroup label="中东 & 非洲">
+                                <option value="非洲 (开普敦)">非洲 (开普敦)</option>
+                                <option value="以色列 (特拉维夫)">以色列 (特拉维夫)</option>
+                                <option value="阿联酋">阿联酋</option>
+                                <option value="巴林">巴林</option>
+                           </optgroup>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                         <label>选择操作系统</label>
+                         <div class="radio-group os-group">
+                            <label class="radio-label"><input type="radio" name="操作系统" value="Amazon Linux" checked> <span>Amazon Linux</span></label>
+                            <label class="radio-label"><input type="radio" name="操作系统" value="Ubuntu 24.04"> <span>Ubuntu 24.04</span></label>
+                            <label class="radio-label"><input type="radio" name="操作系统" value="Ubuntu 22.04"> <span>Ubuntu 22.04</span></label>
+                            <label class="radio-label"><input type="radio" name="操作系统" value="Debian 12.8"> <span>Debian 12.8</span></label>
+                            <label class="radio-label"><input type="radio" name="操作系统" value="Debian 11.11"> <span>Debian 11.11</span></label>
+                            <label class="radio-label"><input type="radio" name="操作系统" value="AlmaLinux 9.4"> <span>AlmaLinux 9.4</span></label>
+                            <label class="radio-label"><input type="radio" name="操作系统" value="CentOS 9"> <span>CentOS 9</span></label>
+                         </div>
+                    </div>
+                     <div class="form-group">
+                        <label>选择配置套餐</label>
+                         <div class="pricing-table-container">
+                            <table class="pricing-table">
+                                <thead>
+                                    <tr>
+                                        <th>选择</th>
+                                        <th>配置</th>
+                                        <th>硬盘</th>
+                                        <th>月流量</th>
+                                        <th>价格 (6折优惠)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="radio" name="配置套餐" value="0.5GB/2vCPU, 20GB SSD, 1TB, ¥22/月 (三个月起付)" required></td>
+                                        <td>0.5GB 内存 / 2 vCPU</td>
+                                        <td>20GB SSD</td>
+                                        <td>1TB</td>
+                                        <td><span class="price">¥22 /月</span><br><span class="original-price">原价: ¥36/月</span><span class="price-note">三个月起付</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="radio" name="配置套餐" value="1GB/2vCPU, 40GB SSD, 2TB, ¥30/月"></td>
+                                        <td>1GB 内存 / 2 vCPU</td>
+                                        <td>40GB SSD</td>
+                                        <td>2TB</td>
+                                        <td><span class="price">¥30 /月</span><br><span class="original-price">原价: ¥51/月</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="radio" name="配置套餐" value="2GB/2vCPU, 60GB SSD, 3TB, ¥52/月"></td>
+                                        <td>2GB 内存 / 2 vCPU</td>
+                                        <td>60GB SSD</td>
+                                        <td>3TB</td>
+                                        <td><span class="price">¥52 /月</span><br><span class="original-price">原价: ¥87/月</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="radio" name="配置套餐" value="4GB/2vCPU, 80GB SSD, 4TB, ¥104/月"></td>
+                                        <td>4GB 内存 / 2 vCPU</td>
+                                        <td>80GB SSD</td>
+                                        <td>4TB</td>
+                                        <td><span class="price">¥104 /月</span><br><span class="original-price">原价: ¥174/月</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="radio" name="配置套餐" value="8GB/2vCPU, 160GB SSD, 5TB, ¥191/月"></td>
+                                        <td>8GB 内存 / 2 vCPU</td>
+                                        <td>160GB SSD</td>
+                                        <td>5TB</td>
+                                        <td><span class="price">¥191 /月</span><br><span class="original-price">原价: ¥319/月</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="radio" name="配置套餐" value="16GB/4vCPU, 320GB SSD, 6TB, ¥365/月"></td>
+                                        <td>16GB 内存 / 4 vCPU</td>
+                                        <td>320GB SSD</td>
+                                        <td>6TB</td>
+                                        <td><span class="price">¥365 /月</span><br><span class="original-price">原价: ¥609/月</span></td>
+                                    </tr>
+                                     <tr>
+                                        <td><input type="radio" name="配置套餐" value="32GB/8vCPU, 640GB SSD, 7TB, ¥713/月"></td>
+                                        <td>32GB 内存 / 8 vCPU</td>
+                                        <td>640GB SSD</td>
+                                        <td>7TB</td>
+                                        <td><span class="price">¥713 /月</span><br><span class="original-price">原价: ¥1189/月</span></td>
+                                    </tr>
+                                     <tr>
+                                        <td><input type="radio" name="配置套餐" value="64GB/16vCPU, 1280GB SSD, 8TB, ¥1670/月"></td>
+                                        <td>64GB 内存 / 16 vCPU</td>
+                                        <td>1280GB SSD</td>
+                                        <td>8TB</td>
+                                        <td><span class="price">¥1670 /月</span><br><span class="original-price">原价: ¥2784/月</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Payment & Contact -->
+                <div class="form-step">
+                    <h3>第二步：选择付款并联系我们</h3>
+                     <div class="form-group">
+                         <label>选择购买云服务器的付款方式</label>
+                         <div class="radio-group payment-group">
+                            <label class="radio-label"><input type="radio" name="付款方式" value="USDT 数字加密货币" checked> <span>USDT 数字加密货币</span></label>
+                            <label class="radio-label"><input type="radio" name="付款方式" value="转数快– FPS 香港"> <span>轉數快– FPS 香港</span></label>
+                            <label class="radio-label"><input type="radio" name="付款方式" value="信用卡"> <span>信用卡</span></label>
+                            <label class="radio-label"><input type="radio" name="付款方式" value="在线商城"> <span>在线商城</span></label>
+                            <label class="radio-label"><input type="radio" name="付款方式" value="支付宝/微信"> <span>支付宝/微信</span></label>
+                         </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="email">您的Email邮箱 (必填)</label>
+                        <input type="email" id="email" name="Email邮箱" required placeholder="我们将通过此邮箱与您联系">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">您的Telegram或其他联系方式</label>
+                        <input type="text" id="contact" name="其他联系方式" placeholder="例如 Telegram: @your_id">
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-button">提交订单</button>
+            </form>
+        </div>
+        
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>版权所有 &copy; 2025 AWSDO.COM</p>
+            <div class="footer-contact">
+                <a href="mailto:support@awsdo.com">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    support@awsdo.com
+                </a>
+                <a href="https://t.me/ilovesunkeinfo" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 2L11 13H2l1.67-5.01L22 2zm-2.48 18.51L17 14l-4.2 4.13-1.67-5.01L2 13h9l2-2-8.5-8.5L22 2l-2.48 18.51z"/></svg>
+                    @ilovesunkeinfo
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!--聊天模块-->
+    <script>
+      window.chatwootSettings = {"position":"right","type":"expanded_bubble","launcherTitle":"在线聊天"};
+      (function(d,t) {
+        var BASE_URL="https://app.chatwoot.com/";
+        var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=BASE_URL+"/packs/js/sdk.js";
+        g.defer = true;
+        g.async = true;
+        s.parentNode.insertBefore(g,s);
+        g.onload=function(){
+          window.chatwootSDK.run({
+            websiteToken: 'c3stLVCV9GDjtvHcBMLdjRjU',
+            baseUrl: BASE_URL
+          })
+        }
+      })(document,"script");
+    </script>
+    
+    <script>
+        // JavaScript for better user experience
+        document.addEventListener('DOMContentLoaded', function() {
+            // Make pricing table rows clickable
+            const pricingTableRows = document.querySelectorAll('.pricing-table tbody tr');
+            pricingTableRows.forEach(row => {
+                row.addEventListener('click', function() {
+                    // Remove 'selected' class from all rows
+                    pricingTableRows.forEach(r => r.classList.remove('selected'));
+                    // Add 'selected' class to clicked row
+                    this.classList.add('selected');
+                    // Find the radio button inside and check it
+                    const radio = this.querySelector('input[type="radio"]');
+                    if (radio) {
+                        radio.checked = true;
+                    }
+                });
+            });
+
+            // Style for checked radio buttons in groups
+            const radioGroups = document.querySelectorAll('.radio-group');
+            radioGroups.forEach(group => {
+                group.addEventListener('change', function(event) {
+                    const labels = group.querySelectorAll('.radio-label');
+                    labels.forEach(label => {
+                        const radio = label.querySelector('input[type="radio"]');
+                        if (radio.checked) {
+                            label.classList.add('checked');
+                        } else {
+                            label.classList.remove('checked');
+                        }
+                    });
+                });
+                // Initial check
+                const initiallyChecked = group.querySelector('input[type="radio"]:checked');
+                if(initiallyChecked) {
+                    initiallyChecked.closest('.radio-label').classList.add('checked');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
