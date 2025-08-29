@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWSDO.COM - 您的 AWS 云服务专家</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #ffffff;
+            padding: 15px 0;
+            border-bottom: 1px solid #e9ecef;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        header .logo img {
+            max-width: 200px;
+            vertical-align: middle;
+        }
+        nav {
+            margin-top: 15px;
+        }
+        nav ul {
+            padding: 0;
+            list-style: none;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav a {
+            color: #495057;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        nav a:hover, nav a.active {
+            color: #007bff;
+        }
+        .hero {
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            color: #ffffff;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 20px;
+            font-weight: 300;
+        }
+        .main-content {
+            padding: 50px 0;
+        }
+        .section {
+            padding: 50px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: #343a40;
+            font-weight: 600;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+            background-color: #007bff;
+            color: #ffffff;
+        }
+        .service-card h3 {
+            font-size: 22px;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .service-card p {
+            font-size: 16px;
+            flex-grow: 1;
+        }
+        .info-section {
+            background: #ffffff;
+            padding: 40px;
+            margin-top: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .info-section h2 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .partner-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .partner-section .text-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        .partner-section .image-content {
+            flex: 1;
+            text-align: center;
+            min-width: 300px;
+        }
+        .partner-section img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .cta-section {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #28a745;
+            color: #fff;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .cta-button:hover {
+            background: #218838;
+            transform: scale(1.05);
+        }
+        footer {
+            background: #343a40;
+            color: #f8f9fa;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 20px;
+        }
+        footer p {
+            margin: 8px 0;
+        }
+        .footer-contact {
+            margin-top: 15px;
+        }
+        .footer-contact a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s;
+            margin: 0 15px;
+            display: inline-flex;
+            align-items: center;
+        }
+        .footer-contact a:hover {
+            color: #007bff;
+        }
+        .footer-contact svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            fill: currentColor;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="#"><img src="https://hosting.sunke.info/whmcs/awsdo11192.png" alt="AWSDO.COM Logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">Linux云服务器</a></li>
+                    <li><a href="#">Windows服务器</a></li>
+                    <li><a href="#">住宅IP服务器</a></li>
+                    <li><a href="#">高性能服务器</a></li>
+                    <li><a href="#">AWS账单代付</a></li>
+                    <li><a href="#">AWS智能AI</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>专业、可靠、高效的云服务解决方案</h1>
+            <p>我们是 AWS 注册合作伙伴，为您提供一站式的云产品与服务</p>
+        </div>
+    </section>
+
+    <div class="main-content container">
+        <div class="section">
+            <h2 class="section-title">我们的核心服务</h2>
+            <div class="services-grid">
+                <a href="#" class="service-card">
+                    <h3>简单Linux云服务器</h3>
+                    <p>稳定、高效、安全的 Linux 云服务器，满足您多样化的业务需求。</p>
+                </a>
+                <a href="#" class="service-card">
+                    <h3>Windows远程桌面服务器</h3>
+                    <p>提供图形化界面的 Windows 远程桌面服务器，易于管理和操作。</p>
+                </a>
+                <a href="#" class="service-card">
+                    <h3>住宅IP电脑服务器</h3>
+                    <p>使用纯净的住宅 IP，适用于各种需要原生 IP 环境的特殊业务场景。</p>
+                </a>
+                <a href="#" class="service-card">
+                    <h3>高性能超级服务器</h3>
+                    <p>为计算密集型应用和大规模数据处理提供顶级的计算能力和性能。</p>
+                </a>
+                <a href="#" class="service-card">
+                    <h3>AWS 账单代付</h3>
+                    <p>便捷的多币种账单代付服务，无额外费用，简化您的财务流程。</p>
+                </a>
+                <a href="#" class="service-card">
+                    <h3>AWS智能AI模型</h3>
+                    <p>利用 AWS 强大的 AI 模型，为您的应用注入前沿的人工智能能力。</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2>AWSDO.COM 的优势</h2>
+            <p>AWSDO.COM 作为 AWS 合作伙伴网络 (APN) 的注册成员，致力于为您提供卓越的云服务体验。选择我们，您将获得独家价格优惠、专业技术支持、专属客户服务和便捷的多币种支付等一系列优势。我们还可以协助您注册或管理 AWS 账号，并配备专属客户经理全程协助。</p>
+        </div>
+
+        <div class="info-section">
+             <h2>为什么选择与 AWS 合作伙伴合作？</h2>
+            <div class="partner-section">
+                <div class="text-content">
+                    <p>AWS 合作伙伴网络拥有超过 13 万家合作伙伴，旨在帮助客户加速云转型。作为 AWS 合作伙伴，AWSDO.COM 能够直接转售和交付 AWS 解决方案，并将其整合到我们独特的产品中。这种合作模式专为系统集成商、托管服务提供商和增值经销商等设计。</p>
+                    <p>通过与 AWSDO.COM 合作，您可以充分利用 AWS 的广泛服务，并借助我们的专业支持，加速您的创新之旅。</p>
+                </div>
+                <div class="image-content">
+                    <img src="https://hosting.sunke.info/files/banner11171.png" alt="Why partner with AWS">
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <h2>想了解更多吗？</h2>
+            <p>立即与我们联系，开启您的专属云服务之旅吧！</p>
+            <a href="mailto:support@awsdo.com" class="cta-button">立即咨询</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>版权所有 &copy; 2025 AWSDO.COM</p>
+            <div class="footer-contact">
+                <a href="mailto:support@awsdo.com">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    support@awsdo.com
+                </a>
+                <a href="https://t.me/ilovesunkeinfo" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 2L11 13H2l1.67-5.01L22 2zm-2.48 18.51L17 14l-4.2 4.13-1.67-5.01L2 13h9l2-2-8.5-8.5L22 2l-2.48 18.51z"/></svg>
+                    @ilovesunkeinfo
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
