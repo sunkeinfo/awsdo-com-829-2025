@@ -173,6 +173,7 @@
             transition: background-color 0.3s ease, transform 0.3s ease;
             cursor: pointer;
             border: none;
+            font-family: inherit; /* Ensure button inherits font */
         }
         .cta-button:hover {
             background: #218838;
@@ -290,7 +291,7 @@
         <div class="cta-section">
             <h2>想了解更多吗？</h2>
             <p>立即与我们联系，开启您的专属云服务之旅吧！</p>
-            <a href="#" class="cta-button" onclick="if(window.chatwootSDK) { window.chatwootSDK.toggle(); return false; }">立即咨询</a>
+            <button class="cta-button" onclick="if(window.chatwootSDK) { window.chatwootSDK.toggle(); }">立即咨询</button>
         </div>
     </div>
 
