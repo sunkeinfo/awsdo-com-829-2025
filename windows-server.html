@@ -133,13 +133,24 @@
         .price-note { font-size: 12px; color: #6c757d; display: block; }
         .popular-badge { background: #ffc107; color: #343a40; padding: 3px 8px; font-size: 12px; border-radius: 10px; font-weight: bold; display: inline-block; margin-left: 8px; }
 
-        /* Submit Button */
+        /* Submit Button & Status */
         .submit-button {
             display: block; width: 100%; background: #28a745; color: #fff; padding: 15px 35px;
             text-decoration: none; border-radius: 5px; font-size: 20px; font-weight: bold;
             transition: background-color 0.3s ease, transform 0.3s ease; cursor: pointer; border: none; text-align: center; margin-top: 30px;
         }
         .submit-button:hover { background: #218838; transform: scale(1.02); }
+        #order-form-status {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
         
         /* Footer */
         footer { background: #343a40; color: #f8f9fa; text-align: center; padding: 30px 0; margin-top: 60px; }
@@ -206,7 +217,7 @@
         <!-- Order Form Section -->
         <div class="section">
             <h2 class="section-title">立即开启您的云端办公室</h2>
-            <form action="https://formspree.io/f/xdklkdwd" method="POST" class="form-section">
+            <form id="order-form" action="https://formspree.io/f/xdklkdwd" method="POST" class="form-section">
                 
                 <div class="form-step">
                     <h3>第一步：选择套餐和接入点</h3>
@@ -337,6 +348,7 @@
                 </div>
 
                 <button type="submit" class="submit-button">提交需求，开启云桌面之旅</button>
+                <p id="order-form-status"></p>
             </form>
         </div>
         
@@ -377,10 +389,9 @@
       })(document,"script");
     </script>
     
+    <!-- UI Enhancement Script -->
     <script>
-        // JavaScript for better user experience
         document.addEventListener('DOMContentLoaded', function() {
-            // Make pricing table rows clickable
             const pricingTableRows = document.querySelectorAll('.pricing-table tbody tr');
             pricingTableRows.forEach(row => {
                 row.addEventListener('click', function() {
@@ -390,13 +401,11 @@
                     if (radio) { radio.checked = true; }
                 });
             });
-             // Pre-select the popular row
             const popularRow = document.querySelector('.popular-row');
             if(popularRow) {
                 popularRow.click();
             }
 
-            // Style for checked radio buttons in groups
             const radioGroups = document.querySelectorAll('.radio-group');
             radioGroups.forEach(group => {
                 const updateStyles = () => {
@@ -407,13 +416,62 @@
                     });
                 };
                 group.addEventListener('change', updateStyles);
-                // Initial check
                 const initiallyChecked = group.querySelector('input[type="radio"]:checked');
                 if(initiallyChecked) {
                     initiallyChecked.closest('.radio-label').classList.add('checked');
                 }
             });
         });
+    </script>
+
+    <!-- AJAX Form Submission Script -->
+    <script>
+        var form = document.getElementById("order-form");
+        
+        async function handleSubmit(event) {
+          event.preventDefault();
+          var status = document.getElementById("order-form-status");
+          var data = new FormData(event.target);
+          fetch(event.target.action, {
+            method: form.method,
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+          }).then(response => {
+            if (response.ok) {
+              status.innerHTML = "需求提交成功！我们的专家将很快通过您留下的联系方式与您确认。";
+              status.style.display = 'block';
+              status.style.backgroundColor = '#d4edda';
+              status.style.borderColor = '#c3e6cb';
+              status.style.color = '#155724';
+              form.reset();
+              document.querySelectorAll('.pricing-table tbody tr.selected').forEach(r => r.classList.remove('selected'));
+              document.querySelectorAll('.radio-label.checked').forEach(l => l.classList.remove('checked'));
+              const popularRow = document.querySelector('.popular-row');
+              if(popularRow) { popularRow.click(); }
+            } else {
+              response.json().then(data => {
+                if (Object.hasOwn(data, 'errors')) {
+                  status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+                } else {
+                  status.innerHTML = "糟糕！提交时出现问题，请稍后再试。";
+                }
+                status.style.display = 'block';
+                status.style.backgroundColor = '#f8d7da';
+                status.style.borderColor = '#f5c6cb';
+                status.style.color = '#721c24';
+              })
+            }
+          }).catch(error => {
+            status.innerHTML = "糟糕！提交时出现网络错误，请检查您的连接。";
+            status.style.display = 'block';
+            status.style.backgroundColor = '#f8d7da';
+            status.style.borderColor = '#f5c6cb';
+            status.style.color = '#721c24';
+          });
+        }
+        form.addEventListener("submit", handleSubmit)
     </script>
 
 </body>
