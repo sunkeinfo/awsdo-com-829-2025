@@ -38,7 +38,6 @@
 
         /* Order Form Section */
         .form-section { background: #fff; padding: 50px 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.07); }
-        .form-step { margin-bottom: 40px; }
         .form-group { margin-bottom: 25px; }
         .form-group label { display: block; font-weight: 600; margin-bottom: 10px; font-size: 18px; }
         .form-group input[type="text"], .form-group input[type="email"] { width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 4px; font-size: 16px; box-sizing: border-box; }
@@ -49,6 +48,17 @@
         .radio-label.checked { background-color: #007bff; color: #fff; border-color: #007bff; box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3); }
         .submit-button { display: block; width: 100%; background: #28a745; color: #fff; padding: 15px 35px; text-decoration: none; border-radius: 5px; font-size: 20px; font-weight: bold; transition: background-color 0.3s ease, transform 0.3s ease; cursor: pointer; border: none; text-align: center; margin-top: 30px; }
         .submit-button:hover { background: #218838; transform: scale(1.02); }
+        #order-form-status {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
 
         /* Instance Details Section */
         .instance-family-section { background: #ffffff; border: 1px solid #e9ecef; border-radius: 8px; padding: 30px; margin-bottom: 30px; }
@@ -103,7 +113,7 @@
         <!-- Order Form Section -->
         <div class="section">
             <h2 class="section-title">立即订购您的高性能服务器</h2>
-            <form action="https://formspree.io/f/xdklkdwd" method="POST" class="form-section">
+            <form id="order-form" action="https://formspree.io/f/xdklkdwd" method="POST" class="form-section">
                 <div class="form-group"><label>1. 选择服务器所在地区</label><div class="radio-group"><label class="radio-label"><input type="radio" name="地区" value="日本" checked><span>日本</span></label><label class="radio-label"><input type="radio" name="地区" value="韩国"><span>韩国</span></label><label class="radio-label"><input type="radio" name="地区" value="美国"><span>美国</span></label><label class="radio-label"><input type="radio" name="地区" value="新加坡"><span>新加坡</span></label><label class="radio-label"><input type="radio" name="地区" value="台湾"><span>台湾</span></label><label class="radio-label"><input type="radio" name="地区" value="香港"><span>香港</span></label><label class="radio-label"><input type="radio" name="地区" value="德国"><span>德国</span></label><label class="radio-label"><input type="radio" name="地区" value="英国"><span>英国</span></label><label class="radio-label"><input type="radio" name="地区" value="其他"><span>其他</span></label></div></div>
                 <div class="form-group"><label>2. 选择服务器操作系统</label><div class="radio-group"><label class="radio-label"><input type="radio" name="操作系统" value="Ubuntu 22" checked><span>Ubuntu 22</span></label><label class="radio-label"><input type="radio" name="操作系统" value="CentOS 9"><span>CentOS 9</span></label><label class="radio-label"><input type="radio" name="操作系统" value="Debian 11"><span>Debian 11</span></label><label class="radio-label"><input type="radio" name="操作系统" value="Windows 2022"><span>Windows 2022</span></label><label class="radio-label"><input type="radio" name="操作系统" value="其他"><span>其他</span></label></div></div>
                 <div class="form-group"><label>3. 选择服务器的配置和规格</label><div class="radio-group"><label class="radio-label"><input type="radio" name="配置规格" value="C6in.4xlarge (16核/32G/50Gbps)" checked><span>C6in.4xlarge<br>16核/32G/50Gbps</span></label><label class="radio-label"><input type="radio" name="配置规格" value="C6in.8xlarge (32核/64G/50Gbps)"><span>C6in.8xlarge<br>32核/64G/50Gbps</span></label><label class="radio-label"><input type="radio" name="配置规格" value="M5zn.3xlarge (12核/48G/25Gbps)"><span>M5zn.3xlarge<br>12核/48G/25Gbps</span></label><label class="radio-label"><input type="radio" name="配置规格" value="M5zn.6xlarge (24核/96G/50Gbps)"><span>M5zn.6xlarge<br>24核/96G/50Gbps</span></label><label class="radio-label"><input type="radio" name="配置规格" value="其他"><span>其他/定制</span></label></div></div>
@@ -111,6 +121,7 @@
                 <div class="form-group"><label for="email">5. 您的Email邮箱 (必填)</label><input type="email" id="email" name="email" required placeholder="我们将通过此邮箱与您联系"></div>
                 <div class="form-group"><label for="contact">您的Telegram或其他联系方式 (选填)</label><input type="text" id="contact" name="其他联系方式" placeholder="例如 Telegram: @your_id"></div>
                 <button type="submit" class="submit-button">提交订单</button>
+                <p id="order-form-status"></p>
             </form>
         </div>
 
@@ -234,6 +245,7 @@
       (function(d,t) { var BASE_URL="https://app.chatwoot.com/"; var g=d.createElement(t),s=d.getElementsByTagName(t)[0]; g.src=BASE_URL+"/packs/js/sdk.js"; g.defer = true; g.async = true; s.parentNode.insertBefore(g,s); g.onload=function(){ window.chatwootSDK.run({ websiteToken: 'c3stLVCV9GDjtvHcBMLdjRjU', baseUrl: BASE_URL }) } })(document,"script");
     </script>
     
+    <!-- UI Enhancement Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const radioGroups = document.querySelectorAll('.radio-group');
@@ -249,6 +261,53 @@
                 updateStyles();
             });
         });
+    </script>
+
+    <!-- AJAX Form Submission Script -->
+    <script>
+        var form = document.getElementById("order-form");
+        
+        async function handleSubmit(event) {
+          event.preventDefault();
+          var status = document.getElementById("order-form-status");
+          var data = new FormData(event.target);
+          fetch(event.target.action, {
+            method: form.method,
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+          }).then(response => {
+            if (response.ok) {
+              status.innerHTML = "订单提交成功！我们的客户经理将很快通过您留下的联系方式与您确认。";
+              status.style.display = 'block';
+              status.style.backgroundColor = '#d4edda';
+              status.style.borderColor = '#c3e6cb';
+              status.style.color = '#155724';
+              form.reset();
+              document.querySelectorAll('.radio-label.checked').forEach(l => l.classList.remove('checked'));
+            } else {
+              response.json().then(data => {
+                if (Object.hasOwn(data, 'errors')) {
+                  status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+                } else {
+                  status.innerHTML = "糟糕！提交时出现问题，请稍后再试。";
+                }
+                status.style.display = 'block';
+                status.style.backgroundColor = '#f8d7da';
+                status.style.borderColor = '#f5c6cb';
+                status.style.color = '#721c24';
+              })
+            }
+          }).catch(error => {
+            status.innerHTML = "糟糕！提交时出现网络错误，请检查您的连接。";
+            status.style.display = 'block';
+            status.style.backgroundColor = '#f8d7da';
+            status.style.borderColor = '#f5c6cb';
+            status.style.color = '#721c24';
+          });
+        }
+        form.addEventListener("submit", handleSubmit)
     </script>
 
 </body>
