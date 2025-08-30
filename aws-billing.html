@@ -56,6 +56,17 @@
         .radio-label.checked { background-color: #007bff; color: #fff; border-color: #007bff; }
         .submit-button { display: inline-block; background: #28a745; color: #fff; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-size: 18px; font-weight: bold; transition: background-color 0.3s ease; cursor: pointer; border: none; margin-top: 10px; }
         .submit-button:hover { background: #218838; }
+        #order-form-status {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
 
         /* Advantages Grid & Guarantees */
         .advantages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
@@ -123,7 +134,7 @@
                         <h3>加入组织并提交申请</h3>
                         <p>接下来，您只需接受邀请，将您的AWS账号加入我们的主账号组织内。请在下方填写并提交申请表，我们的客户经理会立即与您联系并发起邀请。</p>
                         <div class="form-section">
-                             <form action="https://formspree.io/f/xdklkdwd" method="POST">
+                             <form id="order-form" action="https://formspree.io/f/xdklkdwd" method="POST">
                                 <div class="form-group">
                                     <label>1. 预估AWS每月消费额度 <span style="color:red;">*</span></label>
                                     <div class="radio-group">
@@ -151,6 +162,7 @@
                                     <textarea id="remarks" name="其他备注" placeholder="选填，您可以填写任何其他需求"></textarea>
                                 </div>
                                 <button type="submit" class="submit-button">提交申请</button>
+                                <p id="order-form-status"></p>
                             </form>
                         </div>
                     </div>
@@ -226,6 +238,7 @@
       (function(d,t) { var BASE_URL="https://app.chatwoot.com/"; var g=d.createElement(t),s=d.getElementsByTagName(t)[0]; g.src=BASE_URL+"/packs/js/sdk.js"; g.defer = true; g.async = true; s.parentNode.insertBefore(g,s); g.onload=function(){ window.chatwootSDK.run({ websiteToken: 'c3stLVCV9GDjtvHcBMLdjRjU', baseUrl: BASE_URL }) } })(document,"script");
     </script>
     
+    <!-- UI Enhancement Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const radioGroups = document.querySelectorAll('.radio-group');
@@ -241,6 +254,53 @@
                 updateStyles();
             });
         });
+    </script>
+
+    <!-- AJAX Form Submission Script -->
+    <script>
+        var form = document.getElementById("order-form");
+        
+        async function handleSubmit(event) {
+          event.preventDefault();
+          var status = document.getElementById("order-form-status");
+          var data = new FormData(event.target);
+          fetch(event.target.action, {
+            method: form.method,
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+          }).then(response => {
+            if (response.ok) {
+              status.innerHTML = "申请提交成功！我们的客户经理将很快通过您留下的联系方式与您确认。";
+              status.style.display = 'block';
+              status.style.backgroundColor = '#d4edda';
+              status.style.borderColor = '#c3e6cb';
+              status.style.color = '#155724';
+              form.reset();
+              document.querySelectorAll('.radio-label.checked').forEach(l => l.classList.remove('checked'));
+            } else {
+              response.json().then(data => {
+                if (Object.hasOwn(data, 'errors')) {
+                  status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+                } else {
+                  status.innerHTML = "糟糕！提交时出现问题，请稍后再试。";
+                }
+                status.style.display = 'block';
+                status.style.backgroundColor = '#f8d7da';
+                status.style.borderColor = '#f5c6cb';
+                status.style.color = '#721c24';
+              })
+            }
+          }).catch(error => {
+            status.innerHTML = "糟糕！提交时出现网络错误，请检查您的连接。";
+            status.style.display = 'block';
+            status.style.backgroundColor = '#f8d7da';
+            status.style.borderColor = '#f5c6cb';
+            status.style.color = '#721c24';
+          });
+        }
+        form.addEventListener("submit", handleSubmit)
     </script>
 
 </body>
