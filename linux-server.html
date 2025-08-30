@@ -225,7 +225,7 @@
             display: block;
         }
 
-        /* Submit Button */
+        /* Submit Button & Status */
         .submit-button {
             display: block;
             width: 100%;
@@ -245,6 +245,17 @@
         .submit-button:hover {
             background: #218838;
             transform: scale(1.02);
+        }
+        #order-form-status {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
         }
         
         /* Footer */
@@ -311,7 +322,7 @@
         <!-- Order Form Section -->
         <div class="section">
             <h2 class="section-title">立即配置您的云服务器</h2>
-            <form action="https://formspree.io/f/xdklkdwd" method="POST" class="form-section">
+            <form id="order-form" action="https://formspree.io/f/xdklkdwd" method="POST" class="form-section">
                 
                 <!-- Step 1: Configuration -->
                 <div class="form-step">
@@ -475,6 +486,7 @@
                 </div>
 
                 <button type="submit" class="submit-button">提交订单</button>
+                <p id="order-form-status"></p>
             </form>
         </div>
         
@@ -515,18 +527,14 @@
       })(document,"script");
     </script>
     
+    <!-- UI Enhancement Script -->
     <script>
-        // JavaScript for better user experience
         document.addEventListener('DOMContentLoaded', function() {
-            // Make pricing table rows clickable
             const pricingTableRows = document.querySelectorAll('.pricing-table tbody tr');
             pricingTableRows.forEach(row => {
                 row.addEventListener('click', function() {
-                    // Remove 'selected' class from all rows
                     pricingTableRows.forEach(r => r.classList.remove('selected'));
-                    // Add 'selected' class to clicked row
                     this.classList.add('selected');
-                    // Find the radio button inside and check it
                     const radio = this.querySelector('input[type="radio"]');
                     if (radio) {
                         radio.checked = true;
@@ -534,7 +542,6 @@
                 });
             });
 
-            // Style for checked radio buttons in groups
             const radioGroups = document.querySelectorAll('.radio-group');
             radioGroups.forEach(group => {
                 const updateStyles = () => {
@@ -549,13 +556,62 @@
                     });
                 };
                 group.addEventListener('change', updateStyles);
-                // Initial check
                 const initiallyChecked = group.querySelector('input[type="radio"]:checked');
                 if(initiallyChecked) {
                     initiallyChecked.closest('.radio-label').classList.add('checked');
                 }
             });
         });
+    </script>
+
+    <!-- AJAX Form Submission Script -->
+    <script>
+        var form = document.getElementById("order-form");
+        
+        async function handleSubmit(event) {
+          event.preventDefault();
+          var status = document.getElementById("order-form-status");
+          var data = new FormData(event.target);
+          fetch(event.target.action, {
+            method: form.method,
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+          }).then(response => {
+            if (response.ok) {
+              status.innerHTML = "订单提交成功！我们的客户经理将很快通过您留下的联系方式与您确认。";
+              status.style.display = 'block';
+              status.style.backgroundColor = '#d4edda';
+              status.style.borderColor = '#c3e6cb';
+              status.style.color = '#155724';
+              form.reset();
+              // Also reset UI elements that don't reset automatically
+              document.querySelectorAll('.pricing-table tbody tr.selected').forEach(r => r.classList.remove('selected'));
+              document.querySelectorAll('.radio-label.checked').forEach(l => l.classList.remove('checked'));
+
+            } else {
+              response.json().then(data => {
+                if (Object.hasOwn(data, 'errors')) {
+                  status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+                } else {
+                  status.innerHTML = "糟糕！提交时出现问题，请稍后再试。";
+                }
+                status.style.display = 'block';
+                status.style.backgroundColor = '#f8d7da';
+                status.style.borderColor = '#f5c6cb';
+                status.style.color = '#721c24';
+              })
+            }
+          }).catch(error => {
+            status.innerHTML = "糟糕！提交时出现网络错误，请检查您的连接。";
+            status.style.display = 'block';
+            status.style.backgroundColor = '#f8d7da';
+            status.style.borderColor = '#f5c6cb';
+            status.style.color = '#721c24';
+          });
+        }
+        form.addEventListener("submit", handleSubmit)
     </script>
 
 </body>
