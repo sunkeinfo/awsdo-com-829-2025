@@ -28,7 +28,8 @@ URL:www.awsdo.com
 /* Variable definitions
 ====================
 <Variable name="keycolor" description="Main Color" type="color" default="#1a222a"/>
-<Variable name="body.background" description="Body Background" type="background" color="#3367ba" default="#111111 url(https://hosting.sunke.info/files/white80.png) repeat-x fixed top center"/>
+<Variable name="body.background" description="Body Background" type="background"
+color="#3367ba" default="#111111 url(//https://hosting.sunke.info/files/white80.png) repeat-x fixed top center"/>
 <Group description="Page Text" selector="body">
 <Variable name="body.font" description="Font" type="font"
 default="normal normal 15px Arial, Tahoma, Helvetica, FreeSans, sans-serif"/>
@@ -101,17 +102,21 @@ default="none"/>
 <Variable name="region.shadow.spread" description="Main and Footer Shadow Spread" type="length" default="3px" min="0" max="100px"/>
 <Variable name="region.shadow.offset" description="Main and Footer Shadow Offset" type="length" default="1px" min="-50px" max="50px"/>
 <Variable name="tabs.background.gradient" description="Tab Background Gradient" type="url" default="none"/>
-<Variable name="tab.selected.background.gradient" description="Selected Tab Background" type="url" default="url(https://hosting.sunke.info/files/white80.png)"/>
-<Variable name="tab.background" description="Tab Background" type="background" default="transparent url(https://hosting.sunke.info/files/black50.png) repeat scroll top left"/>
+<Variable name="tab.selected.background.gradient" description="Selected Tab Background" type="url"
+default="url(https://hosting.sunke.info/files/white80.png)"/>
+<Variable name="tab.background" description="Tab Background" type="background"
+default="transparent url(https://hosting.sunke.info/files/black50.png) repeat scroll top left"/>
 <Variable name="tab.border.radius" description="Tab Border Radius" type="length" default="10px" min="0" max="100px"/>
 <Variable name="tab.first.border.radius" description="First Tab Border Radius" type="length" default="10px" min="0" max="100px"/>
 <Variable name="tabs.border.radius" description="Tabs Border Radius" type="length" default="0" min="0" max="100px"/>
 <Variable name="tabs.spacing" description="Tab Spacing" type="length" default=".25em" min="0" max="10em"/>
 <Variable name="tabs.margin.bottom" description="Tab Margin Bottom" type="length" default="0" min="0" max="100px"/>
 <Variable name="tabs.margin.sides" description="Tab Margin Sides" type="length" default="20px" min="0" max="100px"/>
-<Variable name="main.background" description="Main Background" type="background" default="transparent url(https://hosting.sunke.info/files/white80.png) repeat scroll top left"/>
+<Variable name="main.background" description="Main Background" type="background"
+default="transparent url(https://hosting.sunke.info/files/white80.png) repeat scroll top left"/>
 <Variable name="main.padding.sides" description="Main Padding Sides" type="length" default="20px" min="0" max="100px"/>
-<Variable name="footer.background" description="Footer Background" type="background" default="transparent url(https://hosting.sunke.info/files/black50.png) repeat scroll top left"/>
+<Variable name="footer.background" description="Footer Background" type="background"
+default="transparent url(https://hosting.sunke.info/files/black50.png) repeat scroll top left"/>
 <Variable name="post.margin.sides" description="Post Margin Sides" type="length" default="-20px" min="-50px" max="50px"/>
 <Variable name="post.border.radius" description="Post Border Radius" type="length" default="5px" min="0" max="100px"/>
 <Variable name="widget.title.text.transform" description="Widget Title Text Transform" type="string" default="uppercase"/>
@@ -326,7 +331,7 @@ default="transparent none repeat scroll top left"/>
 body {
 font: normal normal 15px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
 color: #626262;
-background: #ffffff url(https://hosting.sunke.info/files/white80.png) no-repeat scroll top center /* Credit: chuwy (http://www.awsdo.com) */;
+background: #ffffff url(../../hosting.sunke.info/files/white80.png) no-repeat scroll top center /* Credit: chuwy (http://www.awsdo.com) */;
 max-width: 1300px;
 margin: auto;
 }
@@ -428,7 +433,7 @@ font: normal normal 15px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
 -webkit-border-top-right-radius: 10px;
 -goog-ms-border-radius: 10px 10px 0 0;
 border-radius: 10px 10px 0 0;
-background: transparent url(https://hosting.sunke.info/files/black50.png) repeat scroll top left;
+background: transparent url(../../hosting.sunke.info/files/black50.png) repeat scroll top left;
 border-right: 1px solid rgba(93,93,93,0);
 }
 .tabs-inner .widget li:first-child a {
@@ -446,7 +451,7 @@ border-bottom-left-radius: 0;
 .tabs-inner .widget li a:hover {
 position: relative;
 z-index: 1;
-background: rgba(93,93,93,0) url(https://hosting.sunke.info/files/white80.png) repeat scroll bottom;
+background: rgba(93,93,93,0) url(../../hosting.sunke.info/files/white80.png) repeat scroll bottom;
 color: #336699;
 -moz-box-shadow: 0 0 1.5px rgba(0, 0, 0, .15);
 -webkit-box-shadow: 0 0 1.5px rgba(0, 0, 0, .15);
@@ -464,7 +469,7 @@ margin: .5em 0;
 /* Main
 ----------------------------------------------- */
 .main-outer {
-background: transparent url(https://hosting.sunke.info/files/white80.png) repeat scroll top left;
+background: transparent url(../../hosting.sunke.info/files/white80.png) repeat scroll top left;
 -moz-border-radius: 20px 20px 0 0;
 -webkit-border-top-left-radius: 20px;
 -webkit-border-top-right-radius: 20px;
@@ -590,7 +595,7 @@ border: none;
 ----------------------------------------------- */
 .footer-outer {
 color:#d2d2d2;
-background: transparent;
+background: transparent url(../../hosting.sunke.info/files/black50.png) repeat scroll top left;
 -moz-border-radius: 0 0 20px 20px;
 -webkit-border-top-left-radius: 0;
 -webkit-border-top-right-radius: 0;
@@ -623,11 +628,11 @@ background: transparent none repeat scroll top left;
 }
 html .mobile .mobile-date-outer, html .mobile .blog-pager {
 border-bottom: none;
-background: transparent url(https://hosting.sunke.info/files/white80.png) repeat scroll top left;
+background: transparent url(../../hosting.sunke.info/files/white80.png) repeat scroll top left;
 margin-bottom: 10px;
 }
 .mobile .date-outer {
-background: transparent url(https://hosting.sunke.info/files/white80.png) repeat scroll top left;
+background: transparent url(../../hosting.sunke.info/files/white80.png) repeat scroll top left;
 }
 .mobile .header-outer, .mobile .main-outer,
 .mobile .post-outer, .mobile .footer-outer {
@@ -655,7 +660,7 @@ color: #ffffff;
 color: #626262;
 }
 .mobile .tabs-inner .PageList .widget-content {
-background: rgba(93,93,93,0) url(https://hosting.sunke.info/files/white80.png) repeat scroll bottom;
+background: rgba(93,93,93,0) url(../../hosting.sunke.info/files/white80.png) repeat scroll bottom;
 color: #336699;
 }
 .mobile .tabs-inner .PageList .widget-content .pagelist-arrow {
@@ -672,7 +677,6 @@ Styles from Widgets - MOVED HERE FOR OPTIMIZATION
 .header-container {
 display: flex;
 align-items: center;
-justify-content: center;
 padding: 10px 20px;
 background-color: #ffffff;
 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -693,6 +697,8 @@ display: block;
 /* Navigation Menu */
 .nav-menu {
 display: flex;
+flex-grow: 1;
+justify-content: flex-end;
 flex-wrap: nowrap; /* Forces single line on desktop */
 }
 .nav-menu a {
@@ -1005,7 +1011,7 @@ margin-left: 0;
 			<td>
 				<header class="header-container">
 				  <div class="header-logo">
-					<img src="https://hosting.sunke.info/whmcs/awsdo11192.png" alt="Company Logo" />
+					<img src="../../hosting.sunke.info/whmcs/awsdo11192.png" alt="Company Logo" />
 				  </div>
 				  <nav class="nav-menu">
 					<a href="../index.html" class="home-btn">主页</a>
@@ -1117,7 +1123,7 @@ margin-left: 0;
  
  <!-- Hero Section -->
 <section class="hero-section">
-    <img src="https://hosting.sunke.info/files/banner/3.png" alt="独享静态住宅IP云服务器 Banner" class="hero-image" />
+    <img src="../../hosting.sunke.info/files/banner/3.png" alt="独享静态住宅IP云服务器 Banner" class="hero-image">
     <div class="hero-text">
         <h1>独享静态住宅IP云服务器</h1>
         <p>为您提供高匿名、高稳定、高速的全球网络环境，是TikTok运营、跨境电商、游戏工作室和AI应用的理想之选。</p>
@@ -1182,7 +1188,7 @@ margin-left: 0;
 
 <!-- ISP Partners Image Section -->
 <div style="text-align: center; padding: 20px; background-color: #f8f9fa; border-radius: 8px; margin-bottom: 25px;">
-    <img src="https://hosting.sunke.info/files/homeipfrom.png" alt="合作运营商" style="max-width: 100%; height: auto; border-radius: 8px;" />
+    <img src="../../hosting.sunke.info/files/homeipfrom.png" alt="合作运营商" style="max-width: 100%; height: auto; border-radius: 8px;">
 </div>
 
 
@@ -1276,8 +1282,8 @@ margin-left: 0;
 </section>
 
 <!-- Original images for reference -->
-<img border="0" src="https://hosting.sunke.info/files/homeip117.png" style="display: block; margin: 20px auto; max-width: 1055px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" />
-<img border="0" src="https://hosting.sunke.info/files/homeipwhy.png" style="display: block; margin: 20px auto; max-width: 1055px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" />
+<img border="0" src="../../hosting.sunke.info/files/homeip117.png" style="display: block; margin: 20px auto; max-width: 1055px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" />
+<img border="0" src="../../hosting.sunke.info/files/homeipwhy.png" style="display: block; margin: 20px auto; max-width: 1055px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" />
 
 <!-- END: RESTRUCTURED CONTENT -->
 <div style='clear: both;'></div>
@@ -1359,7 +1365,7 @@ margin-left: 0;
         <div class="footer-distributed">
 
             <div class="footer-left">
-                <h3><img src="https://hosting.sunke.info/whmcs/awsdo11192.png" alt="Awsdo.com Logo"/></h3>
+                <h3><img src="../../hosting.sunke.info/whmcs/awsdo11192.png" alt="Awsdo.com Logo"/></h3>
                 <p class="footer-links">
                     <a href="../index.html">主页</a>
                     <a href="cloud-servers.html">简单云Linux服务器</a>

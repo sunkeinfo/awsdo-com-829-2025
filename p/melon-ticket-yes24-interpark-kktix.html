@@ -394,7 +394,7 @@ border: none;
 ----------------------------------------------- */
 .footer-outer {
 color:#d2d2d2;
-background: transparent;
+background: transparent url(../../hosting.sunke.info/files/black50.png) repeat scroll top left;
 -moz-border-radius: 0 0 20px 20px;
 -webkit-border-top-left-radius: 0;
 -webkit-border-top-right-radius: 0;
@@ -476,7 +476,6 @@ Styles from Widgets - MOVED HERE FOR OPTIMIZATION
 .header-container {
 display: flex;
 align-items: center;
-justify-content: center;
 padding: 10px 20px;
 background-color: #ffffff;
 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -497,6 +496,8 @@ display: block;
 /* Navigation Menu */
 .nav-menu {
 display: flex;
+flex-grow: 1;
+justify-content: flex-end;
 flex-wrap: nowrap; /* Forces single line on desktop */
 }
 .nav-menu a {

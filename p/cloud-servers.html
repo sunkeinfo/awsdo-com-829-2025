@@ -28,7 +28,8 @@ URL:www.awsdo.com
 /* Variable definitions
 ====================
 <Variable name="keycolor" description="Main Color" type="color" default="#1a222a"/>
-<Variable name="body.background" description="Body Background" type="background" color="#3367ba" default="#111111 url(https://hosting.sunke.info/files/white80.png) repeat-x fixed top center"/>
+<Variable name="body.background" description="Body Background" type="background"
+color="#3367ba" default="#111111 url(//https://hosting.sunke.info/files/white80.png) repeat-x fixed top center"/>
 <Group description="Page Text" selector="body">
 <Variable name="body.font" description="Font" type="font"
 default="normal normal 15px Arial, Tahoma, Helvetica, FreeSans, sans-serif"/>
@@ -101,17 +102,21 @@ default="none"/>
 <Variable name="region.shadow.spread" description="Main and Footer Shadow Spread" type="length" default="3px" min="0" max="100px"/>
 <Variable name="region.shadow.offset" description="Main and Footer Shadow Offset" type="length" default="1px" min="-50px" max="50px"/>
 <Variable name="tabs.background.gradient" description="Tab Background Gradient" type="url" default="none"/>
-<Variable name="tab.selected.background.gradient" description="Selected Tab Background" type="url" default="url(https://hosting.sunke.info/files/white80.png)"/>
-<Variable name="tab.background" description="Tab Background" type="background" default="transparent url(https://hosting.sunke.info/files/black50.png) repeat scroll top left"/>
+<Variable name="tab.selected.background.gradient" description="Selected Tab Background" type="url"
+default="url(https://hosting.sunke.info/files/white80.png)"/>
+<Variable name="tab.background" description="Tab Background" type="background"
+default="transparent url(https://hosting.sunke.info/files/black50.png) repeat scroll top left"/>
 <Variable name="tab.border.radius" description="Tab Border Radius" type="length" default="10px" min="0" max="100px"/>
 <Variable name="tab.first.border.radius" description="First Tab Border Radius" type="length" default="10px" min="0" max="100px"/>
 <Variable name="tabs.border.radius" description="Tabs Border Radius" type="length" default="0" min="0" max="100px"/>
 <Variable name="tabs.spacing" description="Tab Spacing" type="length" default=".25em" min="0" max="10em"/>
 <Variable name="tabs.margin.bottom" description="Tab Margin Bottom" type="length" default="0" min="0" max="100px"/>
 <Variable name="tabs.margin.sides" description="Tab Margin Sides" type="length" default="20px" min="0" max="100px"/>
-<Variable name="main.background" description="Main Background" type="background" default="transparent url(https://hosting.sunke.info/files/white80.png) repeat scroll top left"/>
+<Variable name="main.background" description="Main Background" type="background"
+default="transparent url(https://hosting.sunke.info/files/white80.png) repeat scroll top left"/>
 <Variable name="main.padding.sides" description="Main Padding Sides" type="length" default="20px" min="0" max="100px"/>
-<Variable name="footer.background" description="Footer Background" type="background" default="transparent url(https://hosting.sunke.info/files/black50.png) repeat scroll top left"/>
+<Variable name="footer.background" description="Footer Background" type="background"
+default="transparent url(https://hosting.sunke.info/files/black50.png) repeat scroll top left"/>
 <Variable name="post.margin.sides" description="Post Margin Sides" type="length" default="-20px" min="-50px" max="50px"/>
 <Variable name="post.border.radius" description="Post Border Radius" type="length" default="5px" min="0" max="100px"/>
 <Variable name="widget.title.text.transform" description="Widget Title Text Transform" type="string" default="uppercase"/>
@@ -367,7 +372,7 @@ default="transparent none repeat scroll top left"/>
 body {
 font: normal normal 15px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
 color: #626262;
-background: #ffffff url(https://hosting.sunke.info/files/white80.png) no-repeat scroll top center /* Credit: chuwy (http://www.awsdo.com) */;
+background: #ffffff url(../../hosting.sunke.info/files/white80.png) no-repeat scroll top center /* Credit: chuwy (http://www.awsdo.com) */;
 max-width: 1300px;
 margin: auto;
 }
@@ -469,7 +474,7 @@ font: normal normal 15px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
 -webkit-border-top-right-radius: 10px;
 -goog-ms-border-radius: 10px 10px 0 0;
 border-radius: 10px 10px 0 0;
-background: transparent url(https://hosting.sunke.info/files/black50.png) repeat scroll top left;
+background: transparent url(../../hosting.sunke.info/files/black50.png) repeat scroll top left;
 border-right: 1px solid rgba(93,93,93,0);
 }
 .tabs-inner .widget li:first-child a {
@@ -487,6 +492,7 @@ border-bottom-left-radius: 0;
 .tabs-inner .widget li a:hover {
 position: relative;
 z-index: 1;
+background: rgba(93,93,93,0) url(../../hosting.sunke.info/files/white80.png) repeat scroll bottom;
 color: #336699;
 -moz-box-shadow: 0 0 1.5px rgba(0, 0, 0, .15);
 -webkit-box-shadow: 0 0 1.5px rgba(0, 0, 0, .15);
@@ -630,7 +636,7 @@ border: none;
 ----------------------------------------------- */
 .footer-outer {
 color:#d2d2d2;
-background: transparent;
+background: transparent url(../../hosting.sunke.info/files/black50.png) repeat scroll top left;
 -moz-border-radius: 0 0 20px 20px;
 -webkit-border-top-left-radius: 0;
 -webkit-border-top-right-radius: 0;
@@ -712,7 +718,6 @@ Styles from Widgets - MOVED HERE FOR OPTIMIZATION
 .header-container {
 display: flex;
 align-items: center;
-justify-content: center;
 padding: 10px 20px;
 background-color: #ffffff;
 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -733,6 +738,8 @@ display: block;
 /* Navigation Menu */
 .nav-menu {
 display: flex;
+flex-grow: 1;
+justify-content: flex-end;
 flex-wrap: nowrap; /* Forces single line on desktop */
 }
 .nav-menu a {

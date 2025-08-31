@@ -28,7 +28,8 @@ URL:www.awsdo.com
 /* Variable definitions
 ====================
 <Variable name="keycolor" description="Main Color" type="color" default="#1a222a"/>
-<Variable name="body.background" description="Body Background" type="background" color="#3367ba" default="#111111 url(https://hosting.sunke.info/files/white80.png) repeat-x fixed top center"/>
+<Variable name="body.background" description="Body Background" type="background"
+color="#3367ba" default="#111111 url(//https://hosting.sunke.info/files/white80.png) repeat-x fixed top center"/>
 <Group description="Page Text" selector="body">
 <Variable name="body.font" description="Font" type="font"
 default="normal normal 15px Arial, Tahoma, Helvetica, FreeSans, sans-serif"/>
@@ -101,17 +102,21 @@ default="none"/>
 <Variable name="region.shadow.spread" description="Main and Footer Shadow Spread" type="length" default="3px" min="0" max="100px"/>
 <Variable name="region.shadow.offset" description="Main and Footer Shadow Offset" type="length" default="1px" min="-50px" max="50px"/>
 <Variable name="tabs.background.gradient" description="Tab Background Gradient" type="url" default="none"/>
-<Variable name="tab.selected.background.gradient" description="Selected Tab Background" type="url" default="url(https://hosting.sunke.info/files/white80.png)"/>
-<Variable name="tab.background" description="Tab Background" type="background" default="transparent url(https://hosting.sunke.info/files/black50.png) repeat scroll top left"/>
+<Variable name="tab.selected.background.gradient" description="Selected Tab Background" type="url"
+default="url(https://hosting.sunke.info/files/white80.png)"/>
+<Variable name="tab.background" description="Tab Background" type="background"
+default="transparent url(https://hosting.sunke.info/files/black50.png) repeat scroll top left"/>
 <Variable name="tab.border.radius" description="Tab Border Radius" type="length" default="10px" min="0" max="100px"/>
 <Variable name="tab.first.border.radius" description="First Tab Border Radius" type="length" default="10px" min="0" max="100px"/>
 <Variable name="tabs.border.radius" description="Tabs Border Radius" type="length" default="0" min="0" max="100px"/>
 <Variable name="tabs.spacing" description="Tab Spacing" type="length" default=".25em" min="0" max="10em"/>
 <Variable name="tabs.margin.bottom" description="Tab Margin Bottom" type="length" default="0" min="0" max="100px"/>
 <Variable name="tabs.margin.sides" description="Tab Margin Sides" type="length" default="20px" min="0" max="100px"/>
-<Variable name="main.background" description="Main Background" type="background" default="transparent url(https://hosting.sunke.info/files/white80.png) repeat scroll top left"/>
+<Variable name="main.background" description="Main Background" type="background"
+default="transparent url(https://hosting.sunke.info/files/white80.png) repeat scroll top left"/>
 <Variable name="main.padding.sides" description="Main Padding Sides" type="length" default="20px" min="0" max="100px"/>
-<Variable name="footer.background" description="Footer Background" type="background" default="transparent url(https://hosting.sunke.info/files/black50.png) repeat scroll top left"/>
+<Variable name="footer.background" description="Footer Background" type="background"
+default="transparent url(https://hosting.sunke.info/files/black50.png) repeat scroll top left"/>
 <Variable name="post.margin.sides" description="Post Margin Sides" type="length" default="-20px" min="-50px" max="50px"/>
 <Variable name="post.border.radius" description="Post Border Radius" type="length" default="5px" min="0" max="100px"/>
 <Variable name="widget.title.text.transform" description="Widget Title Text Transform" type="string" default="uppercase"/>
@@ -125,7 +130,7 @@ default="transparent none repeat scroll top left"/>
 body {
 font: normal normal 15px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
 color: #626262;
-background: #ffffff url(https://hosting.sunke.info/files/white80.png) no-repeat scroll top center /* Credit: chuwy (http://www.awsdo.com) */;
+background: #ffffff url(../../hosting.sunke.info/files/white80.png) no-repeat scroll top center /* Credit: chuwy (http://www.awsdo.com) */;
 max-width: 1300px;
 margin: auto;
 }
@@ -227,7 +232,7 @@ font: normal normal 15px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
 -webkit-border-top-right-radius: 10px;
 -goog-ms-border-radius: 10px 10px 0 0;
 border-radius: 10px 10px 0 0;
-background: transparent url(https://hosting.sunke.info/files/black50.png) repeat scroll top left;
+background: transparent url(../../hosting.sunke.info/files/black50.png) repeat scroll top left;
 border-right: 1px solid rgba(93,93,93,0);
 }
 .tabs-inner .widget li:first-child a {
@@ -245,7 +250,7 @@ border-bottom-left-radius: 0;
 .tabs-inner .widget li a:hover {
 position: relative;
 z-index: 1;
-background: rgba(93,93,93,0) url(https://hosting.sunke.info/files/white80.png) repeat scroll bottom;
+background: rgba(93,93,93,0) url(../../hosting.sunke.info/files/white80.png) repeat scroll bottom;
 color: #336699;
 -moz-box-shadow: 0 0 1.5px rgba(0, 0, 0, .15);
 -webkit-box-shadow: 0 0 1.5px rgba(0, 0, 0, .15);
@@ -263,7 +268,7 @@ margin: .5em 0;
 /* Main
 ----------------------------------------------- */
 .main-outer {
-background: transparent url(https://hosting.sunke.info/files/white80.png) repeat scroll top left;
+background: transparent url(../../hosting.sunke.info/files/white80.png) repeat scroll top left;
 -moz-border-radius: 20px 20px 0 0;
 -webkit-border-top-left-radius: 20px;
 -webkit-border-top-right-radius: 20px;
@@ -389,7 +394,7 @@ border: none;
 ----------------------------------------------- */
 .footer-outer {
 color:#d2d2d2;
-background: transparent;
+background: transparent url(../../hosting.sunke.info/files/black50.png) repeat scroll top left;
 -moz-border-radius: 0 0 20px 20px;
 -webkit-border-top-left-radius: 0;
 -webkit-border-top-right-radius: 0;
@@ -422,11 +427,11 @@ background: transparent none repeat scroll top left;
 }
 html .mobile .mobile-date-outer, html .mobile .blog-pager {
 border-bottom: none;
-background: transparent url(https://hosting.sunke.info/files/white80.png) repeat scroll top left;
+background: transparent url(../../hosting.sunke.info/files/white80.png) repeat scroll top left;
 margin-bottom: 10px;
 }
 .mobile .date-outer {
-background: transparent url(https://hosting.sunke.info/files/white80.png) repeat scroll top left;
+background: transparent url(../../hosting.sunke.info/files/white80.png) repeat scroll top left;
 }
 .mobile .header-outer, .mobile .main-outer,
 .mobile .post-outer, .mobile .footer-outer {
@@ -454,7 +459,7 @@ color: #ffffff;
 color: #626262;
 }
 .mobile .tabs-inner .PageList .widget-content {
-background: rgba(93,93,93,0) url(https://hosting.sunke.info/files/white80.png) repeat scroll bottom;
+background: rgba(93,93,93,0) url(../../hosting.sunke.info/files/white80.png) repeat scroll bottom;
 color: #336699;
 }
 .mobile .tabs-inner .PageList .widget-content .pagelist-arrow {
@@ -471,7 +476,6 @@ Styles from Widgets - MOVED HERE FOR OPTIMIZATION
 .header-container {
 display: flex;
 align-items: center;
-justify-content: center;
 padding: 10px 20px;
 background-color: #ffffff;
 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -492,6 +496,8 @@ display: block;
 /* Navigation Menu */
 .nav-menu {
 display: flex;
+flex-grow: 1;
+justify-content: flex-end;
 flex-wrap: nowrap; /* Forces single line on desktop */
 }
 .nav-menu a {
@@ -649,7 +655,7 @@ font-size: 14px;
 line-height: 2;
 }
 .footer-distributed .footer-center p a {
-color: #007bff;
+color: #5383d3;
 text-decoration: none;
 }
 .footer-distributed .footer-right {
@@ -804,7 +810,7 @@ margin-left: 0;
 			<td>
 				<header class="header-container">
 				  <div class="header-logo">
-					<img src="https://hosting.sunke.info/whmcs/awsdo11192.png" alt="Company Logo" />
+					<img src="../../hosting.sunke.info/whmcs/awsdo11192.png" alt="Company Logo" />
 				  </div>
 				  <nav class="nav-menu">
 					<a href="../index.html" class="home-btn">主页</a>
@@ -912,7 +918,7 @@ margin-left: 0;
   <p></p>
   <p>现在AWSDO.COM的 C5&#65292;C6 和 C7 实例类型能按计算比率以较低的价格提供经济高效的高性能&#65292;适用于运行高级计算密集型工作负载&#12290;这包括高性能 Web 服务器&#12289;高性能计算 (HPC)&#12289;批处理&#12289;广告投放&#12289;高度可扩展的多人游戏&#12289;视频编码&#12289;科学建模&#12289;分布式分析和机器/深度学习推理等工作负载&#12290;</p>
 </div>
-<p style="text-align: left;"><img src="https://hosting.sunke.info/files/banner/2.png" style="width: 100%; height: auto; max-width: 1275px;" /></p>
+<p style="text-align: left;"><img src="../../hosting.sunke.info/files/banner/2.png" style="width: 100%; height: auto; max-width: 1275px;" /></p>
 <google-sheets-html-origin>
   <table border="1" cellpadding="0" cellspacing="0" data-sheets-baot="1" data-sheets-root="1" dir="ltr" style="border-collapse: collapse; border: none; table-layout: fixed; width: 100%;" xmlns="http://www.w3.org/1999/xhtml">
     <colgroup>
@@ -982,7 +988,7 @@ margin-left: 0;
     </tbody>
   </table>
 
-  <img src="https://hosting.sunke.info/files/banner/2.png" style="width: 100%; height: auto; max-width: 1275px;" />
+  <img src="../../hosting.sunke.info/files/banner/2.png" style="width: 100%; height: auto; max-width: 1275px;" />
 
 
 
@@ -998,7 +1004,7 @@ margin-left: 0;
 
 
   <p style="text-align: left;"><span><span>多种处理器选择&#65306;</span></span><span><span>支持 Intel 和 AMD 处理器&#12290;</span></span><span>为计算密集型工作负载而设计&#65292;具有经济高效的高性能&#12290;</span></p>
-  <img border="0" data-original-height="99" data-original-width="800" src="https://hosting.sunke.info/files/amd.png" style="width: 100%; height: auto; max-width: 1255px;" />
+  <img border="0" data-original-height="99" data-original-width="800" src="../../hosting.sunke.info/files/amd.png" style="width: 100%; height: auto; max-width: 1255px;" />
 
   <p style="text-align: left;"><span></span></p>
   <div class="separator" style="clear: both; text-align: justify;"><span>C5a 实例采用的AMD处理器是构建于 7nm 处理节点的定制第二代高达 3.3 GHz AMD EPYC 7002 系列处理器&#65292;以提高效率&#12290;C5a 实例通过高性能处理组合以及降低 10% 的成本来提供领先的 x86 性价比&#12290;</span></div>
@@ -1256,16 +1262,31 @@ margin-left: 0;
     <div class="separator" style="clear: both; text-align: justify;"><span><span><br /></span></span></div>
     <div class="separator" style="clear: both; text-align: justify;"><span><span>在AWSDO.COM购买高性能C5服务器可以选择的地区&#65306;</span></span></div>
     <div class="separator" style="clear: both; text-align: justify;"><span><span><br /></span></span></div>
-    <div class="location-grid">
-        <div class="location-region"><h4>美洲</h4><ul><li>美国东部 (俄亥俄)</li><li>美国东部 (弗吉尼亚北部)</li><li>美国西部 (加利福尼亚北部)</li><li>美国西部 (俄勒冈)</li><li>加拿大 (中部)</li><li>南美洲 (圣保罗)</li><li>亚特兰大、波士顿、芝加哥、达拉斯、休斯顿、堪萨斯城、洛杉矶、迈阿密、纽约、费城、菲尼克斯、丹佛、拉斯维加斯、西雅图</li><li>布宜诺斯艾利斯 (阿根廷)</li><li>圣地亚哥 (智利)</li><li>利马 (秘鲁)</li><li>克雷塔罗州 (墨西哥)</li></ul></div>
-        <div class="location-region"><h4>亚洲 & 亚太地区</h4><ul><li>香港、台湾</li><li>东京、大阪 (日本)</li><li>首尔 (韩国)</li><li>新加坡</li><li>悉尼、墨尔本、珀斯 (澳大利亚)</li><li>奥克兰 (新西兰)</li><li>海得拉巴、孟买、德里、加尔各答 (印度)</li><li>雅加达 (印尼)</li><li>曼谷 (泰国)</li><li>马尼拉 (菲律宾)</li></ul></div>
-        <div class="location-region"><h4>欧洲</h4><ul><li>法兰克福、汉堡 (德国)</li><li>爱尔兰</li><li>伦敦 (英国)</li><li>米兰 (意大利)</li><li>巴黎 (法国)</li><li>西班牙</li><li>斯德哥尔摩 (瑞典)</li><li>苏黎世 (瑞士)</li><li>哥本哈根 (丹麦)</li><li>赫尔辛基 (芬兰)</li><li>华沙 (波兰)</li></ul></div>
-        <div class="location-region"><h4>中东 & 非洲</h4><ul><li>特拉维夫 (以色列)</li><li>巴林</li><li>阿联酋</li><li>马斯喀特 (阿曼)</li><li>开普敦 (非洲)</li><li>拉各斯 (尼日利亚)</li></ul></div>
-    </div>
+    <div class="separator" style="clear: both;"><span><span>常用区域<span style="white-space: pre;">					</span></span></span></div>
+    <div class="separator" style="clear: both;"><span><span><span><span>美国东部&#65288;俄亥俄&#65289; ,美国东部&#65288;弗吉尼亚北部&#65289; ,美国西部&#65288;加利福尼亚北部&#65289; ,美国西部&#65288;俄勒冈&#65289; ,</span></span></span></span></div>
+    <div class="separator" style="clear: both;"><span><span><span><span>非洲&#65288;开普敦&#65289; ,</span></span></span></span></div>
+    <div class="separator" style="clear: both;"><span><span><span><span>亚太地区&#65288;海得拉巴&#65289; ,亚太地区&#65288;雅加达&#65289; ,亚太地区&#65288;墨尔本&#65289; ,亚太地区&#65288;孟买&#65289; ,亚太地区&#65288;大阪&#65289; ,亚太地区&#65288;首尔&#65289; ,亚太地区&#65288;新加坡&#65289; ,亚太地区&#65288;悉尼&#65289; ,亚太区域&#65288;东京&#65289; ,</span></span></span></span></div>
+    <div class="separator" style="clear: both;"><span><span><span><span>加拿大&#65288;中部&#65289; ,</span></span></span></span></div>
+    <div class="separator" style="clear: both;"><span><span><span><span>欧洲&#65288;法兰克furt&#65289; ,欧洲&#65288;爱尔兰&#65289; ,欧洲&#65288;伦敦&#65289; ,欧洲&#65288;米兰&#65289; ,欧洲&#65288;巴黎&#65289; ,欧洲&#65288;西班牙&#65289; ,欧洲地区&#65288;斯德哥尔摩&#65289; ,欧洲&#65288;苏黎世&#65289; ,</span></span></span></span></div>
+    <div class="separator" style="clear: both;"><span><span><span><span>以色列&#65288;特拉维夫&#65289; ,中东&#65288;巴林&#65289; ,中东&#65288;阿联酋&#65289; ,</span></span></span></span></div>
+    <div class="separator" style="clear: both;"><span><span><span><span>南美洲&#65288;圣保罗&#65289;</span></span></span></span></div>
+    <div class="separator" style="clear: both;"><br /></div>
+    <div class="separator" style="clear: both;"><span><span>特殊区域<span style="white-space: pre;">					</span></span></span></div>
+    <div class="separator" style="clear: both;"><span><span>美国亚特兰大<span style="white-space: pre;">	</span>美国波士顿<span style="white-space: pre;">	</span>阿根廷布宜诺斯艾利斯<span style="white-space: pre;">	</span>美国芝加哥<span style="white-space: pre;">	</span>美国达拉斯<span style="white-space: pre;">	</span>美国休斯顿</span></span></div>
+    <div class="separator" style="clear: both;"><span><span>美国堪萨斯城<span style="white-space: pre;">	</span>秘鲁利马<span style="white-space: pre;">	</span>智利圣地亚哥<span style="white-space: pre;">	</span>美国明尼阿波利斯<span style="white-space: pre;">	</span>美国迈阿密<span style="white-space: pre;">	</span>美国费城</span></span></div>
+    <div class="separator" style="clear: both;"><span><span>新西兰奥克兰<span style="white-space: pre;">	</span>澳大利亚珀斯<span style="white-space: pre;">				</span>墨西哥克雷塔罗州</span></span></div>
+    <div class="separator" style="clear: both;"><span><span>泰国曼谷<span style="white-space: pre;">	</span>菲律宾马尼拉<span style="white-space: pre;">				</span>美国纽约市</span></span></div>
+    <div class="separator" style="clear: both;"><span><span>丹麦哥本哈根<span style="white-space: pre;">	</span>芬兰赫尔辛基<span style="white-space: pre;">				</span></span></span></div>
+    <div class="separator" style="clear: both;"><span><span>阿曼马斯喀特<span style="white-space: pre;">					</span></span></span></div>
+    <div class="separator" style="clear: both;"><span><span>印度德里<span style="white-space: pre;">	</span>印度加尔各答<span style="white-space: pre;">				</span></span></span></div>
+    <div class="separator" style="clear: both;"><span><span>美国丹佛<span style="white-space: pre;">	</span>美国拉斯维加斯<span style="white-space: pre;">	</span>美国洛杉矶<span style="white-space: pre;">	</span>美国菲尼克斯<span style="white-space: pre;">	</span>美国波特兰<span style="white-space: pre;">	</span>美国西雅图</span></span></div>
+    <div class="separator" style="clear: both;"><span><span>德国汉堡<span style="white-space: pre;">	</span>波兰华沙<span style="white-space: pre;">				</span></span></span></div>
+    <div class="separator" style="clear: both;"><span><span>尼日利亚拉各斯<span style="white-space: pre;">					</span></span></span></div>
+    <div class="separator" style="clear: both;"><span><span>中国台湾台北<span style="white-space: pre;">		</span>中国香港<span style="white-space: pre;">	</span></span></span></div>
 
     <hr />
 
-    <img border="0" src="https://hosting.sunke.info/files/save-power.png" style="width: 100%; height: auto; max-width: 1255px;" />
+    <img border="0" src="../../hosting.sunke.info/files/save-power.png" style="width: 100%; height: auto; max-width: 1255px;" />
 
     <span>什么是 AWSDO.COM 守护盾 &#65311;</span>
   </div>
@@ -1366,7 +1387,7 @@ margin-left: 0;
         <div class="footer-distributed">
 
             <div class="footer-left">
-                <h3><img src="https://hosting.sunke.info/whmcs/awsdo11192.png" alt="Awsdo.com Logo"/></h3>
+                <h3><img src="../../hosting.sunke.info/whmcs/awsdo11192.png" alt="Awsdo.com Logo"/></h3>
                 <p class="footer-links">
                     <a href="../index.html">主页</a>
                     <a href="cloud-servers.html">简单云Linux服务器</a>

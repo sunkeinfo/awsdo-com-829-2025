@@ -19,18 +19,120 @@
 <link href='../../cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'/>
 <title>AWS代理 TikTok独享静态住宅IP 高性能C5N C6I C7a AWS折扣 AWS代付账单  韩国住宅ip服务器 远程桌面办公 日本 新加坡 韩国 英国 美国 香港 台湾 云服务器 VPS: AWS Bills Resell AWS代付 AWS账单代付 AWS代付套餐</title>
 <style id='page-skin-1' type='text/css'><!--
+/*-----------------------------------------------
+Template Style
+Name: Awsdo.com
+Designer:Awsdo.com
+URL:www.awsdo.com
+----------------------------------------------- */
+/* Variable definitions
+====================
+<Variable name="keycolor" description="Main Color" type="color" default="#1a222a"/>
+<Variable name="body.background" description="Body Background" type="background"
+color="#3367ba" default="#111111 url(//https://hosting.sunke.info/files/white80.png) repeat-x fixed top center"/>
+<Group description="Page Text" selector="body">
+<Variable name="body.font" description="Font" type="font"
+default="normal normal 15px Arial, Tahoma, Helvetica, FreeSans, sans-serif"/>
+<Variable name="body.text.color" description="Text Color" type="color" default="#333333"/>
+</Group>
+<Group description="Backgrounds" selector=".body-fauxcolumns-outer">
+<Variable name="body.background.color" description="Outer Background" type="color" default="#296695"/>
+<Variable name="header.background.color" description="Header Background" type="color" default="transparent"/>
+<Variable name="post.background.color" description="Post Background" type="color" default="#ffffff"/>
+</Group>
+<Group description="Links" selector=".main-outer">
+<Variable name="link.color" description="Link Color" type="color" default="#336699"/>
+<Variable name="link.visited.color" description="Visited Color" type="color" default="#6699cc"/>
+<Variable name="link.hover.color" description="Hover Color" type="color" default="#33aaff"/>
+</Group>
+<Group description="Blog Title" selector=".header h1">
+<Variable name="header.font" description="Title Font" type="font"
+default="normal normal 36px Arial, Tahoma, Helvetica, FreeSans, sans-serif"/>
+<Variable name="header.text.color" description="Text Color" type="color" default="#ffffff" />
+</Group>
+<Group description="Tabs Text" selector=".tabs-inner .widget li a">
+<Variable name="tabs.font" description="Font" type="font"
+default="normal normal 15px Arial, Tahoma, Helvetica, FreeSans, sans-serif"/>
+<Variable name="tabs.text.color" description="Text Color" type="color" default="#ffffff"/>
+<Variable name="tabs.selected.text.color" description="Selected Color" type="color" default="#3e65b9"/>
+</Group>
+<Group description="Tabs Background" selector=".tabs-outer .PageList">
+<Variable name="tabs.background.color" description="Background Color" type="color" default="transparent"/>
+<Variable name="tabs.selected.background.color" description="Selected Color" type="color" default="transparent"/>
+<Variable name="tabs.separator.color" description="Separator Color" type="color" default="transparent"/>
+</Group>
+<Group description="Post Title" selector="h3.post-title, .comments h4">
+<Variable name="post.title.font" description="Title Font" type="font"
+default="normal normal 18px Arial, Tahoma, Helvetica, FreeSans, sans-serif"/>
+</Group>
+<Group description="Date Header" selector=".date-header">
+<Variable name="date.header.color" description="Text Color" type="color" default="#626262"/>
+</Group>
+<Group description="Post" selector=".post">
+<Variable name="post.footer.text.color" description="Footer Text Color" type="color" default="#999999"/>
+<Variable name="post.border.color" description="Border Color" type="color" default="#dddddd"/>
+</Group>
+<Group description="Gadgets" selector="h2">
+<Variable name="widget.title.font" description="Title Font" type="font"
+default="bold normal 13px Arial, Tahoma, Helvetica, FreeSans, sans-serif"/>
+<Variable name="widget.title.text.color" description="Title Color" type="color" default="#888888"/>
+</Group>
+<Group description="Footer" selector=".footer-outer">
+<Variable name="footer.text.color" description="Text Color" type="color" default="#cccccc"/>
+<Variable name="footer.widget.title.text.color" description="Gadget Title Color" type="color" default="#aaaaaa"/>
+</Group>
+<Group description="Footer Links" selector=".footer-outer">
+<Variable name="footer.link.color" description="Link Color" type="color" default="#99ccee"/>
+<Variable name="footer.link.visited.color" description="Visited Color" type="color" default="#77aaee"/>
+<Variable name="footer.link.hover.color" description="Hover Color" type="color" default="#33aaff"/>
+</Group>
+<Variable name="content.margin" description="Content Margin Top" type="length" default="20px" min="0" max="100px"/>
+<Variable name="content.padding" description="Content Padding" type="length" default="0" min="0" max="100px"/>
+<Variable name="content.background" description="Content Background" type="background"
+default="transparent none repeat scroll top left"/>
+<Variable name="content.border.radius" description="Content Border Radius" type="length" default="0" min="0" max="100px"/>
+<Variable name="content.shadow.spread" description="Content Shadow Spread" type="length" default="0" min="0" max="100px"/>
+<Variable name="header.padding" description="Header Padding" type="length" default="0" min="0" max="100px"/>
+<Variable name="header.background.gradient" description="Header Gradient" type="url"
+default="none"/>
+<Variable name="header.border.radius" description="Header Border Radius" type="length" default="0" min="0" max="100px"/>
+<Variable name="main.border.radius.top" description="Main Border Radius" type="length" default="20px" min="0" max="100px"/>
+<Variable name="footer.border.radius.top" description="Footer Border Radius Top" type="length" default="0" min="0" max="100px"/>
+<Variable name="footer.border.radius.bottom" description="Footer Border Radius Bottom" type="length" default="20px" min="0" max="100px"/>
+<Variable name="region.shadow.spread" description="Main and Footer Shadow Spread" type="length" default="3px" min="0" max="100px"/>
+<Variable name="region.shadow.offset" description="Main and Footer Shadow Offset" type="length" default="1px" min="-50px" max="50px"/>
+<Variable name="tabs.background.gradient" description="Tab Background Gradient" type="url" default="none"/>
+<Variable name="tab.selected.background.gradient" description="Selected Tab Background" type="url"
+default="url(https://hosting.sunke.info/files/white80.png)"/>
+<Variable name="tab.background" description="Tab Background" type="background"
+default="transparent url(https://hosting.sunke.info/files/black50.png) repeat scroll top left"/>
+<Variable name="tab.border.radius" description="Tab Border Radius" type="length" default="10px" min="0" max="100px"/>
+<Variable name="tab.first.border.radius" description="First Tab Border Radius" type="length" default="10px" min="0" max="100px"/>
+<Variable name="tabs.border.radius" description="Tabs Border Radius" type="length" default="0" min="0" max="100px"/>
+<Variable name="tabs.spacing" description="Tab Spacing" type="length" default=".25em" min="0" max="10em"/>
+<Variable name="tabs.margin.bottom" description="Tab Margin Bottom" type="length" default="0" min="0" max="100px"/>
+<Variable name="tabs.margin.sides" description="Tab Margin Sides" type="length" default="20px" min="0" max="100px"/>
+<Variable name="main.background" description="Main Background" type="background"
+default="transparent url(https://hosting.sunke.info/files/white80.png) repeat scroll top left"/>
+<Variable name="main.padding.sides" description="Main Padding Sides" type="length" default="20px" min="0" max="100px"/>
+<Variable name="footer.background" description="Footer Background" type="background"
+default="transparent url(https://hosting.sunke.info/files/black50.png) repeat scroll top left"/>
+<Variable name="post.margin.sides" description="Post Margin Sides" type="length" default="-20px" min="-50px" max="50px"/>
+<Variable name="post.border.radius" description="Post Border Radius" type="length" default="5px" min="0" max="100px"/>
+<Variable name="widget.title.text.transform" description="Widget Title Text Transform" type="string" default="uppercase"/>
+<Variable name="mobile.background.overlay" description="Mobile Background Overlay" type="string"
+default="transparent none repeat scroll top left"/>
+<Variable name="startSide" description="Side where text starts in blog language" type="automatic" default="left"/>
+<Variable name="endSide" description="Side where text ends in blog language" type="automatic" default="right"/>
+*/
 /* Content
 ----------------------------------------------- */
 body {
 font: normal normal 15px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
 color: #626262;
-background: #ffffff url(https://hosting.sunke.info/files/white80.png) no-repeat scroll top center /* Credit: chuwy (http://www.awsdo.com) */;
+background: #ffffff url(../../hosting.sunke.info/files/white80.png) no-repeat scroll top center /* Credit: chuwy (http://www.awsdo.com) */;
 max-width: 1300px;
 margin: auto;
-padding-top: 80px; /* Add padding to prevent content from being hidden by the fixed header */
-}
-@media (max-width: 768px) {
-  body { padding-top: 150px; } /* Adjust padding for mobile view where header wraps */
 }
 html body .region-inner {
 min-width: 0;
@@ -130,7 +232,7 @@ font: normal normal 15px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
 -webkit-border-top-right-radius: 10px;
 -goog-ms-border-radius: 10px 10px 0 0;
 border-radius: 10px 10px 0 0;
-background: transparent url(https://hosting.sunke.info/files/black50.png) repeat scroll top left;
+background: transparent url(../../hosting.sunke.info/files/black50.png) repeat scroll top left;
 border-right: 1px solid rgba(93,93,93,0);
 }
 .tabs-inner .widget li:first-child a {
@@ -148,7 +250,7 @@ border-bottom-left-radius: 0;
 .tabs-inner .widget li a:hover {
 position: relative;
 z-index: 1;
-background: rgba(93,93,93,0) url(https://hosting.sunke.info/files/white80.png) repeat scroll bottom;
+background: rgba(93,93,93,0) url(../../hosting.sunke.info/files/white80.png) repeat scroll bottom;
 color: #336699;
 -moz-box-shadow: 0 0 1.5px rgba(0, 0, 0, .15);
 -webkit-box-shadow: 0 0 1.5px rgba(0, 0, 0, .15);
@@ -166,7 +268,7 @@ margin: .5em 0;
 /* Main
 ----------------------------------------------- */
 .main-outer {
-background: transparent url(https://hosting.sunke.info/files/white80.png) repeat scroll top left;
+background: transparent url(../../hosting.sunke.info/files/white80.png) repeat scroll top left;
 -moz-border-radius: 20px 20px 0 0;
 -webkit-border-top-left-radius: 20px;
 -webkit-border-top-right-radius: 20px;
@@ -292,7 +394,7 @@ border: none;
 ----------------------------------------------- */
 .footer-outer {
 color:#d2d2d2;
-background: transparent;
+background: transparent url(../../hosting.sunke.info/files/black50.png) repeat scroll top left;
 -moz-border-radius: 0 0 20px 20px;
 -webkit-border-top-left-radius: 0;
 -webkit-border-top-right-radius: 0;
@@ -325,11 +427,11 @@ background: transparent none repeat scroll top left;
 }
 html .mobile .mobile-date-outer, html .mobile .blog-pager {
 border-bottom: none;
-background: transparent url(https://hosting.sunke.info/files/white80.png) repeat scroll top left;
+background: transparent url(../../hosting.sunke.info/files/white80.png) repeat scroll top left;
 margin-bottom: 10px;
 }
 .mobile .date-outer {
-background: transparent url(https://hosting.sunke.info/files/white80.png) repeat scroll top left;
+background: transparent url(../../hosting.sunke.info/files/white80.png) repeat scroll top left;
 }
 .mobile .header-outer, .mobile .main-outer,
 .mobile .post-outer, .mobile .footer-outer {
@@ -357,7 +459,7 @@ color: #ffffff;
 color: #626262;
 }
 .mobile .tabs-inner .PageList .widget-content {
-background: rgba(93,93,93,0) url(https://hosting.sunke.info/files/white80.png) repeat scroll bottom;
+background: rgba(93,93,93,0) url(../../hosting.sunke.info/files/white80.png) repeat scroll bottom;
 color: #336699;
 }
 .mobile .tabs-inner .PageList .widget-content .pagelist-arrow {
@@ -374,7 +476,6 @@ Styles from Widgets - MOVED HERE FOR OPTIMIZATION
 .header-container {
 display: flex;
 align-items: center;
-justify-content: center;
 padding: 10px 20px;
 background-color: #ffffff;
 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -395,6 +496,8 @@ display: block;
 /* Navigation Menu */
 .nav-menu {
 display: flex;
+flex-grow: 1;
+justify-content: flex-end;
 flex-wrap: nowrap; /* Forces single line on desktop */
 }
 .nav-menu a {
@@ -422,6 +525,23 @@ background-color: #0056b3;
 Mobile Display Optimizations & Responsiveness
 --- */
 @media (max-width: 768px) {
+/* Reset padding for mobile */
+.content-inner,
+.header-inner .Header .titlewrapper,
+.header-inner .Header .descriptionwrapper,
+.main-inner,
+.tabs-inner {
+padding-left: 10px;
+padding-right: 10px;
+}
+.tabs-inner {
+margin-left: 10px;
+margin-right: 10px;
+}
+.post-outer {
+margin-left: 0;
+margin-right: 0;
+}
 /* Header layout for mobile - ALLOW WRAPPING */
 .header-container {
 flex-direction: column;
@@ -442,118 +562,156 @@ flex-grow: 1;
 margin: 5px 2px;
 }
 }
+@media (max-width: 480px) {
+.header-logo img {
+width: 80px;
+}
+.nav-menu a {
+font-size: 14px;
+padding: 8px 12px;
+}
+}
 /* START: CSS FOR THE NEW FOOTER */
-.site-footer {
-  background-color: #ffffff;
-  padding: 45px 50px;
-  font-family: 'Arial', sans-serif;
-  line-height: 1.6;
-  color: #555;
-  border-top: 1px solid #e0e0e0; /* Separator line */
+.footer-distributed {
+background-color: #292c2f;
+box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+box-sizing: border-box;
+width: 100%;
+text-align: left;
+font: normal 16px sans-serif;
+padding: 45px 50px;
 }
-
-.footer-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right {
+display: inline-block;
+vertical-align: top;
 }
-
-.footer-left, .footer-center, .footer-right {
-  flex: 1;
-  margin: 10px;
-  min-width: 250px;
+.footer-distributed .footer-left {
+width: 40%;
 }
-
-.footer-logo {
-  width: 180px;
-  margin-bottom: 20px;
+.footer-distributed h3 {
+color: #ffffff;
+font-family: 'Open Sans', sans-serif;
+font-size: 24px;
+margin: 0;
+display: flex;
+align-items: center;
 }
-
-.footer-company-about {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 20px;
+.footer-distributed h3 img {
+width: 180px;
 }
-
-.footer-icons a {
-  display: inline-block;
-  width: 35px;
-  height: 35px;
-  cursor: pointer;
-  background-color: #f0f0f0;
-  border-radius: 50%;
-  font-size: 20px;
-  color: #555;
-  text-align: center;
-  line-height: 35px;
-  margin-right: 5px;
-  transition: background-color 0.3s, color 0.3s;
+.footer-distributed .footer-links {
+color: #ffffff;
+margin: 20px 0 12px;
+padding: 0;
 }
-
-.footer-icons a:hover {
-  background-color: #007bff;
-  color: #ffffff;
+.footer-distributed .footer-links a {
+display: inline-block;
+line-height: 1.8;
+text-decoration: none;
+color: inherit;
+margin-right: 15px;
+font-size: 14px;
 }
-
-.site-footer h4 {
-  font-size: 18px;
-  color: #333;
-  margin-bottom: 20px;
-  font-weight: bold;
+.footer-distributed .footer-links a:hover {
+color: #5383d3;
 }
-
-.footer-links, .footer-contact {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.footer-distributed .footer-company-name {
+color: #8f9296;
+font-size: 14px;
+font-weight: normal;
+margin: 0;
 }
-
-.footer-links a, .footer-contact a {
-  color: #007bff;
-  text-decoration: none;
-  transition: color 0.3s;
+.footer-distributed .footer-center {
+width: 35%;
 }
-
-.footer-links a:hover, .footer-contact a:hover {
-  color: #0056b3;
-  text-decoration: underline;
+.footer-distributed .footer-center i {
+background-color: #33383b;
+color: #ffffff;
+font-size: 25px;
+width: 38px;
+height: 38px;
+border-radius: 50%;
+text-align: center;
+line-height: 42px;
+margin: 10px 15px;
+vertical-align: middle;
 }
-
-.footer-links li, .footer-contact li {
-  margin-bottom: 10px;
+.footer-distributed .footer-center i.fa-envelope {
+font-size: 17px;
+line-height: 38px;
 }
-
-.footer-contact i {
-  margin-right: 10px;
-  color: #007bff;
+.footer-distributed .footer-center p {
+display: inline-block;
+color: #ffffff;
+vertical-align: middle;
+margin: 0;
 }
-
-.footer-bottom {
-  text-align: center;
-  padding-top: 20px;
-  margin-top: 20px;
-  border-top: 1px solid #e0e0e0;
+.footer-distributed .footer-center p span {
+display: block;
+font-weight: normal;
+font-size: 14px;
+line-height: 2;
 }
-
-.footer-company-name {
-  color: #888;
-  font-size: 14px;
+.footer-distributed .footer-center p a {
+color: #5383d3;
+text-decoration: none;
 }
-
-@media (max-width: 768px) {
-  .footer-content {
-    flex-direction: column;
-    text-align: center;
-  }
-  .footer-left, .footer-center, .footer-right {
-    margin-bottom: 30px;
-  }
-  .footer-logo {
-    margin-left: auto;
-    margin-right: auto;
-  }
+.footer-distributed .footer-right {
+width: 20%;
+}
+.footer-distributed .footer-company-about {
+line-height: 20px;
+color: #92999f;
+font-size: 13px;
+font-weight: normal;
+margin: 0;
+}
+.footer-distributed .footer-company-about span {
+display: block;
+color: #ffffff;
+font-size: 14px;
+font-weight: bold;
+margin-bottom: 20px;
+}
+.footer-distributed .footer-icons {
+margin-top: 25px;
+}
+.footer-distributed .footer-icons a {
+display: inline-block;
+width: 35px;
+height: 35px;
+cursor: pointer;
+background-color: #33383b;
+border-radius: 2px;
+font-size: 20px;
+color: #ffffff;
+text-align: center;
+line-height: 35px;
+margin-right: 3px;
+margin-bottom: 5px;
+}
+.footer-distributed .footer-icons a:hover {
+background-color: #5383d3;
+}
+@media (max-width: 880px) {
+.footer-distributed {
+font: bold 14px sans-serif;
+}
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right {
+display: block;
+width: 100%;
+margin-bottom: 40px;
+text-align: center;
+}
+.footer-distributed h3 {
+justify-content: center;
+}
+.footer-distributed .footer-center i {
+margin-left: 0;
 }
 }
 /* END: CSS FOR THE NEW FOOTER */
@@ -574,20 +732,6 @@ margin: 5px 2px;
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans+SC&amp;family=Poppins"></head>
 <body class='loading'>
 <div class='navbar no-items section' id='navbar' name='Navbar'></div>
-<header class="header-container">
-  <div class="header-logo">
-	<img src="https://hosting.sunke.info/whmcs/awsdo11192.png" alt="Company Logo" />
-  </div>
-  <nav class="nav-menu">
-	<a href="../index.html" class="home-btn">主页</a>
-	<a href="cloud-servers.html">简单云Linux服务器</a>
-	<a href="buy-vistors.html">住宅IP电脑</a>
-	<a href="buy-alexa.html">高性能超级服务器</a>
-	<a href="aws-workspace.html">Windows远程桌面</a>
-	<a href="aws-bills-resell-aws-aws-aws.html">AWS账单代付</a>
-	<a href="awsdo-com-customer-login-page.html">客户登录</a>
-  </nav>
-</header>
 <div class='body-fauxcolumns'>
 <div class='fauxcolumn-outer body-fauxcolumn-outer'>
 <div class='cap-top'>
@@ -642,6 +786,50 @@ margin: 5px 2px;
 <div class='region-inner header-inner'>
 <div class='header no-items section' id='header' name='标题'></div>
 </div>
+</div>
+<div class='header-cap-bottom cap-bottom'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+</div>
+</header>
+<div class='tabs-outer'>
+<div class='tabs-cap-top cap-top'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+<div class='fauxborder-left tabs-fauxborder-left'>
+<div class='fauxborder-right tabs-fauxborder-right'></div>
+<div class='region-inner tabs-inner'>
+<div class='tabs no-items section' id='crosscol' name='跨列'></div>
+<div class='tabs section' id='crosscol-overflow' name='Cross-Column 2'><div class='widget HTML' data-version='1' id='HTML1'>
+<div class='widget-content'>
+<table align="left" border="0" cellpadding="1" cellspacing="1" style="width:100%; background-color: #D3D3D3;">
+	<tbody>
+		<tr>
+			<td>
+				<header class="header-container">
+				  <div class="header-logo">
+					<img src="../../hosting.sunke.info/whmcs/awsdo11192.png" alt="Company Logo" />
+				  </div>
+				  <nav class="nav-menu">
+					<a href="../index.html" class="home-btn">主页</a>
+					<a href="cloud-servers.html">简单云Linux服务器</a>
+					<a href="buy-vistors.html">住宅IP电脑</a>
+					<a href="buy-alexa.html">高性能超级服务器</a>
+					<a href="aws-workspace.html">Windows远程桌面</a>
+					<a href="aws-bedrock-ai-claude.html">Claude模型</a>
+					<a href="aws-bills-resell-aws-aws-aws.html">AWS账单代付</a>
+					<a href="awsdo-com-customer-login-page.html">客户登录</a>
+				  </nav>
+				</header>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<div class='clear'></div>
+</div></div>
 </div>
 </div>
 <div class='tabs-cap-bottom cap-bottom'>
@@ -730,7 +918,7 @@ AWS Bills Resell AWS代付 AWS账单代付 AWS代付套餐
 <div class='post-body entry-content' id='post-body-7359921770647054433' itemprop='description articleBody'>
 <span style="color: #212529; font-family: SST Light,Noto Sans; font-size: large; font-weight: 500;">AWSDO.COM的跨境代理付款服务帮助了使用AWS的企业及个人更加方便&#12289;快速地进行跨境付款&#12290;让企业和个人足不出户实现归集的资金&#12289;网上代付&#12289;安全代付&#65292;大大提高资金管理效率&#12290;</span><div><br /></div><div>
 
- <video autoplay="autoplay" loop="loop" muted="" width="1055"> <source src="https://hosting.sunke.info/files/awspay.mp4" type="video/mp4" /> </video>
+ <video autoplay="autoplay" loop="loop" muted="" width="1055"> <source src="https://hosting.sunke.info/files/awspay.mp4" type="video/mp4"></source> </video>
 
 
 
@@ -812,43 +1000,86 @@ AWS Bills Resell AWS代付 AWS账单代付 AWS代付套餐
 <div class='cap-right'></div>
 </div>
 </div>
-<footer class="site-footer">
-    <div class="footer-content">
-        <div class="footer-left">
-            <img src="https://hosting.sunke.info/whmcs/awsdo11192.png" alt="Awsdo.com Logo" class="footer-logo"/>
-            <p class="footer-company-about">
-                我们致力于为全球用户提供最高性能和最可靠的云服务解决方案。
-            </p>
-            <div class="footer-icons">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-                <a href="#"><i class="fa fa-github"></i></a>
+<footer>
+<div class='footer-outer'>
+<div class='footer-cap-top cap-top'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+<div class='fauxborder-left footer-fauxborder-left'>
+<div class='fauxborder-right footer-fauxborder-right'></div>
+<div class='region-inner footer-inner'>
+<div class='foot section' id='footer-1'><div class='widget HTML' data-version='1' id='HTML99'>
+<h2 class='title'>-</h2>
+<div class='widget-content'>
+<!-- 为了避免嵌套footer标签&#65292;这里使用div -->
+        <div class="footer-distributed">
+
+            <div class="footer-left">
+                <h3><img src="../../hosting.sunke.info/whmcs/awsdo11192.png" alt="Awsdo.com Logo"/></h3>
+                <p class="footer-links">
+                    <a href="../index.html">主页</a>
+                    <a href="cloud-servers.html">简单云Linux服务器</a>
+                    <a href="buy-vistors.html">住宅IP电脑</a>
+                    <a href="buy-alexa.html">高性能云服务器</a>
+                    <a href="buy-sales.html">Arm云主机</a>
+                    <a href="aws-workspace.html">Windows远程桌面</a>
+                    <a href="cn2.html">超级加速器</a>
+                    <a href="aws-bedrock-ai-claude.html">AI模型</a>
+                    <a href="aws-bills-resell-aws-aws-aws.html">AWS账单代付</a>
+                    <a href="aws-affiliate-make-money-joint-venture.html">合作加盟</a>
+                    <a href="faqs.html">一般问题</a>
+                </p>
+                <p class="footer-company-name">Awsdo.com &#169; 2025</p>
             </div>
+
+            <div class="footer-center">
+                <div>
+                    <i class="fa fa-map-marker"></i>
+                    <p><span>在这里填写您的地址</span> 城市, 国家</p>
+                </div>
+                <div>
+                    <i class="fa fa-phone"></i>
+                    <p>+1.555.555.5555</p>
+                </div>
+                <div>
+                    <i class="fa fa-envelope"></i>
+                    <p><a href="mailto:support@awsdo.com">support@awsdo.com</a></p>
+                </div>
+            </div>
+
+            <div class="footer-right">
+                <p class="footer-company-about">
+                    <span>关于 Awsdo.com</span>
+                    在这里填写一段关于您公司的简介&#12290;例如&#65306;我们致力于为全球用户提供最高性能和最可靠的云服务解决方案&#12290;
+                </p>
+                <div class="footer-icons">
+                    <!-- 请将 # 替换为您的社交媒体主页链接 -->
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <a href="#"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+
         </div>
-        <div class="footer-center">
-            <h4>快速链接</h4>
-            <ul class="footer-links">
-                <li><a href="../index.html">主页</a></li>
-                <li><a href="cloud-servers.html">简单云Linux服务器</a></li>
-                <li><a href="buy-vistors.html">住宅IP电脑</a></li>
-                <li><a href="buy-alexa.html">高性能云服务器</a></li>
-                <li><a href="aws-workspace.html">Windows远程桌面</a></li>
-                <li><a href="aws-bills-resell-aws-aws-aws.html">AWS账单代付</a></li>
-            </ul>
-        </div>
-        <div class="footer-right">
-            <h4>联系我们</h4>
-            <ul class="footer-contact">
-                <li><i class="fa fa-map-marker"></i> <span>在这里填写您的地址, 城市, 国家</span></li>
-                <li><i class="fa fa-phone"></i> <span>+1.555.555.5555</span></li>
-                <li><i class="fa fa-envelope"></i> <a href="mailto:support@awsdo.com">support@awsdo.com</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p class="footer-company-name">Awsdo.com &copy; 2025. All Rights Reserved.</p>
-    </div>
+</div>
+<div class='clear'></div>
+</div></div>
+<!-- outside of the include in order to lock Attribution widget -->
+<div class='foot section' id='footer-3' name='页脚'><div class='widget Attribution' data-version='1' id='Attribution1'>
+<div class='widget-content' style='text-align: center;'>
+Awsdo.com. 主题背景图片创建者&#65306;<a href='http://www.awsdo.com/' target='_blank'>chuwy</a>. 由 <a href='https://www.blogger.com/' target='_blank'>Blogger</a> 提供支持.
+</div>
+<div class='clear'></div>
+</div></div>
+</div>
+</div>
+<div class='footer-cap-bottom cap-bottom'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+</div>
 </footer>
 <!-- content -->
 </div>
