@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>如何使用 vnStat 检查服务器月度流量 - AWSDO.COM</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0SXZXT6FBM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0SXZXT6FBM');
+    </script>
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #ffffff;
+            padding: 15px 0;
+            border-bottom: 1px solid #e9ecef;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        header .logo img {
+            max-width: 200px;
+            vertical-align: middle;
+        }
+        nav {
+            margin-top: 15px;
+        }
+        nav ul {
+            padding: 0;
+            list-style: none;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav a {
+            color: #495057;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        nav a:hover, nav a.active {
+            color: #007bff;
+        }
+        .hero {
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            color: #ffffff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 20px;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .main-content {
+            padding: 50px 0;
+        }
+        .info-section {
+            background: #ffffff;
+            padding: 40px;
+            margin-top: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .info-section h2 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+        .info-section h3 {
+            color: #343a40;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+        /* Style for inline code */
+        .info-section p > code, .info-section li > code {
+            background-color: #e9ecef;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            font-size: 0.9em;
+        }
+        /* Style for code blocks */
+        .info-section pre {
+            background-color: #282c34; /* Dark background */
+            color: #abb2bf; /* Light text */
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            white-space: pre;
+        }
+        .info-section pre code {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            font-size: 1em;
+            background: none;
+            padding: 0;
+        }
+        footer {
+            background: #343a40;
+            color: #f8f9fa;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+        footer p {
+            margin: 8px 0;
+        }
+        .footer-contact {
+            margin-top: 15px;
+        }
+        .footer-contact a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s;
+            margin: 0 15px;
+            display: inline-flex;
+            align-items: center;
+        }
+        .footer-contact a:hover {
+            color: #007bff;
+        }
+        .footer-contact svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            fill: currentColor;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="https://hosting.sunke.info/whmcs/awsdo11192.png" alt="AWSDO.COM Logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">首页</a></li>
+                    <li><a href="linux-server.html">Linux云服务器</a></li>
+                    <li><a href="windows-server.html">Windows服务器</a></li>
+                    <li><a href="residential-ip-server.html">住宅IP服务器</a></li>
+                    <li><a href="performance-server.html">高性能服务器</a></li>
+                    <li><a href="aws-billing.html">AWS账单代付</a></li>
+                    <li><a href="aws-ai.html">AWS智能AI</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>如何使用 vnStat 检查服务器本月总出站流量</h1>
+            <p>一篇详细的指南，教您如何在 Debian/Ubuntu 服务器上监控月度流量。</p>
+        </div>
+    </section>
+
+    <div class="main-content container">
+        
+        <div class="info-section">
+            <p>在管理云服务器时，了解流量使用情况至关重要，特别是对于有流量限制的套餐。虽然 <code>iftop</code> 等工具可以实时监控网络连接，但它们无法统计历史总流量。要查看本月累计使用了多少出站流量，<code>vnStat</code> 是一个理想的选择。<code>vnStat</code> 是一个基于控制台的网络流量监控工具，它会在后台默默记录网卡的历史流量数据，让您可以轻松查询每天、每月或每小时的流量报告。</p>
+            
+            <h3>第一步：安装 vnStat</h3>
+            <p>首先，我们需要在您的 Debian 或 Ubuntu 服务器上安装 <code>vnStat</code>。打开终端并执行以下命令：</p>
+            <pre><code>sudo apt update
+sudo apt install vnstat</code></pre>
+
+            <h3>第二步：配置和启用 vnStat</h3>
+            <p>安装后，<code>vnStat</code> 通常会自动启动并为默认网卡收集数据。如果它没有自动开始，或者您想监控特定的网卡，可以手动进行初始化。</p>
+            <p>1. 找到您的网卡名称 (例如 <code>eth0</code>, <code>ens5</code> 等)，可以使用 <code>ip a</code> 命令查看：</p>
+            <pre><code>ip a</code></pre>
+            <p>2. 为该网卡创建流量数据库（请将 <code>eth0</code> 替换为您的实际网卡名）：</p>
+            <pre><code>sudo vnstat -u -i eth0</code></pre>
+            <p><strong>请注意：</strong> <code>vnStat</code> 需要时间来收集数据。刚安装后，您可能需要等待几分钟甚至更长时间才能看到有意义的统计数据。</p>
+
+            <h3>第三步：检查本月总出站流量</h3>
+            <p>当 <code>vnStat</code> 收集到足够的数据后，您就可以随时通过一个简单的命令来查询月度流量报告了。</p>
+            <pre><code>vnstat -m</code></pre>
+            <p>执行该命令后，您会看到类似下面的输出：</p>
+            <pre><code>eth0  /  monthly
+
+         month        rx      |     tx      |    total    |   avg. rate
+     ------------------------+-------------+-------------+---------------
+       Aug 2025     15.78 GiB |    1.22 GiB   |   17.00 GiB   |   50.41 kbit/s
+       Sep 2025      4.95 GiB |  ► 680.45 MiB |    5.61 GiB   |   95.13 kbit/s
+     ------------------------+-------------+-------------+---------------
+      estimated      12 GiB   |     1.5 GiB   |    13.5 GiB   |</code></pre>
+            
+            <h3>如何解读报告</h3>
+            <p>
+                <ul>
+                    <li>找到当前月份所在的行（例如上面的 <code>Sep 2025</code>）。</li>
+                    <li><strong><code>tx</code> 列</strong>：这一列显示的就是 "Transmitted"（已发送）的流量，即我们关心的<strong>出站流量</strong>。</li>
+                    <li><strong><code>rx</code> 列</strong>：这一列显示的是 "Received"（已接收）的流量，即入站流量。</li>
+                    <li><strong><code>total</code> 列</strong>：出站和入站流量的总和。</li>
+                </ul>
+            </p>
+            <p>在上面的示例中，服务器从9月1日到当前时间的总出站流量为 <strong>680.45 MiB</strong>。</p>
+            
+            <h3>总结</h3>
+            <p>通过 <code>vnStat</code> 工具，您可以非常方便地、准确地查询到服务器在任意月份的累计出站流量，帮助您更好地管理和规划服务器资源。</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>版权所有 &copy; 2025 AWSDO.COM</p>
+            <div class="footer-contact">
+                <a href="mailto:support@awsdo.com">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    support@awsdo.com
+                </a>
+                <a href="https://t.me/ilovesunkeinfo" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 2L11 13H2l1.67-5.01L22 2zm-2.48 18.51L17 14l-4.2 4.13-1.67-5.01L2 13h9l2-2-8.5-8.5L22 2l-2.48 18.51z"/></svg>
+                    @ilovesunkeinfo
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!--聊天模块-->
+    <script>
+      window.chatwootSettings = {"position":"right","type":"expanded_bubble","launcherTitle":"在线聊天"};
+      (function(d,t) {
+        var BASE_URL="https://app.chatwoot.com/";
+        var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=BASE_URL+"/packs/js/sdk.js";
+        g.defer = true;
+        g.async = true;
+        s.parentNode.insertBefore(g,s);
+        g.onload=function(){
+          window.chatwootSDK.run({
+            websiteToken: 'c3stLVCV9GDjtvHcBMLdjRjU',
+            baseUrl: BASE_URL
+          })
+        }
+      })(document,"script");
+    </script>
+
+</body>
+</html>
