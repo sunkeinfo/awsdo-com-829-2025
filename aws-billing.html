@@ -146,19 +146,26 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="services">2. AWS的什么服务产生了消费 <span style="color:red;">*</span></label>
+                                    <label>2. 您是否自带AWS额度账户 <span style="color:red;">*</span></label>
+                                    <div class="radio-group">
+                                        <label class="radio-label"><input type="radio" name="自带AWS额度账户" value="是" checked><span>是，我在我自己的AWS账户使用，希望加入组织获得账单折扣和积分优惠</span></label>
+                                        <label class="radio-label"><input type="radio" name="自带AWS额度账户" value="不"><span>不，我没有AWS账户，希望开通一个新账号，我能预充值，获得账单折扣和积分优惠</span></label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="services">3. AWS的什么服务产生了消费 <span style="color:red;">*</span></label>
                                     <textarea id="services" name="消费服务详情" required placeholder="详细描述，例如：5台C6.8xlarge的Windows 机型和10TB每月的出站流量"></textarea>
                                 </div>
                                  <div class="form-group">
-                                    <label for="email">3. 您的Email邮箱 (必填) <span style="color:red;">*</span></label>
+                                    <label for="email">4. 您的Email邮箱 (必填) <span style="color:red;">*</span></label>
                                     <input type="email" id="email" name="email" required placeholder="我们将通过此邮箱与您联系">
                                 </div>
                                 <div class="form-group">
-                                    <label for="contact">4. 您的其他联系方式 (微信/Telegram等)</label>
+                                    <label for="contact">5. 您的其他联系方式 (微信/Telegram等)</label>
                                     <input type="text" id="contact" name="其他联系方式" placeholder="选填，方便我们更快联系到您">
                                 </div>
                                 <div class="form-group">
-                                    <label for="remarks">5. 其他备注</label>
+                                    <label for="remarks">6. 其他备注</label>
                                     <textarea id="remarks" name="其他备注" placeholder="选填，您可以填写任何其他需求"></textarea>
                                 </div>
                                 <button type="submit" class="submit-button">提交申请</button>
