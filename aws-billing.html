@@ -67,6 +67,12 @@
             border: 1px solid #c3e6cb;
             color: #155724;
         }
+        .honeypot {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+            pointer-events: none;
+        }
 
         /* Advantages Grid & Guarantees */
         .advantages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
@@ -94,7 +100,7 @@
     <header>
         <div class="container">
             <div class="logo">
-                <a href="index.html"><img src="https://hosting.sunke.info/whmcs/awsdo11192.png" alt="AWSDO.COM Logo"></a>
+                <a href="index.html"><img src="awsdologo.png" alt="AWSDO.COM Logo"></a>
             </div>
             <nav>
                 <ul>
@@ -135,6 +141,7 @@
                         <p>接下来，您只需接受邀请，将您的AWS账号加入我们的主账号组织内。请在下方填写并提交申请表，我们的客户经理会立即与您联系并发起邀请。</p>
                         <div class="form-section">
                              <form id="order-form" action="https://formspree.io/f/xdklkdwd" method="POST">
+                                <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
                                 <div class="form-group">
                                     <label>1. 预估AWS每月消费额度 <span style="color:red;">*</span></label>
                                     <div class="radio-group">
@@ -270,6 +277,13 @@
         async function handleSubmit(event) {
           event.preventDefault();
           var status = document.getElementById("order-form-status");
+          
+          // 蜜罐检查
+          var honeypot = document.querySelector('input[name="website"]');
+          if (honeypot.value) {
+            return false; // 静默拒绝机器人提交
+          }
+          
           var data = new FormData(event.target);
           fetch(event.target.action, {
             method: form.method,
