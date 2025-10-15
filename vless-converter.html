@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xray配置转VLESS URL</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
+        .container { background: #f5f5f5; padding: 20px; border-radius: 8px; }
+        input[type="file"] { margin: 10px 0; padding: 10px; }
+        button { background: #007cba; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #005a87; }
+        .result { margin-top: 20px; padding: 15px; background: white; border-radius: 4px; word-break: break-all; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Xray Reality 配置生成器</h1>
+        
+        <div style="margin-bottom: 30px; padding: 20px; background: white; border-radius: 8px;">
+            <h2>生成新配置</h2>
+            <div style="margin: 10px 0;">
+                <label>服务器IP: </label>
+                <input type="text" id="serverIP" placeholder="例如: 3.16.38.119" style="padding: 8px; width: 200px;" />
+            </div>
+            <div style="margin: 10px 0;">
+                <label>服务器端口: </label>
+                <input type="number" id="serverPort" placeholder="例如: 33899" style="padding: 8px; width: 200px;" />
+            </div>
+            <button onclick="generateConfigs()">生成配置</button>
+            <div id="generateResult" class="result"></div>
+        </div>
+        
+        <div style="padding: 20px; background: white; border-radius: 8px;">
+            <h2>转换现有配置</h2>
+            <input type="file" id="configFile" accept=".json,.jsonc" />
+            <button onclick="convertConfig()">转换为VLESS URL</button>
+            <div id="convertResult" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        function generateUUID() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                const r = Math.random() * 16 | 0;
+                const v = c == 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
+
+        function generateX25519() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
+            let result = '';
+            for (let i = 0; i < 43; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result;
+        }
+
+        function generateConfigs() {
+            const serverIP = document.getElementById('serverIP').value.trim();
+            const serverPort = document.getElementById('serverPort').value.trim();
+            const resultDiv = document.getElementById('generateResult');
+            
+            if (!serverIP || !serverPort) {
+                resultDiv.innerHTML = '<span class="error">请输入服务器IP和端口</span>';
+                return;
+            }
+
+            const uuid = generateUUID();
+            const privateKey = generateX25519();
+            const publicKey = generateX25519();
+            
+            const serverConfig = {
+                "log": { "loglevel": "debug" },
+                "inbounds": [
+                    {
+                        "tag": "dokodemo-in",
+                        "port": parseInt(serverPort),
+                        "protocol": "dokodemo-door",
+                        "settings": {
+                            "address": "127.0.0.1",
+                            "port": 4431,
+                            "network": "tcp"
+                        },
+                        "sniffing": {
+                            "enabled": true,
+                            "destOverride": ["tls"],
+                            "routeOnly": true
+                        }
+                    },
+                    {
+                        "listen": "127.0.0.1",
+                        "port": 4431,
+                        "protocol": "vless",
+                        "settings": {
+                            "clients": [{ "id": uuid }],
+                            "decryption": "none"
+                        },
+                        "streamSettings": {
+                            "network": "tcp",
+                            "security": "reality",
+                            "realitySettings": {
+                                "dest": "speed.cloudflare.com:443",
+                                "serverNames": ["speed.cloudflare.com"],
+                                "privateKey": privateKey,
+                                "shortIds": ["", "0123456789abcdef"]
+                            }
+                        },
+                        "sniffing": {
+                            "enabled": true,
+                            "destOverride": ["http", "tls", "quic"],
+                            "routeOnly": true
+                        }
+                    }
+                ],
+                "outbounds": [
+                    { "protocol": "freedom", "tag": "direct" },
+                    { "protocol": "blackhole", "tag": "block" }
+                ],
+                "routing": {
+                    "rules": [
+                        {
+                            "inboundTag": ["dokodemo-in"],
+                            "domain": ["speed.cloudflare.com"],
+                            "outboundTag": "direct"
+                        },
+                        {
+                            "inboundTag": ["dokodemo-in"],
+                            "outboundTag": "block"
+                        }
+                    ]
+                }
+            };
+
+            const clientConfig = {
+                "log": { "loglevel": "debug" },
+                "inbounds": [
+                    {
+                        "listen": "127.0.0.1",
+                        "port": 10808,
+                        "protocol": "socks",
+                        "settings": { "udp": true },
+                        "sniffing": {
+                            "enabled": true,
+                            "destOverride": ["http", "tls", "quic"],
+                            "routeOnly": true
+                        }
+                    }
+                ],
+                "outbounds": [
+                    {
+                        "protocol": "vless",
+                        "settings": {
+                            "vnext": [
+                                {
+                                    "address": serverIP,
+                                    "port": parseInt(serverPort),
+                                    "users": [
+                                        {
+                                            "id": uuid,
+                                            "encryption": "none"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "streamSettings": {
+                            "network": "tcp",
+                            "security": "reality",
+                            "realitySettings": {
+                                "fingerprint": "chrome",
+                                "serverName": "speed.cloudflare.com",
+                                "publicKey": publicKey,
+                                "spiderX": "",
+                                "shortId": ""
+                            }
+                        },
+                        "tag": "proxy"
+                    }
+                ]
+            };
+
+            const params = new URLSearchParams({
+                encryption: 'none',
+                flow: '',
+                security: 'reality',
+                sni: 'speed.cloudflare.com',
+                fp: 'chrome',
+                pbk: publicKey,
+                sid: '',
+                type: 'tcp',
+                headerType: 'none'
+            });
+            const vlessUrl = `vless://${uuid}@${serverIP}:${serverPort}?${params.toString()}#XrayReality`;
+
+            resultDiv.innerHTML = `
+                <h3>服务端配置:</h3>
+                <textarea readonly style="width:100%; height:150px; font-family:monospace; font-size:12px;">${JSON.stringify(serverConfig, null, 2)}</textarea>
+                <button onclick="downloadFile('config_server.json', '${JSON.stringify(serverConfig).replace(/'/g, "\\'")}')">下载服务端配置</button>
+                <button onclick="copyToClipboard('${JSON.stringify(serverConfig, null, 2).replace(/'/g, "\\'")}')">复制服务端配置</button>
+                
+                <h3>客户端配置:</h3>
+                <textarea readonly style="width:100%; height:150px; font-family:monospace; font-size:12px;">${JSON.stringify(clientConfig, null, 2)}</textarea>
+                <button onclick="downloadFile('config_client.json', '${JSON.stringify(clientConfig).replace(/'/g, "\\'")}')">下载客户端配置</button>
+                
+                <h3>VLESS URL:</h3>
+                <div style="background:#e8f4f8; padding:10px; border-radius:4px; margin:10px 0; word-break:break-all;">
+                    ${vlessUrl}
+                </div>
+                <button onclick="copyToClipboard('${vlessUrl}')">复制VLESS URL</button>
+            `;
+        }
+
+        function convertConfig() {
+            const fileInput = document.getElementById('configFile');
+            const resultDiv = document.getElementById('convertResult');
+            
+            if (!fileInput.files[0]) {
+                resultDiv.innerHTML = '<span class="error">请选择配置文件</span>';
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    // 移除注释并解析JSON
+                    let content = e.target.result.replace(/\/\/.*$/gm, '').replace(/\/\*[\s\S]*?\*\//g, '');
+                    const config = JSON.parse(content);
+                    
+                    const outbound = config.outbounds.find(o => o.protocol === 'vless');
+                    if (!outbound) {
+                        throw new Error('未找到VLESS配置');
+                    }
+
+                    const vnext = outbound.settings.vnext[0];
+                    const user = vnext.users[0];
+                    const reality = outbound.streamSettings.realitySettings;
+                    
+                    const params = new URLSearchParams({
+                        encryption: user.encryption || 'none',
+                        flow: '',
+                        security: outbound.streamSettings.security,
+                        sni: reality.serverName,
+                        fp: reality.fingerprint,
+                        pbk: reality.publicKey,
+                        sid: reality.shortId || '',
+                        type: outbound.streamSettings.network,
+                        headerType: 'none'
+                    });
+
+                    const vlessUrl = `vless://${user.id}@${vnext.address}:${vnext.port}?${params.toString()}#XrayReality`;
+                    
+                    resultDiv.innerHTML = `
+                        <h3>VLESS URL:</h3>
+                        <div style="background:#e8f4f8; padding:10px; border-radius:4px; margin:10px 0; word-break:break-all;">
+                            ${vlessUrl}
+                        </div>
+                        <button onclick="copyToClipboard('${vlessUrl}')">复制VLESS URL</button>
+                    `;
+                } catch (error) {
+                    resultDiv.innerHTML = `<span class="error">解析失败: ${error.message}</span>`;
+                }
+            };
+            reader.readAsText(fileInput.files[0]);
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('已复制到剪贴板');
+            });
+        }
+
+        function downloadFile(filename, content) {
+            const blob = new Blob([content], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
