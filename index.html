@@ -345,7 +345,7 @@
         <div class="cta-section">
             <h2>联系我们</h2>
             <p>有任何问题或需要定制方案？请给我们留言，我们的专家将尽快与您联系。</p>
-            <form id="contact-form" class="contact-form" action="https://formspree.io/f/xdklkdwd" method="POST">
+            <form id="contact-form" class="contact-form">
                 <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
                 <div class="form-row">
                     <input type="text" name="名字" placeholder="您的名字" required>
@@ -407,35 +407,43 @@
             return false; // 静默拒绝机器人提交
           }
           
-          var data = new FormData(event.target);
-          fetch(event.target.action, {
-            method: form.method,
-            body: data,
+          var formData = new FormData(event.target);
+          var comment = `姓名: ${formData.get('名字')}\n邮箱: ${formData.get('email')}\n信息: ${formData.get('信息')}`;
+          
+          fetch('https://api.notificationapi.com/097bululbdjfm969xrmrijiz43/sender', {
+            method: 'POST',
             headers: {
-                'Accept': 'application/json'
-            }
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+              'Authorization': 'Basic MDk3YnVsdWxiZGpmbTk2OXhybXJpaml6NDM6c3c1MDFsdW1ib2w4ajNrYm1jMzJtdWd2aHNtdDBkd2NtaDQ3dDc3YXZ3enBvd3BiMTFjNXltdW1qeA=='
+            },
+            body: JSON.stringify({
+              type: 'awsdo_com_notification',
+              to: {
+                id: 'snaagk@gmail.com',
+                email: 'snaagk@gmail.com'
+              },
+              parameters: {
+                comment: comment
+              },
+              templateId: 'awsdo_com'
+            })
           }).then(response => {
             if (response.ok) {
               status.innerHTML = "感谢您的留言，我们已收到您的消息！";
               status.style.display = 'block';
               form.reset()
             } else {
-              response.json().then(data => {
-                if (Object.hasOwn(data, 'errors')) {
-                  status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
-                } else {
-                  status.innerHTML = "糟糕！提交时出现问题，请稍后再试。";
-                }
-                status.style.display = 'block';
-                status.style.backgroundColor = '#f8d7da'; // Red for error
-                status.style.borderColor = '#f5c6cb';
-                status.style.color = '#721c24';
-              })
+              status.innerHTML = "糟糕！提交时出现问题，请稍后再试。";
+              status.style.display = 'block';
+              status.style.backgroundColor = '#f8d7da';
+              status.style.borderColor = '#f5c6cb';
+              status.style.color = '#721c24';
             }
           }).catch(error => {
             status.innerHTML = "糟糕！提交时出现网络错误，请检查您的连接。";
             status.style.display = 'block';
-            status.style.backgroundColor = '#f8d7da'; // Red for error
+            status.style.backgroundColor = '#f8d7da';
             status.style.borderColor = '#f5c6cb';
             status.style.color = '#721c24';
           });

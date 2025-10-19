@@ -328,7 +328,7 @@
         <!-- Order Form Section -->
         <div class="section">
             <h2 class="section-title">立即配置您的云服务器</h2>
-            <form id="order-form" action="https://formspree.io/f/xdklkdwd" method="POST" class="form-section">
+            <form id="order-form" class="form-section">
                 <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
                 
                 <!-- Step 1: Configuration -->
@@ -585,13 +585,27 @@
             return false; // 静默拒绝机器人提交
           }
           
-          var data = new FormData(event.target);
-          fetch(event.target.action, {
-            method: form.method,
-            body: data,
+          var formData = new FormData(event.target);
+          var comment = `机房位置: ${formData.get('机房位置')}\n操作系统: ${formData.get('操作系统')}\n配置套餐: ${formData.get('配置套餐')}\n付款方式: ${formData.get('付款方式')}\n邮箱: ${formData.get('email')}\n其他联系方式: ${formData.get('其他联系方式') || '无'}`;
+          
+          fetch('https://api.notificationapi.com/097bululbdjfm969xrmrijiz43/sender', {
+            method: 'POST',
             headers: {
-                'Accept': 'application/json'
-            }
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+              'Authorization': 'Basic MDk3YnVsdWxiZGpmbTk2OXhybXJpaml6NDM6c3c1MDFsdW1ib2w4ajNrYm1jMzJtdWd2aHNtdDBkd2NtaDQ3dDc3YXZ3enBvd3BiMTFjNXltdW1qeA=='
+            },
+            body: JSON.stringify({
+              type: 'awsdo_com_notification',
+              to: {
+                id: 'snaagk@gmail.com',
+                email: 'snaagk@gmail.com'
+              },
+              parameters: {
+                comment: comment
+              },
+              templateId: 'awsdo_com'
+            })
           }).then(response => {
             if (response.ok) {
               status.innerHTML = "订单提交成功！我们的客户经理将很快通过您留下的联系方式与您确认。";

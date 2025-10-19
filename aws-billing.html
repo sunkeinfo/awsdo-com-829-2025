@@ -140,7 +140,7 @@
                         <h3>加入组织并提交申请</h3>
                         <p>接下来，您只需接受邀请，将您的AWS账号加入我们的主账号组织内。请在下方填写并提交申请表，我们的客户经理会立即与您联系并发起邀请。</p>
                         <div class="form-section">
-                             <form id="order-form" action="https://formspree.io/f/xdklkdwd" method="POST">
+                             <form id="order-form">
                                 <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
                                 <div class="form-group">
                                     <label>1. 预估AWS每月消费额度 <span style="color:red;">*</span></label>
@@ -284,13 +284,27 @@
             return false; // 静默拒绝机器人提交
           }
           
-          var data = new FormData(event.target);
-          fetch(event.target.action, {
-            method: form.method,
-            body: data,
+          var formData = new FormData(event.target);
+          var comment = `月消费额度: ${formData.get('月消费额度')}\n自带AWS额度账户: ${formData.get('自带AWS额度账户')}\n消费服务详情: ${formData.get('消费服务详情')}\n邮箱: ${formData.get('email')}\n其他联系方式: ${formData.get('其他联系方式') || '无'}\n其他备注: ${formData.get('其他备注') || '无'}`;
+          
+          fetch('https://api.notificationapi.com/097bululbdjfm969xrmrijiz43/sender', {
+            method: 'POST',
             headers: {
-                'Accept': 'application/json'
-            }
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+              'Authorization': 'Basic MDk3YnVsdWxiZGpmbTk2OXhybXJpaml6NDM6c3c1MDFsdW1ib2w4ajNrYm1jMzJtdWd2aHNtdDBkd2NtaDQ3dDc3YXZ3enBvd3BiMTFjNXltdW1qeA=='
+            },
+            body: JSON.stringify({
+              type: 'awsdo_com_notification',
+              to: {
+                id: 'snaagk@gmail.com',
+                email: 'snaagk@gmail.com'
+              },
+              parameters: {
+                comment: comment
+              },
+              templateId: 'awsdo_com'
+            })
           }).then(response => {
             if (response.ok) {
               status.innerHTML = "申请提交成功！我们的客户经理将很快通过您留下的联系方式与您确认。";
