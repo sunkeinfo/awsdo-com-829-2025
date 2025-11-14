@@ -225,6 +225,90 @@
             display: block;
         }
 
+        /* Pricing Grid */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .pricing-card {
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .pricing-card:hover {
+            border-color: #007bff;
+            box-shadow: 0 4px 15px rgba(0,123,255,0.1);
+        }
+        .pricing-card input[type="radio"] {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .pricing-card.selected {
+            border-color: #007bff;
+            background-color: #f8f9ff;
+        }
+        .pricing-card h4 {
+            margin: 0 0 10px 0;
+            color: #007bff;
+            font-size: 18px;
+        }
+        .pricing-card .specs {
+            color: #6c757d;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        .pricing-card .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #dc3545;
+            margin-bottom: 5px;
+        }
+        .pricing-card .original-price {
+            font-size: 12px;
+            color: #6c757d;
+            text-decoration: line-through;
+        }
+        .pricing-card .price-note {
+            font-size: 11px;
+            color: #28a745;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        @media (max-width: 1200px) {
+            .pricing-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .location-regions h5 {
+            margin: 20px 0 10px 0;
+            color: #007bff;
+            font-size: 16px;
+            font-weight: 600;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 5px;
+        }
+        .location-regions h5:first-child {
+            margin-top: 0;
+        }
+
         /* Submit Button & Status */
         .submit-button {
             display: block;
@@ -335,136 +419,134 @@
                 <div class="form-step">
                     <h3>第一步：选择您的配置</h3>
                     <div class="form-group">
-                        <label for="location">选择机房位置</label>
-                        <select id="location" name="机房位置" required>
-                           <option value="" disabled selected>--请选择一个机房--</option>
-                           <optgroup label="美洲">
-                                <option value="加拿大 (卡加利)">加拿大 (卡加利)</option>
-                                <option value="加拿大 (中部)">加拿大 (中部)</option>
-                                <option value="墨西哥 (中部)">墨西哥 (中部)</option>
-                                <option value="南美洲 (圣保罗)">南美洲 (圣保罗)</option>
-                                <option value="美国 (北维吉尼亚)">美国 (北维吉尼亚)</option>
-                                <option value="美国 (俄亥俄州)">美国 (俄亥俄州)</option>
-                                <option value="美国 (北加州)">美国 (北加州)</option>
-                                <option value="美国 (奥勒冈州)">美国 (奥勒冈州)</option>
-                           </optgroup>
-                           <optgroup label="亚太地区">
-                                <option value="香港">香港</option>
-                                <option value="台北">台北</option>
-                                <option value="海德拉巴">海德拉巴</option>
-                                <option value="雅加达">雅加达</option>
-                                <option value="墨尔本">墨尔本</option>
-                                <option value="马来西亚">马来西亚</option>
-                                <option value="泰国">泰国</option>
-                                <option value="东京">东京</option>
-                                <option value="首尔">首尔</option>
-                                <option value="大阪">大阪</option>
-                                <option value="孟买">孟买</option>
-                                <option value="新加坡">新加坡</option>
-                                <option value="雪梨">雪梨</option>
-                           </optgroup>
-                           <optgroup label="欧洲">
-                                <option value="苏黎世">苏黎世</option>
-                                <option value="米兰">米兰</option>
-                                <option value="西班牙">西班牙</option>
-                                <option value="法兰克福">法兰克福</option>
-                                <option value="斯德哥尔摩">斯德哥尔摩</option>
-                                <option value="爱尔兰">爱尔兰</option>
-                                <option value="伦敦">伦敦</option>
-                                <option value="巴黎">巴黎</option>
-                           </optgroup>
-                           <optgroup label="中东 & 非洲">
-                                <option value="非洲 (开普敦)">非洲 (开普敦)</option>
-                                <option value="以色列 (特拉维夫)">以色列 (特拉维夫)</option>
-                                <option value="阿联酋">阿联酋</option>
-                                <option value="巴林">巴林</option>
-                           </optgroup>
-                        </select>
+                        <label>选择机房位置</label>
+                        <p style="font-size: 14px; color: #6c757d; margin-bottom: 10px;">您的实例越接近用户，他们的延迟就越低。了解更多关于区域的信息。</p>
+                        <div class="location-regions">
+                            <h5>亚洲</h5>
+                            <div class="radio-group location-group">
+                                <label class="radio-label"><input type="radio" name="机房位置" value="东京 ap-northeast-1" required> <span>东京</span></label>
+                                <label class="radio-label"><input type="radio" name="机房位置" value="首尔 ap-northeast-2"> <span>首尔</span></label>
+                                <label class="radio-label"><input type="radio" name="机房位置" value="新加坡 ap-southeast-1"> <span>新加坡</span></label>
+                                <label class="radio-label"><input type="radio" name="机房位置" value="雅加达 ap-southeast-3"> <span>雅加达</span></label>
+                                <label class="radio-label"><input type="radio" name="机房位置" value="悉尼 ap-southeast-2"> <span>悉尼</span></label>
+                                <label class="radio-label"><input type="radio" name="机房位置" value="孟买 ap-south-1"> <span>孟买</span></label>
+                                <label class="radio-label"><input type="radio" name="机房位置" value="香港"> <span>香港</span></label>
+                                <label class="radio-label"><input type="radio" name="机房位置" value="台北"> <span>台北</span></label>
+                            </div>
+                            <h5>美洲</h5>
+                            <div class="radio-group location-group">
+                                <label class="radio-label"><input type="radio" name="机房位置" value="美国 (北维吉尼亚) us-east-1"> <span>美国 (北维吉尼亚)</span></label>
+                                <label class="radio-label"><input type="radio" name="机房位置" value="美国 (俄亥俄州) us-east-2"> <span>美国 (俄亥俄州)</span></label>
+                                <label class="radio-label"><input type="radio" name="机房位置" value="美国 (奥勒冈州) us-west-2"> <span>美国 (奥勒冈州)</span></label>
+                                <label class="radio-label"><input type="radio" name="机房位置" value="加拿大 (蒙特利尔) ca-central-1"> <span>加拿大 (蒙特利尔)</span></label>
+                            </div>
+                            <h5>欧洲</h5>
+                            <div class="radio-group location-group">
+                                <label class="radio-label"><input type="radio" name="机房位置" value="爱尔兰 eu-west-1"> <span>爱尔兰</span></label>
+                                <label class="radio-label"><input type="radio" name="机房位置" value="伦敦 eu-west-2"> <span>伦敦</span></label>
+                                <label class="radio-label"><input type="radio" name="机房位置" value="巴黎 eu-west-3"> <span>巴黎</span></label>
+                                <label class="radio-label"><input type="radio" name="机房位置" value="法兰克福 eu-central-1"> <span>法兰克福</span></label>
+                                <label class="radio-label"><input type="radio" name="机房位置" value="斯德哥尔摩 eu-north-1"> <span>斯德哥尔摩</span></label>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                          <label>选择操作系统</label>
                          <div class="radio-group os-group">
-                            <label class="radio-label"><input type="radio" name="操作系统" value="Amazon Linux" checked> <span>Amazon Linux</span></label>
-                            <label class="radio-label"><input type="radio" name="操作系统" value="Ubuntu 24.04"> <span>Ubuntu 24.04</span></label>
-                            <label class="radio-label"><input type="radio" name="操作系统" value="Ubuntu 22.04"> <span>Ubuntu 22.04</span></label>
-                            <label class="radio-label"><input type="radio" name="操作系统" value="Debian 12.8"> <span>Debian 12.8</span></label>
+                            <label class="radio-label"><input type="radio" name="操作系统" value="Amazon Linux 2023 (2023.9.20251105.0)" checked> <span>Amazon Linux 2023</span></label>
+                            <label class="radio-label"><input type="radio" name="操作系统" value="Amazon Linux 2 (2.0.20251105.0)"> <span>Amazon Linux 2</span></label>
+                            <label class="radio-label"><input type="radio" name="操作系统" value="Ubuntu 24.04 LTS"> <span>Ubuntu 24.04 LTS</span></label>
+                            <label class="radio-label"><input type="radio" name="操作系统" value="Ubuntu 22.04 LTS"> <span>Ubuntu 22.04 LTS</span></label>
+                            <label class="radio-label"><input type="radio" name="操作系统" value="Debian 12.12"> <span>Debian 12.12</span></label>
                             <label class="radio-label"><input type="radio" name="操作系统" value="Debian 11.11"> <span>Debian 11.11</span></label>
+                            <label class="radio-label"><input type="radio" name="操作系统" value="FreeBSD 14.3"> <span>FreeBSD 14.3</span></label>
+                            <label class="radio-label"><input type="radio" name="操作系统" value="FreeBSD 13.5"> <span>FreeBSD 13.5</span></label>
+                            <label class="radio-label"><input type="radio" name="操作系统" value="openSUSE 15.6"> <span>openSUSE 15.6</span></label>
                             <label class="radio-label"><input type="radio" name="操作系统" value="AlmaLinux 9.4"> <span>AlmaLinux 9.4</span></label>
-                            <label class="radio-label"><input type="radio" name="操作系统" value="CentOS 9"> <span>CentOS 9</span></label>
+                            <label class="radio-label"><input type="radio" name="操作系统" value="CentOS CS9-20230110"> <span>CentOS CS9</span></label>
                          </div>
                     </div>
                      <div class="form-group">
                         <label>选择配置套餐</label>
-                         <div class="pricing-table-container">
-                            <table class="pricing-table">
-                                <thead>
-                                    <tr>
-                                        <th>选择</th>
-                                        <th>配置</th>
-                                        <th>硬盘</th>
-                                        <th>月流量</th>
-                                        <th>价格 (6折优惠)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input type="radio" name="配置套餐" value="0.5GB/2vCPU, 20GB SSD, 1TB, ¥22/月 (三个月起付)" required></td>
-                                        <td>0.5GB 内存 / 2 vCPU</td>
-                                        <td>20GB SSD</td>
-                                        <td>1TB</td>
-                                        <td><span class="price">¥22 /月</span><br><span class="original-price">原价: ¥36/月</span><span class="price-note">三个月起付</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="radio" name="配置套餐" value="1GB/2vCPU, 40GB SSD, 2TB, ¥30/月"></td>
-                                        <td>1GB 内存 / 2 vCPU</td>
-                                        <td>40GB SSD</td>
-                                        <td>2TB</td>
-                                        <td><span class="price">¥30 /月</span><br><span class="original-price">原价: ¥51/月</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="radio" name="配置套餐" value="2GB/2vCPU, 60GB SSD, 3TB, ¥52/月"></td>
-                                        <td>2GB 内存 / 2 vCPU</td>
-                                        <td>60GB SSD</td>
-                                        <td>3TB</td>
-                                        <td><span class="price">¥52 /月</span><br><span class="original-price">原价: ¥87/月</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="radio" name="配置套餐" value="4GB/2vCPU, 80GB SSD, 4TB, ¥104/月"></td>
-                                        <td>4GB 内存 / 2 vCPU</td>
-                                        <td>80GB SSD</td>
-                                        <td>4TB</td>
-                                        <td><span class="price">¥104 /月</span><br><span class="original-price">原价: ¥174/月</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="radio" name="配置套餐" value="8GB/2vCPU, 160GB SSD, 5TB, ¥191/月"></td>
-                                        <td>8GB 内存 / 2 vCPU</td>
-                                        <td>160GB SSD</td>
-                                        <td>5TB</td>
-                                        <td><span class="price">¥191 /月</span><br><span class="original-price">原价: ¥319/月</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="radio" name="配置套餐" value="16GB/4vCPU, 320GB SSD, 6TB, ¥365/月"></td>
-                                        <td>16GB 内存 / 4 vCPU</td>
-                                        <td>320GB SSD</td>
-                                        <td>6TB</td>
-                                        <td><span class="price">¥365 /月</span><br><span class="original-price">原价: ¥609/月</span></td>
-                                    </tr>
-                                     <tr>
-                                        <td><input type="radio" name="配置套餐" value="32GB/8vCPU, 640GB SSD, 7TB, ¥713/月"></td>
-                                        <td>32GB 内存 / 8 vCPU</td>
-                                        <td>640GB SSD</td>
-                                        <td>7TB</td>
-                                        <td><span class="price">¥713 /月</span><br><span class="original-price">原价: ¥1189/月</span></td>
-                                    </tr>
-                                     <tr>
-                                        <td><input type="radio" name="配置套餐" value="64GB/16vCPU, 1280GB SSD, 8TB, ¥1670/月"></td>
-                                        <td>64GB 内存 / 16 vCPU</td>
-                                        <td>1280GB SSD</td>
-                                        <td>8TB</td>
-                                        <td><span class="price">¥1670 /月</span><br><span class="original-price">原价: ¥2784/月</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                         <div class="pricing-grid">
+                            <div class="pricing-card">
+                                <input type="radio" name="配置套餐" value="512MB/2vCPU, 20GB SSD, 1TB, ¥66/季 (三个月起付)" required>
+                                <h4>512MB / 2 vCPU</h4>
+                                <div class="specs">20GB SSD • 1TB 流量</div>
+                                <div class="price">¥66 /季</div>
+                                <div class="original-price">原价: ¥108/季</div>
+                                <div class="price-note">三个月起付</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="配置套餐" value="1GB/2vCPU, 40GB SSD, 2TB, ¥30/月">
+                                <h4>1GB / 2 vCPU</h4>
+                                <div class="specs">40GB SSD • 2TB 流量</div>
+                                <div class="price">¥30 /月</div>
+                                <div class="original-price">原价: ¥51/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="配置套餐" value="2GB/2vCPU, 60GB SSD, 3TB, ¥52/月">
+                                <h4>2GB / 2 vCPU</h4>
+                                <div class="specs">60GB SSD • 3TB 流量</div>
+                                <div class="price">¥52 /月</div>
+                                <div class="original-price">原价: ¥87/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="配置套餐" value="4GB/2vCPU, 80GB SSD, 4TB, ¥104/月">
+                                <h4>4GB / 2 vCPU</h4>
+                                <div class="specs">80GB SSD • 4TB 流量</div>
+                                <div class="price">¥104 /月</div>
+                                <div class="original-price">原价: ¥174/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="配置套餐" value="8GB/2vCPU, 160GB SSD, 5TB, ¥191/月">
+                                <h4>8GB / 2 vCPU</h4>
+                                <div class="specs">160GB SSD • 5TB 流量</div>
+                                <div class="price">¥191 /月</div>
+                                <div class="original-price">原价: ¥319/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="配置套餐" value="16GB/4vCPU, 320GB SSD, 6TB, ¥365/月">
+                                <h4>16GB / 4 vCPU</h4>
+                                <div class="specs">320GB SSD • 6TB 流量</div>
+                                <div class="price">¥365 /月</div>
+                                <div class="original-price">原价: ¥609/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="配置套餐" value="32GB/8vCPU, 640GB SSD, 7TB, ¥713/月">
+                                <h4>32GB / 8 vCPU</h4>
+                                <div class="specs">640GB SSD • 7TB 流量</div>
+                                <div class="price">¥713 /月</div>
+                                <div class="original-price">原价: ¥1189/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="配置套餐" value="64GB/16vCPU, 1280GB SSD, 8TB, ¥1670/月">
+                                <h4>64GB / 16 vCPU</h4>
+                                <div class="specs">1280GB SSD • 8TB 流量</div>
+                                <div class="price">¥1670 /月</div>
+                                <div class="original-price">原价: ¥2784/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="配置套餐" value="128GB/32vCPU, 1280GB SSD, 9TB, ¥3845/月">
+                                <h4>128GB / 32 vCPU</h4>
+                                <div class="specs">1280GB SSD • 9TB 流量</div>
+                                <div class="price">¥3845 /月</div>
+                                <div class="original-price">原价: ¥6409/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="配置套餐" value="192GB/48vCPU, 1280GB SSD, 10TB, ¥5759/月">
+                                <h4>192GB / 48 vCPU</h4>
+                                <div class="specs">1280GB SSD • 10TB 流量</div>
+                                <div class="price">¥5759 /月</div>
+                                <div class="original-price">原价: ¥9599/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="配置套餐" value="256GB/64vCPU, 1280GB SSD, 10TB, ¥7673/月">
+                                <h4>256GB / 64 vCPU</h4>
+                                <div class="specs">1280GB SSD • 10TB 流量</div>
+                                <div class="price">¥7673 /月</div>
+                                <div class="original-price">原价: ¥12789/月</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -537,10 +619,10 @@
     <!-- UI Enhancement Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const pricingTableRows = document.querySelectorAll('.pricing-table tbody tr');
-            pricingTableRows.forEach(row => {
-                row.addEventListener('click', function() {
-                    pricingTableRows.forEach(r => r.classList.remove('selected'));
+            const pricingCards = document.querySelectorAll('.pricing-card');
+            pricingCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    pricingCards.forEach(c => c.classList.remove('selected'));
                     this.classList.add('selected');
                     const radio = this.querySelector('input[type="radio"]');
                     if (radio) {
@@ -615,7 +697,7 @@
               status.style.color = '#155724';
               form.reset();
               // Also reset UI elements that don't reset automatically
-              document.querySelectorAll('.pricing-table tbody tr.selected').forEach(r => r.classList.remove('selected'));
+              document.querySelectorAll('.pricing-card.selected').forEach(c => c.classList.remove('selected'));
               document.querySelectorAll('.radio-label.checked').forEach(l => l.classList.remove('checked'));
 
             } else {

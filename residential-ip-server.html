@@ -110,6 +110,74 @@
         .footer-contact a { color: #ffffff; text-decoration: none; transition: color 0.3s; margin: 0 15px; display: inline-flex; align-items: center; }
         .footer-contact a:hover { color: #007bff; }
         .footer-contact svg { width: 20px; height: 20px; margin-right: 8px; fill: currentColor; }
+
+        /* Pricing Grid */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .pricing-card {
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .pricing-card:hover {
+            border-color: #007bff;
+            box-shadow: 0 4px 15px rgba(0,123,255,0.1);
+        }
+        .pricing-card input[type="radio"] {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .pricing-card.selected {
+            border-color: #007bff;
+            background-color: #f8f9ff;
+        }
+        .pricing-card h4 {
+            margin: 0 0 10px 0;
+            color: #007bff;
+            font-size: 18px;
+        }
+        .pricing-card .specs {
+            color: #6c757d;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        .pricing-card .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #dc3545;
+            margin-bottom: 5px;
+        }
+        @media (max-width: 1200px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .location-regions h5 {
+            margin: 20px 0 10px 0;
+            color: #007bff;
+            font-size: 16px;
+            font-weight: 600;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 5px;
+        }
+        .location-regions h5:first-child {
+            margin-top: 0;
+        }
     </style>
 </head>
 <body>
@@ -197,9 +265,9 @@
                 <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
                 
                 <div class="form-step">
-                    <div class="form-group"><label>1. 选择IP所在地区</label><div class="radio-group"><label class="radio-label"><input type="radio" name="IP地区" value="美国" checked><span>美国</span></label><label class="radio-label"><input type="radio" name="IP地区" value="日本"><span>日本</span></label><label class="radio-label"><input type="radio" name="IP地区" value="韩国"><span>韩国</span></label><label class="radio-label"><input type="radio" name="IP地区" value="英国"><span>英国</span></label><label class="radio-label"><input type="radio" name="IP地区" value="德国"><span>德国</span></label><label class="radio-label"><input type="radio" name="IP地区" value="加拿大"><span>加拿大</span></label><label class="radio-label"><input type="radio" name="IP地区" value="其他"><span>其他</span></label></div></div>
+                    <div class="form-group"><label>1. 选择IP所在地区</label><div class="location-regions"><h5>亚洲</h5><div class="radio-group location-group"><label class="radio-label"><input type="radio" name="IP地区" value="日本" checked><span>日本</span></label><label class="radio-label"><input type="radio" name="IP地区" value="韩国"><span>韩国</span></label><label class="radio-label"><input type="radio" name="IP地区" value="香港"><span>香港</span></label><label class="radio-label"><input type="radio" name="IP地区" value="台湾"><span>台湾</span></label><label class="radio-label"><input type="radio" name="IP地区" value="新加坡"><span>新加坡</span></label><label class="radio-label"><input type="radio" name="IP地区" value="泰国"><span>泰国</span></label><label class="radio-label"><input type="radio" name="IP地区" value="印度"><span>印度</span></label></div><h5>欧洲</h5><div class="radio-group location-group"><label class="radio-label"><input type="radio" name="IP地区" value="英国"><span>英国</span></label><label class="radio-label"><input type="radio" name="IP地区" value="德国"><span>德国</span></label><label class="radio-label"><input type="radio" name="IP地区" value="法国"><span>法国</span></label><label class="radio-label"><input type="radio" name="IP地区" value="意大利"><span>意大利</span></label><label class="radio-label"><input type="radio" name="IP地区" value="西班牙"><span>西班牙</span></label><label class="radio-label"><input type="radio" name="IP地区" value="荷兰"><span>荷兰</span></label></div><div class="radio-group location-group"><label class="radio-label"><input type="radio" name="IP地区" value="奥地利"><span>奥地利</span></label><label class="radio-label"><input type="radio" name="IP地区" value="波兰"><span>波兰</span></label><label class="radio-label"><input type="radio" name="IP地区" value="罗马尼亚"><span>罗马尼亚</span></label><label class="radio-label"><input type="radio" name="IP地区" value="拉脱维亚"><span>拉脱维亚</span></label><label class="radio-label"><input type="radio" name="IP地区" value="土耳其"><span>土耳其</span></label><label class="radio-label"><input type="radio" name="IP地区" value="乌克兰"><span>乌克兰</span></label></div><h5>美洲</h5><div class="radio-group location-group"><label class="radio-label"><input type="radio" name="IP地区" value="美国"><span>美国</span></label><label class="radio-label"><input type="radio" name="IP地区" value="加拿大"><span>加拿大</span></label><label class="radio-label"><input type="radio" name="IP地区" value="巴西"><span>巴西</span></label></div><h5>中东</h5><div class="radio-group location-group"><label class="radio-label"><input type="radio" name="IP地区" value="以色列"><span>以色列</span></label></div></div></div>
                     <div class="form-group"><label>2. 选择服务器操作系统</label><div class="radio-group"><label class="radio-label"><input type="radio" name="操作系统" value="Windows 2022" checked><span>Windows 2022</span></label><label class="radio-label"><input type="radio" name="操作系统" value="CentOS 9"><span>CentOS 9</span></label><label class="radio-label"><input type="radio" name="操作系统" value="Ubuntu 22"><span>Ubuntu 22</span></label><label class="radio-label"><input type="radio" name="操作系统" value="Debian 11"><span>Debian 11</span></label><label class="radio-label"><input type="radio" name="操作系统" value="其他"><span>其他</span></label></div></div>
-                    <div class="form-group"><label>3. 选择服务器配置和规格</label><div class="radio-group"><label class="radio-label"><input type="radio" name="配置规格" value="2核/4G内存, 5Gbps带宽" checked><span>2核心/4G内存, 5Gbps带宽</span></label><label class="radio-label"><input type="radio" name="配置规格" value="4核/16G内存, 5Gbps带宽"><span>4核心/16G内存, 5Gbps带宽</span></label><label class="radio-label"><input type="radio" name="配置规格" value="8核/64G内存, 10Gbps带宽"><span>8核心/64G内存, 10Gbps带宽</span></label></div></div>
+                    <div class="form-group"><label>3. 选择服务器配置和规格</label><div class="pricing-grid"><div class="pricing-card"><input type="radio" name="配置规格" value="2核心/4G内存, 5Gbps带宽, 1TB流量, ¥200/月" checked><h4>2核心 / 4G内存</h4><div class="specs">5Gbps带宽 • 1TB流量</div><div class="price">¥200 /月</div></div><div class="pricing-card"><input type="radio" name="配置规格" value="4核心/16G内存, 5Gbps带宽, 2TB流量, ¥500/月"><h4>4核心 / 16G内存</h4><div class="specs">5Gbps带宽 • 2TB流量</div><div class="price">¥500 /月</div></div><div class="pricing-card"><input type="radio" name="配置规格" value="8核心/64G内存, 10Gbps带宽, 4TB流量, ¥1000/月"><h4>8核心 / 64G内存</h4><div class="specs">10Gbps带宽 • 4TB流量</div><div class="price">¥1000 /月</div></div><div class="pricing-card"><input type="radio" name="配置规格" value="16核心/64G内存, 10Gbps带宽, 6TB流量, ¥1600/月"><h4>16核心 / 64G内存</h4><div class="specs">10Gbps带宽 • 6TB流量</div><div class="price">¥1600 /月</div></div></div></div>
                     <div class="form-group"><label>4. 选择付款方式</label><div class="radio-group"><label class="radio-label"><input type="radio" name="付款方式" value="USDT 数字加密货币" checked><span>USDT 数字加密货币</span></label><label class="radio-label"><input type="radio" name="付款方式" value="转数快– FPS 香港"><span>轉數快– FPS 香港</span></label><label class="radio-label"><input type="radio" name="付款方式" value="信用卡"><span>信用卡</span></label><label class="radio-label"><input type="radio" name="付款方式" value="在线商城"><span>在线商城</span></label><label class="radio-label"><input type="radio" name="付款方式" value="支付宝/微信"><span>支付宝/微信</span></label></div></div>
                     <div class="form-group"><label for="email">5. 您的Email邮箱 (必填)</label><input type="email" id="email" name="email" required placeholder="我们将通过此邮箱与您联系"></div>
                     <div class="form-group"><label for="contact">您的Telegram或其他联系方式 (选填)</label><input type="text" id="contact" name="其他联系方式" placeholder="例如 Telegram: @your_id"></div>
@@ -242,6 +310,18 @@
                 };
                 group.addEventListener('change', updateStyles);
                 updateStyles();
+            });
+            
+            const pricingCards = document.querySelectorAll('.pricing-card');
+            pricingCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    pricingCards.forEach(c => c.classList.remove('selected'));
+                    this.classList.add('selected');
+                    const radio = this.querySelector('input[type="radio"]');
+                    if (radio) {
+                        radio.checked = true;
+                    }
+                });
             });
         });
     </script>

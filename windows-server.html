@@ -133,6 +133,90 @@
         .price-note { font-size: 12px; color: #6c757d; display: block; }
         .popular-badge { background: #ffc107; color: #343a40; padding: 3px 8px; font-size: 12px; border-radius: 10px; font-weight: bold; display: inline-block; margin-left: 8px; }
 
+        /* Pricing Grid */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .pricing-card {
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .pricing-card:hover {
+            border-color: #007bff;
+            box-shadow: 0 4px 15px rgba(0,123,255,0.1);
+        }
+        .pricing-card input[type="radio"] {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .pricing-card.selected {
+            border-color: #007bff;
+            background-color: #f8f9ff;
+        }
+        .pricing-card h4 {
+            margin: 0 0 10px 0;
+            color: #007bff;
+            font-size: 18px;
+        }
+        .pricing-card .specs {
+            color: #6c757d;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        .pricing-card .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #dc3545;
+            margin-bottom: 5px;
+        }
+        .pricing-card .original-price {
+            font-size: 12px;
+            color: #6c757d;
+            text-decoration: line-through;
+        }
+        .pricing-card .price-note {
+            font-size: 11px;
+            color: #28a745;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        .location-regions h5 {
+            margin: 20px 0 10px 0;
+            color: #007bff;
+            font-size: 16px;
+            font-weight: 600;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 5px;
+        }
+        .location-regions h5:first-child {
+            margin-top: 0;
+        }
+        @media (max-width: 1200px) {
+            .pricing-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Submit Button & Status */
         .submit-button {
             display: block; width: 100%; background: #28a745; color: #fff; padding: 15px 35px;
@@ -229,104 +313,111 @@
                 <div class="form-step">
                     <h3>第一步：选择套餐和接入点</h3>
                     <div class="form-group">
-                        <label for="location">选择离您最近的接入点 (数据中心)</label>
-                        <select id="location" name="云桌面机房位置" required>
-                           <option value="" disabled selected>--请选择一个数据中心--</option>
-                           <optgroup label="美洲">
-                                <option value="美国东部 (弗吉尼亚北部)">美国东部 (弗吉尼亚北部)</option>
-                                <option value="美国西部 (俄勒冈)">美国西部 (俄勒冈)</option>
-                                <option value="加拿大 (中部)">加拿大 (中部)</option>
-                                <option value="南美洲 (圣保罗)">南美洲 (圣保罗)</option>
-                           </optgroup>
-                           <optgroup label="亚太地区">
-                                <option value="东京 (日本)">东京 (日本)</option>
-                                <option value="首尔 (韩国)">首尔 (韩国)</option>
-                                <option value="新加坡">新加坡</option>
-                                <option value="悉尼 (澳大利亚)">悉尼 (澳大利亚)</option>
-                                <option value="孟买 (印度)">孟买 (印度)</option>
-                           </optgroup>
-                           <optgroup label="欧洲、中东 & 非洲">
-                                <option value="法兰克福 (德国)">法兰克福 (德国)</option>
-                                <option value="爱尔兰">爱尔兰</option>
-                                <option value="伦敦 (英国)">伦敦 (英国)</option>
-                                <option value="巴黎 (法国)">巴黎 (法国)</option>
-                                <option value="开普敦 (非洲)">开普敦 (非洲)</option>
-                           </optgroup>
-                        </select>
+                        <label>选择离您最近的接入点 (数据中心)</label>
+                        <div class="radio-group location-group">
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="东京 ap-northeast-1" required> <span>东京</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="首尔 ap-northeast-2"> <span>首尔</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="新加坡 ap-southeast-1"> <span>新加坡</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="悉尼 ap-southeast-2"> <span>悉尼</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="孟买 ap-south-1"> <span>孟买</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="美国 (北维吉尼亚) us-east-1"> <span>美国 (北维吉尼亚)</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="美国 (奥勒冈州) us-west-2"> <span>美国 (奥勒冈州)</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="加拿大 (蒙特利尔) ca-central-1"> <span>加拿大 (蒙特利尔)</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="爱尔兰 eu-west-1"> <span>爱尔兰</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="伦敦 eu-west-2"> <span>伦敦</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="巴黎 eu-west-3"> <span>巴黎</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="法兰克福 eu-central-1"> <span>法兰克福</span></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                         <label>选择操作系统</label>
+                         <div class="radio-group os-group">
+                            <label class="radio-label"><input type="radio" name="操作系统" value="Windows Server 2022" checked> <span>Windows Server 2022</span></label>
+                            <label class="radio-label"><input type="radio" name="操作系统" value="Windows Server 2019"> <span>Windows Server 2019</span></label>
+                            <label class="radio-label"><input type="radio" name="操作系统" value="Windows Server 2016"> <span>Windows Server 2016</span></label>
+                         </div>
                     </div>
                      <div class="form-group">
-                        <label>选择 Windows 云桌面定价方案 (所有套餐均享4折优惠)</label>
-                         <div class="pricing-table-container">
-                            <table class="pricing-table">
-                                <thead>
-                                    <tr>
-                                        <th>选择</th>
-                                        <th>套餐类型</th>
-                                        <th>核心配置</th>
-                                        <th>推荐用途</th>
-                                        <th>月流量</th>
-                                        <th>优惠价格</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input type="radio" name="云桌面套餐" value="入门版: 2vCPU/1GB/40GB, ¥35/月 (三个月起付)" required></td>
-                                        <td>入门版</td>
-                                        <td>2 vCPU / 1GB 内存 / 40GB SSD</td>
-                                        <td>轻量级办公、文本处理</td>
-                                        <td>2TB</td>
-                                        <td><span class="price">¥35 /月</span><br><span class="original-price">¥87/月</span><span class="price-note">三个月起付</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="radio" name="云桌面套餐" value="标准版: 2vCPU/2GB/60GB, ¥58/月"></td>
-                                        <td>标准版</td>
-                                        <td>2 vCPU / 2GB 内存 / 60GB SSD</td>
-                                        <td>日常办公、网页浏览</td>
-                                        <td>3TB</td>
-                                        <td><span class="price">¥58 /月</span><br><span class="original-price">¥145/月</span></td>
-                                    </tr>
-                                    <tr class="popular-row">
-                                        <td><input type="radio" name="云桌面套餐" value="性能版: 2vCPU/4GB/80GB, ¥116/月"></td>
-                                        <td>性能版 <span class="popular-badge">最受欢迎</span></td>
-                                        <td>2 vCPU / 4GB 内存 / 80GB SSD</td>
-                                        <td>复杂文档处理、多任务操作</td>
-                                        <td>4TB</td>
-                                        <td><span class="price">¥116 /月</span><br><span class="original-price">¥290/月</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="radio" name="云桌面套餐" value="增强版: 2vCPU/8GB/160GB, ¥203/月"></td>
-                                        <td>增强版</td>
-                                        <td>2 vCPU / 8GB 内存 / 160GB SSD</td>
-                                        <td>软件开发、数据分析</td>
-                                        <td>5TB</td>
-                                        <td><span class="price">¥203 /月</span><br><span class="original-price">¥508/月</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="radio" name="云桌面套餐" value="专业版: 4vCPU/16GB/320GB, ¥348/月"></td>
-                                        <td>专业版</td>
-                                        <td>4 vCPU / 16GB 内存 / 320GB SSD</td>
-                                        <td>高性能计算、设计渲染</td>
-                                        <td>6TB</td>
-                                        <td><span class="price">¥348 /月</span><br><span class="original-price">¥870/月</span></td>
-                                    </tr>
-                                     <tr>
-                                        <td><input type="radio" name="云桌面套餐" value="旗舰版: 8vCPU/32GB/640GB, ¥696/月"></td>
-                                        <td>旗舰版</td>
-                                        <td>8 vCPU / 32GB 内存 / 640GB SSD</td>
-                                        <td>大型应用、视频处理</td>
-                                        <td>7TB</td>
-                                        <td><span class="price">¥696 /月</span><br><span class="original-price">¥1740/月</span></td>
-                                    </tr>
-                                     <tr>
-                                        <td><input type="radio" name="云桌面套餐" value="至尊版: 16vCPU/64GB/1280GB, ¥1653/月"></td>
-                                        <td>至尊版</td>
-                                        <td>16 vCPU / 64GB 内存 / 1280GB SSD</td>
-                                        <td>图形工作站、大规模计算</td>
-                                        <td>8TB</td>
-                                        <td><span class="price">¥1653 /月</span><br><span class="original-price">¥4133/月</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <label>选择 Windows 云桌面定价方案 (4折优惠)</label>
+                         <div class="pricing-grid">
+                            <div class="pricing-card">
+                                <input type="radio" name="云桌面套餐" value="512MB/2vCPU, 30GB SSD, 1TB, ¥28/月 (三个月起付)" required>
+                                <h4>512MB / 2 vCPU</h4>
+                                <div class="specs">30GB SSD • 1TB 流量</div>
+                                <div class="price">¥28 /月</div>
+                                <div class="original-price">原价: ¥69/月</div>
+                                <div class="price-note">三个月起付</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="云桌面套餐" value="1GB/2vCPU, 40GB SSD, 2TB, ¥40/月">
+                                <h4>1GB / 2 vCPU</h4>
+                                <div class="specs">40GB SSD • 2TB 流量</div>
+                                <div class="price">¥40 /月</div>
+                                <div class="original-price">原价: ¥101/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="云桌面套餐" value="2GB/2vCPU, 60GB SSD, 3TB, ¥64/月">
+                                <h4>2GB / 2 vCPU</h4>
+                                <div class="specs">60GB SSD • 3TB 流量</div>
+                                <div class="price">¥64 /月</div>
+                                <div class="original-price">原价: ¥159/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="云桌面套餐" value="4GB/2vCPU, 80GB SSD, 4TB, ¥128/月">
+                                <h4>4GB / 2 vCPU</h4>
+                                <div class="specs">80GB SSD • 4TB 流量</div>
+                                <div class="price">¥128 /月</div>
+                                <div class="original-price">原价: ¥319/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="云桌面套餐" value="8GB/2vCPU, 160GB SSD, 5TB, ¥214/月">
+                                <h4>8GB / 2 vCPU</h4>
+                                <div class="specs">160GB SSD • 5TB 流量</div>
+                                <div class="price">¥214 /月</div>
+                                <div class="original-price">原价: ¥536/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="云桌面套餐" value="16GB/4vCPU, 320GB SSD, 6TB, ¥360/月">
+                                <h4>16GB / 4 vCPU</h4>
+                                <div class="specs">320GB SSD • 6TB 流量</div>
+                                <div class="price">¥360 /月</div>
+                                <div class="original-price">原价: ¥899/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="云桌面套餐" value="32GB/8vCPU, 640GB SSD, 7TB, ¥707/月">
+                                <h4>32GB / 8 vCPU</h4>
+                                <div class="specs">640GB SSD • 7TB 流量</div>
+                                <div class="price">¥707 /月</div>
+                                <div class="original-price">原价: ¥1768/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="云桌面套餐" value="64GB/16vCPU, 1280GB SSD, 8TB, ¥1664/月">
+                                <h4>64GB / 16 vCPU</h4>
+                                <div class="specs">1280GB SSD • 8TB 流量</div>
+                                <div class="price">¥1664 /月</div>
+                                <div class="original-price">原价: ¥4159/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="云桌面套餐" value="128GB/32vCPU, 1280GB SSD, 9TB, ¥3636/月">
+                                <h4>128GB / 32 vCPU</h4>
+                                <div class="specs">1280GB SSD • 9TB 流量</div>
+                                <div class="price">¥3636 /月</div>
+                                <div class="original-price">原价: ¥9090/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="云桌面套餐" value="192GB/48vCPU, 1280GB SSD, 10TB, ¥5462/月">
+                                <h4>192GB / 48 vCPU</h4>
+                                <div class="specs">1280GB SSD • 10TB 流量</div>
+                                <div class="price">¥5462 /月</div>
+                                <div class="original-price">原价: ¥13655/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="云桌面套餐" value="256GB/64vCPU, 1280GB SSD, 10TB, ¥7259/月">
+                                <h4>256GB / 64 vCPU</h4>
+                                <div class="specs">1280GB SSD • 10TB 流量</div>
+                                <div class="price">¥7259 /月</div>
+                                <div class="original-price">原价: ¥18148/月</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -399,19 +490,15 @@
     <!-- UI Enhancement Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const pricingTableRows = document.querySelectorAll('.pricing-table tbody tr');
-            pricingTableRows.forEach(row => {
-                row.addEventListener('click', function() {
-                    pricingTableRows.forEach(r => r.classList.remove('selected'));
+            const pricingCards = document.querySelectorAll('.pricing-card');
+            pricingCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    pricingCards.forEach(c => c.classList.remove('selected'));
                     this.classList.add('selected');
                     const radio = this.querySelector('input[type="radio"]');
                     if (radio) { radio.checked = true; }
                 });
             });
-            const popularRow = document.querySelector('.popular-row');
-            if(popularRow) {
-                popularRow.click();
-            }
 
             const radioGroups = document.querySelectorAll('.radio-group');
             radioGroups.forEach(group => {
@@ -474,10 +561,8 @@
               status.style.borderColor = '#c3e6cb';
               status.style.color = '#155724';
               form.reset();
-              document.querySelectorAll('.pricing-table tbody tr.selected').forEach(r => r.classList.remove('selected'));
+              document.querySelectorAll('.pricing-card.selected').forEach(c => c.classList.remove('selected'));
               document.querySelectorAll('.radio-label.checked').forEach(l => l.classList.remove('checked'));
-              const popularRow = document.querySelector('.popular-row');
-              if(popularRow) { popularRow.click(); }
             } else {
               response.json().then(data => {
                 if (Object.hasOwn(data, 'errors')) {
