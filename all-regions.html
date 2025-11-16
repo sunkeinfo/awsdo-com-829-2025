@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS 全球基础设施：区域与本地区域 - AWSDO.COM</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0SXZXT6FBM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0SXZXT6FBM');
+    </script>
+    
+    <style>
+        /* General Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+        .section {
+            padding: 60px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 32px;
+            color: #343a40;
+            font-weight: 600;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: #ffffff;
+            padding: 15px 0;
+            border-bottom: 1px solid #e9ecef;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        header .logo img {
+            max-width: 200px;
+            vertical-align: middle;
+        }
+        nav {
+            margin-top: 15px;
+        }
+        nav ul {
+            padding: 0;
+            list-style: none;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav a {
+            color: #495057;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        nav a:hover, nav a.active {
+            color: #007bff;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            color: #ffffff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 20px;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: #ffffff;
+            padding: 60px 0;
+        }
+        h1, h2, h3 {
+            color: #343a40;
+        }
+        h2 {
+            font-size: 28px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .regions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #ff9900;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .announced {
+            font-style: italic;
+            color: #555;
+        }
+        /* Footer */
+        footer {
+            background: #343a40;
+            color: #f8f9fa;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+        footer p { margin: 8px 0; }
+        .footer-contact { margin-top: 15px; }
+        .footer-contact a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s;
+            margin: 0 15px;
+            display: inline-flex;
+            align-items: center;
+        }
+        .footer-contact a:hover { color: #007bff; }
+        .footer-contact svg { width: 20px; height: 20px; margin-right: 8px; fill: currentColor; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="awsdologo.png" alt="AWSDO.COM Logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="linux-server.html">Linux云服务器</a></li>
+                    <li><a href="windows-server.html">Windows服务器</a></li>
+                    <li><a href="residential-ip-server.html">住宅IP服务器</a></li>
+                    <li><a href="performance-server.html">高性能服务器</a></li>
+                    <li><a href="aws-billing.html">AWS账单代付</a></li>
+                    <li><a href="aws-ai.html">AWS智能AI</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>AWS 全球基础设施</h1>
+            <p>亚马逊云科技 (AWS) 的全球云基础设施是最安全、扩展性和可靠性最高的云平台。以下列表汇总了 AWS 在全球范围内的主要地理区域和本地区域。</p>
+        </div>
+    </section>
+
+    <div class="main-content">
+        <div class="container">
+            <h2>AWS 主要地理区域 (Regions)</h2>
+            <p>每个 AWS 区域都是一个独立的地理位置，拥有多个相互隔离的可用区 (Availability Zones)。</p>
+            <div class="regions-grid">
+        <div class="card">
+            <h3>北美洲</h3>
+            <table>
+                <tr><th>区域名称</th><th>区域代码</th></tr>
+                <tr><td>美国东部（弗吉尼亚北部）</td><td>us-east-1</td></tr>
+                <tr><td>美国东部（俄亥俄）</td><td>us-east-2</td></tr>
+                <tr><td>美国西部（加利福尼亚北部）</td><td>us-west-1</td></tr>
+                <tr><td>美国西部（俄勒冈）</td><td>us-west-2</td></tr>
+                <tr><td>加拿大（中部）</td><td>ca-central-1</td></tr>
+                <tr><td>加拿大西部（卡尔加里）</td><td>ca-west-1</td></tr>
+                <tr><td>AWS GovCloud（美国东部）</td><td>us-gov-east-1</td></tr>
+                <tr><td>AWS GovCloud（美国西部）</td><td>us-gov-west-1</td></tr>
+            </table>
+        </div>
+        <div class="card">
+            <h3>南美洲</h3>
+            <table>
+                <tr><th>区域名称</th><th>区域代码</th></tr>
+                <tr><td>圣保罗</td><td>sa-east-1</td></tr>
+            </table>
+        </div>
+        <div class="card">
+            <h3>欧洲</h3>
+            <table>
+                <tr><th>区域名称</th><th>区域代码</th></tr>
+                <tr><td>欧洲（爱尔兰）</td><td>eu-west-1</td></tr>
+                <tr><td>欧洲（法兰克福）</td><td>eu-central-1</td></tr>
+                <tr><td>欧洲（伦敦）</td><td>eu-west-2</td></tr>
+                <tr><td>欧洲（米兰）</td><td>eu-south-1</td></tr>
+                <tr><td>欧洲（巴黎）</td><td>eu-west-3</td></tr>
+                <tr><td>欧洲（斯德哥尔摩）</td><td>eu-north-1</td></tr>
+                <tr><td>欧洲（西班牙）</td><td>eu-south-2</td></tr>
+                <tr><td>欧洲（苏黎世）</td><td>eu-central-2</td></tr>
+            </table>
+        </div>
+        <div class="card">
+            <h3>中东</h3>
+            <table>
+                <tr><th>区域名称</th><th>区域代码</th></tr>
+                <tr><td>中东（巴林）</td><td>me-south-1</td></tr>
+                <tr><td>中东（阿联酋）</td><td>me-central-1</td></tr>
+                <tr><td>以色列（特拉维夫）</td><td>il-central-1</td></tr>
+            </table>
+        </div>
+        <div class="card">
+            <h3>非洲</h3>
+            <table>
+                <tr><th>区域名称</th><th>区域代码</th></tr>
+                <tr><td>非洲（开普敦）</td><td>af-south-1</td></tr>
+            </table>
+        </div>
+        <div class="card">
+            <h3>亚太地区</h3>
+            <table>
+                <tr><th>区域名称</th><th>区域代码</th></tr>
+                <tr><td>亚太地区（香港）</td><td>ap-east-1</td></tr>
+                <tr><td>亚太地区（海得拉巴）</td><td>ap-south-2</td></tr>
+                <tr><td>亚太地区（雅加达）</td><td>ap-southeast-3</td></tr>
+                <tr><td>亚太地区（吉隆坡）</td><td>ap-southeast-5</td></tr>
+                <tr><td>亚太地区（墨尔本）</td><td>ap-southeast-4</td></tr>
+                <tr><td>亚太地区（孟买）</td><td>ap-south-1</td></tr>
+                <tr><td>亚太地区（大阪）</td><td>ap-northeast-3</td></tr>
+                <tr><td>亚太地区（首尔）</td><td>ap-northeast-2</td></tr>
+                <tr><td>亚太地区（新加坡）</td><td>ap-southeast-1</td></tr>
+                <tr><td>亚太地区（悉尼）</td><td>ap-southeast-2</td></tr>
+                <tr><td>亚太地区（东京）</td><td>ap-northeast-1</td></tr>
+                <tr><td>亚太地区（曼谷）</td><td>ap-southeast-7</td></tr>
+                <tr><td>中国（北京）</td><td>cn-north-1</td></tr>
+                <tr><td>中国（宁夏）</td><td>cn-northwest-1</td></tr>
+            </table>
+        </div>
+            </div>
+            <p class="announced">此外，AWS 已宣布计划在新西兰、菲律宾、台湾等地增加新的区域。</p>
+
+            <h2>AWS 本地区域 (Local Zones)</h2>
+            <p>AWS Local Zones 将计算、存储、数据库和其他服务部署到更靠近最终用户的地理位置，是其父区域 (Parent Region) 的一个扩展。</p>
+            <div class="regions-grid">
+         <div class="card">
+            <h3>北美洲</h3>
+            <table>
+                <tr><th>位置</th><th>父区域</th></tr>
+                <tr><td>亚特兰大</td><td>美国东部（弗吉尼亚北部）</td></tr>
+                <tr><td>波士顿</td><td>美国东部（弗吉尼亚北部）</td></tr>
+                <tr><td>芝加哥</td><td>美国东部（弗吉尼亚北部）</td></tr>
+                <tr><td>达拉斯</td><td>美国东部（弗吉尼亚北部）</td></tr>
+                <tr><td>丹佛</td><td>美国西部（俄勒冈）</td></tr>
+                <tr><td>休斯顿</td><td>美国东部（弗吉尼亚北部）</td></tr>
+                <tr><td>堪萨斯城</td><td>美国东部（弗吉尼亚北部）</td></tr>
+                <tr><td>拉斯维加斯</td><td>美国西部（俄勒冈）</td></tr>
+                <tr><td>洛杉矶</td><td>美国西部（俄勒冈）</td></tr>
+                <tr><td>迈阿密</td><td>美国东部（弗吉尼亚北部）</td></tr>
+                <tr><td>明尼阿波利斯</td><td>美国东部（弗吉尼亚北部）</td></tr>
+                <tr><td>纽约市</td><td>美国东部（弗吉尼亚北部）</td></tr>
+                <tr><td>费城</td><td>美国东部（弗吉尼亚北部）</td></tr>
+                <tr><td>凤凰城</td><td>美国西部（俄勒冈）</td></tr>
+                <tr><td>波特兰</td><td>美国西部（俄勒冈）</td></tr>
+                <tr><td>西雅图</td><td>美国西部（俄勒冈）</td></tr>
+                <tr><td>多伦多</td><td>加拿大（中部）</td></tr>
+            </table>
+        </div>
+        <div class="card">
+            <h3>南美洲</h3>
+            <table>
+                <tr><th>位置</th><th>父区域</th></tr>
+                <tr><td>布宜诺斯艾利斯，阿根廷</td><td>南美洲（圣保罗）</td></tr>
+                <tr><td>利马，秘鲁</td><td>南美洲（圣保罗）</td></tr>
+                <tr><td>克雷塔罗，墨西哥</td><td>美国东部（弗吉尼亚北部）</td></tr>
+                <tr><td>圣地亚哥，智利</td><td>南美洲（圣保罗）</td></tr>
+                <tr><td>波哥大，哥伦比亚</td><td>南美洲（圣保罗）</td></tr>
+            </table>
+        </div>
+        <div class="card">
+            <h3>欧洲、中东和非洲</h3>
+            <table>
+                <tr><th>位置</th><th>父区域</th></tr>
+                <tr><td>阿姆斯特丹，荷兰</td><td>欧洲（法兰克福）</td></tr>
+                <tr><td>雅典，希腊</td><td>欧洲（法兰克福）</td></tr>
+                <tr><td>柏林，德国</td><td>欧洲（法兰克福）</td></tr>
+                <tr><td>布鲁塞尔，比利时</td><td>欧洲（法兰克福）</td></tr>
+                <tr><td>哥本哈根，丹麦</td><td>欧洲（斯德哥尔摩）</td></tr>
+                <tr><td>汉堡，德国</td><td>欧洲（法兰克福）</td></tr>
+                <tr><td>赫尔辛基，芬兰</td><td>欧洲（斯德哥尔摩）</td></tr>
+                <tr><td>约翰内斯堡，南非</td><td>非洲（开普敦）</td></tr>
+                <tr><td>拉各斯，尼日利亚</td><td>非洲（开普敦）</td></tr>
+                <tr><td>里斯本，葡萄牙</td><td>欧洲（爱尔兰）</td></tr>
+                <tr><td>马斯喀特，阿曼</td><td>中东（巴林）</td></tr>
+                <tr><td>内罗毕，肯尼亚</td><td>非洲（开普敦）</td></tr>
+                <tr><td>华沙，波兰</td><td>欧洲（法兰克福）</td></tr>
+            </table>
+        </div>
+        <div class="card">
+            <h3>亚太地区</h3>
+            <table>
+                <tr><th>位置</th><th>父区域</th></tr>
+                <tr><td>奥克兰，新西兰</td><td>亚太地区（悉尼）</td></tr>
+                <tr><td>曼谷，泰国</td><td>亚太地区（新加坡）</td></tr>
+                <tr><td>北京，中国</td><td>中国（北京）</td></tr>
+                <tr><td>德里，印度</td><td>亚太地区（孟买）</td></tr>
+                <tr><td>加尔各答，印度</td><td>亚太地区（孟买）</td></tr>
+                <tr><td>河内，越南</td><td>亚太地区（新加坡）</td></tr>
+                <tr><td>马尼拉，菲律宾</td><td>亚太地区（新加坡）</td></tr>
+                <tr><td>珀斯，澳大利亚</td><td>亚太地区（悉尼）</td></tr>
+                <tr><td>台北，中国台湾</td><td>亚太地区（东京）</td></tr>
+            </table>
+        </div>
+            </div>
+            <p class="announced">此外，AWS 已宣布计划在更多城市推出新的本地区域，以进一步降低延迟并提高用户体验。</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>版权所有 &copy; 2025 AWSDO.COM</p>
+            <p>数据基于 AWS 公开信息，最后更新于 2025 年。请访问 AWS 官方网站以获取最新和最全面的信息。</p>
+            <div class="footer-contact">
+                <a href="mailto:support@awsdo.com">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    support@awsdo.com
+                </a>
+                <a href="https://t.me/ilovesunkeinfo" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 2L11 13H2l1.67-5.01L22 2zm-2.48 18.51L17 14l-4.2 4.13-1.67-5.01L2 13h9l2-2-8.5-8.5L22 2l-2.48 18.51z"/></svg>
+                    @ilovesunkeinfo
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!--聊天模块-->
+    <script>
+      window.chatwootSettings = {"position":"right","type":"expanded_bubble","launcherTitle":"在线聊天"};
+      (function(d,t) {
+        var BASE_URL="https://app.chatwoot.com/";
+        var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=BASE_URL+"/packs/js/sdk.js";
+        g.defer = true;
+        g.async = true;
+        s.parentNode.insertBefore(g,s);
+        g.onload=function(){
+          window.chatwootSDK.run({
+            websiteToken: 'c3stLVCV9GDjtvHcBMLdjRjU',
+            baseUrl: BASE_URL
+          })
+        }
+      })(document,"script");
+    </script>
+
+</body>
+</html>

@@ -98,7 +98,10 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.07);
         }
         .form-step { margin-bottom: 40px; }
-        .form-step h3 { font-size: 24px; color: #007bff; border-bottom: 2px solid #e9ecef; padding-bottom: 10px; margin-bottom: 20px; }
+        .form-step h3 { font-size: 24px; color: #007bff; border-bottom: 2px solid #e9ecef; padding-bottom: 10px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .step-icon { width: 32px; height: 32px; background: #007bff; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 16px; }
+        .all-regions-link { display: inline-block; margin-top: 15px; padding: 8px 16px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 4px; color: #007bff; text-decoration: none; font-size: 14px; transition: all 0.2s ease; }
+        .all-regions-link:hover { background: #e9ecef; border-color: #007bff; }
 
         /* Form elements styling */
         .form-group { margin-bottom: 20px; }
@@ -310,33 +313,50 @@
             <form id="order-form" class="form-section">
                 <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
                 
+                <!-- Step 1: Location -->
                 <div class="form-step">
-                    <h3>第一步：选择套餐和接入点</h3>
+                    <h3><span class="step-icon">1</span>选择机房位置</h3>
                     <div class="form-group">
-                        <label>选择离您最近的接入点 (数据中心)</label>
+                        <p style="font-size: 14px; color: #6c757d; margin-bottom: 10px;">您的实例越接近用户，他们的延迟就越低。以下为常用区域，更多区域选择请查看完整列表。</p>
                         <div class="radio-group location-group">
-                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="东京 ap-northeast-1" required> <span>东京</span></label>
-                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="首尔 ap-northeast-2"> <span>首尔</span></label>
-                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="新加坡 ap-southeast-1"> <span>新加坡</span></label>
-                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="悉尼 ap-southeast-2"> <span>悉尼</span></label>
-                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="孟买 ap-south-1"> <span>孟买</span></label>
-                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="美国 (北维吉尼亚) us-east-1"> <span>美国 (北维吉尼亚)</span></label>
-                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="美国 (奥勒冈州) us-west-2"> <span>美国 (奥勒冈州)</span></label>
-                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="加拿大 (蒙特利尔) ca-central-1"> <span>加拿大 (蒙特利尔)</span></label>
-                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="爱尔兰 eu-west-1"> <span>爱尔兰</span></label>
-                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="伦敦 eu-west-2"> <span>伦敦</span></label>
-                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="巴黎 eu-west-3"> <span>巴黎</span></label>
-                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="法兰克福 eu-central-1"> <span>法兰克福</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="日本东京" required> <span>🇯🇵 日本东京</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="韩国首尔"> <span>🇰🇷 韩国首尔</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="新加坡"> <span>🇸🇬 新加坡</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="印度尼西亚雅加达"> <span>🇮🇩 印度尼西亚雅加达</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="香港"> <span>🇭🇰 香港</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="台湾"> <span>🇹🇼 台湾</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="美国 (北维吉尼亚)"> <span>🇺🇸 美国 (北维吉尼亚)</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="美国 (俄亥俄州)"> <span>🇺🇸 美国 (俄亥俄州)</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="美国 (俄勒冈)"> <span>🇺🇸 美国 (俄勒冈)</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="英国伦敦"> <span>🇬🇧 英国伦敦</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="爱尔兰"> <span>🇮🇪 爱尔兰</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="德国法兰克福"> <span>🇩🇪 德国法兰克福</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="法国巴黎"> <span>🇫🇷 法国巴黎</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="西班牙"> <span>🇪🇸 西班牙</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="墨西哥"> <span>🇲🇽 墨西哥</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="印度孟买"> <span>🇮🇳 印度孟买</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="加拿大"> <span>🇨🇦 加拿大</span></label>
+                            <label class="radio-label"><input type="radio" name="云桌面机房位置" value="澳大利亚"> <span>🇦🇺 澳大利亚</span></label>
                         </div>
+                        <a href="all-regions.html" class="all-regions-link" target="_blank">🌍 查看所有可用区域 →</a>
                     </div>
+                </div>
+
+                <!-- Step 2: Operating System -->
+                <div class="form-step">
+                    <h3><span class="step-icon">2</span>选择操作系统</h3>
                     <div class="form-group">
-                         <label>选择操作系统</label>
                          <div class="radio-group os-group">
                             <label class="radio-label"><input type="radio" name="操作系统" value="Windows Server 2022" checked> <span>Windows Server 2022</span></label>
                             <label class="radio-label"><input type="radio" name="操作系统" value="Windows Server 2019"> <span>Windows Server 2019</span></label>
                             <label class="radio-label"><input type="radio" name="操作系统" value="Windows Server 2016"> <span>Windows Server 2016</span></label>
                          </div>
                     </div>
+                </div>
+
+                <!-- Step 3: Configuration -->
+                <div class="form-step">
+                    <h3><span class="step-icon">3</span>选择配置套餐</h3>
                      <div class="form-group">
                         <label>选择 Windows 云桌面定价方案 (4折优惠)</label>
                          <div class="pricing-grid">
@@ -422,10 +442,11 @@
                     </div>
                 </div>
 
+                <!-- Step 4: Payment & Contact -->
                 <div class="form-step">
-                    <h3>第二步：选择付款并留下联系方式</h3>
+                    <h3><span class="step-icon">4</span>选择付款方式并联系我们</h3>
                      <div class="form-group">
-                         <label>我们支持的付款方式</label>
+                         <label>选择付款方式</label>
                          <div class="radio-group payment-group">
                             <label class="radio-label"><input type="radio" name="付款方式" value="USDT 数字货币" checked> <span>USDT 数字货币</span></label>
                             <label class="radio-label"><input type="radio" name="付款方式" value="转数快 (FPS HK)"> <span>转数快 (FPS HK)</span></label>
