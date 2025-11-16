@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows云服务器登录指南</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #e74c3c;
+            border-left: 4px solid #e74c3c;
+            padding-left: 10px;
+        }
+        .device-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        .method {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #27ae60;
+        }
+        code {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', monospace;
+        }
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            overflow-x: auto;
+            font-family: 'Consolas', monospace;
+        }
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .tip {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .icon {
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🖥️ Windows云服务器登录完整指南</h1>
+        
+        <div class="warning">
+            <strong>⚠️ 登录前准备：</strong>
+            <ul>
+                <li>确保已获得服务器IP地址、用户名和密码</li>
+                <li>检查服务器安全组开放3389端口（RDP）</li>
+                <li>确认网络连接正常</li>
+            </ul>
+        </div>
+
+        <div class="device-section">
+            <h2>🖥️ Windows电脑登录</h2>
+            
+            <div class="method">
+                <h3>方法1：远程桌面连接（推荐）</h3>
+                <ol>
+                    <li>按 <code>Win + R</code> 打开运行对话框</li>
+                    <li>输入 <code>mstsc</code> 并回车</li>
+                    <li>在"计算机"字段输入服务器IP地址</li>
+                    <li>点击"连接"</li>
+                    <li>输入用户名和密码</li>
+                </ol>
+            </div>
+
+            <div class="method">
+                <h3>方法2：命令行快速连接</h3>
+                <div class="code-block">mstsc /v:服务器IP地址</div>
+            </div>
+        </div>
+
+        <div class="device-section">
+            <h2>🍎 MacBook登录</h2>
+            
+            <div class="method">
+                <h3>Microsoft Remote Desktop（RDP连接）</h3>
+                <ol>
+                    <li>从App Store搜索并下载"Microsoft Remote Desktop"</li>
+                    <li>打开应用，点击"+"添加新连接</li>
+                    <li>选择"Desktop"</li>
+                    <li>输入PC名称（服务器IP地址）</li>
+                    <li>输入用户账户信息（用户名和密码）</li>
+                    <li>保存并连接</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="device-section">
+            <h2>🐧 Linux登录</h2>
+            
+            <div class="method">
+                <h3>方法1：Remmina图形界面（RDP）</h3>
+                <div class="code-block"># Ubuntu/Debian安装
+sudo apt install remmina
+
+# CentOS/RHEL安装  
+sudo yum install remmina</div>
+                <ol>
+                    <li>安装Remmina后打开应用</li>
+                    <li>点击"+"创建新连接</li>
+                    <li>协议选择"RDP - Remote Desktop Protocol"</li>
+                    <li>输入服务器IP地址</li>
+                    <li>输入用户名和密码</li>
+                    <li>点击连接</li>
+                </ol>
+            </div>
+
+            <div class="method">
+                <h3>方法2：xfreerdp命令行（RDP）</h3>
+                <div class="code-block"># 安装freerdp
+sudo apt install freerdp2-x11
+
+# 连接服务器
+xfreerdp /v:服务器IP地址 /u:用户名 /p:密码</div>
+            </div>
+        </div>
+
+        <div class="device-section">
+            <h2>📱 小米手机登录</h2>
+            
+            <div class="method">
+                <h3>RDP客户端应用</h3>
+                <ul>
+                    <li><strong>Microsoft Remote Desktop</strong> - 微软官方RDP应用（推荐）</li>
+                    <li><strong>RD Client</strong> - 第三方RDP客户端</li>
+                    <li><strong>aFreeRDP</strong> - 开源RDP客户端</li>
+                </ul>
+                <p><strong>配置步骤：</strong></p>
+                <ol>
+                    <li>从应用商店下载RDP客户端</li>
+                    <li>添加新连接</li>
+                    <li>输入服务器IP地址（端口3389）</li>
+                    <li>输入用户名和密码</li>
+                    <li>保存并连接</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="device-section">
+            <h2>📱 iPhone登录</h2>
+            
+            <div class="method">
+                <h3>RDP客户端应用</h3>
+                <ul>
+                    <li><strong>Microsoft Remote Desktop</strong> - 微软官方RDP应用（推荐）</li>
+                    <li><strong>RDP Client</strong> - 第三方RDP客户端</li>
+                </ul>
+                <p><strong>配置步骤：</strong></p>
+                <ol>
+                    <li>从App Store下载Microsoft Remote Desktop</li>
+                    <li>打开应用，点击"+"</li>
+                    <li>选择"Add PC"</li>
+                    <li>输入PC名称（服务器IP地址）</li>
+                    <li>添加用户账户（用户名和密码）</li>
+                    <li>保存并连接</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="tip">
+            <h3>💡 RDP连接最佳实践</h3>
+            <ul>
+                <li><strong>统一协议：</strong>所有平台都使用RDP协议（端口3389）</li>
+                <li><strong>推荐客户端：</strong>优先使用Microsoft Remote Desktop官方应用</li>
+                <li><strong>安全设置：</strong>定期更改密码，使用复杂密码</li>
+                <li><strong>网络优化：</strong>确保稳定网络连接，避免频繁断线</li>
+                <li><strong>连接质量：</strong>根据网络情况调整显示质量和颜色深度</li>
+            </ul>
+        </div>
+
+        <div class="warning">
+            <h3>🔧 RDP连接问题排查</h3>
+            <ul>
+                <li><strong>无法连接：</strong>检查服务器IP地址，确认端口3389已开放</li>
+                <li><strong>认证失败：</strong>确认用户名密码正确，检查Windows用户账户权限</li>
+                <li><strong>连接超时：</strong>检查网络连接，确认防火墙允许RDP连接</li>
+                <li><strong>连接缓慢：</strong>调整RDP客户端的显示设置，降低颜色质量</li>
+                <li><strong>黑屏问题：</strong>尝试注销重新登录或联系管理员重启服务器</li>
+                <li><strong>安全组设置：</strong>确保云服务器安全组允许3389端口入站规则</li>
+            </ul>
+        </div>
+
+        <footer style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; color: #666;">
+            <p>📝 Windows云服务器RDP登录指南 | 仅支持RDP协议（端口3389）</p>
+        </footer>
+    </div>
+</body>
+</html>
