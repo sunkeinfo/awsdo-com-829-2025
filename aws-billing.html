@@ -252,17 +252,17 @@
                                 <div class="form-group">
                                     <label>1. 预估AWS每月消费额度 <span style="color:red;">*</span></label>
                                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 10px;">
-                                        <label class="radio-label"><input type="radio" name="月消费额度" value="$0-500 (入门级-9折)" checked><span>$0-500 (入门级-9折)</span></label>
+                                        <label class="radio-label"><input type="radio" name="月消费额度" value="$0-500 (入门级-9折)"><span>$0-500 (入门级-9折)</span></label>
                                         <label class="radio-label"><input type="radio" name="月消费额度" value="$500-2000 (增长级-8折)"><span>$500-2000 (增长级-8折)</span></label>
                                         <label class="radio-label"><input type="radio" name="月消费额度" value="$2000-5000 (规模级-7折)"><span>$2000-5000 (规模级-7折)</span></label>
                                         <label class="radio-label"><input type="radio" name="月消费额度" value="$5000+ (企业级-6折)"><span>$5000+ (企业级-6折)</span></label>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>2. 您是否自带AWS额度账户 <span style="color:red;">*</span></label>
+                                    <label>2. 您的AWS账户情况 <span style="color:red;">*</span></label>
                                     <div class="radio-group">
-                                        <label class="radio-label"><input type="radio" name="自带AWS额度账户" value="是" checked><span>是，我在自己的AWS账户使用云服务，希望加入组织获得账单折扣和积分优惠</span></label>
-                                        <label class="radio-label"><input type="radio" name="自带AWS额度账户" value="不"><span>不，我没有AWS账户，希望开通一个新账号，我能预充值，获得账单折扣和积分优惠</span></label>
+                                        <label class="radio-label"><input type="radio" name="AWS账户情况" value="已有账户"><span>已有AWS账户，希望加入组织享受折扣优惠</span></label>
+                                        <label class="radio-label"><input type="radio" name="AWS账户情况" value="新开账户"><span>需要新开AWS账户，可预充值享受折扣优惠</span></label>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -361,16 +361,16 @@
     <!-- UI Enhancement Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const radioGroups = document.querySelectorAll('.radio-group');
-            radioGroups.forEach(group => {
+            const radioContainers = document.querySelectorAll('.radio-group, div[style*="grid"]');
+            radioContainers.forEach(container => {
                 const updateStyles = () => {
-                    const labels = group.querySelectorAll('.radio-label');
+                    const labels = container.querySelectorAll('.radio-label');
                     labels.forEach(label => {
                         const radio = label.querySelector('input[type="radio"]');
                         label.classList.toggle('checked', radio.checked);
                     });
                 };
-                group.addEventListener('change', updateStyles);
+                container.addEventListener('change', updateStyles);
                 updateStyles();
             });
         });
