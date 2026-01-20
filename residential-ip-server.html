@@ -75,7 +75,10 @@
         .form-step { margin-bottom: 40px; }
         .form-group { margin-bottom: 25px; }
         .form-group label { display: block; font-weight: 600; margin-bottom: 10px; font-size: 18px; }
-        .form-group input[type="text"], .form-group input[type="email"] { width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 4px; font-size: 16px; box-sizing: border-box; }
+        .form-group input[type="text"], .form-group input[type="email"], .form-group select { width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 4px; font-size: 16px; box-sizing: border-box; }
+        .form-group select { background-color: #fff; cursor: pointer; }
+        .form-group select optgroup { font-weight: bold; font-style: normal; color: #007bff; }
+        .form-group select option { padding: 8px; }
         .radio-group { display: flex; flex-wrap: wrap; gap: 15px; }
         .radio-label { display: flex; align-items: center; background: #f8f9fa; border: 1px solid #dee2e6; padding: 12px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease-in-out; flex-grow: 1; justify-content: center; }
         .radio-label:hover { border-color: #007bff; transform: translateY(-2px); }
@@ -234,28 +237,28 @@
         
         <div class="section locations-section">
             <h2 class="section-title">遍佈全球的物理節點</h2>
-             <p class="section-subtitle">我們的服務節點覆蓋全球主要經濟區域，您可以根據業務需求選擇最合適的地理位置以獲得最佳網路效能。</p>
+             <p class="section-subtitle">與全球頂級電信運營商深度合作，服務節點覆蓋全球主要經濟區域，為您提供超低延遲的真實住宅IP網路環境。</p>
              <div class="locations-grid">
-                <div><h4>美國西部</h4><ul><li>舊金山灣區</li><li>拉斯維加斯</li><li>洛杉磯</li><li>丹佛</li><li>西雅圖</li><li>菲尼克斯</li></ul></div>
-                <div><h4>美國中部</h4><ul><li>達拉斯</li><li>休斯頓</li><li>芝加哥</li><li>明尼阿波利斯</li><li>納什維爾</li></ul></div>
-                <div><h4>美國東部</h4><ul><li>波士頓</li><li>紐約市</li><li>華盛頓特區</li><li>邁阿密</li><li>夏洛特</li><li>底特律</li><li>坦帕</li></ul></div>
-                <div><h4>加拿大</h4><ul><li>多倫多</li></ul></div>
-                <div><h4>英國</h4><ul><li>倫敦</li><li>曼彻斯特</li></ul></div>
-                <div><h4>德國</h4><ul><li>多特蒙德</li><li>柏林</li><li>慕尼黑</li></ul></div>
-                <div><h4>日本</h4><ul><li>東京</li><li>大阪</li></ul></div>
-                <div><h4>韓國</h4><ul><li>首爾</li><li>大田</li></ul></div>
+                <div><h4>🇺🇸 美國東部 (Verizon)</h4><ul><li>亞特蘭大 Atlanta</li><li>波士頓 Boston</li><li>夏洛特 Charlotte</li><li>芝加哥 Chicago</li><li>達拉斯 Dallas</li><li>底特律 Detroit</li><li>休斯頓 Houston</li><li>堪薩斯城 Kansas City</li><li>邁阿密 Miami</li><li>明尼阿波利斯 Minneapolis</li><li>納什維爾 Nashville</li><li>紐約市 New York City</li><li>坦帕 Tampa</li><li>華盛頓特區 Washington DC</li></ul></div>
+                <div><h4>🇺🇸 美國西部 (Verizon)</h4><ul><li>丹佛 Denver</li><li>拉斯維加斯 Las Vegas</li><li>洛杉磯 Los Angeles</li><li>菲尼克斯 Phoenix</li><li>舊金山灣區 San Francisco</li><li>西雅圖 Seattle</li></ul></div>
+                <div><h4>🇨🇦 加拿大 (Bell)</h4><ul><li>多倫多 Toronto</li></ul></div>
+                <div><h4>🇬🇧 英國 (Vodafone/BT)</h4><ul><li>倫敦 London</li><li>曼徹斯特 Manchester (節點1)</li><li>曼徹斯特 Manchester (節點2)</li></ul></div>
+                <div><h4>🇩🇪 德國 (Vodafone)</h4><ul><li>柏林 Berlin</li><li>多特蒙德 Dortmund</li><li>慕尼黑 Munich</li></ul></div>
+                <div><h4>🇯🇵 日本 (KDDI)</h4><ul><li>東京 Tokyo</li><li>大阪 Osaka</li></ul></div>
+                <div><h4>🇰🇷 韓國 (SKT)</h4><ul><li>首爾 Seoul</li><li>大田 Daejeon</li></ul></div>
+                <div><h4>🇫🇷 法國巴黎區域 (Orange/Sonatel)</h4><ul><li>卡薩布蘭卡 Casablanca (摩洛哥)</li><li>達喀爾 Dakar (塞內加爾)</li></ul></div>
             </div>
             <div class="ip-examples">
-                <div class="ip-example-item"><strong>美国 (Verizon):</strong> 155.146.10.111</div>
-                <div class="ip-example-item"><strong>加拿大 (Bell):</strong> 207.61.170.56</div>
-                <div class="ip-example-item"><strong>英国 (Vodafone):</strong> 185.213.x.x / 212.183.y.y</div>
-                <div class="ip-example-item"><strong>德国 (Deutsche Telekom):</strong> 87.161.x.x / 91.65.y.y</div>
-                <div class="ip-example-item"><strong>日本 (KDDI):</strong> 203.138.bb.bb / 101.110.cc.cc</div>
-                <div class="ip-example-item"><strong>韩国 (SK Telecom):</strong> 210.95.dd.dd / 121.78.ee.ee</div>
+                <div class="ip-example-item"><strong>美國 (Verizon):</strong> 155.146.10.111 - 高品質家庭寬帶IP</div>
+                <div class="ip-example-item"><strong>加拿大 (Bell):</strong> 207.61.170.56 - 穩定商用級IP</div>
+                <div class="ip-example-item"><strong>英國 (Vodafone/BT):</strong> 185.213.x.x / 212.183.y.y - 歐洲優質IP</div>
+                <div class="ip-example-item"><strong>德國 (Vodafone):</strong> 87.161.x.x / 91.65.y.y - 德國本地IP</div>
+                <div class="ip-example-item"><strong>日本 (KDDI):</strong> 203.138.bb.bb / 101.110.cc.cc - 日本家庭IP</div>
+                <div class="ip-example-item"><strong>韓國 (SK Telecom):</strong> 210.95.dd.dd / 121.78.ee.ee - 韓國住宅IP</div>
             </div>
-            <p class="disclaimer">请注意：以上仅为IP段示例，实际分配的IP会在此类高质量地址池中随机选择。</p>
+            <p class="disclaimer">請注意：以上僅為IP段示例，實際分配的IP會在此類高質量地址池中隨機選擇。所有IP均來自與AWS合作的頂級電信運營商，確保最佳網路質量。</p>
             <div class="special-note">
-                <p>了解更多：来自AWSDO.COM的韩国票务专用独享家庭住宅静态IP云服务器，为您的抢票操作提供极致助力！</p>
+                <p>🎯 特別推薦：來自AWSDO.COM的韓國票務專用獨享家庭住宅靜態IP雲服務器，基於SKT電信網路，為您的韓國演唱會搶票操作提供極致助力！</p>
             </div>
         </div>
 
@@ -266,7 +269,62 @@
                 <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
                 
                 <div class="form-step">
-                    <div class="form-group"><label>1. 選擇IP所在地區</label><div class="location-regions"><h5>亞洲</h5><div class="radio-group location-group"><label class="radio-label"><input type="radio" name="IP地區" value="日本" checked><span>日本</span></label><label class="radio-label"><input type="radio" name="IP地區" value="韩国"><span>韩国</span></label><label class="radio-label"><input type="radio" name="IP地區" value="香港"><span>香港</span></label><label class="radio-label"><input type="radio" name="IP地區" value="台湾"><span>台湾</span></label><label class="radio-label"><input type="radio" name="IP地區" value="新加坡"><span>新加坡</span></label><label class="radio-label"><input type="radio" name="IP地區" value="泰国"><span>泰国</span></label><label class="radio-label"><input type="radio" name="IP地區" value="印度"><span>印度</span></label></div><h5>歐洲</h5><div class="radio-group location-group"><label class="radio-label"><input type="radio" name="IP地區" value="英国"><span>英国</span></label><label class="radio-label"><input type="radio" name="IP地區" value="德国"><span>德国</span></label><label class="radio-label"><input type="radio" name="IP地區" value="法国"><span>法国</span></label><label class="radio-label"><input type="radio" name="IP地區" value="意大利"><span>意大利</span></label><label class="radio-label"><input type="radio" name="IP地區" value="西班牙"><span>西班牙</span></label><label class="radio-label"><input type="radio" name="IP地區" value="荷兰"><span>荷兰</span></label></div><div class="radio-group location-group"><label class="radio-label"><input type="radio" name="IP地區" value="奥地利"><span>奥地利</span></label><label class="radio-label"><input type="radio" name="IP地區" value="波兰"><span>波兰</span></label><label class="radio-label"><input type="radio" name="IP地區" value="罗马尼亚"><span>罗马尼亚</span></label><label class="radio-label"><input type="radio" name="IP地區" value="拉脱维亚"><span>拉脱维亚</span></label><label class="radio-label"><input type="radio" name="IP地區" value="土耳其"><span>土耳其</span></label><label class="radio-label"><input type="radio" name="IP地區" value="乌克兰"><span>乌克兰</span></label></div><h5>美洲</h5><div class="radio-group location-group"><label class="radio-label"><input type="radio" name="IP地區" value="美国"><span>美国</span></label><label class="radio-label"><input type="radio" name="IP地區" value="加拿大"><span>加拿大</span></label><label class="radio-label"><input type="radio" name="IP地區" value="巴西"><span>巴西</span></label></div><h5>中東</h5><div class="radio-group location-group"><label class="radio-label"><input type="radio" name="IP地區" value="以色列"><span>以色列</span></label></div></div></div>
+                    <div class="form-group">
+                        <label for="ip-region">1. 選擇IP所在地區</label>
+                        <p style="font-size: 14px; color: #6c757d; margin-bottom: 10px;">與全球頂級電信運營商合作，提供真實住宅IP</p>
+                        <select id="ip-region" name="IP地區" required>
+                            <option value="">-- 請選擇城市節點 --</option>
+                            <optgroup label="🇺🇸 美國東部 (Verizon)">
+                                <option value="亞特蘭大 Atlanta">亞特蘭大 Atlanta</option>
+                                <option value="波士頓 Boston">波士頓 Boston</option>
+                                <option value="夏洛特 Charlotte">夏洛特 Charlotte</option>
+                                <option value="芝加哥 Chicago">芝加哥 Chicago</option>
+                                <option value="達拉斯 Dallas">達拉斯 Dallas</option>
+                                <option value="底特律 Detroit">底特律 Detroit</option>
+                                <option value="休斯頓 Houston">休斯頓 Houston</option>
+                                <option value="堪薩斯城 Kansas City">堪薩斯城 Kansas City</option>
+                                <option value="邁阿密 Miami">邁阿密 Miami</option>
+                                <option value="明尼阿波利斯 Minneapolis">明尼阿波利斯 Minneapolis</option>
+                                <option value="納什維爾 Nashville">納什維爾 Nashville</option>
+                                <option value="紐約市 New York City">紐約市 New York City</option>
+                                <option value="坦帕 Tampa">坦帕 Tampa</option>
+                                <option value="華盛頓特區 Washington DC">華盛頓特區 Washington DC</option>
+                            </optgroup>
+                            <optgroup label="🇺🇸 美國西部 (Verizon)">
+                                <option value="丹佛 Denver">丹佛 Denver</option>
+                                <option value="拉斯維加斯 Las Vegas">拉斯維加斯 Las Vegas</option>
+                                <option value="洛杉磯 Los Angeles">洛杉磯 Los Angeles</option>
+                                <option value="菲尼克斯 Phoenix">菲尼克斯 Phoenix</option>
+                                <option value="舊金山灣區 San Francisco">舊金山灣區 San Francisco</option>
+                                <option value="西雅圖 Seattle">西雅圖 Seattle</option>
+                            </optgroup>
+                            <optgroup label="🇨🇦 加拿大 (Bell)">
+                                <option value="多倫多 Toronto">多倫多 Toronto</option>
+                            </optgroup>
+                            <optgroup label="🇬🇧 英國 (Vodafone/BT)">
+                                <option value="倫敦 London">倫敦 London</option>
+                                <option value="曼徹斯特 Manchester #1">曼徹斯特 Manchester #1</option>
+                                <option value="曼徹斯特 Manchester #2">曼徹斯特 Manchester #2</option>
+                            </optgroup>
+                            <optgroup label="🇩🇪 德國 (Vodafone)">
+                                <option value="柏林 Berlin">柏林 Berlin</option>
+                                <option value="多特蒙德 Dortmund">多特蒙德 Dortmund</option>
+                                <option value="慕尼黑 Munich">慕尼黑 Munich</option>
+                            </optgroup>
+                            <optgroup label="🇯🇵 日本 (KDDI)">
+                                <option value="東京 Tokyo">東京 Tokyo</option>
+                                <option value="大阪 Osaka">大阪 Osaka</option>
+                            </optgroup>
+                            <optgroup label="🇰🇷 韓國 (SK Telecom)">
+                                <option value="首爾 Seoul">首爾 Seoul</option>
+                                <option value="大田 Daejeon">大田 Daejeon</option>
+                            </optgroup>
+                            <optgroup label="🇫🇷 法國巴黎區域 (Orange/Sonatel)">
+                                <option value="卡薩布蘭卡 Casablanca">卡薩布蘭卡 Casablanca</option>
+                                <option value="達喀爾 Dakar">達喀爾 Dakar</option>
+                            </optgroup>
+                        </select>
+                    </div>
                     <div class="form-group"><label>2. 選擇服務器作業系統</label><div class="radio-group"><label class="radio-label"><input type="radio" name="作業系統" value="Windows 2022" checked><span>Windows 2022</span></label><label class="radio-label"><input type="radio" name="作業系統" value="CentOS 9"><span>CentOS 9</span></label><label class="radio-label"><input type="radio" name="作業系統" value="Ubuntu 22"><span>Ubuntu 22</span></label><label class="radio-label"><input type="radio" name="作業系統" value="Debian 11"><span>Debian 11</span></label><label class="radio-label"><input type="radio" name="作業系統" value="其他"><span>其他</span></label></div></div>
                     <div class="form-group"><label>3. 選擇服務器配置和規格</label><div class="pricing-grid"><div class="pricing-card"><input type="radio" name="配置規格" value="2核心/4G内存, 5Gbps带宽, 1TB流量, HK$200/月" checked><h4>2核心 / 4G内存</h4><div class="specs">5Gbps带宽 • 1TB流量</div><div class="price">HK$200 /月</div></div><div class="pricing-card"><input type="radio" name="配置規格" value="4核心/16G内存, 5Gbps带宽, 2TB流量, HK$500/月"><h4>4核心 / 16G内存</h4><div class="specs">5Gbps带宽 • 2TB流量</div><div class="price">HK$500 /月</div></div><div class="pricing-card"><input type="radio" name="配置規格" value="8核心/64G内存, 10Gbps带宽, 4TB流量, HK$1,000/月"><h4>8核心 / 64G内存</h4><div class="specs">10Gbps带宽 • 4TB流量</div><div class="price">HK$1,000 /月</div></div><div class="pricing-card"><input type="radio" name="配置規格" value="16核心/64G内存, 10Gbps带宽, 6TB流量, HK$1,600/月"><h4>16核心 / 64G内存</h4><div class="specs">10Gbps带宽 • 6TB流量</div><div class="price">HK$1,600 /月</div></div></div></div>
                     <div class="form-group"><label>4. 選擇付款方式</label><div class="radio-group"><label class="radio-label"><input type="radio" name="付款方式" value="USDT 數位加密貨幣" checked><span>USDT 數位加密貨幣</span></label><label class="radio-label"><input type="radio" name="付款方式" value="轉數快– FPS 香港"><span>轉數快– FPS 香港</span></label><label class="radio-label"><input type="radio" name="付款方式" value="信用卡"><span>信用卡</span></label><label class="radio-label"><input type="radio" name="付款方式" value="線上商城"><span>線上商城</span></label><label class="radio-label"><input type="radio" name="付款方式" value="PayPal"><span>PayPal</span></label></div></div>
