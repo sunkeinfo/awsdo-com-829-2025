@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>紐約市本地伺服器租用 | New York City 雲端伺服器 | 低延遲企業級服務器 - AWSDO.COM</title>
+    <meta name="description" content="紐約市本地伺服器租用服務，提供超低延遲網絡、企業級穩定性、數據安全合規的雲端伺服器解決方案。適合金融交易、遊戲服務器、視頻直播等業務。4GB起配置，按月付費，專業技術支援。">
+    <meta name="keywords" content="紐約市伺服器,紐約市雲端伺服器,New York City伺服器,紐約市VPS,紐約市主機,低延遲伺服器,企業級伺服器,紐約市機房">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0SXZXT6FBM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0SXZXT6FBM');
+    </script>
+    
+    <style>
+        /* General Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+        .section {
+            padding: 60px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 32px;
+            color: #343a40;
+            font-weight: 600;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: #ffffff;
+            padding: 15px 0;
+            border-bottom: 1px solid #e9ecef;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        header .logo img {
+            max-width: 200px;
+            vertical-align: middle;
+        }
+        nav {
+            margin-top: 15px;
+        }
+        nav ul {
+            padding: 0;
+            list-style: none;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav a {
+            color: #495057;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        nav a:hover, nav a.active {
+            color: #007bff;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            color: #ffffff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 20px;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Advantages Grid */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .advantage-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+        }
+        .advantage-card h3 {
+            font-size: 20px;
+            color: #007bff;
+            margin-top: 0;
+        }
+
+        /* Order Form Section */
+        .form-section {
+            background: #fff;
+            padding: 50px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+        }
+        .form-step {
+            margin-bottom: 40px;
+        }
+        .form-step h3 {
+            font-size: 24px;
+            color: #007bff;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .step-icon {
+            width: 32px;
+            height: 32px;
+            background: #007bff;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .all-regions-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 16px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        .all-regions-link:hover {
+            background: #e9ecef;
+            border-color: #007bff;
+        }
+
+        /* Form elements styling */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .radio-label {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+        .radio-label:hover {
+            border-color: #007bff;
+        }
+        .radio-label input[type="radio"] {
+            display: none;
+        }
+        .radio-label.checked {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
+
+        /* Pricing Table within Form */
+        .pricing-table-container {
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        .pricing-table th, .pricing-table td {
+            padding: 15px;
+            border: 1px solid #e9ecef;
+        }
+        .pricing-table th {
+            background-color: #e9ecef;
+            font-weight: 600;
+        }
+        .pricing-table tbody tr {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .pricing-table tbody tr:hover {
+            background-color: #e9f5ff;
+        }
+        .pricing-table tbody tr.selected {
+            background-color: #d1e7ff;
+            box-shadow: inset 0 0 0 2px #007bff;
+        }
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #dc3545;
+        }
+        .original-price {
+            text-decoration: line-through;
+            color: #6c757d;
+            font-size: 14px;
+        }
+        .price-note {
+            font-size: 12px;
+            color: #6c757d;
+            display: block;
+        }
+
+        /* Pricing Grid */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .pricing-card {
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .pricing-card:hover {
+            border-color: #007bff;
+            box-shadow: 0 4px 15px rgba(0,123,255,0.1);
+        }
+        .pricing-card input[type="radio"] {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .pricing-card.selected {
+            border-color: #007bff;
+            background-color: #f8f9ff;
+        }
+        .pricing-card h4 {
+            margin: 0 0 10px 0;
+            color: #007bff;
+            font-size: 18px;
+        }
+        .pricing-card .specs {
+            color: #6c757d;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        .pricing-card .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #dc3545;
+            margin-bottom: 5px;
+        }
+        .pricing-card .original-price {
+            font-size: 12px;
+            color: #6c757d;
+            text-decoration: line-through;
+        }
+        .pricing-card .price-note {
+            font-size: 11px;
+            color: #28a745;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        @media (max-width: 1200px) {
+            .pricing-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .location-regions h5 {
+            margin: 20px 0 10px 0;
+            color: #007bff;
+            font-size: 16px;
+            font-weight: 600;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 5px;
+        }
+        .location-regions h5:first-child {
+            margin-top: 0;
+        }
+
+        /* Submit Button & Status */
+        .submit-button {
+            display: block;
+            width: 100%;
+            background: #28a745;
+            color: #fff;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 20px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .submit-button:hover {
+            background: #218838;
+            transform: scale(1.02);
+        }
+        #order-form-status {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .honeypot {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        /* Footer */
+        footer {
+            background: #343a40;
+            color: #f8f9fa;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+        footer p { margin: 8px 0; }
+        .footer-contact { margin-top: 15px; }
+        .footer-contact a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s;
+            margin: 0 15px;
+            display: inline-flex;
+            align-items: center;
+        }
+        .footer-contact a:hover { color: #007bff; }
+        .footer-contact svg { width: 20px; height: 20px; margin-right: 8px; fill: currentColor; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="awsdologo.png" alt="AWSDO.COM Logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首頁</a></li>
+                    <li><a href="linux-server.html">Linux雲端伺服器</a></li>
+                    <li><a href="windows-server.html">Windows伺服器</a></li>
+                    <li><a href="residential-ip-server.html">住宅IP伺服器</a></li>
+                    <li><a href="performance-server.html">高效能伺服器</a></li>
+                    <li><a href="aws-billing.html">AWS帳戶服務</a></li>
+                    <li><a href="aws-ai.html">AWS智慧AI</a></li>
+                    <li><a href="aws-activate-credits.html">AWS積分申請</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>紐約市 New York City 本地伺服器</h1>
+            <p>專為需要低延遲、高穩定性的紐約市及周邊地區用戶設計，提供本地化服務體驗。適合企業應用、金融交易、遊戲服務、視頻直播等對網絡品質要求極高的業務場景。</p>
+        </div>
+    </section>
+
+    <div class="main-content container">
+        <div class="section">
+            <h2 class="section-title">紐約市本地伺服器核心優勢</h2>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div style="font-size: 48px; margin-bottom: 15px;">⚡</div>
+                    <h3>超低延遲網絡</h3>
+                    <p>紐約市本地機房部署，為紐約市及周邊地區用戶提供極低延遲的網絡體驗。平均延遲低於10ms，確保實時應用流暢運行。</p>
+                </div>
+                <div class="advantage-card">
+                    <div style="font-size: 48px; margin-bottom: 15px;">🌐</div>
+                    <h3>優越網絡品質</h3>
+                    <p>直連國際骨幹網絡，提供穩定高速的國際訪問能力。支援多線路BGP，確保網絡穩定性。</p>
+                </div>
+                <div class="advantage-card">
+                    <div style="font-size: 48px; margin-bottom: 15px;">🏢</div>
+                    <h3>企業級穩定性</h3>
+                    <p>99.9% SLA服務保證，7x24小時監控維護。採用企業級硬件設備，確保業務連續性和數據安全。</p>
+                </div>
+                <div class="advantage-card">
+                    <div style="font-size: 48px; margin-bottom: 15px;">🔒</div>
+                    <h3>數據安全合規</h3>
+                    <p>符合美國數據保護法規，數據存儲在本地，無需跨境傳輸。提供完整的備份和災難恢復方案。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" style="background-color: #f8f9fa; padding: 60px 0; margin-top: 40px;">
+            <h2 class="section-title">適合的業務類型</h2>
+            <div class="advantages-grid">
+                <div class="advantage-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                    <div style="font-size: 48px; margin-bottom: 15px;">💻</div>
+                    <h3 style="color: white;">企業應用系統</h3>
+                    <p style="color: rgba(255,255,255,0.9);">ERP、CRM、OA等企業管理系統，需要穩定可靠的本地化部署環境。</p>
+                </div>
+                <div class="advantage-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white;">
+                    <div style="font-size: 48px; margin-bottom: 15px;">💰</div>
+                    <h3 style="color: white;">金融交易平台</h3>
+                    <p style="color: rgba(255,255,255,0.9);">證券、期貨、外匯等金融交易系統，對延遲和穩定性要求極高。</p>
+                </div>
+                <div class="advantage-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white;">
+                    <div style="font-size: 48px; margin-bottom: 15px;">🎮</div>
+                    <h3 style="color: white;">遊戲服務器</h3>
+                    <p style="color: rgba(255,255,255,0.9);">多人在線遊戲、電競平台，需要低延遲和高並發處理能力。</p>
+                </div>
+                <div class="advantage-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white;">
+                    <div style="font-size: 48px; margin-bottom: 15px;">📺</div>
+                    <h3 style="color: white;">視頻直播平台</h3>
+                    <p style="color: rgba(255,255,255,0.9);">直播推流、點播服務，需要大帶寬和穩定傳輸。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Form Section -->
+        <div class="section">
+            <h2 class="section-title">立即配置您的雲端伺服器</h2>
+            <form id="order-form" class="form-section">
+                <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
+                
+                <!-- Step 1: Location -->
+                <div class="form-step">
+                    <h3><span class="step-icon">1</span>選擇機房位置</h3>
+                    <div class="form-group">
+                        <p style="font-size: 14px; color: #6c757d; margin-bottom: 10px;">您的實例越接近用戶，他們的延遲就越低。以下為常用區域，更多區域選擇請查看完整清單。</p>
+                        <div class="radio-group location-group">
+                            <label class="radio-label"><input type="radio" name="機房位置" value="美國 (紐約市)" checked required> <span>🇺🇸 紐約市</span></label>
+                            <label class="radio-label"><input type="radio" name="機房位置" value="香港" required> <span>🇭🇰 香港</span></label>
+                            <label class="radio-label"><input type="radio" name="機房位置" value="日本東京"> <span>🇯🇵 日本東京</span></label>
+                            <label class="radio-label"><input type="radio" name="機房位置" value="韓國首爾"> <span>🇰🇷 韓國首爾</span></label>
+                            <label class="radio-label"><input type="radio" name="機房位置" value="新加坡"> <span>🇸🇬 新加坡</span></label>
+                            <label class="radio-label"><input type="radio" name="機房位置" value="印尼雅加達"> <span>🇮🇩 印尼雅加達</span></label>
+                            <label class="radio-label"><input type="radio" name="機房位置" value="台灣"> <span>🇹🇼 台灣</span></label>
+                            <label class="radio-label"><input type="radio" name="機房位置" value="美國 (北維吉尼亞)"> <span>🇺🇸 美國 (北維吉尼亞)</span></label>
+                            <label class="radio-label"><input type="radio" name="機房位置" value="美國 (俄亥俄州)"> <span>🇺🇸 美國 (俄亥俄州)</span></label>
+                            <label class="radio-label"><input type="radio" name="機房位置" value="美國 (俄勒岡)"> <span>🇺🇸 美國 (俄勒岡)</span></label>
+                            <label class="radio-label"><input type="radio" name="機房位置" value="英國倫敦"> <span>🇬🇧 英國倫敦</span></label>
+                            <label class="radio-label"><input type="radio" name="機房位置" value="愛爾蘭"> <span>🇮🇪 愛爾蘭</span></label>
+                            <label class="radio-label"><input type="radio" name="機房位置" value="德國法蘭克福"> <span>🇩🇪 德國法蘭克福</span></label>
+                            <label class="radio-label"><input type="radio" name="機房位置" value="法國巴黎"> <span>🇫🇷 法國巴黎</span></label>
+                            <label class="radio-label"><input type="radio" name="機房位置" value="西班牙"> <span>🇪🇸 西班牙</span></label>
+                            <label class="radio-label"><input type="radio" name="機房位置" value="墨西哥"> <span>🇲🇽 墨西哥</span></label>
+                            <label class="radio-label"><input type="radio" name="機房位置" value="印度孟買"> <span>🇮🇳 印度孟買</span></label>
+                            <label class="radio-label"><input type="radio" name="機房位置" value="加拿大"> <span>🇨🇦 加拿大</span></label>
+                            <label class="radio-label"><input type="radio" name="機房位置" value="澳洲"> <span>🇦🇺 澳洲</span></label>
+                        </div>
+                        <a href="all-regions.html" class="all-regions-link" target="_blank">🌍 查看所有可用區域 →</a>
+                    </div>
+                </div>
+
+                <!-- Step 2: Operating System -->
+                <div class="form-step">
+                    <h3><span class="step-icon">2</span>選擇作業系統</h3>
+                    <div class="form-group">
+                         <div class="radio-group os-group">
+                            <label class="radio-label"><input type="radio" name="作業系統" value="Amazon Linux 2023 (2023.9.20251105.0)" checked> <span>Amazon Linux 2023</span></label>
+                            <label class="radio-label"><input type="radio" name="作業系統" value="Amazon Linux 2 (2.0.20251105.0)"> <span>Amazon Linux 2</span></label>
+                            <label class="radio-label"><input type="radio" name="作業系統" value="Ubuntu 24.04 LTS"> <span>Ubuntu 24.04 LTS</span></label>
+                            <label class="radio-label"><input type="radio" name="作業系統" value="Ubuntu 22.04 LTS"> <span>Ubuntu 22.04 LTS</span></label>
+                            <label class="radio-label"><input type="radio" name="作業系統" value="Debian 12.12"> <span>Debian 12.12</span></label>
+                            <label class="radio-label"><input type="radio" name="作業系統" value="Debian 11.11"> <span>Debian 11.11</span></label>
+                            <label class="radio-label"><input type="radio" name="作業系統" value="FreeBSD 14.3"> <span>FreeBSD 14.3</span></label>
+                            <label class="radio-label"><input type="radio" name="作業系統" value="FreeBSD 13.5"> <span>FreeBSD 13.5</span></label>
+                            <label class="radio-label"><input type="radio" name="作業系統" value="openSUSE 15.6"> <span>openSUSE 15.6</span></label>
+                            <label class="radio-label"><input type="radio" name="作業系統" value="AlmaLinux 9.4"> <span>AlmaLinux 9.4</span></label>
+                            <label class="radio-label"><input type="radio" name="作業系統" value="CentOS CS9-20230110"> <span>CentOS CS9</span></label>
+                         </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Configuration -->
+                <div class="form-step">
+                    <h3><span class="step-icon">3</span>選擇配置套餐</h3>
+                     <div class="form-group">
+                         <div class="pricing-grid">
+                            <div class="pricing-card">
+                                <input type="radio" name="配置套餐" value="4GB/2vCPU, 80GB SSD, 4TB, HK$104/月" required>
+                                <h4>4GB / 2 vCPU</h4>
+                                <div class="specs">80GB SSD • 4TB 流量</div>
+                                <div class="price">HK$104 /月</div>
+                                <div class="original-price">原價: HK$174/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="配置套餐" value="8GB/2vCPU, 160GB SSD, 5TB, HK$191/月">
+                                <h4>8GB / 2 vCPU</h4>
+                                <div class="specs">160GB SSD • 5TB 流量</div>
+                                <div class="price">HK$191 /月</div>
+                                <div class="original-price">原價: HK$319/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="配置套餐" value="16GB/4vCPU, 320GB SSD, 6TB, HK$365/月">
+                                <h4>16GB / 4 vCPU</h4>
+                                <div class="specs">320GB SSD • 6TB 流量</div>
+                                <div class="price">HK$365 /月</div>
+                                <div class="original-price">原價: HK$609/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="配置套餐" value="32GB/8vCPU, 640GB SSD, 7TB, HK$713/月">
+                                <h4>32GB / 8 vCPU</h4>
+                                <div class="specs">640GB SSD • 7TB 流量</div>
+                                <div class="price">HK$713 /月</div>
+                                <div class="original-price">原價: HK$1,189/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="配置套餐" value="64GB/16vCPU, 1280GB SSD, 8TB, HK$1,670/月">
+                                <h4>64GB / 16 vCPU</h4>
+                                <div class="specs">1280GB SSD • 8TB 流量</div>
+                                <div class="price">HK$1,670 /月</div>
+                                <div class="original-price">原價: HK$2,784/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="配置套餐" value="128GB/32vCPU, 1280GB SSD, 9TB, HK$3,845/月">
+                                <h4>128GB / 32 vCPU</h4>
+                                <div class="specs">1280GB SSD • 9TB 流量</div>
+                                <div class="price">HK$3,845 /月</div>
+                                <div class="original-price">原價: HK$6,409/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="配置套餐" value="192GB/48vCPU, 1280GB SSD, 10TB, HK$5,759/月">
+                                <h4>192GB / 48 vCPU</h4>
+                                <div class="specs">1280GB SSD • 10TB 流量</div>
+                                <div class="price">HK$5,759 /月</div>
+                                <div class="original-price">原價: HK$9,599/月</div>
+                            </div>
+                            <div class="pricing-card">
+                                <input type="radio" name="配置套餐" value="256GB/64vCPU, 1280GB SSD, 10TB, HK$7,673/月">
+                                <h4>256GB / 64 vCPU</h4>
+                                <div class="specs">1280GB SSD • 10TB 流量</div>
+                                <div class="price">HK$7,673 /月</div>
+                                <div class="original-price">原價: HK$12,789/月</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Payment & Contact -->
+                <div class="form-step">
+                    <h3><span class="step-icon">4</span>選擇付款方式並聯絡我們</h3>
+                     <div class="form-group">
+                         <label>選擇付款方式</label>
+                         <div class="radio-group payment-group">
+                            <label class="radio-label"><input type="radio" name="付款方式" value="USDT 數位加密貨幣" checked> <span>USDT 數位加密貨幣</span></label>
+                            <label class="radio-label"><input type="radio" name="付款方式" value="信用卡"> <span>信用卡</span></label>
+                            <label class="radio-label"><input type="radio" name="付款方式" value="線上商城"> <span>線上商城</span></label>
+                            <label class="radio-label"><input type="radio" name="付款方式" value="PayPal"> <span>PayPal</span></label>
+                         </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="email">您的Email信箱 (必填)</label>
+                        <input type="email" id="email" name="email" required placeholder="我們將透過此信箱與您聯絡">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">您的Telegram或其他聯絡方式</label>
+                        <input type="text" id="contact" name="其他聯絡方式" placeholder="例如 Telegram: @your_id">
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-button">提交訂單</button>
+                <p id="order-form-status"></p>
+            </form>
+        </div>
+        
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>版權所有 &copy; 2025 AWSDO.COM</p>
+            <div class="footer-contact">
+                <a href="mailto:support@awsdo.com">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    support@awsdo.com
+                </a>
+                <a href="https://t.me/ilovesunkeinfo" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 2L11 13H2l1.67-5.01L22 2zm-2.48 18.51L17 14l-4.2 4.13-1.67-5.01L2 13h9l2-2-8.5-8.5L22 2l-2.48 18.51z"/></svg>
+                    @ilovesunkeinfo
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!--聊天模組-->
+    <script>
+      window.chatwootSettings = {"position":"right","type":"expanded_bubble","launcherTitle":"線上聊天"};
+      (function(d,t) {
+        var BASE_URL="https://app.chatwoot.com/";
+        var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=BASE_URL+"/packs/js/sdk.js";
+        g.defer = true;
+        g.async = true;
+        s.parentNode.insertBefore(g,s);
+        g.onload=function(){
+          window.chatwootSDK.run({
+            websiteToken: 'c3stLVCV9GDjtvHcBMLdjRjU',
+            baseUrl: BASE_URL
+          })
+        }
+      })(document,"script");
+    </script>
+    
+    <!-- UI Enhancement Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const pricingCards = document.querySelectorAll('.pricing-card');
+            pricingCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    pricingCards.forEach(c => c.classList.remove('selected'));
+                    this.classList.add('selected');
+                    const radio = this.querySelector('input[type="radio"]');
+                    if (radio) {
+                        radio.checked = true;
+                    }
+                });
+            });
+
+            const radioGroups = document.querySelectorAll('.radio-group');
+            radioGroups.forEach(group => {
+                const updateStyles = () => {
+                    const labels = group.querySelectorAll('.radio-label');
+                    labels.forEach(label => {
+                        const radio = label.querySelector('input[type="radio"]');
+                        if (radio.checked) {
+                            label.classList.add('checked');
+                        } else {
+                            label.classList.remove('checked');
+                        }
+                    });
+                };
+                group.addEventListener('change', updateStyles);
+                const initiallyChecked = group.querySelector('input[type="radio"]:checked');
+                if(initiallyChecked) {
+                    initiallyChecked.closest('.radio-label').classList.add('checked');
+                }
+            });
+        });
+    </script>
+
+    <!-- AJAX Form Submission Script -->
+    <script>
+        var form = document.getElementById("order-form");
+        
+        async function handleSubmit(event) {
+          event.preventDefault();
+          var status = document.getElementById("order-form-status");
+          
+          // 蜜罐檢查
+          var honeypot = document.querySelector('input[name="website"]');
+          if (honeypot.value) {
+            return false; // 靜默拒絕機器人提交
+          }
+          
+          var formData = new FormData(event.target);
+          var comment = `機房位置: ${formData.get('機房位置')}\n作業系統: ${formData.get('作業系統')}\n配置套餐: ${formData.get('配置套餐')}\n付款方式: ${formData.get('付款方式')}\n信箱: ${formData.get('email')}\n其他聯絡方式: ${formData.get('其他聯絡方式') || '無'}`;
+          
+          fetch('https://api.notificationapi.com/097bululbdjfm969xrmrijiz43/sender', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+              'Authorization': 'Basic MDk3YnVsdWxiZGpmbTk2OXhybXJpaml6NDM6c3c1MDFsdW1ib2w4ajNrYm1jMzJtdWd2aHNtdDBkd2NtaDQ3dDc3YXZ3enBvd3BiMTFjNXltdW1qeA=='
+            },
+            body: JSON.stringify({
+              type: 'awsdo_com_notification',
+              to: {
+                id: 'snaagk@gmail.com',
+                email: 'snaagk@gmail.com'
+              },
+              parameters: {
+                comment: comment
+              },
+              templateId: 'awsdo_com'
+            })
+          }).then(response => {
+            if (response.ok) {
+              status.innerHTML = "訂單提交成功！我們的客戶經理將很快透過您留下的聯絡方式與您確認。";
+              status.style.display = 'block';
+              status.style.backgroundColor = '#d4edda';
+              status.style.borderColor = '#c3e6cb';
+              status.style.color = '#155724';
+              form.reset();
+              // Also reset UI elements that don't reset automatically
+              document.querySelectorAll('.pricing-card.selected').forEach(c => c.classList.remove('selected'));
+              document.querySelectorAll('.radio-label.checked').forEach(l => l.classList.remove('checked'));
+
+            } else {
+              response.json().then(data => {
+                if (Object.hasOwn(data, 'errors')) {
+                  status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+                } else {
+                  status.innerHTML = "糟糕！提交時出現問題，請稍後再試。";
+                }
+                status.style.display = 'block';
+                status.style.backgroundColor = '#f8d7da';
+                status.style.borderColor = '#f5c6cb';
+                status.style.color = '#721c24';
+              })
+            }
+          }).catch(error => {
+            status.innerHTML = "糟糕！提交時出現網路錯誤，請檢查您的連線。";
+            status.style.display = 'block';
+            status.style.backgroundColor = '#f8d7da';
+            status.style.borderColor = '#f5c6cb';
+            status.style.color = '#721c24';
+          });
+        }
+        form.addEventListener("submit", handleSubmit)
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Local Zones 全球機房位置 | 低延遲雲端伺服器 - AWSDO.COM</title>
+    <meta name="description" content="AWS Local Zones 全球機房位置列表，涵蓋北美、亞太、歐洲、中東、非洲及南美洲等40個城市。提供低延遲、高穩定性的本地化雲端伺服器服務。">
+    <meta name="keywords" content="AWS Local Zones,全球機房,雲端伺服器位置,低延遲伺服器,本地化服務器,全球數據中心">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0SXZXT6FBM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0SXZXT6FBM');
+    </script>
+    
+    <style>
+        /* General Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+        .section {
+            padding: 60px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 32px;
+            color: #343a40;
+            font-weight: 600;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: #ffffff;
+            padding: 15px 0;
+            border-bottom: 1px solid #e9ecef;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        header .logo img {
+            max-width: 200px;
+            vertical-align: middle;
+        }
+        nav {
+            margin-top: 15px;
+        }
+        nav ul {
+            padding: 0;
+            list-style: none;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav a {
+            color: #495057;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        nav a:hover, nav a.active {
+            color: #007bff;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            color: #ffffff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 20px;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Region Section */
+        .region-section {
+            margin-bottom: 60px;
+        }
+        .region-title {
+            font-size: 28px;
+            color: #007bff;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #007bff;
+            font-weight: 600;
+        }
+
+        /* Cities Grid */
+        .cities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        .city-card {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            transition: all 0.25s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            border: 2px solid transparent;
+        }
+        .city-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 18px rgba(0,123,255,0.12);
+            border-color: #007bff;
+        }
+        .city-flag {
+            font-size: 40px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .city-name-zh {
+            font-size: 16px;
+            font-weight: 600;
+            color: #343a40;
+            margin-bottom: 6px;
+        }
+        .city-name-en {
+            font-size: 13px;
+            color: #6c757d;
+            margin-bottom: 6px;
+        }
+        .city-country {
+            font-size: 12px;
+            color: #007bff;
+            font-weight: 500;
+        }
+        .city-card:hover .city-name-zh {
+            color: #007bff;
+        }
+        .city-card:hover .city-country {
+            color: #0056b3;
+        }
+
+        /* Footer */
+        footer {
+            background: #343a40;
+            color: #f8f9fa;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+        footer p { margin: 8px 0; }
+        .footer-contact { margin-top: 15px; }
+        .footer-contact a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s;
+            margin: 0 15px;
+            display: inline-flex;
+            align-items: center;
+        }
+        .footer-contact a:hover { color: #007bff; }
+        .footer-contact svg { width: 20px; height: 20px; margin-right: 8px; fill: currentColor; }
+
+        @media (max-width: 768px) {
+            .cities-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 10px;
+            }
+            .city-flag {
+                font-size: 36px;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .hero p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="awsdologo.png" alt="AWSDO.COM Logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首頁</a></li>
+                    <li><a href="linux-server.html">Linux雲端伺服器</a></li>
+                    <li><a href="windows-server.html">Windows伺服器</a></li>
+                    <li><a href="residential-ip-server.html">住宅IP伺服器</a></li>
+                    <li><a href="performance-server.html">高效能伺服器</a></li>
+                    <li><a href="aws-billing.html">AWS帳戶服務</a></li>
+                    <li><a href="aws-ai.html">AWS智慧AI</a></li>
+                    <li><a href="aws-activate-credits.html">AWS積分申請</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>AWS Local Zones 全球機房位置</h1>
+            <p>探索我們在全球40個城市的機房位置，為您提供低延遲、高穩定性的本地化雲端伺服器服務。點擊下方城市卡片查看詳細配置和價格。</p>
+        </div>
+    </section>
+
+    <div class="main-content container">
+        <!-- 北美地區 -->
+        <div class="section">
+            <div class="region-section">
+                <h2 class="region-title">🌎 北美地區 (North America)</h2>
+                <div class="cities-grid">
+                    <a href="atlanta-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇺🇸</span>
+                        <div class="city-name-zh">亞特蘭大</div>
+                        <div class="city-name-en">Atlanta</div>
+                        <div class="city-country">美國</div>
+                    </a>
+                    <a href="boston-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇺🇸</span>
+                        <div class="city-name-zh">波士頓</div>
+                        <div class="city-name-en">Boston</div>
+                        <div class="city-country">美國</div>
+                    </a>
+                    <a href="chicago-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇺🇸</span>
+                        <div class="city-name-zh">芝加哥</div>
+                        <div class="city-name-en">Chicago</div>
+                        <div class="city-country">美國</div>
+                    </a>
+                    <a href="dallas-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇺🇸</span>
+                        <div class="city-name-zh">達拉斯</div>
+                        <div class="city-name-en">Dallas</div>
+                        <div class="city-country">美國</div>
+                    </a>
+                    <a href="houston-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇺🇸</span>
+                        <div class="city-name-zh">休斯頓</div>
+                        <div class="city-name-en">Houston</div>
+                        <div class="city-country">美國</div>
+                    </a>
+                    <a href="kansas-city-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇺🇸</span>
+                        <div class="city-name-zh">堪薩斯城</div>
+                        <div class="city-name-en">Kansas City</div>
+                        <div class="city-country">美國</div>
+                    </a>
+                    <a href="miami-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇺🇸</span>
+                        <div class="city-name-zh">邁阿密</div>
+                        <div class="city-name-en">Miami</div>
+                        <div class="city-country">美國</div>
+                    </a>
+                    <a href="minneapolis-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇺🇸</span>
+                        <div class="city-name-zh">明尼阿波利斯</div>
+                        <div class="city-name-en">Minneapolis</div>
+                        <div class="city-country">美國</div>
+                    </a>
+                    <a href="new-york-city-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇺🇸</span>
+                        <div class="city-name-zh">紐約市</div>
+                        <div class="city-name-en">New York City</div>
+                        <div class="city-country">美國</div>
+                    </a>
+                    <a href="philadelphia-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇺🇸</span>
+                        <div class="city-name-zh">費城</div>
+                        <div class="city-name-en">Philadelphia</div>
+                        <div class="city-country">美國</div>
+                    </a>
+                    <a href="denver-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇺🇸</span>
+                        <div class="city-name-zh">丹佛</div>
+                        <div class="city-name-en">Denver</div>
+                        <div class="city-country">美國</div>
+                    </a>
+                    <a href="hillsboro-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇺🇸</span>
+                        <div class="city-name-zh">希爾斯伯勒</div>
+                        <div class="city-name-en">Hillsboro</div>
+                        <div class="city-country">美國</div>
+                    </a>
+                    <a href="los-angeles-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇺🇸</span>
+                        <div class="city-name-zh">洛杉磯</div>
+                        <div class="city-name-en">Los Angeles</div>
+                        <div class="city-country">美國</div>
+                    </a>
+                    <a href="las-vegas-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇺🇸</span>
+                        <div class="city-name-zh">拉斯維加斯</div>
+                        <div class="city-name-en">Las Vegas</div>
+                        <div class="city-country">美國</div>
+                    </a>
+                    <a href="phoenix-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇺🇸</span>
+                        <div class="city-name-zh">鳳凰城</div>
+                        <div class="city-name-en">Phoenix</div>
+                        <div class="city-country">美國</div>
+                    </a>
+                    <a href="portland-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇺🇸</span>
+                        <div class="city-name-zh">波特蘭</div>
+                        <div class="city-name-en">Portland</div>
+                        <div class="city-country">美國</div>
+                    </a>
+                    <a href="salt-lake-city-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇺🇸</span>
+                        <div class="city-name-zh">鹽湖城</div>
+                        <div class="city-name-en">Salt Lake City</div>
+                        <div class="city-country">美國</div>
+                    </a>
+                    <a href="seattle-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇺🇸</span>
+                        <div class="city-name-zh">西雅圖</div>
+                        <div class="city-name-en">Seattle</div>
+                        <div class="city-country">美國</div>
+                    </a>
+                    <a href="querétaro-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇲🇽</span>
+                        <div class="city-name-zh">蓋雷塔羅</div>
+                        <div class="city-name-en">Querétaro</div>
+                        <div class="city-country">墨西哥</div>
+                    </a>
+                    <a href="toronto-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇨🇦</span>
+                        <div class="city-name-zh">多倫多</div>
+                        <div class="city-name-en">Toronto</div>
+                        <div class="city-country">加拿大</div>
+                    </a>
+                    <a href="vancouver-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇨🇦</span>
+                        <div class="city-name-zh">溫哥華</div>
+                        <div class="city-name-en">Vancouver</div>
+                        <div class="city-country">加拿大</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 亞太地區 -->
+        <div class="section" style="background-color: #f8f9fa;">
+            <div class="region-section">
+                <h2 class="region-title">🌏 亞太地區 (Asia Pacific)</h2>
+                <div class="cities-grid">
+                    <a href="taipei-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇹🇼</span>
+                        <div class="city-name-zh">台北</div>
+                        <div class="city-name-en">Taipei</div>
+                        <div class="city-country">台灣</div>
+                    </a>
+                    <a href="delhi-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇮🇳</span>
+                        <div class="city-name-zh">德里</div>
+                        <div class="city-name-en">Delhi</div>
+                        <div class="city-country">印度</div>
+                    </a>
+                    <a href="kolkata-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇮🇳</span>
+                        <div class="city-name-zh">加爾各答</div>
+                        <div class="city-name-en">Kolkata</div>
+                        <div class="city-country">印度</div>
+                    </a>
+                    <a href="bangkok-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇹🇭</span>
+                        <div class="city-name-zh">曼谷</div>
+                        <div class="city-name-en">Bangkok</div>
+                        <div class="city-country">泰國</div>
+                    </a>
+                    <a href="manila-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇵🇭</span>
+                        <div class="city-name-zh">馬尼拉</div>
+                        <div class="city-name-en">Manila</div>
+                        <div class="city-country">菲律賓</div>
+                    </a>
+                    <a href="perth-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇦🇺</span>
+                        <div class="city-name-zh">珀斯</div>
+                        <div class="city-name-en">Perth</div>
+                        <div class="city-country">澳洲</div>
+                    </a>
+                    <a href="auckland-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇳🇿</span>
+                        <div class="city-name-zh">奧克蘭</div>
+                        <div class="city-name-en">Auckland</div>
+                        <div class="city-country">紐西蘭</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 歐洲、中東與非洲 -->
+        <div class="section">
+            <div class="region-section">
+                <h2 class="region-title">🌍 歐洲、中東與非洲 (EMEA)</h2>
+                <div class="cities-grid">
+                    <a href="copenhagen-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇩🇰</span>
+                        <div class="city-name-zh">哥本哈根</div>
+                        <div class="city-name-en">Copenhagen</div>
+                        <div class="city-country">丹麥</div>
+                    </a>
+                    <a href="helsinki-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇫🇮</span>
+                        <div class="city-name-zh">赫爾辛基</div>
+                        <div class="city-name-en">Helsinki</div>
+                        <div class="city-country">芬蘭</div>
+                    </a>
+                    <a href="hamburg-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇩🇪</span>
+                        <div class="city-name-zh">漢堡</div>
+                        <div class="city-name-en">Hamburg</div>
+                        <div class="city-country">德國</div>
+                    </a>
+                    <a href="warsaw-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇵🇱</span>
+                        <div class="city-name-zh">華沙</div>
+                        <div class="city-name-en">Warsaw</div>
+                        <div class="city-country">波蘭</div>
+                    </a>
+                    <a href="prague-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇨🇿</span>
+                        <div class="city-name-zh">布拉格</div>
+                        <div class="city-name-en">Prague</div>
+                        <div class="city-country">捷克</div>
+                    </a>
+                    <a href="oslo-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇳🇴</span>
+                        <div class="city-name-zh">奧斯陸</div>
+                        <div class="city-name-en">Oslo</div>
+                        <div class="city-country">挪威</div>
+                    </a>
+                    <a href="muscat-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇴🇲</span>
+                        <div class="city-name-zh">馬斯喀特</div>
+                        <div class="city-name-en">Muscat</div>
+                        <div class="city-country">阿曼</div>
+                    </a>
+                    <a href="lagos-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇳🇬</span>
+                        <div class="city-name-zh">拉各斯</div>
+                        <div class="city-name-en">Lagos</div>
+                        <div class="city-country">奈及利亞</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 南美洲 -->
+        <div class="section" style="background-color: #f8f9fa;">
+            <div class="region-section">
+                <h2 class="region-title">🌎 南美洲 (South America)</h2>
+                <div class="cities-grid">
+                    <a href="buenos-aires-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇦🇷</span>
+                        <div class="city-name-zh">布宜諾斯艾利斯</div>
+                        <div class="city-name-en">Buenos Aires</div>
+                        <div class="city-country">阿根廷</div>
+                    </a>
+                    <a href="santiago-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇨🇱</span>
+                        <div class="city-name-zh">聖地亞哥</div>
+                        <div class="city-name-en">Santiago</div>
+                        <div class="city-country">智利</div>
+                    </a>
+                    <a href="lima-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇵🇪</span>
+                        <div class="city-name-zh">利馬</div>
+                        <div class="city-name-en">Lima</div>
+                        <div class="city-country">秘魯</div>
+                    </a>
+                    <a href="rio-de-janeiro-cloud-server.html" class="city-card">
+                        <span class="city-flag">🇧🇷</span>
+                        <div class="city-name-zh">里約熱內盧</div>
+                        <div class="city-name-en">Rio de Janeiro</div>
+                        <div class="city-country">巴西</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>版權所有 &copy; 2025 AWSDO.COM</p>
+            <div class="footer-contact">
+                <a href="mailto:support@awsdo.com">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    support@awsdo.com
+                </a>
+                <a href="https://t.me/ilovesunkeinfo" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 2L11 13H2l1.67-5.01L22 2zm-2.48 18.51L17 14l-4.2 4.13-1.67-5.01L2 13h9l2-2-8.5-8.5L22 2l-2.48 18.51z"/></svg>
+                    @ilovesunkeinfo
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!--聊天模組-->
+    <script>
+      window.chatwootSettings = {"position":"right","type":"expanded_bubble","launcherTitle":"線上聊天"};
+      (function(d,t) {
+        var BASE_URL="https://app.chatwoot.com/";
+        var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=BASE_URL+"/packs/js/sdk.js";
+        g.defer = true;
+        g.async = true;
+        s.parentNode.insertBefore(g,s);
+        g.onload=function(){
+          window.chatwootSDK.run({
+            websiteToken: 'c3stLVCV9GDjtvHcBMLdjRjU',
+            baseUrl: BASE_URL
+          })
+        }
+      })(document,"script");
+    </script>
+
+</body>
+</html>
