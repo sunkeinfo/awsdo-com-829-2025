@@ -114,8 +114,8 @@
 
     <section class="hero">
         <div class="container">
-            <h1>AWS 智慧AI模型服務</h1>
-            <p>透過單一API存取來自全球頂尖AI公司的基礎模型，包括 Anthropic, Meta, Stability AI 等，並享受獨家帳單折扣與積分優惠。</p>
+            <h1>智慧AI模型服務 - $20美元試用金</h1>
+            <p>透過單一API存取來自全球頂尖AI公司的基礎模型，包括 Anthropic、Meta、Stability AI 等，並享受獨家帳單折扣與積分優惠。</p>
         </div>
     </section>
 
@@ -127,33 +127,23 @@
                 <div class="form-group">
                     <label>1. 選擇您需要的AI模型 <span style="color:red;">*</span></label>
                     <div class="radio-group">
-                        <label class="radio-label"><input type="radio" name="AI模型" value="Anthropic Claude系列" checked><span>Claude 3 Opus, Claude 3.7 Sonnet, Claude 3 Haiku 等Anthropic Claude 系列</span></label>
-                        <label class="radio-label"><input type="radio" name="AI模型" value="Meta Llama系列"><span>Llama 3、Llama 3.1 等Meta系列</span></label>
-                        <label class="radio-label"><input type="radio" name="AI模型" value="Stable Diffusion系列"><span>Stable Diffusion 3 (SD3), Stable Image Ultra, SDXL</span></label>
-                        <label class="radio-label"><input type="radio" name="AI模型" value="Amazon Titan/Nova系列"><span>Amazon Titan Text、Titan Image Generator、Titan Multimodal Embeddings，以及最新的 Amazon Nova 系列</span></label>
-                        <label class="radio-label"><input type="radio" name="AI模型" value="Mistral AI系列"><span>Mistral Large、Mixtral 8x7B Instruct</span></label>
-                        <label class="radio-label"><input type="radio" name="AI模型" value="其他"><span>其他 (请在联系时说明)</span></label>
+                        <label class="radio-label"><input type="radio" name="AI模型" value="Claude 4.5 Haiku" checked><span>Claude 4.5 Haiku - 高效能輕量級模型，完美適合各種應用場景</span></label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>2. 您是否自帶AWS額度帳戶 <span style="color:red;">*</span></label>
-                     <div class="radio-group">
-                        <label class="radio-label"><input type="radio" name="账户情况" value="是，自带账户，希望享受折扣" checked><span>是，我在我自己的AWS账户使用AI模型，希望享受账单折扣和积分优惠</span></label>
-                        <label class="radio-label"><input type="radio" name="账户情况" value="不，需要开通新账号"><span>不，我没有AWS账户，我希望开通一个新账号，我能预充值，并获得账单折扣</span></label>
-                    </div>
+                    <label for="usage-history">2. 您曾經在哪裡使用過AI模型，每月消費多少？ <span style="color:red;">*</span></label>
+                    <textarea id="usage-history" name="AI使用歷史和消費" required placeholder="例如：之前在OpenAI平台使用GPT-4，每月消費約500美元。"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="usage-history">3. 您曾經在哪裡使用過AI模型，每月消費多少？ <span style="color:red;">*</span></label>
-                    <textarea id="usage-history" name="AI使用历史和消费" required placeholder="例如：之前在OpenAI平台使用GPT-4，每月消费约500美元。"></textarea>
-                </div>
-                <div class="form-group"><label>4. 選擇付款方式</label><div class="radio-group"><label class="radio-label"><input type="radio" name="付款方式" value="USDT 數位加密貨幣" checked><span>USDT 數位加密貨幣</span></label><label class="radio-label"><input type="radio" name="付款方式" value="轉數快– FPS 香港"><span>轉數快– FPS 香港</span></label><label class="radio-label"><input type="radio" name="付款方式" value="信用卡"><span>信用卡</span></label><label class="radio-label"><input type="radio" name="付款方式" value="線上商城"><span>線上商城</span></label><label class="radio-label"><input type="radio" name="付款方式" value="PayPal"><span>PayPal</span></label></div></div>
-                <div class="form-group">
-                    <label for="email">5. 您的Email信箱 (必填) <span style="color:red;">*</span></label>
+                    <label for="email">3. 您的Email信箱 (必填) <span style="color:red;">*</span></label>
                     <input type="email" id="email" name="email" required placeholder="我們將透過此信箱與您聯絡">
                 </div>
                 <div class="form-group">
-                    <label for="contact">您的其他聯絡方式 (Telegram/QQ等)</label>
+                    <label for="contact">4. 您的其他聯絡方式 (Telegram/QQ等)</label>
                     <input type="text" id="contact" name="其他聯絡方式" placeholder="選填，例如 Telegram: @your_id">
+                </div>
+                <div class="form-group" style="background: #fff3cd; border: 1px solid #ffc107; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                    <p style="margin: 0; color: #856404; font-weight: bold;">✨ 特別優惠：註冊即可免費獲得 $20 美元試用金！</p>
                 </div>
                 <button type="submit" class="submit-button">提交申請</button>
                 <p id="order-form-status"></p>
@@ -164,38 +154,100 @@
             <h2 class="section-title">透過 AWS Bedrock 探索頂級AI模型</h2>
             <p class="section-subtitle">AWS Bedrock 是一項完全託管的服務，讓您可以輕鬆存取來自世界領先AI公司的高效能基礎模型（FMs），無需管理任何基礎設施。</p>
             <div class="model-grid">
-                <div class="model-card"><h3>1. Anthropic Claude 系列</h3><p><strong>模型:</strong> Claude 3 Opus, Claude 3.7 Sonnet, Claude 3 Haiku<br><strong>特点:</strong> 性能卓越，尤其擅长复杂推理和长文本理解。具备强大的多模态能力，并以行业领先的安全性和可靠性著称。</p></div>
-                <div class="model-card"><h3>2. Meta Llama 系列</h3><p><strong>模型:</strong> Llama 3, Llama 3.1 (8B, 70B, 405B)<br><strong>特点:</strong> 最强大的开源模型之一，拥有庞大的开发者社区支持。提供多种规模，可在性能与成本之间灵活选择。</p></div>
-                <div class="model-card"><h3>3. Stability AI Stable Diffusion</h3><p><strong>模型:</strong> Stable Diffusion 3 (SD3), SDXL<br><strong>特点:</strong> 业界领先的文生图模型，能够生成高质量、高分辨率的图像，并能精准理解复杂的文本提示，包括文字渲染。</p></div>
-                <div class="model-card"><h3>4. Amazon Titan & Nova</h3><p><strong>模型:</strong> Titan Text, Image, Embeddings; Nova 系列<br><strong>特点:</strong> 亚马逊原生模型，与AWS生态无缝集成。功能全面，并以强大的企业级安全和内容过滤能力著称。</p></div>
-                <div class="model-card"><h3>5. Mistral AI</h3><p><strong>模型:</strong> Mistral Large, Mixtral 8x7B<br><strong>特点:</strong> 以高性能和高效率著称。其混合专家模型（MoE）架构能以更低的成本提供与更大模型相当的性能。</p></div>
+                <div class="model-card"><h3>1. Anthropic Claude 系列</h3><p><strong>模型：</strong> Claude 3 Opus、Claude 3.7 Sonnet、Claude 3 Haiku<br><strong>特點：</strong> 性能卓越，尤其擅長複雜推理和長文本理解。具備強大的多模態能力，並以業界領先的安全性和可靠性著稱。</p></div>
+                <div class="model-card"><h3>2. Meta Llama 系列</h3><p><strong>模型：</strong> Llama 3、Llama 3.1 (8B、70B、405B)<br><strong>特點：</strong> 最強大的開源模型之一，擁有龐大的開發者社群支持。提供多種規模，可在性能與成本之間靈活選擇。</p></div>
+                <div class="model-card"><h3>3. Stability AI Stable Diffusion</h3><p><strong>模型：</strong> Stable Diffusion 3 (SD3)、SDXL<br><strong>特點：</strong> 業界領先的文生圖模型，能夠生成高質量、高分辨率的圖像，並能精準理解複雜的文本提示，包括文字渲染。</p></div>
+                <div class="model-card"><h3>4. Amazon Titan & Nova</h3><p><strong>模型：</strong> Titan Text、Image、Embeddings；Nova 系列<br><strong>特點：</strong> 亞馬遜原生模型，與AWS生態無縫集成。功能全面，並以強大的企業級安全和內容過濾能力著稱。</p></div>
+                <div class="model-card"><h3>5. Mistral AI</h3><p><strong>模型：</strong> Mistral Large、Mixtral 8x7B<br><strong>特點：</strong> 以高性能和高效率著稱。其混合專家模型（MoE）架構能以更低的成本提供與更大模型相當的性能。</p></div>
             </div>
         </div>
 
         <div class="section spotlight-section">
-            <h2 class="section-title">深度聚焦：Claude 3.7 Sonnet</h2>
-            <p class="section-subtitle">Anthropic 在 Bedrock 上提供的最新、功能最强大的模型之一，独特的混合推理能力使其在处理复杂问题时表现超群。</p>
+            <h2 class="section-title">深度聚焦：Claude 4.5 Haiku</h2>
+            <p class="section-subtitle">Anthropic 最新推出的高效能輕量級模型，專為快速、精準的AI應用而設計。</p>
             
             <h4>主要特性</h4>
             <ul>
-                <li><strong>混合推理能力:</strong> 拥有标准模式（快速响应）和扩展思考模式（深度分析），在处理数学、编程等复杂任务时准确性显著提高。</li>
-                <li><strong>超长上下文窗口:</strong> 支持高达 128K 的 token 输出，非常适合处理长篇报告生成等任务。</li>
-                <li><strong>卓越的编码能力:</strong> 在理解上下文和创造性解决编程问题方面表现出色。</li>
+                <li><strong>高效能輕量級：</strong> 相比更大的模型，Claude 4.5 Haiku 提供更快的響應速度和更低的成本，同時保持卓越的性能。</li>
+                <li><strong>多模態能力：</strong> 支持文本和圖像輸入，能夠理解和分析複雜的視覺內容。</li>
+                <li><strong>強大的推理能力：</strong> 在處理複雜問題、代碼生成、數據分析等任務中表現出色。</li>
+                <li><strong>安全可靠：</strong> 以業界領先的安全性和可靠性著稱，適合企業級應用。</li>
             </ul>
 
-            <h4>如何在 AWS Bedrock 上使用</h4>
-            <p>您无需关心复杂的配置。一旦申请通过，您可以通过我们提供的API凭证或在您的AWS账户内直接通过Boto3等SDK进行调用。我们将全程提供技术支持，确保您顺利接入。</p>
+            <h4>應用場景</h4>
+            <ul>
+                <li>客服聊天機器人和虛擬助手</li>
+                <li>內容生成和文本分析</li>
+                <li>代碼協助和編程支持</li>
+                <li>數據處理和業務智能</li>
+                <li>實時問答系統</li>
+            </ul>
 
-            <h4>定价与 AWSDO.COM 独家优惠</h4>
-            <div class="pricing-breakdown">
-                <p><strong>原始定价 (美元):</strong> 输入 $3 /百万tokens, 输出 $15 /百万tokens</p>
-                <p><strong>人民币换算 (汇率按 1:7.2):</strong> 输入 ¥21.6 /百万tokens, 输出 ¥108 /百万tokens</p>
-                <hr>
-                <p><strong>通过 AWSDO.COM 可享 6 折巨额优惠！</strong></p>
-                <p><strong>折后输入价格:</strong> <span class="price-final">¥12.96 / 百万 tokens</span></p>
-                <p><strong>折后输出价格:</strong> <span class="price-final">¥64.8 / 百万 tokens</span></p>
-                <hr>
-                <p><strong>成本示例:</strong> 每月处理 1000 万输入 tokens 和 200 万输出 tokens，您的总成本仅为 (10 * 12.96) + (2 * 64.8) = <strong>¥259.2 人民币</strong>，为您节省大量开支。</p>
+            <h4>如何開始使用</h4>
+            <p>註冊即可免費獲得 $20 美元試用金！一旦申請通過，您可以通過我們提供的API憑證直接調用 Claude 4.5 Haiku 模型。我們將全程提供技術支持，確保您順利接入。</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Claude 4.5 Haiku 開發者接入指南 (VS Code)</h2>
+            <p class="section-subtitle">本指南旨在幫助您在 VS Code 中通過插件接入 Claude 4.5 Haiku 模型。</p>
+
+            <h4>基礎服務信息</h4>
+            <p>在使用前，請確保您已獲得有效的 API Key。</p>
+            <ul>
+                <li><strong>API Base URL：</strong> 由我們提供（申請通過後發送）</li>
+                <li><strong>API Key：</strong> 您的 sk_ 令牌</li>
+                <li><strong>模型名稱 (Model ID)：</strong> anthropic.claude-haiku-4-5-20251001-v1:0</li>
+            </ul>
+
+            <h4>插件配置方法</h4>
+            
+            <h5 style="color: #007bff; margin-top: 20px;">方案 A：使用 Roo Code / Cline (推薦)</h5>
+            <p>這是目前對 Claude 系列模型支持最出色的編程助手。</p>
+            <ol>
+                <li>在 VS Code 擴展商店搜索並安裝 Roo Code。</li>
+                <li>進入設置面板：
+                    <ul>
+                        <li><strong>API Provider：</strong> 選擇 OpenAI Compatible</li>
+                        <li><strong>Base URL：</strong> 輸入我們提供的 API Base URL</li>
+                        <li><strong>API Key：</strong> 輸入您的 sk-xxxx</li>
+                        <li><strong>Model ID：</strong> anthropic.claude-haiku-4-5-20251001-v1:0</li>
+                    </ul>
+                </li>
+                <li>點擊 Done 即可開始。</li>
+            </ol>
+
+            <h5 style="color: #007bff; margin-top: 20px;">方案 B：使用 Continue</h5>
+            <ol>
+                <li>安裝 Continue 插件。</li>
+                <li>點擊插件側邊欄底部的 齒輪 (config.json)，在 models 數組中添加：
+                    <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;"><code>{
+  "title": "Claude 4.5 Haiku",
+  "model": "anthropic.claude-haiku-4-5-20251001-v1:0",
+  "apiBase": "your-url",
+  "apiKey": "您的_sk_令牌",
+  "provider": "openai"
+}</code></pre>
+                </li>
+            </ol>
+
+            <h4 style="margin-top: 30px;">開發者必讀 (注意事項)</h4>
+            
+            <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 15px 0; border-radius: 5px;">
+                <p style="margin: 0; color: #856404;"><strong>⚠️ 參數限制</strong></p>
+                <p style="margin: 10px 0 0 0; color: #856404;">由於 Amazon Bedrock 的協議限制，調用此模型時 <strong>不能同時</strong> 指定 temperature 和 top_p。</p>
+                <p style="margin: 10px 0 0 0; color: #856404;"><strong>操作建議：</strong>請在插件設置中將 Top P 保持為空或設置為 1.0。</p>
+                <p style="margin: 10px 0 0 0; color: #856404;"><strong>系統處理：</strong>本後端已開啟自動兼容過濾，若調用報錯，請確認插件是否強制鎖定了 Top P 參數。</p>
+            </div>
+
+            <div style="background: #e7f3ff; border-left: 4px solid #007bff; padding: 15px; margin: 15px 0; border-radius: 5px;">
+                <p style="margin: 0; color: #004085;"><strong>🚀 鏈路優化</strong></p>
+                <p style="margin: 10px 0 0 0; color: #004085;"><strong>HK 優化節點：</strong>您當前使用的是經過香港鏈路優化的地址，在中國境內訪問具有更低的延遲。</p>
+                <p style="margin: 10px 0 0 0; color: #004085;"><strong>啟用 Stream：</strong>請務必開啟插件的 Stream (流式傳輸) 開關，以獲得即時的打字機輸出效果。</p>
+            </div>
+
+            <div style="background: #f0f0f0; border-left: 4px solid #6c757d; padding: 15px; margin: 15px 0; border-radius: 5px;">
+                <p style="margin: 0; color: #495057;"><strong>🔒 安全提示</strong></p>
+                <p style="margin: 10px 0 0 0; color: #495057;">部分 VS Code 插件可能會對 http (非加密) 地址彈出安全警告，請選擇「允許」或「繼續」。</p>
             </div>
         </div>
     </div>
@@ -249,7 +301,7 @@
           }
           
           var formData = new FormData(event.target);
-          var comment = `AI模型: ${formData.get('AI模型')}\n帳戶情況: ${formData.get('帳戶情況')}\nAI使用歷史和消費: ${formData.get('AI使用歷史和消費')}\n付款方式: ${formData.get('付款方式')}\n信箱: ${formData.get('email')}\n其他聯絡方式: ${formData.get('其他聯絡方式') || '無'}`;
+          var comment = `AI模型：${formData.get('AI模型')}\nAI使用歷史和消費：${formData.get('AI使用歷史和消費')}\n信箱：${formData.get('email')}\n其他聯絡方式：${formData.get('其他聯絡方式') || '無'}`;
           
           fetch('https://api.notificationapi.com/097bululbdjfm969xrmrijiz43/sender', {
             method: 'POST',
