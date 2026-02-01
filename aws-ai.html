@@ -70,16 +70,39 @@
         .model-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .model-card { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.07); }
         .model-card h3 { font-size: 22px; color: #007bff; margin-top: 0; }
+        .model-card h3::before { content: "🤖 "; margin-right: 8px; }
         .model-card p strong { color: #343a40; }
 
+        /* Two Column Layout */
+        .two-column-section { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+        @media (max-width: 1024px) {
+            .two-column-section { grid-template-columns: 1fr; }
+        }
+
         /* Spotlight Section */
-        .spotlight-section { background: #ffffff; border: 1px solid #e9ecef; border-radius: 8px; padding: 40px; }
+        .spotlight-section { background: #ffffff; border: 2px solid #e9ecef; border-radius: 12px; padding: 40px; }
         .spotlight-section h4 { font-size: 20px; color: #343a40; border-bottom: 2px solid #e9ecef; padding-bottom: 8px; margin-top: 30px; margin-bottom: 15px; }
+        .spotlight-section h4::before { content: "✨ "; margin-right: 8px; }
         .spotlight-section ul { padding-left: 20px; }
+        .spotlight-section li { margin-bottom: 12px; line-height: 1.8; }
+
+        /* Form Section Enhancement */
+        .form-section-wrapper { background: #ffffff; border: 2px solid #28a745; border-radius: 12px; padding: 40px; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.1); }
+        .form-section-wrapper h3 { font-size: 24px; color: #28a745; margin-top: 0; display: flex; align-items: center; }
+        .form-section-wrapper h3::before { content: "📋 "; margin-right: 12px; font-size: 28px; }
         
         .pricing-breakdown { background: #e9f5ff; border: 1px solid #b8daff; border-radius: 8px; padding: 25px; margin-top: 20px; }
         .pricing-breakdown .price-final { font-size: 20px; font-weight: bold; color: #dc3545; }
         .pricing-breakdown p { margin: 10px 0; }
+
+        /* Guide Section */
+        .guide-section { background: #f0f8ff; border-left: 5px solid #007bff; border-radius: 8px; padding: 40px; margin-top: 60px; }
+        .guide-section h2 { color: #007bff; display: flex; align-items: center; }
+        .guide-section h2::before { content: "🚀 "; margin-right: 12px; font-size: 28px; }
+        .guide-section h4 { color: #007bff; margin-top: 25px; }
+        .guide-section h5 { color: #007bff; margin-top: 20px; }
+        .guide-section ol { padding-left: 20px; }
+        .guide-section li { margin-bottom: 12px; line-height: 1.8; }
 
         /* Footer */
         footer { background: #343a40; color: #f8f9fa; text-align: center; padding: 30px 0; margin-top: 60px; }
@@ -121,8 +144,37 @@
 
     <div class="main-content container">
         <div class="section">
-            <h2 class="section-title">AI模型調用申請表</h2>
-            <form id="order-form" class="form-section">
+            <div class="two-column-section">
+                <!-- Left Column: Spotlight Section -->
+                <div class="spotlight-section">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 30px; font-size: 26px;">深度聚焦：Claude 4.5 Haiku</h2>
+                    <p style="color: #6c757d; margin-bottom: 25px;">Anthropic 最新推出的高效能輕量級模型，專為快速、精準的AI應用而設計。</p>
+                    
+                    <h4>主要特性</h4>
+                    <ul>
+                        <li><strong>⚡ 高效能輕量級：</strong> 相比更大的模型，Claude 4.5 Haiku 提供更快的響應速度和更低的成本，同時保持卓越的性能。</li>
+                        <li><strong>🖼️ 多模態能力：</strong> 支持文本和圖像輸入，能夠理解和分析複雜的視覺內容。</li>
+                        <li><strong>🧠 強大的推理能力：</strong> 在處理複雜問題、代碼生成、數據分析等任務中表現出色。</li>
+                        <li><strong>🔒 安全可靠：</strong> 以業界領先的安全性和可靠性著稱，適合企業級應用。</li>
+                    </ul>
+
+                    <h4>應用場景</h4>
+                    <ul>
+                        <li>💬 客服聊天機器人和虛擬助手</li>
+                        <li>✍️ 內容生成和文本分析</li>
+                        <li>💻 代碼協助和編程支持</li>
+                        <li>📊 數據處理和業務智能</li>
+                        <li>❓ 實時問答系統</li>
+                    </ul>
+
+                    <h4>如何開始使用</h4>
+                    <p>註冊即可免費獲得 $20 美元試用金！一旦申請通過，您可以通過我們提供的API憑證直接調用 Claude 4.5 Haiku 模型。我們將全程提供技術支持，確保您順利接入。</p>
+                </div>
+
+                <!-- Right Column: Application Form -->
+                <div class="form-section-wrapper">
+                    <h3>AI模型調用申請表</h3>
+                    <form id="order-form" class="form-section" style="background: transparent; box-shadow: none; padding: 0; border-radius: 0;">
                 <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
                 <div class="form-group">
                     <label>1. 選擇您需要的AI模型 <span style="color:red;">*</span></label>
@@ -145,51 +197,16 @@
                 <div class="form-group" style="background: #fff3cd; border: 1px solid #ffc107; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
                     <p style="margin: 0; color: #856404; font-weight: bold;">✨ 特別優惠：註冊即可免費獲得 $20 美元試用金！</p>
                 </div>
-                <button type="submit" class="submit-button">提交申請</button>
-                <p id="order-form-status"></p>
-            </form>
-        </div>
-        
-        <div class="section">
-            <h2 class="section-title">透過 AWS Bedrock 探索頂級AI模型</h2>
-            <p class="section-subtitle">AWS Bedrock 是一項完全託管的服務，讓您可以輕鬆存取來自世界領先AI公司的高效能基礎模型（FMs），無需管理任何基礎設施。</p>
-            <div class="model-grid">
-                <div class="model-card"><h3>1. Anthropic Claude 系列</h3><p><strong>模型：</strong> Claude 3 Opus、Claude 3.7 Sonnet、Claude 3 Haiku<br><strong>特點：</strong> 性能卓越，尤其擅長複雜推理和長文本理解。具備強大的多模態能力，並以業界領先的安全性和可靠性著稱。</p></div>
-                <div class="model-card"><h3>2. Meta Llama 系列</h3><p><strong>模型：</strong> Llama 3、Llama 3.1 (8B、70B、405B)<br><strong>特點：</strong> 最強大的開源模型之一，擁有龐大的開發者社群支持。提供多種規模，可在性能與成本之間靈活選擇。</p></div>
-                <div class="model-card"><h3>3. Stability AI Stable Diffusion</h3><p><strong>模型：</strong> Stable Diffusion 3 (SD3)、SDXL<br><strong>特點：</strong> 業界領先的文生圖模型，能夠生成高質量、高分辨率的圖像，並能精準理解複雜的文本提示，包括文字渲染。</p></div>
-                <div class="model-card"><h3>4. Amazon Titan & Nova</h3><p><strong>模型：</strong> Titan Text、Image、Embeddings；Nova 系列<br><strong>特點：</strong> 亞馬遜原生模型，與AWS生態無縫集成。功能全面，並以強大的企業級安全和內容過濾能力著稱。</p></div>
-                <div class="model-card"><h3>5. Mistral AI</h3><p><strong>模型：</strong> Mistral Large、Mixtral 8x7B<br><strong>特點：</strong> 以高性能和高效率著稱。其混合專家模型（MoE）架構能以更低的成本提供與更大模型相當的性能。</p></div>
+                    <button type="submit" class="submit-button">提交申請</button>
+                    <p id="order-form-status"></p>
+                    </form>
+                </div>
             </div>
         </div>
 
-        <div class="section spotlight-section">
-            <h2 class="section-title">深度聚焦：Claude 4.5 Haiku</h2>
-            <p class="section-subtitle">Anthropic 最新推出的高效能輕量級模型，專為快速、精準的AI應用而設計。</p>
-            
-            <h4>主要特性</h4>
-            <ul>
-                <li><strong>高效能輕量級：</strong> 相比更大的模型，Claude 4.5 Haiku 提供更快的響應速度和更低的成本，同時保持卓越的性能。</li>
-                <li><strong>多模態能力：</strong> 支持文本和圖像輸入，能夠理解和分析複雜的視覺內容。</li>
-                <li><strong>強大的推理能力：</strong> 在處理複雜問題、代碼生成、數據分析等任務中表現出色。</li>
-                <li><strong>安全可靠：</strong> 以業界領先的安全性和可靠性著稱，適合企業級應用。</li>
-            </ul>
-
-            <h4>應用場景</h4>
-            <ul>
-                <li>客服聊天機器人和虛擬助手</li>
-                <li>內容生成和文本分析</li>
-                <li>代碼協助和編程支持</li>
-                <li>數據處理和業務智能</li>
-                <li>實時問答系統</li>
-            </ul>
-
-            <h4>如何開始使用</h4>
-            <p>註冊即可免費獲得 $20 美元試用金！一旦申請通過，您可以通過我們提供的API憑證直接調用 Claude 4.5 Haiku 模型。我們將全程提供技術支持，確保您順利接入。</p>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Claude 4.5 Haiku 開發者接入指南 (VS Code)</h2>
-            <p class="section-subtitle">本指南旨在幫助您在 VS Code 中通過插件接入 Claude 4.5 Haiku 模型。</p>
+        <div class="section guide-section">
+            <h2 class="section-title" style="text-align: left; margin-bottom: 30px; font-size: 28px;">Claude 4.5 Haiku 開發者接入指南 (VS Code)</h2>
+            <p class="section-subtitle" style="text-align: left; margin: 0 0 30px 0;">本指南旨在幫助您在 VS Code 中通過插件接入 Claude 4.5 Haiku 模型。</p>
 
             <h4>基礎服務信息</h4>
             <p>在使用前，請確保您已獲得有效的 API Key。</p>
@@ -248,6 +265,18 @@
             <div style="background: #f0f0f0; border-left: 4px solid #6c757d; padding: 15px; margin: 15px 0; border-radius: 5px;">
                 <p style="margin: 0; color: #495057;"><strong>🔒 安全提示</strong></p>
                 <p style="margin: 10px 0 0 0; color: #495057;">部分 VS Code 插件可能會對 http (非加密) 地址彈出安全警告，請選擇「允許」或「繼續」。</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">透過 AWS Bedrock 探索頂級AI模型</h2>
+            <p class="section-subtitle">AWS Bedrock 是一項完全託管的服務，讓您可以輕鬆存取來自世界領先AI公司的高效能基礎模型（FMs），無需管理任何基礎設施。</p>
+            <div class="model-grid">
+                <div class="model-card"><h3>1. Anthropic Claude 系列</h3><p><strong>模型：</strong> Claude 3 Opus、Claude 3.7 Sonnet、Claude 3 Haiku<br><strong>特點：</strong> 性能卓越，尤其擅長複雜推理和長文本理解。具備強大的多模態能力，並以業界領先的安全性和可靠性著稱。</p></div>
+                <div class="model-card"><h3>2. Meta Llama 系列</h3><p><strong>模型：</strong> Llama 3、Llama 3.1 (8B、70B、405B)<br><strong>特點：</strong> 最強大的開源模型之一，擁有龐大的開發者社群支持。提供多種規模，可在性能與成本之間靈活選擇。</p></div>
+                <div class="model-card"><h3>3. Stability AI Stable Diffusion</h3><p><strong>模型：</strong> Stable Diffusion 3 (SD3)、SDXL<br><strong>特點：</strong> 業界領先的文生圖模型，能夠生成高質量、高分辨率的圖像，並能精準理解複雜的文本提示，包括文字渲染。</p></div>
+                <div class="model-card"><h3>4. Amazon Titan & Nova</h3><p><strong>模型：</strong> Titan Text、Image、Embeddings；Nova 系列<br><strong>特點：</strong> 亞馬遜原生模型，與AWS生態無縫集成。功能全面，並以強大的企業級安全和內容過濾能力著稱。</p></div>
+                <div class="model-card"><h3>5. Mistral AI</h3><p><strong>模型：</strong> Mistral Large、Mixtral 8x7B<br><strong>特點：</strong> 以高性能和高效率著稱。其混合專家模型（MoE）架構能以更低的成本提供與更大模型相當的性能。</p></div>
             </div>
         </div>
     </div>
