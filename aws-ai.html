@@ -218,10 +218,30 @@
 
             <h4>插件配置方法</h4>
             
-            <h5 style="color: #007bff; margin-top: 20px;">方案 A：使用 Roo Code / Cline (推薦)</h5>
+            <h4 style="margin-top: 30px;">前置準備：安裝 VS Code</h4>
+            <p>在開始配置 Cline 之前，請確保您已安裝 Visual Studio Code。</p>
+            <div style="margin: 20px 0; text-align: center;">
+                <img src="vscode.png" alt="Visual Studio Code 軟件圖標" style="max-width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <p style="font-size: 14px; color: #6c757d; margin-top: 10px;">Visual Studio Code</p>
+            </div>
+            <p><strong>下載地址：</strong> <a href="https://code.visualstudio.com/" target="_blank" style="color: #007bff; text-decoration: none;">https://code.visualstudio.com/</a></p>
+            <p>請根據您的操作系統（Windows、macOS 或 Linux）下載並安裝最新版本的 VS Code。</p>
+            
+            <h5 style="color: #007bff; margin-top: 20px;">方案 A：使用 Cline (推薦)</h5>
             <p>這是目前對 Claude 系列模型支持最出色的編程助手。</p>
             <ol>
-                <li>在 VS Code 擴展商店搜索並安裝 Roo Code。</li>
+                <li>在 VS Code 擴展商店搜索並安裝 Cline。
+                    <div style="margin: 15px 0; text-align: center;">
+                        <img src="search-cline-in-vs-code.png" alt="在 VS Code 中搜索 Cline" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <p style="font-size: 14px; color: #6c757d; margin-top: 10px;">在 VS Code 擴展商店中搜索 Cline</p>
+                    </div>
+                </li>
+                <li>安裝完成後，您將看到 Cline 已安裝的提示。
+                    <div style="margin: 15px 0; text-align: center;">
+                        <img src="cline-installed.png" alt="Cline 已安裝" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <p style="font-size: 14px; color: #6c757d; margin-top: 10px;">Cline 插件安裝完成</p>
+                    </div>
+                </li>
                 <li>進入設置面板：
                     <ul>
                         <li><strong>API Provider：</strong> 選擇 OpenAI Compatible</li>
@@ -229,8 +249,17 @@
                         <li><strong>API Key：</strong> 輸入您的 sk-xxxx</li>
                         <li><strong>Model ID：</strong> anthropic.claude-haiku-4-5-20251001-v1:0</li>
                     </ul>
+                    <div style="margin: 15px 0; text-align: center;">
+                        <img src="api-setup.PNG" alt="API 設置配置" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <p style="font-size: 14px; color: #6c757d; margin-top: 10px;">在 Cline 中配置 API 設置</p>
+                    </div>
                 </li>
-                <li>點擊 Done 即可開始。</li>
+                <li>點擊 Done 即可開始。
+                    <div style="margin: 15px 0; text-align: center;">
+                        <img src="after-installation.png" alt="安裝後的 VS Code 界面" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <p style="font-size: 14px; color: #6c757d; margin-top: 10px;">配置完成後的 VS Code 界面</p>
+                    </div>
+                </li>
             </ol>
 
             <h5 style="color: #007bff; margin-top: 20px;">方案 B：使用 Continue</h5>
