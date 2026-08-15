@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eden AI Models & Pricing</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            min-height: 100vh;
+        }
+        .header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-bottom: 1px solid #334155;
+            padding: 24px 32px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+        .header p { color: #94a3b8; font-size: 14px; }
+        .search-container {
+            margin-top: 16px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .search-input {
+            flex: 1;
+            min-width: 280px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid #475569;
+            background: #1e293b;
+            color: #e2e8f0;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .search-input:focus { border-color: #60a5fa; }
+        .search-input::placeholder { color: #64748b; }
+        .tab-bar {
+            display: flex;
+            gap: 4px;
+            background: #1e293b;
+            border-radius: 8px;
+            padding: 4px;
+        }
+        .tab-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            background: transparent;
+            color: #94a3b8;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tab-btn.active { background: #3b82f6; color: #fff; }
+        .tab-btn:hover:not(.active) { color: #e2e8f0; background: #334155; }
+        .stats-bar {
+            display: flex;
+            gap: 16px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .stat-chip {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 12px;
+            color: #94a3b8;
+        }
+        .stat-chip span { color: #60a5fa; font-weight: 600; }
+        .container { padding: 24px 32px; max-width: 1400px; margin: 0 auto; }
+        .section { display: none; }
+        .section.active { display: block; }
+        /* LLM Table */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid #334155;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        thead { background: #1e293b; }
+        th {
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            color: #94a3b8;
+            border-bottom: 1px solid #334155;
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none;
+        }
+        th:hover { color: #60a5fa; }
+        th .sort-icon { margin-left: 4px; font-size: 10px; }
+        td {
+            padding: 10px 16px;
+            border-bottom: 1px solid #1e293b;
+            white-space: nowrap;
+        }
+        tr:hover { background: #1e293b; }
+        .provider-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 500;
+            background: #334155;
+            color: #cbd5e1;
+        }
+        .provider-openai { background: #064e3b; color: #6ee7b7; }
+        .provider-anthropic { background: #4c1d95; color: #c4b5fd; }
+        .provider-google { background: #1e3a5f; color: #93c5fd; }
+        .provider-amazon { background: #78350f; color: #fcd34d; }
+        .provider-deepseek { background: #1e293b; color: #67e8f9; }
+        .provider-mistral { background: #7c2d12; color: #fdba74; }
+        .provider-deepinfra { background: #312e81; color: #a5b4fc; }
+        .price-cell { font-family: 'JetBrains Mono', monospace; color: #34d399; }
+        .ctx-cell { color: #fbbf24; }
+        .cap-badge {
+            display: inline-block;
+            padding: 1px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            margin: 1px;
+            background: #1e293b;
+            border: 1px solid #475569;
+            color: #94a3b8;
+        }
+        .cap-badge.yes { border-color: #34d399; color: #34d399; }
+        /* Specialist cards */
+        .category-section { margin-bottom: 32px; }
+        .category-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            padding: 12px 16px;
+            background: #1e293b;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+        .subfeature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 16px;
+        }
+        .subfeature-card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 16px;
+            transition: border-color 0.2s;
+        }
+        .subfeature-card:hover { border-color: #60a5fa; }
+        .sf-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .sf-name { font-size: 15px; font-weight: 600; color: #f1f5f9; }
+        .sf-count {
+            font-size: 11px;
+            background: #334155;
+            padding: 2px 8px;
+            border-radius: 10px;
+            color: #94a3b8;
+        }
+        .sf-desc {
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .model-list { list-style: none; }
+        .model-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            border-top: 1px solid #0f172a;
+            font-size: 12px;
+        }
+        .model-item:first-child { border-top: none; }
+        .model-name { color: #cbd5e1; }
+        .model-price { color: #34d399; font-family: monospace; white-space: nowrap; }
+        .no-results {
+            text-align: center;
+            padding: 48px;
+            color: #64748b;
+            font-size: 16px;
+        }
+        .filter-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+        .filter-btn {
+            padding: 4px 10px;
+            border: 1px solid #475569;
+            border-radius: 4px;
+            background: transparent;
+            color: #94a3b8;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .filter-btn.active { border-color: #3b82f6; color: #3b82f6; background: rgba(59,130,246,0.1); }
+        .filter-btn:hover { border-color: #60a5fa; color: #60a5fa; }
+        .result-count { color: #64748b; font-size: 13px; margin: 12px 0; }
+        @media (max-width: 768px) {
+            .header { padding: 16px; }
+            .container { padding: 16px; }
+            .subfeature-grid { grid-template-columns: 1fr; }
+            .search-container { flex-direction: column; }
+            .search-input { min-width: unset; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Eden AI Models & Pricing Explorer</h1>
+        <p>实时数据来源: api.edenai.run/v3/models & api.edenai.run/v3/info（免费公开端点）</p>
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="搜索模型名称、提供商、功能...">
+            <div class="tab-bar">
+                <button class="tab-btn active" data-tab="llm">LLM 模型</button>
+                <button class="tab-btn" data-tab="specialist">专家模型</button>
+            </div>
+        </div>
+        <div class="stats-bar" id="statsBar"></div>
+        <div class="filter-row" id="filterRow"></div>
+        <div class="result-count" id="resultCount"></div>
+    </div>
+
+    <div class="container">
+        <div class="section active" id="llmSection">
+            <div class="table-wrapper">
+                <table id="llmTable">
+                    <thead>
+                        <tr>
+                            <th data-sort="id">模型 ID <span class="sort-icon">↕</span></th>
+                            <th data-sort="provider">提供商 <span class="sort-icon">↕</span></th>
+                            <th data-sort="input">输入价格/M <span class="sort-icon">↕</span></th>
+                            <th data-sort="output">输出价格/M <span class="sort-icon">↕</span></th>
+                            <th data-sort="ctx">上下文长度 <span class="sort-icon">↕</span></th>
+                            <th>能力</th>
+                        </tr>
+                    </thead>
+                    <tbody id="llmBody"></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="section" id="specialistSection"></div>
+    </div>
+
+    <script>
+    let llmData = [];
+    let specialistData = [];
+    let currentTab = 'llm';
+    let currentSort = { key: 'id', asc: true };
+    let activeProviderFilter = null;
+
+    // Load LLM data
+    fetch('https://api.edenai.run/v3/models')
+        .then(r => r.json())
+        .then(data => {
+            llmData = data.data || [];
+            renderStats();
+            renderProviderFilters();
+            renderLLMTable();
+        })
+        .catch(e => {
+            document.getElementById('llmBody').innerHTML =
+                '<tr><td colspan="6" style="text-align:center;padding:24px;color:#ef4444;">加载失败: ' + e.message + '</td></tr>';
+        });
+
+    // Load specialist data
+    fetch('https://api.edenai.run/v3/info')
+        .then(r => r.json())
+        .then(data => {
+            specialistData = data.features || [];
+            renderSpecialist();
+        })
+        .catch(e => {
+            document.getElementById('specialistSection').innerHTML =
+                '<div class="no-results">加载失败: ' + e.message + '</div>';
+        });
+
+    function renderStats() {
+        const providers = [...new Set(llmData.map(m => m.owned_by))];
+        const statsBar = document.getElementById('statsBar');
+        statsBar.innerHTML = `
+            <div class="stat-chip">LLM 模型: <span>${llmData.length}</span></div>
+            <div class="stat-chip">提供商: <span>${providers.length}</span></div>
+            <div class="stat-chip">最大上下文: <span>${Math.max(...llmData.map(m => m.context_length || 0)).toLocaleString()}</span></div>
+        `;
+    }
+
+    function renderProviderFilters() {
+        const providers = {};
+        llmData.forEach(m => { providers[m.owned_by] = (providers[m.owned_by] || 0) + 1; });
+        const sorted = Object.entries(providers).sort((a, b) => b[1] - a[1]);
+        const filterRow = document.getElementById('filterRow');
+        filterRow.innerHTML = '<button class="filter-btn active" data-provider="">全部</button>' +
+            sorted.map(([p, c]) => `<button class="filter-btn" data-provider="${p}">${p} (${c})</button>`).join('');
+    }
+
+    function getProviderClass(provider) {
+        const map = { openai: 'provider-openai', anthropic: 'provider-anthropic', google: 'provider-google',
+                      amazon: 'provider-amazon', deepseek: 'provider-deepseek', mistral: 'provider-mistral',
+                      deepinfra: 'provider-deepinfra' };
+        return map[provider] || '';
+    }
+
+    function formatPrice(costPerToken) {
+        if (costPerToken === null || costPerToken === undefined) return 'N/A';
+        const perMillion = costPerToken * 1000000;
+        if (perMillion < 0.01) return '$' + perMillion.toFixed(4);
+        if (perMillion < 1) return '$' + perMillion.toFixed(3);
+        return '$' + perMillion.toFixed(2);
+    }
+
+    function formatCtx(ctx) {
+        if (!ctx) return 'N/A';
+        if (ctx >= 1000000) return (ctx / 1000000).toFixed(1) + 'M';
+        return (ctx / 1000).toFixed(0) + 'K';
+    }
+
+    function getCapabilities(m) {
+        const caps = m.capabilities || {};
+        const badges = [];
+        const inputMods = caps.input_modalities || [];
+        const outputMods = caps.output_modalities || [];
+        if (inputMods.includes('image')) badges.push('图像输入');
+        if (inputMods.includes('file')) badges.push('文件输入');
+        if (outputMods.includes('image')) badges.push('图像输出');
+        if (caps.supports_function_calling) badges.push('函数调用');
+        if (caps.supports_reasoning) badges.push('推理');
+        if (caps.supports_web_search) badges.push('搜索');
+        return badges;
+    }
+
+    function renderLLMTable() {
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        let filtered = llmData;
+
+        if (activeProviderFilter) {
+            filtered = filtered.filter(m => m.owned_by === activeProviderFilter);
+        }
+        if (query) {
+            filtered = filtered.filter(m =>
+                m.id.toLowerCase().includes(query) ||
+                m.owned_by.toLowerCase().includes(query) ||
+                (m.description || '').toLowerCase().includes(query)
+            );
+        }
+
+        // Sort
+        filtered.sort((a, b) => {
+            let va, vb;
+            switch (currentSort.key) {
+                case 'id': va = a.id; vb = b.id; break;
+                case 'provider': va = a.owned_by; vb = b.owned_by; break;
+                case 'input': va = a.pricing?.input_cost_per_token || 0; vb = b.pricing?.input_cost_per_token || 0; break;
+                case 'output': va = a.pricing?.output_cost_per_token || 0; vb = b.pricing?.output_cost_per_token || 0; break;
+                case 'ctx': va = a.context_length || 0; vb = b.context_length || 0; break;
+                default: va = a.id; vb = b.id;
+            }
+            if (typeof va === 'string') return currentSort.asc ? va.localeCompare(vb) : vb.localeCompare(va);
+            return currentSort.asc ? va - vb : vb - va;
+        });
+
+        document.getElementById('resultCount').textContent = `显示 ${filtered.length} / ${llmData.length} 个模型`;
+
+        if (filtered.length === 0) {
+            document.getElementById('llmBody').innerHTML =
+                '<tr><td colspan="6" class="no-results">没有匹配的模型</td></tr>';
+            return;
+        }
+
+        const html = filtered.map(m => {
+            const caps = getCapabilities(m);
+            const capsHtml = caps.map(c => `<span class="cap-badge yes">${c}</span>`).join('');
+            return `<tr>
+                <td><strong>${m.id}</strong></td>
+                <td><span class="provider-badge ${getProviderClass(m.owned_by)}">${m.owned_by}</span></td>
+                <td class="price-cell">${formatPrice(m.pricing?.input_cost_per_token)}</td>
+                <td class="price-cell">${formatPrice(m.pricing?.output_cost_per_token)}</td>
+                <td class="ctx-cell">${formatCtx(m.context_length)}</td>
+                <td>${capsHtml}</td>
+            </tr>`;
+        }).join('');
+
+        document.getElementById('llmBody').innerHTML = html;
+    }
+
+    function renderSpecialist() {
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const container = document.getElementById('specialistSection');
+        let html = '';
+        let totalShown = 0;
+
+        specialistData.forEach(feature => {
+            const subfeatures = feature.subfeatures || [];
+            let categoryHtml = '';
+            let hasVisible = false;
+
+            subfeatures.forEach(sf => {
+                const models = sf.models || [];
+                const matchesSf = !query ||
+                    sf.name.toLowerCase().includes(query) ||
+                    (sf.fullname || '').toLowerCase().includes(query) ||
+                    (sf.description || '').toLowerCase().includes(query) ||
+                    models.some(m => m.model.toLowerCase().includes(query));
+
+                if (!matchesSf) return;
+                hasVisible = true;
+                totalShown++;
+
+                const filteredModels = query
+                    ? models.filter(m => m.model.toLowerCase().includes(query) ||
+                        sf.name.toLowerCase().includes(query) ||
+                        (sf.fullname || '').toLowerCase().includes(query))
+                    : models;
+
+                const displayModels = filteredModels.length > 0 ? filteredModels : models;
+
+                const modelsHtml = displayModels.map(m => {
+                    const p = m.pricing || {};
+                    const priceStr = p.price !== undefined
+                        ? `$${p.price}/${p.price_unit_quantity} ${p.price_unit_type}`
+                        : 'N/A';
+                    return `<li class="model-item">
+                        <span class="model-name">${m.model}</span>
+                        <span class="model-price">${priceStr}</span>
+                    </li>`;
+                }).join('');
+
+                categoryHtml += `
+                    <div class="subfeature-card">
+                        <div class="sf-header">
+                            <span class="sf-name">${sf.fullname || sf.name}</span>
+                            <span class="sf-count">${models.length} 模型</span>
+                        </div>
+                        ${sf.description ? `<div class="sf-desc">${sf.description}</div>` : ''}
+                        <ul class="model-list">${modelsHtml}</ul>
+                    </div>`;
+            });
+
+            if (hasVisible) {
+                html += `
+                    <div class="category-section">
+                        <div class="category-title">${(feature.fullname || feature.name).toUpperCase()}</div>
+                        <div class="subfeature-grid">${categoryHtml}</div>
+                    </div>`;
+            }
+        });
+
+        if (!html) {
+            html = '<div class="no-results">没有匹配的专家模型</div>';
+        }
+
+        container.innerHTML = html;
+        if (currentTab === 'specialist') {
+            document.getElementById('resultCount').textContent = `显示 ${totalShown} 个子功能`;
+        }
+    }
+
+    // Event Listeners
+    document.getElementById('searchInput').addEventListener('input', () => {
+        if (currentTab === 'llm') renderLLMTable();
+        else renderSpecialist();
+    });
+
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentTab = btn.dataset.tab;
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(currentTab === 'llm' ? 'llmSection' : 'specialistSection').classList.add('active');
+            document.getElementById('filterRow').style.display = currentTab === 'llm' ? 'flex' : 'none';
+            if (currentTab === 'llm') renderLLMTable();
+            else renderSpecialist();
+        });
+    });
+
+    document.getElementById('filterRow').addEventListener('click', (e) => {
+        if (e.target.classList.contains('filter-btn')) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            activeProviderFilter = e.target.dataset.provider || null;
+            renderLLMTable();
+        }
+    });
+
+    document.querySelectorAll('th[data-sort]').forEach(th => {
+        th.addEventListener('click', () => {
+            const key = th.dataset.sort;
+            if (currentSort.key === key) {
+                currentSort.asc = !currentSort.asc;
+            } else {
+                currentSort.key = key;
+                currentSort.asc = true;
+            }
+            renderLLMTable();
+        });
+    });
+    </script>
+</body>
+</html>

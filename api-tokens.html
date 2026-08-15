@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI API Token Plans — AWSDO.COM</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0SXZXT6FBM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0SXZXT6FBM');
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6; margin: 0; padding: 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #f4f7fa 100%);
+            color: #1e293b;
+        }
+        .container { width: 90%; max-width: 1300px; margin: auto; overflow: hidden; }
+        header {
+            background: #ffffff; padding: 12px 0;
+            border-bottom: 1px solid #e9ecef;
+            position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        header .header-inner { display: flex; align-items: center; gap: 24px; justify-content: space-between; }
+        header .logo { flex-shrink: 0; }
+        header .logo img { height: 44px; width: auto; display: block; }
+        nav ul { padding: 0; list-style: none; margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+        nav ul li { display: inline; margin: 0 10px; }
+        nav a { color: #495057; text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.3s ease; white-space: nowrap; }
+        nav a:hover, nav a.active { color: #007bff; }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #312e81 100%);
+            color: #fff; padding: 70px 0 60px; position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none;
+        }
+        .hero-inner { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
+        .hero h1 { font-size: 40px; margin: 0 0 14px; font-weight: 800; line-height: 1.2; }
+        .hero h1 span { background: linear-gradient(90deg, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 18px; font-weight: 300; margin: 0 0 20px; color: rgba(255,255,255,0.85); max-width: 600px; }
+        .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; }
+        .badge { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px 14px; border-radius: 999px; font-weight: 600; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; }
+        .hero-visual { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 16px; padding: 24px; }
+        .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .hero-stat { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 18px 14px; text-align: center; }
+        .hero-stat .stat-value { font-size: 30px; font-weight: 800; color: #fff; line-height: 1; }
+        .hero-stat .stat-value span { font-size: 14px; font-weight: 600; }
+        .hero-stat .stat-label { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 6px; }
+
+        .section { padding: 56px 0; }
+        .section-title { text-align: center; margin-bottom: 14px; font-size: 32px; color: #1e293b; font-weight: 700; }
+        .section-subtitle { text-align: center; max-width: 820px; margin: 0 auto 42px; color: #6c757d; font-size: 16px; }
+
+        /* How it works */
+        .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 40px; }
+        @media (max-width: 900px) { .steps-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 520px) { .steps-grid { grid-template-columns: 1fr; } }
+        .step-card { background: #fff; border-radius: 14px; padding: 24px 18px; text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.04); border: 1px solid #eef1f4; }
+        .step-card .step-num { width: 40px; height: 40px; background: linear-gradient(135deg, #3b82f6, #6366f1); color: #fff; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; margin-bottom: 12px; }
+        .step-card h4 { margin: 0 0 6px; font-size: 16px; color: #1e293b; }
+        .step-card p { margin: 0; font-size: 13px; color: #64748b; }
+
+        /* Plans */
+        .plans-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 36px; }
+        @media (max-width: 1100px) { .plans-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .plans-grid { grid-template-columns: 1fr; } }
+        .plan-card {
+            background: #fff; border: 2px solid #e2e8f0; border-radius: 16px;
+            padding: 28px 22px; text-align: center; transition: all 0.25s;
+            cursor: pointer; position: relative; overflow: hidden;
+        }
+        .plan-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.1); }
+        .plan-card.selected { border-color: #3b82f6; box-shadow: 0 8px 32px rgba(59,130,246,0.18); }
+        .plan-card input[type="radio"] { position: absolute; top: 14px; right: 14px; accent-color: #3b82f6; width: 18px; height: 18px; }
+        .plan-card .plan-icon { font-size: 42px; margin-bottom: 8px; }
+        .plan-card h3 { margin: 0 0 4px; font-size: 20px; font-weight: 700; }
+        .plan-card .plan-price { font-size: 15px; font-weight: 600; color: #16a34a; margin: 8px 0; }
+        .plan-card .plan-desc { font-size: 13px; color: #64748b; margin: 6px 0 12px; line-height: 1.5; }
+        .plan-card .plan-range { display: inline-block; background: #f1f5f9; padding: 4px 12px; border-radius: 20px; font-size: 12px; color: #475569; font-weight: 500; }
+        .plan-card .model-count { font-size: 26px; font-weight: 800; color: #3b82f6; margin: 10px 0 2px; }
+        .plan-card .model-count-label { font-size: 12px; color: #94a3b8; }
+        .plan-free { border-color: #d1fae5; }
+        .plan-free h3 { color: #059669; }
+        .plan-basic { border-color: #dbeafe; }
+        .plan-basic h3 { color: #2563eb; }
+        .plan-pro { border-color: #e9d5ff; }
+        .plan-pro h3 { color: #7c3aed; }
+        .plan-premium { border-color: #fde68a; }
+        .plan-premium h3 { color: #d97706; }
+        .plan-popular { position: absolute; top: 0; left: 0; right: 0; background: linear-gradient(90deg, #7c3aed, #6366f1); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 0; text-transform: uppercase; letter-spacing: 0.05em; }
+
+        /* Recharge */
+        .recharge-grid { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 20px 0; }
+        .recharge-option { background: #fff; border: 2px solid #e2e8f0; border-radius: 12px; padding: 16px 24px; text-align: center; cursor: pointer; transition: all 0.2s; min-width: 140px; }
+        .recharge-option:hover { border-color: #3b82f6; background: #eff6ff; }
+        .recharge-option.selected { border-color: #3b82f6; background: linear-gradient(135deg, #eff6ff, #fff); box-shadow: 0 4px 16px rgba(59,130,246,0.12); }
+        .recharge-option input[type="radio"] { display: none; }
+        .recharge-option .amount { font-size: 22px; font-weight: 800; color: #1e293b; }
+        .recharge-option .bonus { font-size: 13px; color: #16a34a; font-weight: 600; margin-top: 4px; }
+        .recharge-option .total { font-size: 12px; color: #64748b; margin-top: 2px; }
+
+        /* Order form */
+        .form-section {
+            background: #fff; padding: 44px 40px; border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.07); border: 1px solid #eef1f4;
+            max-width: 900px; margin: 0 auto;
+        }
+        .form-step { margin-bottom: 30px; }
+        .form-step h3 { font-size: 20px; color: #3b82f6; display: flex; align-items: center; gap: 10px; margin: 0 0 16px; }
+        .step-icon { width: 34px; height: 34px; border-radius: 50%; background: #3b82f6; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; flex-shrink: 0; }
+        .section-note { margin: 0 0 14px; color: #6c757d; font-size: 14px; }
+        .form-group { margin-bottom: 18px; }
+        .form-group label { display: block; font-weight: 500; margin-bottom: 8px; color: #374151; font-size: 14px; }
+        .form-group input[type="text"], .form-group input[type="email"] {
+            width: 100%; padding: 12px 14px; border: 1px solid #e0e4ea; border-radius: 10px;
+            font-size: 15px; font-family: 'Inter', sans-serif;
+            background: #fafbfc; color: #2d3748; transition: border-color 0.15s;
+        }
+        .form-group input:focus { outline: none; border-color: #3b82f6; background: #fff; }
+        .order-summary { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; margin: 16px 0; font-size: 14px; }
+        .order-summary .row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #f1f5f9; }
+        .order-summary .row:last-child { border-bottom: none; }
+        .order-summary .row .label { color: #64748b; }
+        .order-summary .row .value { font-weight: 600; color: #1e293b; }
+        .order-summary .row.total .value { color: #059669; font-size: 18px; }
+        .submit-button {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            width: 100%; background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+            color: #fff; padding: 17px 32px; border-radius: 14px;
+            font-size: 17px; font-weight: 600; font-family: 'Inter', sans-serif;
+            border: none; cursor: pointer; margin-top: 20px;
+            box-shadow: 0 4px 18px rgba(59,130,246,0.3);
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+        .submit-button:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(59,130,246,0.4); }
+        #order-form-status { display: none; margin-top: 18px; padding: 14px; border-radius: 10px; font-weight: 800; text-align: center; }
+        .honeypot { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
+
+        /* ===== Featured Models Pricing Section ===== */
+        .featured-section {
+            padding: 60px 0 20px;
+        }
+        .featured-banner {
+            background: linear-gradient(135deg, #0f172a 0%, #1a1a4e 40%, #2d1b69 100%);
+            border-radius: 20px;
+            padding: 36px 40px 40px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 36px;
+        }
+        .featured-banner::before {
+            content: '';
+            position: absolute;
+            top: -80px; right: -80px;
+            width: 320px; height: 320px;
+            background: radial-gradient(circle, rgba(139,92,246,0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .featured-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -60px; left: -60px;
+            width: 260px; height: 260px;
+            background: radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .featured-banner-inner {
+            position: relative; z-index: 1;
+            display: flex; align-items: center; gap: 28px; flex-wrap: wrap;
+        }
+        .featured-banner-text { flex: 1; min-width: 260px; }
+        .featured-banner-text h2 {
+            font-size: 28px; font-weight: 800; color: #fff; margin: 0 0 10px;
+            line-height: 1.25;
+        }
+        .featured-banner-text h2 span {
+            background: linear-gradient(90deg, #f59e0b, #ef4444);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .featured-banner-text p {
+            color: rgba(255,255,255,0.8); font-size: 15px; margin: 0 0 16px; line-height: 1.6;
+        }
+        .discount-pill {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            color: #fff; font-weight: 800; font-size: 15px;
+            padding: 10px 20px; border-radius: 999px;
+            box-shadow: 0 4px 16px rgba(239,68,68,0.4);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 4px 16px rgba(239,68,68,0.4); }
+            50% { box-shadow: 0 6px 28px rgba(239,68,68,0.7); }
+        }
+        .featured-banner-badges {
+            display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px;
+        }
+        .featured-banner-badge {
+            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.9); padding: 6px 14px; border-radius: 999px;
+            font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;
+        }
+        .featured-banner-visual {
+            flex-shrink: 0;
+        }
+
+        /* Model Cards Grid */
+        .featured-models-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 16px;
+        }
+        @media (max-width: 1100px) { .featured-models-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .featured-models-grid { grid-template-columns: 1fr; } }
+
+        .model-price-card {
+            background: #fff;
+            border-radius: 18px;
+            border: 2px solid #e2e8f0;
+            padding: 0;
+            overflow: hidden;
+            transition: transform 0.25s, box-shadow 0.25s;
+            position: relative;
+        }
+        .model-price-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+        }
+        .model-price-card.card-fable { border-color: #c4b5fd; }
+        .model-price-card.card-opus  { border-color: #93c5fd; }
+        .model-price-card.card-sonnet{ border-color: #6ee7b7; }
+        .model-price-card.card-haiku { border-color: #fde68a; }
+
+        .model-card-header {
+            padding: 20px 20px 14px;
+            position: relative;
+        }
+        .card-fable   .model-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+        .card-opus    .model-card-header { background: linear-gradient(135deg, #1e3a8a, #2563eb); }
+        .card-sonnet  .model-card-header { background: linear-gradient(135deg, #065f46, #059669); }
+        .card-haiku   .model-card-header { background: linear-gradient(135deg, #92400e, #d97706); }
+
+        .model-card-icon {
+            width: 48px; height: 48px; margin-bottom: 10px;
+        }
+        .model-card-name {
+            font-size: 20px; font-weight: 800; color: #fff; margin: 0 0 4px;
+        }
+        .model-card-tagline {
+            font-size: 12px; color: rgba(255,255,255,0.75); margin: 0; line-height: 1.4;
+        }
+        .model-card-body {
+            padding: 16px 20px 20px;
+        }
+
+        /* Discount badge on card */
+        .card-discount-badge {
+            position: absolute; top: 14px; right: 14px;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            color: #fff; font-size: 11px; font-weight: 800;
+            padding: 4px 10px; border-radius: 999px;
+            box-shadow: 0 2px 8px rgba(239,68,68,0.4);
+        }
+
+        /* Price rows */
+        .price-section-label {
+            font-size: 11px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.06em; color: #94a3b8; margin: 12px 0 6px;
+        }
+        .price-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 5px 0; border-bottom: 1px solid #f1f5f9;
+        }
+        .price-row:last-child { border-bottom: none; }
+        .price-row-label {
+            font-size: 12px; color: #64748b; display: flex; align-items: center; gap: 5px;
+        }
+        .price-row-values {
+            display: flex; align-items: center; gap: 8px;
+        }
+        .price-original {
+            font-size: 11px; color: #94a3b8; text-decoration: line-through; font-family: monospace;
+        }
+        .price-our {
+            font-size: 13px; font-weight: 700; color: #059669; font-family: monospace;
+        }
+        .price-our.price-highlight {
+            color: #dc2626;
+        }
+
+        /* Savings callout */
+        .savings-callout {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 1px solid #f59e0b;
+            border-radius: 10px;
+            padding: 10px 14px;
+            margin-top: 14px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .savings-callout-text {
+            font-size: 12px; font-weight: 600; color: #92400e; line-height: 1.4;
+        }
+        .savings-callout-text strong { color: #dc2626; font-size: 14px; }
+
+        /* Bottom CTA strip */
+        .featured-cta-strip {
+            background: linear-gradient(135deg, #eff6ff, #f5f3ff);
+            border: 1px solid #c7d2fe;
+            border-radius: 14px;
+            padding: 18px 24px;
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 14px;
+            margin-bottom: 8px;
+        }
+        .featured-cta-strip-text {
+            font-size: 14px; color: #3730a3; font-weight: 600;
+        }
+        .featured-cta-strip-text span { color: #dc2626; font-weight: 800; }
+        .featured-cta-btn {
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            color: #fff; padding: 10px 22px; border-radius: 999px;
+            font-size: 14px; font-weight: 700; text-decoration: none;
+            display: inline-flex; align-items: center; gap: 6px;
+            box-shadow: 0 4px 14px rgba(99,102,241,0.35);
+            transition: transform 0.18s, box-shadow 0.18s;
+            white-space: nowrap;
+        }
+        .featured-cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99,102,241,0.5);
+        }
+
+        /* Model Explorer */
+        .model-explorer { background: #fff; border-radius: 16px; padding: 28px; box-shadow: 0 6px 24px rgba(0,0,0,0.06); border: 1px solid #eef1f4; }
+        .filter-bar { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; align-items: center; }
+        .filter-bar input[type="text"] {
+            flex: 1; min-width: 200px; padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 10px;
+            font-size: 14px; background: #fafbfc; font-family: 'Inter', sans-serif;
+        }
+        .filter-bar input[type="text"]:focus { outline: none; border-color: #3b82f6; background: #fff; }
+        .filter-bar select {
+            padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 10px;
+            font-size: 14px; background: #fafbfc; font-family: 'Inter', sans-serif; cursor: pointer;
+        }
+        .filter-bar select:focus { outline: none; border-color: #3b82f6; }
+        .filter-stats { font-size: 13px; color: #64748b; margin-bottom: 12px; }
+        .filter-stats strong { color: #3b82f6; }
+        .model-table-container { overflow-x: auto; max-height: 600px; overflow-y: auto; border-radius: 10px; border: 1px solid #e2e8f0; }
+        .model-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .model-table thead { position: sticky; top: 0; z-index: 2; }
+        .model-table th { background: #1e293b; color: #e2e8f0; padding: 10px 14px; text-align: left; font-weight: 600; white-space: nowrap; cursor: pointer; user-select: none; }
+        .model-table th:hover { background: #334155; }
+        .model-table th .sort-icon { font-size: 10px; margin-left: 4px; opacity: 0.5; }
+        .model-table th.sorted .sort-icon { opacity: 1; }
+        .model-table td { padding: 8px 14px; border-bottom: 1px solid #f1f5f9; color: #374151; white-space: nowrap; }
+        .model-table tr:hover td { background: #f0f7ff; }
+        .model-table tr:nth-child(even) td { background: #fafbfc; }
+        .model-table tr:nth-child(even):hover td { background: #f0f7ff; }
+        .price-green { color: #059669; font-family: monospace; font-weight: 500; }
+        .tier-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+        .tier-free { background: #d1fae5; color: #065f46; }
+        .tier-basic { background: #dbeafe; color: #1e40af; }
+        .tier-pro { background: #ede9fe; color: #5b21b6; }
+        .tier-premium { background: #fef3c7; color: #92400e; }
+        .provider-tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 500; background: #f1f5f9; color: #475569; }
+        .provider-openai { background: #d1fae5; color: #065f46; }
+        .provider-anthropic { background: #ede9fe; color: #5b21b6; }
+        .provider-google { background: #dbeafe; color: #1e40af; }
+        .provider-amazon { background: #fef3c7; color: #92400e; }
+        .provider-deepseek { background: #cffafe; color: #155e75; }
+        .provider-mistral { background: #ffedd5; color: #9a3412; }
+        .provider-deepinfra { background: #e0e7ff; color: #3730a3; }
+        .provider-xai { background: #fce7f3; color: #9d174d; }
+        .provider-cohere { background: #d1fae5; color: #065f46; }
+        .provider-minimax { background: #fef9c3; color: #854d0e; }
+        .provider-qwen { background: #e0f2fe; color: #075985; }
+        .provider-dashscope { background: #e0f2fe; color: #075985; }
+        .provider-databricks { background: #fee2e2; color: #991b1b; }
+        .provider-microsoft { background: #dbeafe; color: #1e40af; }
+        .provider-groq { background: #dcfce7; color: #166534; }
+        .provider-together_ai { background: #f3e8ff; color: #6b21a8; }
+        .provider-perplexityai { background: #e0e7ff; color: #4338ca; }
+        .provider-fireworks_ai { background: #ffedd5; color: #c2410c; }
+        .provider-bytedance { background: #cffafe; color: #0e7490; }
+        .provider-cerebras { background: #f0fdf4; color: #15803d; }
+        .provider-cloudflare { background: #fef3c7; color: #b45309; }
+        .provider-nebius { background: #e8d5ff; color: #7e22ce; }
+        .provider-ovhcloud { background: #f1f5f9; color: #334155; }
+        .provider-scaleway { background: #fce7f3; color: #be185d; }
+        .provider-lilac { background: #fdf4ff; color: #a21caf; }
+
+        @media (max-width: 768px) {
+            .hero-inner { grid-template-columns: 1fr; }
+            .plans-grid { grid-template-columns: 1fr; }
+            .form-section { padding: 28px 20px; }
+            .steps-grid { grid-template-columns: 1fr 1fr; }
+            .filter-bar { flex-direction: column; }
+        }
+
+        footer {
+            background: #1e293b; color: #f8f9fa; text-align: center; padding: 30px 0; margin-top: 60px;
+        }
+        footer p { margin: 8px 0; }
+        .footer-contact { margin-top: 15px; }
+        .footer-contact a { color: #ffffff; text-decoration: none; transition: color 0.3s; margin: 0 15px; display: inline-flex; align-items: center; gap: 8px; }
+        .footer-contact a:hover { color: #60a5fa; }
+        .footer-contact svg { width: 20px; height: 20px; fill: currentColor; }
+        .footer-links { margin-top: 12px; font-size: 13px; }
+        .footer-links a { color: #94a3b8; text-decoration: none; margin: 0 10px; transition: color 0.3s; }
+        .footer-links a:hover { color: #ffffff; text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="index.html"><img src="logo621.svg" alt="AWSDO.COM Logo" height="44"></a>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="linux-server.html">Linux Cloud</a></li>
+                        <li><a href="windows-server.html">Windows Servers</a></li>
+                        <li><a href="residential-ip-server.html">Residential IP Servers</a></li>
+                        <li><a href="performance-server.html">Performance Servers</a></li>
+                        <li><a href="api-tokens.html" class="active">AI API Tokens</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container hero-inner">
+            <div>
+                <h1>AI API Tokens<br><span>Unified Access to 700+ Models</span></h1>
+                <p>Access OpenAI, Anthropic, Google, DeepSeek, Mistral, xAI and more through a single API endpoint. Choose a plan, top up, and start building — official pricing with recharge bonuses that save you up to 50%.</p>
+                <div class="hero-badges">
+                    <span class="badge">🤖 704+ Models</span>
+                    <span class="badge">💰 Up to 50% Savings</span>
+                    <span class="badge">🔑 Single API Key</span>
+                    <span class="badge">⚡ Pay-As-You-Go</span>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="stat-value">65<span>+</span></div>
+                        <div class="stat-label">Free Models</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="stat-value">501<span>+</span></div>
+                        <div class="stat-label">Basic Plan</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="stat-value">616<span>+</span></div>
+                        <div class="stat-label">Pro Plan</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="stat-value">704<span>+</span></div>
+                        <div class="stat-label">Ultimate Plan</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Featured Models Pricing -->
+        <section class="featured-section">
+            <!-- Top Banner -->
+            <div class="featured-banner">
+                <div class="featured-banner-inner">
+                    <div class="featured-banner-text">
+                        <h2>🔥 Featured Claude Models<br><span>Up to 40% OFF Official Pricing</span></h2>
+                        <p>Purchase through AWSDO.COM and enjoy exclusive discounts on Anthropic's most powerful Claude models. Pay only <strong style="color:#fbbf24;">60%</strong> of the official price — the most competitive rates available anywhere.</p>
+                        <div class="discount-pill">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#fff"/></svg>
+                            Save 40% — Pay Just 60% of Official Price
+                        </div>
+                        <div class="featured-banner-badges">
+                            <span class="featured-banner-badge">✅ Official API Access</span>
+                            <span class="featured-banner-badge">⚡ Instant Delivery</span>
+                            <span class="featured-banner-badge">🔒 Secure &amp; Reliable</span>
+                            <span class="featured-banner-badge">💬 24/7 Support</span>
+                        </div>
+                    </div>
+                    <div class="featured-banner-visual">
+                        <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="90" cy="90" r="88" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+                            <circle cx="90" cy="90" r="70" stroke="rgba(139,92,246,0.4)" stroke-width="1.5" stroke-dasharray="6 4"/>
+                            <circle cx="90" cy="90" r="50" fill="rgba(99,102,241,0.15)" stroke="rgba(99,102,241,0.4)" stroke-width="1.5"/>
+                            <text x="90" y="82" text-anchor="middle" fill="#fff" font-size="13" font-weight="700" font-family="Inter,sans-serif">AWSDO</text>
+                            <text x="90" y="100" text-anchor="middle" fill="#fbbf24" font-size="22" font-weight="900" font-family="Inter,sans-serif">40%</text>
+                            <text x="90" y="116" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="11" font-family="Inter,sans-serif">OFF</text>
+                            <!-- orbiting dots -->
+                            <circle cx="90" cy="20" r="5" fill="#f59e0b"/>
+                            <circle cx="160" cy="90" r="5" fill="#6366f1"/>
+                            <circle cx="90" cy="160" r="5" fill="#10b981"/>
+                            <circle cx="20" cy="90" r="5" fill="#ef4444"/>
+                            <circle cx="148" cy="42" r="3.5" fill="rgba(255,255,255,0.5)"/>
+                            <circle cx="148" cy="138" r="3.5" fill="rgba(255,255,255,0.5)"/>
+                            <circle cx="32" cy="42" r="3.5" fill="rgba(255,255,255,0.5)"/>
+                            <circle cx="32" cy="138" r="3.5" fill="rgba(255,255,255,0.5)"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4 Model Cards -->
+            <div class="featured-models-grid">
+
+                <!-- Fable 5 -->
+                <div class="model-price-card card-fable">
+                    <div class="model-card-header">
+                        <div class="card-discount-badge">-40% OFF</div>
+                        <svg class="model-card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="24" cy="24" r="22" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                            <path d="M24 10 L30 20 L40 22 L32 30 L34 40 L24 35 L14 40 L16 30 L8 22 L18 20 Z" fill="#fbbf24" opacity="0.9"/>
+                            <circle cx="24" cy="24" r="5" fill="white" opacity="0.9"/>
+                        </svg>
+                        <div class="model-card-name">Claude Fable 5</div>
+                        <div class="model-card-tagline">Next generation intelligence for long-running agents</div>
+                    </div>
+                    <div class="model-card-body">
+                        <div class="price-section-label">Standard Pricing</div>
+                        <div class="price-row">
+                            <span class="price-row-label">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                Input
+                            </span>
+                            <div class="price-row-values">
+                                <span class="price-original">$10/MTok</span>
+                                <span class="price-our price-highlight">$6/MTok</span>
+                            </div>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-row-label">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M11 6H1M6 11L1 6l5-5" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                Output
+                            </span>
+                            <div class="price-row-values">
+                                <span class="price-original">$50/MTok</span>
+                                <span class="price-our price-highlight">$30/MTok</span>
+                            </div>
+                        </div>
+                        <div class="price-section-label">Prompt Caching</div>
+                        <div class="price-row">
+                            <span class="price-row-label">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6a4 4 0 018 0" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="6" r="1.5" fill="#94a3b8"/></svg>
+                                Cache Write
+                            </span>
+                            <div class="price-row-values">
+                                <span class="price-original">$12.50/MTok</span>
+                                <span class="price-our">$7.50/MTok</span>
+                            </div>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-row-label">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M10 6a4 4 0 01-8 0" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="6" r="1.5" fill="#94a3b8"/></svg>
+                                Cache Read
+                            </span>
+                            <div class="price-row-values">
+                                <span class="price-original">$1/MTok</span>
+                                <span class="price-our">$0.60/MTok</span>
+                            </div>
+                        </div>
+                        <div class="savings-callout">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" fill="#f59e0b" opacity="0.2"/><path d="M9 5v4l3 2" stroke="#d97706" stroke-width="1.5" stroke-linecap="round"/></svg>
+                            <div class="savings-callout-text">Save <strong>$4/MTok</strong> on input vs official price</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Opus 4.8 -->
+                <div class="model-price-card card-opus">
+                    <div class="model-card-header">
+                        <div class="card-discount-badge">-40% OFF</div>
+                        <svg class="model-card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="24" cy="24" r="22" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                            <rect x="12" y="12" width="24" height="24" rx="4" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+                            <path d="M18 24h12M24 18v12" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <div class="model-card-name">Claude Opus 4.8</div>
+                        <div class="model-card-tagline">Ideal for complex agentic coding and enterprise work</div>
+                    </div>
+                    <div class="model-card-body">
+                        <div class="price-section-label">Standard Pricing</div>
+                        <div class="price-row">
+                            <span class="price-row-label">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                Input
+                            </span>
+                            <div class="price-row-values">
+                                <span class="price-original">$5/MTok</span>
+                                <span class="price-our price-highlight">$3/MTok</span>
+                            </div>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-row-label">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M11 6H1M6 11L1 6l5-5" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                Output
+                            </span>
+                            <div class="price-row-values">
+                                <span class="price-original">$25/MTok</span>
+                                <span class="price-our price-highlight">$15/MTok</span>
+                            </div>
+                        </div>
+                        <div class="price-section-label">Prompt Caching</div>
+                        <div class="price-row">
+                            <span class="price-row-label">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6a4 4 0 018 0" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="6" r="1.5" fill="#94a3b8"/></svg>
+                                Cache Write
+                            </span>
+                            <div class="price-row-values">
+                                <span class="price-original">$6.25/MTok</span>
+                                <span class="price-our">$3.75/MTok</span>
+                            </div>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-row-label">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M10 6a4 4 0 01-8 0" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="6" r="1.5" fill="#94a3b8"/></svg>
+                                Cache Read
+                            </span>
+                            <div class="price-row-values">
+                                <span class="price-original">$0.50/MTok</span>
+                                <span class="price-our">$0.30/MTok</span>
+                            </div>
+                        </div>
+                        <div class="savings-callout">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" fill="#f59e0b" opacity="0.2"/><path d="M9 5v4l3 2" stroke="#d97706" stroke-width="1.5" stroke-linecap="round"/></svg>
+                            <div class="savings-callout-text">Save <strong>$2/MTok</strong> on input vs official price</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sonnet 4.6 -->
+                <div class="model-price-card card-sonnet">
+                    <div class="model-card-header">
+                        <div class="card-discount-badge">-40% OFF</div>
+                        <svg class="model-card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="24" cy="24" r="22" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                            <path d="M14 32 Q24 12 34 32" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                            <circle cx="24" cy="22" r="4" fill="rgba(255,255,255,0.3)" stroke="white" stroke-width="1.5"/>
+                        </svg>
+                        <div class="model-card-name">Claude Sonnet 4.6</div>
+                        <div class="model-card-tagline">Optimal balance of intelligence, cost, and speed</div>
+                    </div>
+                    <div class="model-card-body">
+                        <div class="price-section-label">Standard Pricing</div>
+                        <div class="price-row">
+                            <span class="price-row-label">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                Input
+                            </span>
+                            <div class="price-row-values">
+                                <span class="price-original">$3/MTok</span>
+                                <span class="price-our price-highlight">$1.80/MTok</span>
+                            </div>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-row-label">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M11 6H1M6 11L1 6l5-5" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                Output
+                            </span>
+                            <div class="price-row-values">
+                                <span class="price-original">$15/MTok</span>
+                                <span class="price-our price-highlight">$9/MTok</span>
+                            </div>
+                        </div>
+                        <div class="price-section-label">Prompt Caching</div>
+                        <div class="price-row">
+                            <span class="price-row-label">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6a4 4 0 018 0" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="6" r="1.5" fill="#94a3b8"/></svg>
+                                Cache Write
+                            </span>
+                            <div class="price-row-values">
+                                <span class="price-original">$3.75/MTok</span>
+                                <span class="price-our">$2.25/MTok</span>
+                            </div>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-row-label">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M10 6a4 4 0 01-8 0" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="6" r="1.5" fill="#94a3b8"/></svg>
+                                Cache Read
+                            </span>
+                            <div class="price-row-values">
+                                <span class="price-original">$0.30/MTok</span>
+                                <span class="price-our">$0.18/MTok</span>
+                            </div>
+                        </div>
+                        <div class="savings-callout">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" fill="#f59e0b" opacity="0.2"/><path d="M9 5v4l3 2" stroke="#d97706" stroke-width="1.5" stroke-linecap="round"/></svg>
+                            <div class="savings-callout-text">Save <strong>$1.20/MTok</strong> on input vs official price</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Haiku 4.5 -->
+                <div class="model-price-card card-haiku">
+                    <div class="model-card-header">
+                        <div class="card-discount-badge">-40% OFF</div>
+                        <svg class="model-card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="24" cy="24" r="22" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                            <path d="M24 10 L24 38" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M14 18 Q24 14 34 18" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                            <path d="M12 26 Q24 20 36 26" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                            <circle cx="24" cy="10" r="3" fill="#fbbf24"/>
+                        </svg>
+                        <div class="model-card-name">Claude Haiku 4.5</div>
+                        <div class="model-card-tagline">Fastest, most cost-efficient model</div>
+                    </div>
+                    <div class="model-card-body">
+                        <div class="price-section-label">Standard Pricing</div>
+                        <div class="price-row">
+                            <span class="price-row-label">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                Input
+                            </span>
+                            <div class="price-row-values">
+                                <span class="price-original">$1/MTok</span>
+                                <span class="price-our price-highlight">$0.60/MTok</span>
+                            </div>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-row-label">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M11 6H1M6 11L1 6l5-5" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                Output
+                            </span>
+                            <div class="price-row-values">
+                                <span class="price-original">$5/MTok</span>
+                                <span class="price-our price-highlight">$3/MTok</span>
+                            </div>
+                        </div>
+                        <div class="price-section-label">Prompt Caching</div>
+                        <div class="price-row">
+                            <span class="price-row-label">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6a4 4 0 018 0" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="6" r="1.5" fill="#94a3b8"/></svg>
+                                Cache Write
+                            </span>
+                            <div class="price-row-values">
+                                <span class="price-original">$1.25/MTok</span>
+                                <span class="price-our">$0.75/MTok</span>
+                            </div>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-row-label">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M10 6a4 4 0 01-8 0" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="6" r="1.5" fill="#94a3b8"/></svg>
+                                Cache Read
+                            </span>
+                            <div class="price-row-values">
+                                <span class="price-original">$0.10/MTok</span>
+                                <span class="price-our">$0.06/MTok</span>
+                            </div>
+                        </div>
+                        <div class="savings-callout">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" fill="#f59e0b" opacity="0.2"/><path d="M9 5v4l3 2" stroke="#d97706" stroke-width="1.5" stroke-linecap="round"/></svg>
+                            <div class="savings-callout-text">Save <strong>$0.40/MTok</strong> on input vs official price</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- end featured-models-grid -->
+
+            <!-- CTA Strip -->
+            <div class="featured-cta-strip">
+                <div class="featured-cta-strip-text">
+                    🎉 All Claude models available at <span>40% below official Anthropic pricing</span> — the most competitive rates on the market!
+                </div>
+                <a href="#order-form" class="featured-cta-btn">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l2.5 5 5.5.8-4 3.9.95 5.5L8 13.5l-4.95 2.7.95-5.5L0 6.8l5.5-.8L8 1z" fill="white"/></svg>
+                    Get Discounted Access Now
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- Model Explorer -->
+        <section class="section">
+            <h2 class="section-title">Model Explorer</h2>
+            <p class="section-subtitle">Browse, search and filter all 704 models with official pricing. Click column headers to sort.</p>
+
+            <div class="model-explorer">
+                <div class="filter-bar">
+                    <input type="text" id="modelSearch" placeholder="🔍 Search model name or provider...">
+                    <select id="filterTier">
+                        <option value="all">All Plans</option>
+                        <option value="free">🆓 Always Free (65)</option>
+                        <option value="basic">⚡ Basic (436)</option>
+                        <option value="pro">🚀 Pro (115)</option>
+                        <option value="premium">👑 Ultimate (88)</option>
+                    </select>
+                    <select id="filterProvider">
+                        <option value="all">All Providers</option>
+                    </select>
+                </div>
+                <div class="filter-stats" id="filterStats">Showing <strong>704</strong> of 704 models</div>
+                <div class="model-table-container">
+                    <table class="model-table" id="modelTable">
+                        <thead>
+                            <tr>
+                                <th data-sort="id">Model ID <span class="sort-icon">▼</span></th>
+                                <th data-sort="provider">Provider <span class="sort-icon">▼</span></th>
+                                <th data-sort="tier">Plan <span class="sort-icon">▼</span></th>
+                                <th data-sort="input">Input $/M <span class="sort-icon">▼</span></th>
+                                <th data-sort="output">Output $/M <span class="sort-icon">▼</span></th>
+                                <th data-sort="ctx">Context <span class="sort-icon">▼</span></th>
+                            </tr>
+                        </thead>
+                        <tbody id="modelTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- How it works -->
+        <section class="section">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Get started with AI API tokens in four simple steps.</p>
+            <div class="steps-grid">
+                <div class="step-card"><div class="step-num">1</div><h4>Choose a Plan</h4><p>Pick the tier that fits your model needs and budget.</p></div>
+                <div class="step-card"><div class="step-num">2</div><h4>Select Top-Up Amount</h4><p>Top up $100+ and get bonus credits depending on your plan.</p></div>
+                <div class="step-card"><div class="step-num">3</div><h4>Submit Order</h4><p>Fill in your name &amp; email and submit your order.</p></div>
+                <div class="step-card"><div class="step-num">4</div><h4>Start Building</h4><p>Receive your API key and start calling 700+ models instantly.</p></div>
+            </div>
+        </section>
+
+        <!-- Combined: Choose Plan + Order Form -->
+        <section class="section" style="padding-top:0;">
+            <h2 class="section-title">Choose Your Plan &amp; Order</h2>
+            <p class="section-subtitle">Every higher plan includes all models from lower plans. Models use official pricing — you save through our top-up bonuses.</p>
+
+            <form id="order-form" class="form-section" style="max-width:1100px;">
+                <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
+
+                <!-- Step 1: Select Plan -->
+                <div class="form-step">
+                    <h3><span class="step-icon">1</span> Select Your Plan</h3>
+                    <div class="plans-grid">
+                        <div class="plan-card plan-free selected" data-plan="free" onclick="selectPlan(this,'free')">
+                            <input type="radio" name="selectedPlan" value="Always Free" checked>
+                            <div class="plan-icon">🆓</div>
+                            <h3>Always Free</h3>
+                            <div class="plan-price">$0 Forever</div>
+                            <div class="plan-desc">Free access to budget-friendly models. No credit card required.</div>
+                            <div class="plan-range">Input ≤ $0.07/M tokens</div>
+                            <div class="model-count">65</div>
+                            <div class="model-count-label">models included</div>
+                        </div>
+                        <div class="plan-card plan-basic" data-plan="basic" onclick="selectPlan(this,'basic')">
+                            <input type="radio" name="selectedPlan" value="Basic Plan">
+                            <div class="plan-icon">⚡</div>
+                            <h3>Basic Plan</h3>
+                            <div class="plan-price">Top up $100 → get <strong>$125</strong></div>
+                            <div class="plan-desc">Includes Free tier + mid-range models. Pay only 80% of official price.</div>
+                            <div class="plan-range">Input $0.07 ~ $1.00/M</div>
+                            <div class="model-count">501</div>
+                            <div class="model-count-label">models included</div>
+                        </div>
+                        <div class="plan-card plan-pro" data-plan="pro" onclick="selectPlan(this,'pro')" style="padding-top:36px;">
+                            <div class="plan-popular">⭐ MOST POPULAR</div>
+                            <input type="radio" name="selectedPlan" value="Pro Plan">
+                            <div class="plan-icon">🚀</div>
+                            <h3>Pro Plan</h3>
+                            <div class="plan-price">Top up $100 → get <strong>$143</strong></div>
+                            <div class="plan-desc">Claude Sonnet, GPT-5, Gemini Pro. Pay only 70% of official price.</div>
+                            <div class="plan-range">Input $1.10 ~ $2.90/M</div>
+                            <div class="model-count">616</div>
+                            <div class="model-count-label">models included</div>
+                        </div>
+                        <div class="plan-card plan-premium" data-plan="premium" onclick="selectPlan(this,'premium')">
+                            <input type="radio" name="selectedPlan" value="Ultimate Plan">
+                            <div class="plan-icon">👑</div>
+                            <h3>Ultimate Plan</h3>
+                            <div class="plan-price">Top up $100 → get <strong>$167</strong></div>
+                            <div class="plan-desc">All models unlocked. Pay only 60% of official price — 40% OFF!</div>
+                            <div class="plan-range">Input ≥ $3.00/M</div>
+                            <div class="model-count">704</div>
+                            <div class="model-count-label">models included</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Recharge (hidden for free) -->
+                <div class="form-step" id="rechargeStep" style="display:none;">
+                    <h3><span class="step-icon">2</span> Select Top-Up Amount</h3>
+                    <p class="section-note">Choose how much to top up. Bonus credits are added automatically based on your plan.</p>
+                    <div class="recharge-grid">
+                        <div class="recharge-option selected" onclick="selectRecharge(this, 100)">
+                            <input type="radio" name="rechargeAmount" value="100" checked>
+                            <div class="amount">$100</div>
+                            <div class="bonus" id="bonus100">+$50 bonus</div>
+                            <div class="total" id="total100">= $150 total</div>
+                        </div>
+                        <div class="recharge-option" onclick="selectRecharge(this, 200)">
+                            <input type="radio" name="rechargeAmount" value="200">
+                            <div class="amount">$200</div>
+                            <div class="bonus" id="bonus200">+$100 bonus</div>
+                            <div class="total" id="total200">= $300 total</div>
+                        </div>
+                        <div class="recharge-option" onclick="selectRecharge(this, 500)">
+                            <input type="radio" name="rechargeAmount" value="500">
+                            <div class="amount">$500</div>
+                            <div class="bonus" id="bonus500">+$250 bonus</div>
+                            <div class="total" id="total500">= $750 total</div>
+                        </div>
+                        <div class="recharge-option" onclick="selectRecharge(this, 1000)">
+                            <input type="radio" name="rechargeAmount" value="1000">
+                            <div class="amount">$1000</div>
+                            <div class="bonus" id="bonus1000">+$500 bonus</div>
+                            <div class="total" id="total1000">= $1500 total</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="form-step">
+                    <h3><span class="step-icon" id="summaryStepNum">2</span> Order Summary</h3>
+                    <div class="order-summary">
+                        <div class="row"><span class="label">Plan</span><span class="value" id="summaryPlan">Always Free</span></div>
+                        <div class="row"><span class="label">Top-Up Amount</span><span class="value" id="summaryTopup">$0</span></div>
+                        <div class="row"><span class="label">Bonus Credits</span><span class="value" id="summaryBonus" style="color:#16a34a;">$0</span></div>
+                        <div class="row total"><span class="label">Total Available Credits</span><span class="value" id="summaryTotal">$0 (Free)</span></div>
+                    </div>
+                    <p class="section-note" id="planNote">🆓 The Always Free plan requires no payment. You get free access to 65 budget models.</p>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="form-step">
+                    <h3><span class="step-icon" id="contactStepNum">3</span> Your Information</h3>
+                    <div class="form-group">
+                        <label for="userName">Your Name *</label>
+                        <input type="text" id="userName" name="userName" required placeholder="Your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email *</label>
+                        <input type="email" id="email" name="email" required placeholder="you@example.com">
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-button">
+                    <svg viewBox="0 0 24 24" fill="none" style="width:22px;height:22px;"><path d="M9 12l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg>
+                    Submit Order
+                    <svg viewBox="0 0 24 24" fill="none" style="width:22px;height:22px;"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <p id="order-form-status"></p>
+            </form>
+        </section>
+
+    </div>
+
+    <!-- Chatwoot -->
+    <script>
+      window.chatwootSettings = {"position":"right","type":"expanded_bubble","launcherTitle":"Online Chat"};
+      (function(d,t) {
+        var BASE_URL="https://app.chatwoot.com/";
+        var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=BASE_URL+"/packs/js/sdk.js"; g.defer=true; g.async=true;
+        s.parentNode.insertBefore(g,s);
+        g.onload=function(){ window.chatwootSDK.run({ websiteToken:'c3stLVCV9GDjtvHcBMLdjRjU', baseUrl:BASE_URL }) }
+      })(document,"script");
+    </script>
+
+    <script>
+    // All models data
+    const ALL_MODELS = [{"id": "google/gemma-4-26b-a4b-it", "provider": "google", "input": 0.0, "output": 0.0, "ctx": "262144", "tier": "free"}, {"id": "google/gemma-4-31b-it", "provider": "google", "input": 0.0, "output": 0.0, "ctx": "262144", "tier": "free"}, {"id": "cloudflare/@cf/ibm-granite/granite-4.0-h-micro", "provider": "cloudflare", "input": 0.017, "output": 0.112, "ctx": "131000", "tier": "free"}, {"id": "deepinfra/meta-llama/Llama-3.2-3B-Instruct", "provider": "deepinfra", "input": 0.02, "output": 0.02, "ctx": "131072", "tier": "free"}, {"id": "deepinfra/meta-llama/Meta-Llama-3.1-8B-Instruct", "provider": "deepinfra", "input": 0.02, "output": 0.05, "ctx": "131072", "tier": "free"}, {"id": "deepinfra/meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo", "provider": "deepinfra", "input": 0.02, "output": 0.03, "ctx": "131072", "tier": "free"}, {"id": "deepinfra/mistralai/Mistral-Nemo-Instruct-2407", "provider": "deepinfra", "input": 0.02, "output": 0.04, "ctx": "131072", "tier": "free"}, {"id": "cloudflare/@cf/meta/llama-3.2-1b-instruct", "provider": "cloudflare", "input": 0.027, "output": 0.201, "ctx": "60000", "tier": "free"}, {"id": "deepinfra/meta-llama/Meta-Llama-3-8B-Instruct", "provider": "deepinfra", "input": 0.03, "output": 0.06, "ctx": "8192", "tier": "free"}, {"id": "deepinfra/openai/gpt-oss-20b", "provider": "deepinfra", "input": 0.03, "output": 0.14, "ctx": "131072", "tier": "free"}, {"id": "together_ai/LiquidAI/LFM2-24B-A2B", "provider": "together_ai", "input": 0.03, "output": 0.12, "ctx": "32768", "tier": "free"}, {"id": "dashscope/qwen-turbo", "provider": "dashscope", "input": 0.0325, "output": 0.13, "ctx": "129024", "tier": "free"}, {"id": "dashscope/qwen-turbo-2024-11-01", "provider": "dashscope", "input": 0.0325, "output": 0.13, "ctx": "1000000", "tier": "free"}, {"id": "dashscope/qwen-turbo-2025-04-28", "provider": "dashscope", "input": 0.0325, "output": 0.13, "ctx": "1000000", "tier": "free"}, {"id": "dashscope/qwen-turbo-latest", "provider": "dashscope", "input": 0.0325, "output": 0.13, "ctx": "1000000", "tier": "free"}, {"id": "amazon/amazon.nova-micro-v1:0", "provider": "amazon", "input": 0.035, "output": 0.14, "ctx": "128000", "tier": "free"}, {"id": "amazon/amazon.nova-micro-v1:0@us", "provider": "amazon", "input": 0.035, "output": 0.14, "ctx": "128000", "tier": "free"}, {"id": "cohere/command-r7b-12-2024", "provider": "cohere", "input": 0.0375, "output": 0.15, "ctx": "132000", "tier": "free"}, {"id": "deepinfra/openai/gpt-oss-120b", "provider": "deepinfra", "input": 0.039, "output": 0.19, "ctx": "131072", "tier": "free"}, {"id": "amazon/google.gemma-3-4b-it", "provider": "amazon", "input": 0.04, "output": 0.08, "ctx": "128000", "tier": "free"}, {"id": "amazon/google.gemma-3-4b-it@us", "provider": "amazon", "input": 0.04, "output": 0.08, "ctx": "128000", "tier": "free"}, {"id": "amazon/mistral.voxtral-mini-3b-2507", "provider": "amazon", "input": 0.04, "output": 0.04, "ctx": "128000", "tier": "free"}, {"id": "amazon/mistral.voxtral-mini-3b-2507@us", "provider": "amazon", "input": 0.04, "output": 0.04, "ctx": "128000", "tier": "free"}, {"id": "deepinfra/Qwen/Qwen2.5-7B-Instruct", "provider": "deepinfra", "input": 0.04, "output": 0.1, "ctx": "32768", "tier": "free"}, {"id": "deepinfra/Sao10K/L3-8B-Lunaris-v1-Turbo", "provider": "deepinfra", "input": 0.04, "output": 0.05, "ctx": "8192", "tier": "free"}, {"id": "deepinfra/nvidia/NVIDIA-Nemotron-Nano-9B-v2", "provider": "deepinfra", "input": 0.04, "output": 0.16, "ctx": "131072", "tier": "free"}, {"id": "databricks/databricks-gpt-5-nano", "provider": "databricks", "input": 0.05, "output": 0.4, "ctx": "272000", "tier": "free"}, {"id": "deepinfra/google/gemma-3-12b-it", "provider": "deepinfra", "input": 0.05, "output": 0.15, "ctx": "131072", "tier": "free"}, {"id": "deepinfra/google/gemma-3-4b-it", "provider": "deepinfra", "input": 0.05, "output": 0.1, "ctx": "131072", "tier": "free"}, {"id": "deepinfra/mistralai/Mistral-Small-24B-Instruct-2501", "provider": "deepinfra", "input": 0.05, "output": 0.08, "ctx": "32768", "tier": "free"}, {"id": "deepinfra/nvidia/Nemotron-3-Nano-30B-A3B", "provider": "deepinfra", "input": 0.05, "output": 0.2, "ctx": "262144", "tier": "free"}, {"id": "groq/llama-3.1-8b-instant", "provider": "groq", "input": 0.05, "output": 0.08, "ctx": "131072", "tier": "free"}, {"id": "openai/gpt-5-nano", "provider": "openai", "input": 0.05, "output": 0.4, "ctx": "400000", "tier": "free"}, {"id": "openai/gpt-5-nano-2025-08-07", "provider": "openai", "input": 0.05, "output": 0.4, "ctx": "400000", "tier": "free"}, {"id": "ovhcloud/gpt-oss-20b", "provider": "ovhcloud", "input": 0.05, "output": 0.18, "ctx": "131072", "tier": "free"}, {"id": "together_ai/openai/gpt-oss-20b", "provider": "together_ai", "input": 0.05, "output": 0.2, "ctx": "131072", "tier": "free"}, {"id": "cloudflare/@cf/meta/llama-3.2-3b-instruct", "provider": "cloudflare", "input": 0.0509, "output": 0.335, "ctx": "80000", "tier": "free"}, {"id": "deepinfra/meta-llama/Llama-Guard-3-8B", "provider": "deepinfra", "input": 0.055, "output": 0.055, "ctx": "131072", "tier": "free"}, {"id": "amazon/amazon.nova-lite-v1:0", "provider": "amazon", "input": 0.06, "output": 0.24, "ctx": "300000", "tier": "free"}, {"id": "amazon/amazon.nova-lite-v1:0@us", "provider": "amazon", "input": 0.06, "output": 0.24, "ctx": "300000", "tier": "free"}, {"id": "amazon/nvidia.nemotron-nano-3-30b", "provider": "amazon", "input": 0.06, "output": 0.24, "ctx": "262144", "tier": "free"}, {"id": "amazon/nvidia.nemotron-nano-3-30b@us", "provider": "amazon", "input": 0.06, "output": 0.24, "ctx": "262144", "tier": "free"}, {"id": "amazon/nvidia.nemotron-nano-9b-v2", "provider": "amazon", "input": 0.06, "output": 0.23, "ctx": "128000", "tier": "free"}, {"id": "amazon/nvidia.nemotron-nano-9b-v2@us", "provider": "amazon", "input": 0.06, "output": 0.23, "ctx": "128000", "tier": "free"}, {"id": "deepinfra/zai-org/GLM-4.7-Flash", "provider": "deepinfra", "input": 0.06, "output": 0.4, "ctx": "202752", "tier": "free"}, {"id": "mistral/mistral-small-latest", "provider": "mistral", "input": 0.06, "output": 0.18, "ctx": "262144", "tier": "free"}, {"id": "nebius/nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B", "provider": "nebius", "input": 0.06, "output": 0.24, "ctx": "262144", "tier": "free"}, {"id": "nebius/nvidia/Nemotron-3-Nano-Omni", "provider": "nebius", "input": 0.06, "output": 0.24, "ctx": "8000", "tier": "free"}, {"id": "together_ai/google/gemma-3n-E4B-it", "provider": "together_ai", "input": 0.06, "output": 0.12, "ctx": "32768", "tier": "free"}, {"id": "cloudflare/@cf/zai-org/glm-4.7-flash", "provider": "cloudflare", "input": 0.0605, "output": 0.4, "ctx": "131072", "tier": "free"}, {"id": "dashscope/qwen3-next-80b-a3b-instruct", "provider": "dashscope", "input": 0.0634, "output": 0.507, "ctx": "131072", "tier": "free"}, {"id": "dashscope/qwen3-next-80b-a3b-thinking", "provider": "dashscope", "input": 0.0634, "output": 0.507, "ctx": "131072", "tier": "free"}, {"id": "dashscope/qwen3-vl-32b-instruct", "provider": "dashscope", "input": 0.0676, "output": 0.2704, "ctx": "131072", "tier": "free"}, {"id": "amazon/openai.gpt-oss-20b-1:0", "provider": "amazon", "input": 0.07, "output": 0.3, "ctx": "128000", "tier": "free"}, {"id": "amazon/openai.gpt-oss-20b-1:0@us", "provider": "amazon", "input": 0.07, "output": 0.3, "ctx": "128000", "tier": "free"}, {"id": "amazon/openai.gpt-oss-safeguard-20b", "provider": "amazon", "input": 0.07, "output": 0.2, "ctx": "128000", "tier": "free"}, {"id": "amazon/openai.gpt-oss-safeguard-20b@us", "provider": "amazon", "input": 0.07, "output": 0.2, "ctx": "128000", "tier": "free"}, {"id": "amazon/zai.glm-4.7-flash", "provider": "amazon", "input": 0.07, "output": 0.4, "ctx": "200000", "tier": "free"}, {"id": "amazon/zai.glm-4.7-flash@us", "provider": "amazon", "input": 0.07, "output": 0.4, "ctx": "200000", "tier": "free"}, {"id": "databricks/databricks-gpt-oss-20b", "provider": "databricks", "input": 0.07, "output": 0.3, "ctx": "131072", "tier": "free"}, {"id": "deepinfra/google/gemma-4-26B-A4B-it", "provider": "deepinfra", "input": 0.07, "output": 0.34, "ctx": "262144", "tier": "free"}, {"id": "deepinfra/microsoft/phi-4", "provider": "deepinfra", "input": 0.07, "output": 0.14, "ctx": "16384", "tier": "free"}, {"id": "fireworks_ai/accounts/fireworks/models/gpt-oss-20b", "provider": "fireworks_ai", "input": 0.07, "output": 0.3, "ctx": "131072", "tier": "free"}, {"id": "fireworks_ai/gpt-oss-20b", "provider": "fireworks_ai", "input": 0.07, "output": 0.3, "ctx": "131072", "tier": "free"}, {"id": "ovhcloud/Qwen3-Coder-30B-A3B-Instruct", "provider": "ovhcloud", "input": 0.07, "output": 0.26, "ctx": "262144", "tier": "free"}, {"id": "bytedance/seed-1-6-flash-250715", "provider": "bytedance", "input": 0.075, "output": 0.3, "ctx": "262144", "tier": "basic"}, {"id": "deepinfra/mistralai/Mistral-Small-3.2-24B-Instruct-2506", "provider": "deepinfra", "input": 0.075, "output": 0.2, "ctx": "128000", "tier": "basic"}, {"id": "groq/openai/gpt-oss-20b", "provider": "groq", "input": 0.075, "output": 0.3, "ctx": "131072", "tier": "basic"}, {"id": "groq/openai/gpt-oss-safeguard-20b", "provider": "groq", "input": 0.075, "output": 0.3, "ctx": "131072", "tier": "basic"}, {"id": "dashscope/qwen3-vl-8b-instruct", "provider": "dashscope", "input": 0.0761, "output": 0.2957, "ctx": "131072", "tier": "basic"}, {"id": "dashscope/qwen3-vl-8b-thinking", "provider": "dashscope", "input": 0.0761, "output": 0.8873, "ctx": "131072", "tier": "basic"}, {"id": "deepinfra/Qwen/Qwen3-32B", "provider": "deepinfra", "input": 0.08, "output": 0.28, "ctx": "40960", "tier": "basic"}, {"id": "deepinfra/google/gemma-3-27b-it", "provider": "deepinfra", "input": 0.08, "output": 0.16, "ctx": "131072", "tier": "basic"}, {"id": "lilac/google/gemma-4-31b-it", "provider": "lilac", "input": 0.0825, "output": 0.2625, "ctx": "262144", "tier": "basic"}, {"id": "dashscope/qwen3-30b-a3b", "provider": "dashscope", "input": 0.0845, "output": 0.338, "ctx": "131072", "tier": "basic"}, {"id": "dashscope/qwen3-30b-a3b-instruct-2507", "provider": "dashscope", "input": 0.0845, "output": 0.338, "ctx": "131072", "tier": "basic"}, {"id": "dashscope/qwen3-30b-a3b-thinking-2507", "provider": "dashscope", "input": 0.0845, "output": 1.014, "ctx": "81920", "tier": "basic"}, {"id": "dashscope/qwen3-vl-30b-a3b-instruct", "provider": "dashscope", "input": 0.0845, "output": 0.338, "ctx": "131072", "tier": "basic"}, {"id": "dashscope/qwen3-vl-30b-a3b-thinking", "provider": "dashscope", "input": 0.0845, "output": 1.014, "ctx": "131072", "tier": "basic"}, {"id": "dashscope/qwen-vl-plus", "provider": "dashscope", "input": 0.0887, "output": 0.2662, "ctx": "131072", "tier": "basic"}, {"id": "amazon/google.gemma-3-12b-it", "provider": "amazon", "input": 0.09, "output": 0.29, "ctx": "128000", "tier": "basic"}, {"id": "amazon/google.gemma-3-12b-it@us", "provider": "amazon", "input": 0.09, "output": 0.29, "ctx": "128000", "tier": "basic"}, {"id": "deepinfra/Qwen/Qwen3-235B-A22B-Instruct-2507", "provider": "deepinfra", "input": 0.09, "output": 0.1, "ctx": "262144", "tier": "basic"}, {"id": "deepinfra/Qwen/Qwen3-Next-80B-A3B-Instruct", "provider": "deepinfra", "input": 0.09, "output": 1.1, "ctx": "262144", "tier": "basic"}, {"id": "deepinfra/stepfun-ai/Step-3.5-Flash", "provider": "deepinfra", "input": 0.09, "output": 0.3, "ctx": "262144", "tier": "basic"}, {"id": "ovhcloud/Qwen3-32B", "provider": "ovhcloud", "input": 0.09, "output": 0.25, "ctx": "32768", "tier": "basic"}, {"id": "ovhcloud/gpt-oss-120b", "provider": "ovhcloud", "input": 0.09, "output": 0.47, "ctx": "131072", "tier": "basic"}, {"id": "dashscope/deepseek-v4-flash", "provider": "dashscope", "input": 0.091, "output": 0.182, "ctx": "1000000", "tier": "basic"}, {"id": "dashscope/qwen3-235b-a22b-thinking-2507", "provider": "dashscope", "input": 0.0972, "output": 0.9718, "ctx": "131072", "tier": "basic"}, {"id": "qwen/qwen3-next-80b-a3b-instruct", "provider": "qwen", "input": 0.0975, "output": 0.78, "ctx": "131072", "tier": "basic"}, {"id": "qwen/qwen3-next-80b-a3b-thinking", "provider": "qwen", "input": 0.0975, "output": 0.78, "ctx": "131072", "tier": "basic"}, {"id": "amazon/mistral.ministral-3-3b-instruct", "provider": "amazon", "input": 0.1, "output": 0.1, "ctx": "128000", "tier": "basic"}, {"id": "amazon/mistral.ministral-3-3b-instruct@us", "provider": "amazon", "input": 0.1, "output": 0.1, "ctx": "128000", "tier": "basic"}, {"id": "amazon/mistral.voxtral-small-24b-2507", "provider": "amazon", "input": 0.1, "output": 0.3, "ctx": "128000", "tier": "basic"}, {"id": "amazon/mistral.voxtral-small-24b-2507@us", "provider": "amazon", "input": 0.1, "output": 0.3, "ctx": "128000", "tier": "basic"}, {"id": "bytedance/seed-2-0-mini-260215", "provider": "bytedance", "input": 0.1, "output": 0.4, "ctx": "256000", "tier": "basic"}, {"id": "bytedance/seed-2-0-mini-260428", "provider": "bytedance", "input": 0.1, "output": 0.4, "ctx": "262144", "tier": "basic"}, {"id": "cloudflare/@cf/google/gemma-4-26b-a4b-it", "provider": "cloudflare", "input": 0.1, "output": 0.3, "ctx": "256000", "tier": "basic"}, {"id": "deepinfra/ByteDance/Seed-2.0-mini", "provider": "deepinfra", "input": 0.1, "output": 0.4, "ctx": "256000", "tier": "basic"}, {"id": "deepinfra/Qwen/Qwen3.5-9B", "provider": "deepinfra", "input": 0.1, "output": 0.15, "ctx": "262144", "tier": "basic"}, {"id": "deepinfra/deepseek-ai/DeepSeek-V4-Flash", "provider": "deepinfra", "input": 0.1, "output": 0.2, "ctx": "1048576", "tier": "basic"}, {"id": "deepinfra/meta-llama/Llama-3.3-70B-Instruct", "provider": "deepinfra", "input": 0.1, "output": 0.32, "ctx": "131072", "tier": "basic"}, {"id": "deepinfra/meta-llama/Llama-3.3-70B-Instruct-Turbo", "provider": "deepinfra", "input": 0.1, "output": 0.32, "ctx": "131072", "tier": "basic"}, {"id": "deepinfra/meta-llama/Llama-4-Scout-17B-16E-Instruct", "provider": "deepinfra", "input": 0.1, "output": 0.3, "ctx": "327680", "tier": "basic"}, {"id": "deepinfra/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B", "provider": "deepinfra", "input": 0.1, "output": 0.5, "ctx": "262144", "tier": "basic"}, {"id": "google/gemini-2.5-flash-lite", "provider": "google", "input": 0.1, "output": 0.4, "ctx": "1048576", "tier": "basic"}, {"id": "mistral/devstral-small-2507", "provider": "mistral", "input": 0.1, "output": 0.3, "ctx": "128000", "tier": "basic"}, {"id": "mistral/devstral-small-latest", "provider": "mistral", "input": 0.1, "output": 0.3, "ctx": "256000", "tier": "basic"}, {"id": "mistral/labs-devstral-small-2512", "provider": "mistral", "input": 0.1, "output": 0.3, "ctx": "256000", "tier": "basic"}, {"id": "mistral/ministral-3b-2512", "provider": "mistral", "input": 0.1, "output": 0.1, "ctx": "131072", "tier": "basic"}, {"id": "mistral/mistral-small", "provider": "mistral", "input": 0.1, "output": 0.3, "ctx": "32000", "tier": "basic"}, {"id": "nebius/Qwen/Qwen3-30B-A3B-Instruct-2507", "provider": "nebius", "input": 0.1, "output": 0.3, "ctx": "262144", "tier": "basic"}, {"id": "nebius/Qwen/Qwen3-32B", "provider": "nebius", "input": 0.1, "output": 0.3, "ctx": "40960", "tier": "basic"}, {"id": "nebius/google/gemma-3-27b-it", "provider": "nebius", "input": 0.1, "output": 0.3, "ctx": "110000", "tier": "basic"}, {"id": "nebius/nvidia/Cosmos3-Super-Reasoner", "provider": "nebius", "input": 0.1, "output": 0.3, "ctx": "262144", "tier": "basic"}, {"id": "nebius/openai/gpt-oss-120b-fast", "provider": "nebius", "input": 0.1, "output": 0.5, "ctx": "8000", "tier": "basic"}, {"id": "openai/gpt-4.1-nano", "provider": "openai", "input": 0.1, "output": 0.4, "ctx": "1047576", "tier": "basic"}, {"id": "openai/gpt-4.1-nano-2025-04-14", "provider": "openai", "input": 0.1, "output": 0.4, "ctx": "1047576", "tier": "basic"}, {"id": "ovhcloud/Mistral-Small-3.2-24B-Instruct-2506", "provider": "ovhcloud", "input": 0.1, "output": 0.31, "ctx": "131072", "tier": "basic"}, {"id": "together_ai/arize-ai/qwen-2-1.5b-instruct", "provider": "together_ai", "input": 0.1, "output": 0.1, "ctx": "32768", "tier": "basic"}, {"id": "dashscope/qwen3-vl-32b-thinking", "provider": "dashscope", "input": 0.104, "output": 1.8655, "ctx": "131072", "tier": "basic"}, {"id": "qwen/qwen3-32b", "provider": "qwen", "input": 0.104, "output": 0.416, "ctx": "131072", "tier": "basic"}, {"id": "qwen/qwen3-vl-32b-instruct", "provider": "qwen", "input": 0.104, "output": 0.416, "ctx": "131072", "tier": "basic"}, {"id": "qwen/qwen3-vl-32b-thinking", "provider": "qwen", "input": 0.104, "output": 1.8655, "ctx": "131072", "tier": "basic"}, {"id": "dashscope/qwen3.5-35b-a3b", "provider": "dashscope", "input": 0.1056, "output": 0.845, "ctx": "262144", "tier": "basic"}, {"id": "groq/meta-llama/llama-4-scout-17b-16e-instruct", "provider": "groq", "input": 0.11, "output": 0.34, "ctx": "131072", "tier": "basic"}, {"id": "ovhcloud/Llama-3.1-8B-Instruct", "provider": "ovhcloud", "input": 0.11, "output": 0.11, "ctx": "131072", "tier": "basic"}, {"id": "ovhcloud/Mistral-7B-Instruct-v0.3", "provider": "ovhcloud", "input": 0.11, "output": 0.11, "ctx": "65536", "tier": "basic"}, {"id": "qwen/qwen3-8b", "provider": "qwen", "input": 0.117, "output": 0.455, "ctx": "131072", "tier": "basic"}, {"id": "qwen/qwen3-vl-8b-instruct", "provider": "qwen", "input": 0.117, "output": 0.455, "ctx": "131072", "tier": "basic"}, {"id": "qwen/qwen3-vl-8b-thinking", "provider": "qwen", "input": 0.117, "output": 1.365, "ctx": "131072", "tier": "basic"}, {"id": "deepinfra/Qwen/Qwen3-14B", "provider": "deepinfra", "input": 0.12, "output": 0.24, "ctx": "40960", "tier": "basic"}, {"id": "deepinfra/Qwen/Qwen3-30B-A3B", "provider": "deepinfra", "input": 0.12, "output": 0.5, "ctx": "40960", "tier": "basic"}, {"id": "deepinfra/google/gemma-4-31B-it-turbo", "provider": "deepinfra", "input": 0.12, "output": 0.37, "ctx": "262144", "tier": "basic"}, {"id": "ovhcloud/Qwen3.5-9B", "provider": "ovhcloud", "input": 0.12, "output": 0.18, "ctx": "262144", "tier": "basic"}, {"id": "dashscope/qwen3.6-flash", "provider": "dashscope", "input": 0.1219, "output": 0.7313, "ctx": "1000000", "tier": "basic"}, {"id": "dashscope/qwen3-coder-flash", "provider": "dashscope", "input": 0.1268, "output": 0.6337, "ctx": "1000000", "tier": "basic"}, {"id": "dashscope/qwen3.5-27b", "provider": "dashscope", "input": 0.1268, "output": 1.014, "ctx": "262144", "tier": "basic"}, {"id": "deepinfra/google/gemma-4-31B-it", "provider": "deepinfra", "input": 0.13, "output": 0.38, "ctx": "262144", "tier": "basic"}, {"id": "nebius/NousResearch/Hermes-4-70B", "provider": "nebius", "input": 0.13, "output": 0.4, "ctx": "131072", "tier": "basic"}, {"id": "nebius/meta-llama/Llama-3.3-70B-Instruct", "provider": "nebius", "input": 0.13, "output": 0.4, "ctx": "131072", "tier": "basic"}, {"id": "qwen/deepseek-v4-flash", "provider": "qwen", "input": 0.13, "output": 0.26, "ctx": "1000000", "tier": "basic"}, {"id": "qwen/qwen3-30b-a3b", "provider": "qwen", "input": 0.13, "output": 0.52, "ctx": "131072", "tier": "basic"}, {"id": "qwen/qwen3-30b-a3b-instruct-2507", "provider": "qwen", "input": 0.13, "output": 0.52, "ctx": "131072", "tier": "basic"}, {"id": "qwen/qwen3-30b-a3b-thinking-2507", "provider": "qwen", "input": 0.13, "output": 1.56, "ctx": "81920", "tier": "basic"}, {"id": "qwen/qwen3-vl-30b-a3b-instruct", "provider": "qwen", "input": 0.13, "output": 0.52, "ctx": "131072", "tier": "basic"}, {"id": "qwen/qwen3-vl-30b-a3b-thinking", "provider": "qwen", "input": 0.13, "output": 1.56, "ctx": "131072", "tier": "basic"}, {"id": "deepinfra/Qwen/Qwen3.5-35B-A3B", "provider": "deepinfra", "input": 0.14, "output": 1.0, "ctx": "262144", "tier": "basic"}, {"id": "deepseek/deepseek-v4-flash", "provider": "deepseek", "input": 0.14, "output": 0.28, "ctx": "1048576", "tier": "basic"}, {"id": "fireworks_ai/deepseek-v4-flash", "provider": "fireworks_ai", "input": 0.14, "output": 0.28, "ctx": "1048576", "tier": "basic"}, {"id": "ovhcloud/Mistral-Nemo-Instruct-2407", "provider": "ovhcloud", "input": 0.14, "output": 0.14, "ctx": "65536", "tier": "basic"}, {"id": "together_ai/meta-llama/Meta-Llama-3-8B-Instruct-Lite", "provider": "together_ai", "input": 0.14, "output": 0.14, "ctx": "8192", "tier": "basic"}, {"id": "qwen/qwen3-235b-a22b-thinking-2507", "provider": "qwen", "input": 0.1495, "output": 1.495, "ctx": "131072", "tier": "basic"}, {"id": "amazon/mistral.ministral-3-8b-instruct", "provider": "amazon", "input": 0.15, "output": 0.15, "ctx": "128000", "tier": "basic"}, {"id": "amazon/mistral.ministral-3-8b-instruct@us", "provider": "amazon", "input": 0.15, "output": 0.15, "ctx": "128000", "tier": "basic"}, {"id": "amazon/nvidia.nemotron-super-3-120b", "provider": "amazon", "input": 0.15, "output": 0.65, "ctx": "256000", "tier": "basic"}, {"id": "amazon/nvidia.nemotron-super-3-120b@us", "provider": "amazon", "input": 0.15, "output": 0.65, "ctx": "256000", "tier": "basic"}, {"id": "amazon/openai.gpt-oss-120b-1:0", "provider": "amazon", "input": 0.15, "output": 0.6, "ctx": "128000", "tier": "basic"}, {"id": "amazon/openai.gpt-oss-120b-1:0@us", "provider": "amazon", "input": 0.15, "output": 0.6, "ctx": "128000", "tier": "basic"}, {"id": "amazon/openai.gpt-oss-safeguard-120b", "provider": "amazon", "input": 0.15, "output": 0.6, "ctx": "128000", "tier": "basic"}, {"id": "amazon/openai.gpt-oss-safeguard-120b@us", "provider": "amazon", "input": 0.15, "output": 0.6, "ctx": "128000", "tier": "basic"}, {"id": "amazon/qwen.qwen3-32b-v1:0", "provider": "amazon", "input": 0.15, "output": 0.6, "ctx": "131072", "tier": "basic"}, {"id": "amazon/qwen.qwen3-32b-v1:0@us", "provider": "amazon", "input": 0.15, "output": 0.6, "ctx": "131072", "tier": "basic"}, {"id": "amazon/qwen.qwen3-coder-30b-a3b-v1:0", "provider": "amazon", "input": 0.15, "output": 0.6, "ctx": "262144", "tier": "basic"}, {"id": "amazon/qwen.qwen3-coder-30b-a3b-v1:0@us", "provider": "amazon", "input": 0.15, "output": 0.6, "ctx": "262144", "tier": "basic"}, {"id": "amazon/qwen.qwen3-next-80b-a3b", "provider": "amazon", "input": 0.15, "output": 1.2, "ctx": "128000", "tier": "basic"}, {"id": "amazon/qwen.qwen3-next-80b-a3b@us", "provider": "amazon", "input": 0.15, "output": 1.2, "ctx": "128000", "tier": "basic"}, {"id": "cohere/command-r-08-2024", "provider": "cohere", "input": 0.15, "output": 0.6, "ctx": "128000", "tier": "basic"}, {"id": "databricks/databricks-gemma-3-12b", "provider": "databricks", "input": 0.15, "output": 0.5, "ctx": "128000", "tier": "basic"}, {"id": "databricks/databricks-gpt-oss-120b", "provider": "databricks", "input": 0.15, "output": 0.6, "ctx": "131072", "tier": "basic"}, {"id": "databricks/databricks-meta-llama-3-1-8b-instruct", "provider": "databricks", "input": 0.15, "output": 0.45, "ctx": "200000", "tier": "basic"}, {"id": "deepinfra/MiniMaxAI/MiniMax-M2.5", "provider": "deepinfra", "input": 0.15, "output": 1.15, "ctx": "196608", "tier": "basic"}, {"id": "deepinfra/Qwen/QwQ-32B", "provider": "deepinfra", "input": 0.15, "output": 0.4, "ctx": "131072", "tier": "basic"}, {"id": "deepinfra/Qwen/Qwen3-VL-30B-A3B-Instruct", "provider": "deepinfra", "input": 0.15, "output": 0.6, "ctx": "262144", "tier": "basic"}, {"id": "deepinfra/Qwen/Qwen3.6-35B-A3B", "provider": "deepinfra", "input": 0.15, "output": 0.95, "ctx": "262144", "tier": "basic"}, {"id": "deepinfra/meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8", "provider": "deepinfra", "input": 0.15, "output": 0.6, "ctx": "1048576", "tier": "basic"}, {"id": "deepinfra/openai/gpt-oss-120b-Turbo", "provider": "deepinfra", "input": 0.15, "output": 0.6, "ctx": "131072", "tier": "basic"}, {"id": "fireworks_ai/accounts/fireworks/models/gpt-oss-120b", "provider": "fireworks_ai", "input": 0.15, "output": 0.6, "ctx": "131072", "tier": "basic"}, {"id": "fireworks_ai/gpt-oss-120b", "provider": "fireworks_ai", "input": 0.15, "output": 0.6, "ctx": "131072", "tier": "basic"}, {"id": "groq/openai/gpt-oss-120b", "provider": "groq", "input": 0.15, "output": 0.6, "ctx": "131072", "tier": "basic"}, {"id": "microsoft/gpt-4o-mini", "provider": "microsoft", "input": 0.15, "output": 0.6, "ctx": "128000", "tier": "basic"}, {"id": "mistral/ministral-8b-2512", "provider": "mistral", "input": 0.15, "output": 0.15, "ctx": "262144", "tier": "basic"}, {"id": "mistral/ministral-8b-latest", "provider": "mistral", "input": 0.15, "output": 0.15, "ctx": "262144", "tier": "basic"}, {"id": "mistral/mistral-small-2603", "provider": "mistral", "input": 0.15, "output": 0.6, "ctx": "262144", "tier": "basic"}, {"id": "mistral/pixtral-12b-2409", "provider": "mistral", "input": 0.15, "output": 0.15, "ctx": "128000", "tier": "basic"}, {"id": "nebius/Qwen/Qwen3-Next-80B-A3B-Thinking", "provider": "nebius", "input": 0.15, "output": 1.2, "ctx": "128000", "tier": "basic"}, {"id": "nebius/Qwen/Qwen3-Next-80B-A3B-Thinking-fast", "provider": "nebius", "input": 0.15, "output": 1.2, "ctx": "8000", "tier": "basic"}, {"id": "nebius/openai/gpt-oss-120b", "provider": "nebius", "input": 0.15, "output": 0.6, "ctx": "131072", "tier": "basic"}, {"id": "openai/gpt-4o-mini", "provider": "openai", "input": 0.15, "output": 0.6, "ctx": "128000", "tier": "basic"}, {"id": "openai/gpt-4o-mini-2024-07-18", "provider": "openai", "input": 0.15, "output": 0.6, "ctx": "128000", "tier": "basic"}, {"id": "openai/gpt-4o-mini-search-preview", "provider": "openai", "input": 0.15, "output": 0.6, "ctx": "128000", "tier": "basic"}, {"id": "openai/gpt-4o-mini-search-preview-2025-03-11", "provider": "openai", "input": 0.15, "output": 0.6, "ctx": "128000", "tier": "basic"}, {"id": "together_ai/essentialai/rnj-1-instruct", "provider": "together_ai", "input": 0.15, "output": 0.15, "ctx": "32768", "tier": "basic"}, {"id": "together_ai/openai/gpt-oss-120b", "provider": "together_ai", "input": 0.15, "output": 0.6, "ctx": "131072", "tier": "basic"}, {"id": "cloudflare/@cf/meta/llama-3.1-8b-instruct-fp8", "provider": "cloudflare", "input": 0.152, "output": 0.287, "ctx": "32000", "tier": "basic"}, {"id": "qwen/qwen3.5-35b-a3b", "provider": "qwen", "input": 0.1625, "output": 1.3, "ctx": "262144", "tier": "basic"}, {"id": "qwen/qwen3.6-flash", "provider": "qwen", "input": 0.1625, "output": 0.975, "ctx": "1000000", "tier": "basic"}, {"id": "qwen/qwen3.6-flash-2026-04-16", "provider": "qwen", "input": 0.1625, "output": 0.975, "ctx": "1000000", "tier": "basic"}, {"id": "dashscope/qwen-plus", "provider": "dashscope", "input": 0.169, "output": 0.507, "ctx": "1000000", "tier": "basic"}, {"id": "dashscope/qwen-plus-2025-07-28", "provider": "dashscope", "input": 0.169, "output": 0.507, "ctx": "1000000", "tier": "basic"}, {"id": "dashscope/qwen3-vl-235b-a22b-instruct", "provider": "dashscope", "input": 0.169, "output": 0.676, "ctx": "131072", "tier": "basic"}, {"id": "dashscope/qwen3-vl-235b-a22b-thinking", "provider": "dashscope", "input": 0.169, "output": 1.69, "ctx": "131072", "tier": "basic"}, {"id": "dashscope/qwen3.5-122b-a10b", "provider": "dashscope", "input": 0.169, "output": 1.352, "ctx": "262144", "tier": "basic"}, {"id": "together_ai/Qwen/Qwen3.5-9B", "provider": "together_ai", "input": 0.17, "output": 0.25, "ctx": "262144", "tier": "basic"}, {"id": "scaleway/gpt-oss-120b", "provider": "scaleway", "input": 0.172, "output": 0.688, "ctx": "128000", "tier": "basic"}, {"id": "scaleway/mistral-small-3.2-24b-instruct-2506", "provider": "scaleway", "input": 0.172, "output": 0.4013, "ctx": "128000", "tier": "basic"}, {"id": "scaleway/voxtral-small-24b-2507", "provider": "scaleway", "input": 0.172, "output": 0.4013, "ctx": "32000", "tier": "basic"}, {"id": "deepinfra/Qwen/Qwen3-235B-A22B", "provider": "deepinfra", "input": 0.18, "output": 0.54, "ctx": "40960", "tier": "basic"}, {"id": "deepinfra/meta-llama/Llama-Guard-4-12B", "provider": "deepinfra", "input": 0.18, "output": 0.18, "ctx": "163840", "tier": "basic"}, {"id": "dashscope/qwen3-coder-30b-a3b-instruct", "provider": "dashscope", "input": 0.1901, "output": 0.9506, "ctx": "262144", "tier": "basic"}, {"id": "qwen/qwen3-coder-flash", "provider": "qwen", "input": 0.195, "output": 0.975, "ctx": "1000000", "tier": "basic"}, {"id": "qwen/qwen3.5-27b", "provider": "qwen", "input": 0.195, "output": 1.56, "ctx": "262144", "tier": "basic"}, {"id": "amazon/ai21.jamba-1-5-mini-v1:0", "provider": "amazon", "input": 0.2, "output": 0.4, "ctx": "256000", "tier": "basic"}, {"id": "amazon/mistral.ministral-3-14b-instruct", "provider": "amazon", "input": 0.2, "output": 0.2, "ctx": "128000", "tier": "basic"}, {"id": "amazon/mistral.ministral-3-14b-instruct@us", "provider": "amazon", "input": 0.2, "output": 0.2, "ctx": "128000", "tier": "basic"}, {"id": "amazon/mistral.mistral-7b-instruct-v0:2", "provider": "amazon", "input": 0.2, "output": 0.26, "ctx": "32000", "tier": "basic"}, {"id": "amazon/mistral.mistral-7b-instruct-v0:2@us", "provider": "amazon", "input": 0.2, "output": 0.26, "ctx": "32000", "tier": "basic"}, {"id": "amazon/nvidia.nemotron-nano-12b-v2", "provider": "amazon", "input": 0.2, "output": 0.6, "ctx": "128000", "tier": "basic"}, {"id": "amazon/nvidia.nemotron-nano-12b-v2@us", "provider": "amazon", "input": 0.2, "output": 0.6, "ctx": "128000", "tier": "basic"}, {"id": "databricks/databricks-gpt-5-4-nano", "provider": "databricks", "input": 0.2, "output": 1.25, "ctx": "400000", "tier": "basic"}, {"id": "deepinfra/Qwen/Qwen2.5-VL-32B-Instruct", "provider": "deepinfra", "input": 0.2, "output": 0.6, "ctx": "128000", "tier": "basic"}, {"id": "deepinfra/Qwen/Qwen3-VL-235B-A22B-Instruct", "provider": "deepinfra", "input": 0.2, "output": 0.88, "ctx": "262144", "tier": "basic"}, {"id": "deepinfra/deepseek-ai/DeepSeek-V3-0324", "provider": "deepinfra", "input": 0.2, "output": 0.77, "ctx": "163840", "tier": "basic"}, {"id": "deepinfra/nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning", "provider": "deepinfra", "input": 0.2, "output": 0.8, "ctx": "262144", "tier": "basic"}, {"id": "deepinfra/nvidia/Nemotron-Content-Safety-3.5", "provider": "deepinfra", "input": 0.2, "output": 0.2, "ctx": "131072", "tier": "basic"}, {"id": "deepinfra/stepfun-ai/Step-3.7-Flash", "provider": "deepinfra", "input": 0.2, "output": 1.15, "ctx": "262144", "tier": "basic"}, {"id": "minimax/minimax-text-01", "provider": "minimax", "input": 0.2, "output": 1.1, "ctx": "None", "tier": "basic"}, {"id": "mistral/ministral-14b-2512", "provider": "mistral", "input": 0.2, "output": 0.2, "ctx": "262144", "tier": "basic"}, {"id": "nebius/PrimeIntellect/INTELLECT-3", "provider": "nebius", "input": 0.2, "output": 1.1, "ctx": "131072", "tier": "basic"}, {"id": "nebius/Qwen/Qwen3-235B-A22B-Instruct-2507", "provider": "nebius", "input": 0.2, "output": 0.6, "ctx": "262144", "tier": "basic"}, {"id": "openai/gpt-5.4-nano", "provider": "openai", "input": 0.2, "output": 1.25, "ctx": "400000", "tier": "basic"}, {"id": "openai/gpt-5.4-nano-2026-03-17", "provider": "openai", "input": 0.2, "output": 1.25, "ctx": "400000", "tier": "basic"}, {"id": "together_ai/Qwen/Qwen3-235B-A22B-Instruct-2507-tput", "provider": "together_ai", "input": 0.2, "output": 0.6, "ctx": "262144", "tier": "basic"}, {"id": "together_ai/meta-llama/Llama-Guard-4-12B", "provider": "together_ai", "input": 0.2, "output": 0.2, "ctx": "1048576", "tier": "basic"}, {"id": "xai/grok-4-1-fast", "provider": "xai", "input": 0.2, "output": 0.5, "ctx": "2000000", "tier": "basic"}, {"id": "xai/grok-4-1-fast-non-reasoning", "provider": "xai", "input": 0.2, "output": 0.5, "ctx": "2000000", "tier": "basic"}, {"id": "xai/grok-4-1-fast-non-reasoning-latest", "provider": "xai", "input": 0.2, "output": 0.5, "ctx": "2000000", "tier": "basic"}, {"id": "xai/grok-4-1-fast-reasoning", "provider": "xai", "input": 0.2, "output": 0.5, "ctx": "2000000", "tier": "basic"}, {"id": "xai/grok-4-1-fast-reasoning-latest", "provider": "xai", "input": 0.2, "output": 0.5, "ctx": "2000000", "tier": "basic"}, {"id": "xai/grok-4-fast", "provider": "xai", "input": 0.2, "output": 0.5, "ctx": "2000000", "tier": "basic"}, {"id": "xai/grok-4-fast-non-reasoning", "provider": "xai", "input": 0.2, "output": 0.5, "ctx": "2000000", "tier": "basic"}, {"id": "xai/grok-4-fast-reasoning", "provider": "xai", "input": 0.2, "output": 0.5, "ctx": "2000000", "tier": "basic"}, {"id": "xai/grok-code-fast", "provider": "xai", "input": 0.2, "output": 1.5, "ctx": "256000", "tier": "basic"}, {"id": "xai/grok-code-fast-1", "provider": "xai", "input": 0.2, "output": 1.5, "ctx": "256000", "tier": "basic"}, {"id": "xai/grok-code-fast-1-0825", "provider": "xai", "input": 0.2, "output": 1.5, "ctx": "256000", "tier": "basic"}, {"id": "deepinfra/deepseek-ai/DeepSeek-V3.1", "provider": "deepinfra", "input": 0.21, "output": 0.79, "ctx": "163840", "tier": "basic"}, {"id": "dashscope/qwen3.6-plus", "provider": "dashscope", "input": 0.2113, "output": 1.2675, "ctx": "1000000", "tier": "basic"}, {"id": "amazon/meta.llama3-1-8b-instruct-v1:0", "provider": "amazon", "input": 0.22, "output": 0.22, "ctx": "128000", "tier": "basic"}, {"id": "lilac/minimaxai/minimax-m2.7", "provider": "lilac", "input": 0.225, "output": 0.9, "ctx": "204800", "tier": "basic"}, {"id": "qwen/qwen3-14b", "provider": "qwen", "input": 0.2275, "output": 0.91, "ctx": "131072", "tier": "basic"}, {"id": "scaleway/pixtral-12b-2409", "provider": "scaleway", "input": 0.2293, "output": 0.2293, "ctx": "128000", "tier": "basic"}, {"id": "scaleway/qwen3-coder-30b-a3b-instruct", "provider": "scaleway", "input": 0.2293, "output": 0.9174, "ctx": "128000", "tier": "basic"}, {"id": "amazon/google.gemma-3-27b-it", "provider": "amazon", "input": 0.23, "output": 0.38, "ctx": "128000", "tier": "basic"}, {"id": "amazon/google.gemma-3-27b-it@us", "provider": "amazon", "input": 0.23, "output": 0.38, "ctx": "128000", "tier": "basic"}, {"id": "deepinfra/Qwen/Qwen3-235B-A22B-Thinking-2507", "provider": "deepinfra", "input": 0.23, "output": 2.3, "ctx": "262144", "tier": "basic"}, {"id": "dashscope/deepseek-v3.2", "provider": "dashscope", "input": 0.2408, "output": 0.7225, "ctx": "131072", "tier": "basic"}, {"id": "amazon/anthropic.claude-3-haiku-20240307-v1:0", "provider": "amazon", "input": 0.25, "output": 1.25, "ctx": "200000", "tier": "basic"}, {"id": "bytedance/seed-1-6-250915", "provider": "bytedance", "input": 0.25, "output": 2.0, "ctx": "262144", "tier": "basic"}, {"id": "bytedance/seed-2-0-lite-260228", "provider": "bytedance", "input": 0.25, "output": 2.0, "ctx": "256000", "tier": "basic"}, {"id": "bytedance/seed-2-0-lite-260428", "provider": "bytedance", "input": 0.25, "output": 2.0, "ctx": "262144", "tier": "basic"}, {"id": "databricks/databricks-gpt-5-mini", "provider": "databricks", "input": 0.25, "output": 2.0, "ctx": "272000", "tier": "basic"}, {"id": "deepinfra/ByteDance/Seed-1.8", "provider": "deepinfra", "input": 0.25, "output": 2.0, "ctx": "256000", "tier": "basic"}, {"id": "deepinfra/MiniMaxAI/MiniMax-M2.7", "provider": "deepinfra", "input": 0.25, "output": 1.0, "ctx": "196608", "tier": "basic"}, {"id": "deepinfra/google/gemini-3.1-flash-lite", "provider": "deepinfra", "input": 0.25, "output": 1.5, "ctx": "1000000", "tier": "basic"}, {"id": "google/gemini-3.1-flash-lite", "provider": "google", "input": 0.25, "output": 1.5, "ctx": "1048576", "tier": "basic"}, {"id": "google/gemini-3.1-flash-lite-preview", "provider": "google", "input": 0.25, "output": 1.5, "ctx": "1048576", "tier": "basic"}, {"id": "mistral/mistral-tiny", "provider": "mistral", "input": 0.25, "output": 0.25, "ctx": "32000", "tier": "basic"}, {"id": "mistral/mistral-tiny-latest", "provider": "mistral", "input": 0.25, "output": 0.25, "ctx": "131072", "tier": "basic"}, {"id": "mistral/open-mistral-7b", "provider": "mistral", "input": 0.25, "output": 0.25, "ctx": "32000", "tier": "basic"}, {"id": "nebius/Qwen/Qwen2.5-VL-72B-Instruct", "provider": "nebius", "input": 0.25, "output": 0.75, "ctx": "32000", "tier": "basic"}, {"id": "openai/gpt-5-mini", "provider": "openai", "input": 0.25, "output": 2.0, "ctx": "400000", "tier": "basic"}, {"id": "openai/gpt-5-mini-2025-08-07", "provider": "openai", "input": 0.25, "output": 2.0, "ctx": "400000", "tier": "basic"}, {"id": "openai/gpt-5.1-codex-mini", "provider": "openai", "input": 0.25, "output": 2.0, "ctx": "400000", "tier": "basic"}, {"id": "dashscope/qwen3.5-397b-a17b", "provider": "dashscope", "input": 0.2535, "output": 1.521, "ctx": "262144", "tier": "basic"}, {"id": "minimax/minimax-m2", "provider": "minimax", "input": 0.255, "output": 1.02, "ctx": "204800", "tier": "basic"}, {"id": "dashscope/qwen-plus-2025-01-25", "provider": "dashscope", "input": 0.26, "output": 0.78, "ctx": "129024", "tier": "basic"}, {"id": "dashscope/qwen-plus-2025-04-28", "provider": "dashscope", "input": 0.26, "output": 0.78, "ctx": "129024", "tier": "basic"}, {"id": "dashscope/qwen-plus-2025-07-14", "provider": "dashscope", "input": 0.26, "output": 0.78, "ctx": "129024", "tier": "basic"}, {"id": "deepinfra/Qwen/Qwen3.5-27B", "provider": "deepinfra", "input": 0.26, "output": 2.6, "ctx": "262144", "tier": "basic"}, {"id": "deepinfra/deepseek-ai/DeepSeek-V3.2", "provider": "deepinfra", "input": 0.26, "output": 0.38, "ctx": "163840", "tier": "basic"}, {"id": "qwen/qwen-plus", "provider": "qwen", "input": 0.26, "output": 0.78, "ctx": "1000000", "tier": "basic"}, {"id": "qwen/qwen-plus-2025-01-25", "provider": "qwen", "input": 0.26, "output": 0.78, "ctx": "1000000", "tier": "basic"}, {"id": "qwen/qwen-plus-2025-04-28", "provider": "qwen", "input": 0.26, "output": 0.78, "ctx": "1000000", "tier": "basic"}, {"id": "qwen/qwen-plus-2025-07-14", "provider": "qwen", "input": 0.26, "output": 0.78, "ctx": "1000000", "tier": "basic"}, {"id": "qwen/qwen-plus-2025-09-11", "provider": "qwen", "input": 0.26, "output": 0.78, "ctx": "1000000", "tier": "basic"}, {"id": "qwen/qwen-plus-2025-12-01", "provider": "qwen", "input": 0.26, "output": 0.78, "ctx": "1000000", "tier": "basic"}, {"id": "qwen/qwen-plus-latest", "provider": "qwen", "input": 0.26, "output": 0.78, "ctx": "1000000", "tier": "basic"}, {"id": "qwen/qwen3-vl-235b-a22b-instruct", "provider": "qwen", "input": 0.26, "output": 1.04, "ctx": "131072", "tier": "basic"}, {"id": "qwen/qwen3-vl-235b-a22b-thinking", "provider": "qwen", "input": 0.26, "output": 2.6, "ctx": "131072", "tier": "basic"}, {"id": "qwen/qwen3.5-122b-a10b", "provider": "qwen", "input": 0.26, "output": 2.08, "ctx": "262144", "tier": "basic"}, {"id": "qwen/qwen3.5-plus", "provider": "qwen", "input": 0.26, "output": 1.56, "ctx": "1000000", "tier": "basic"}, {"id": "qwen/qwen3.5-plus-2026-02-15", "provider": "qwen", "input": 0.26, "output": 1.56, "ctx": "1000000", "tier": "basic"}, {"id": "qwen/qwen3.5-plus-2026-04-20", "provider": "qwen", "input": 0.26, "output": 1.56, "ctx": "1000000", "tier": "basic"}, {"id": "qwen/qwen3.7-plus", "provider": "qwen", "input": 0.26, "output": 1.04, "ctx": "1000000", "tier": "basic"}, {"id": "qwen/qwen3.7-plus-2026-05-26", "provider": "qwen", "input": 0.26, "output": 1.04, "ctx": "1000000", "tier": "basic"}, {"id": "deepinfra/allenai/olmOCR-7B-0725-FP8", "provider": "deepinfra", "input": 0.27, "output": 1.5, "ctx": "16384", "tier": "basic"}, {"id": "deepinfra/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B", "provider": "deepinfra", "input": 0.27, "output": 0.27, "ctx": "131072", "tier": "basic"}, {"id": "deepinfra/deepseek-ai/DeepSeek-V3.1-Terminus", "provider": "deepinfra", "input": 0.27, "output": 0.95, "ctx": "163840", "tier": "basic"}, {"id": "deepseek/deepseek-chat", "provider": "deepseek", "input": 0.28, "output": 0.42, "ctx": "131072", "tier": "basic"}, {"id": "deepseek/deepseek-reasoner", "provider": "deepseek", "input": 0.28, "output": 0.42, "ctx": "131072", "tier": "basic"}, {"id": "together_ai/pearl-ai/gemma-4-31b-it", "provider": "together_ai", "input": 0.28, "output": 0.86, "ctx": "262144", "tier": "basic"}, {"id": "scaleway/gemma-3-27b-it", "provider": "scaleway", "input": 0.2867, "output": 0.5733, "ctx": "40000", "tier": "basic"}, {"id": "scaleway/gemma-4-26b-a4b-it", "provider": "scaleway", "input": 0.2867, "output": 0.5733, "ctx": "256000", "tier": "basic"}, {"id": "scaleway/qwen3.6-35b-a3b", "provider": "scaleway", "input": 0.2867, "output": 1.72, "ctx": "256000", "tier": "basic"}, {"id": "deepinfra/Qwen/Qwen3.5-122B-A10B", "provider": "deepinfra", "input": 0.29, "output": 2.4, "ctx": "262144", "tier": "basic"}, {"id": "groq/qwen/qwen3-32b", "provider": "groq", "input": 0.29, "output": 0.59, "ctx": "131072", "tier": "basic"}, {"id": "dashscope/qwen3.6-27b", "provider": "dashscope", "input": 0.2925, "output": 1.755, "ctx": "262144", "tier": "basic"}, {"id": "qwen/qwen3-coder-30b-a3b-instruct", "provider": "qwen", "input": 0.2925, "output": 1.4625, "ctx": "262144", "tier": "basic"}, {"id": "dashscope/qwen3-235b-a22b", "provider": "dashscope", "input": 0.2957, "output": 1.183, "ctx": "131072", "tier": "basic"}, {"id": "amazon/amazon.nova-2-lite-v1:0", "provider": "amazon", "input": 0.3, "output": 2.5, "ctx": "1000000", "tier": "basic"}, {"id": "amazon/amazon.nova-2-lite-v1:0@eu", "provider": "amazon", "input": 0.3, "output": 2.5, "ctx": "1000000", "tier": "basic"}, {"id": "amazon/amazon.nova-2-lite-v1:0@us", "provider": "amazon", "input": 0.3, "output": 2.5, "ctx": "1000000", "tier": "basic"}, {"id": "amazon/minimax.minimax-m2", "provider": "amazon", "input": 0.3, "output": 1.2, "ctx": "128000", "tier": "basic"}, {"id": "amazon/minimax.minimax-m2@us", "provider": "amazon", "input": 0.3, "output": 1.2, "ctx": "128000", "tier": "basic"}, {"id": "databricks/databricks-gemini-2-5-flash", "provider": "databricks", "input": 0.3, "output": 2.5, "ctx": "1048576", "tier": "basic"}, {"id": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct-Turbo", "provider": "deepinfra", "input": 0.3, "output": 1.0, "ctx": "262144", "tier": "basic"}, {"id": "deepinfra/google/gemini-2.5-flash", "provider": "deepinfra", "input": 0.3, "output": 2.5, "ctx": "1000000", "tier": "basic"}, {"id": "google/gemini-2.5-flash", "provider": "google", "input": 0.3, "output": 2.5, "ctx": "1048576", "tier": "basic"}, {"id": "google/gemini-2.5-flash-image", "provider": "google", "input": 0.3, "output": 2.5, "ctx": "32768", "tier": "basic"}, {"id": "minimax/MiniMax-M2", "provider": "minimax", "input": 0.3, "output": 1.2, "ctx": "204800", "tier": "basic"}, {"id": "minimax/MiniMax-M2.1", "provider": "minimax", "input": 0.3, "output": 1.2, "ctx": "204800", "tier": "basic"}, {"id": "minimax/MiniMax-M2.1-lightning", "provider": "minimax", "input": 0.3, "output": 2.4, "ctx": "1000000", "tier": "basic"}, {"id": "minimax/MiniMax-M2.5", "provider": "minimax", "input": 0.3, "output": 1.2, "ctx": "204800", "tier": "basic"}, {"id": "minimax/MiniMax-M2.5-lightning", "provider": "minimax", "input": 0.3, "output": 2.4, "ctx": "1000000", "tier": "basic"}, {"id": "minimax/MiniMax-M2.7", "provider": "minimax", "input": 0.3, "output": 1.2, "ctx": "204800", "tier": "basic"}, {"id": "minimax/MiniMax-M3", "provider": "minimax", "input": 0.3, "output": 1.2, "ctx": "524288", "tier": "basic"}, {"id": "minimax/minimax-m2.1", "provider": "minimax", "input": 0.3, "output": 1.2, "ctx": "204800", "tier": "basic"}, {"id": "minimax/minimax-m2.5", "provider": "minimax", "input": 0.3, "output": 1.2, "ctx": "204800", "tier": "basic"}, {"id": "minimax/minimax-m2.7", "provider": "minimax", "input": 0.3, "output": 1.2, "ctx": "204800", "tier": "basic"}, {"id": "minimax/minimax-m3", "provider": "minimax", "input": 0.3, "output": 1.2, "ctx": "1048576", "tier": "basic"}, {"id": "mistral/codestral-2508", "provider": "mistral", "input": 0.3, "output": 0.9, "ctx": "256000", "tier": "basic"}, {"id": "mistral/open-mistral-nemo", "provider": "mistral", "input": 0.3, "output": 0.3, "ctx": "131072", "tier": "basic"}, {"id": "mistral/open-mistral-nemo-2407", "provider": "mistral", "input": 0.3, "output": 0.3, "ctx": "131072", "tier": "basic"}, {"id": "nebius/MiniMaxAI/MiniMax-M2.5", "provider": "nebius", "input": 0.3, "output": 1.2, "ctx": "196608", "tier": "basic"}, {"id": "nebius/deepseek-ai/DeepSeek-V3.2", "provider": "nebius", "input": 0.3, "output": 0.45, "ctx": "163000", "tier": "basic"}, {"id": "nebius/nvidia/nemotron-3-super-120b-a12b", "provider": "nebius", "input": 0.3, "output": 0.9, "ctx": "262144", "tier": "basic"}, {"id": "together_ai/MiniMaxAI/MiniMax-M2.7", "provider": "together_ai", "input": 0.3, "output": 1.2, "ctx": "196608", "tier": "basic"}, {"id": "together_ai/MiniMaxAI/MiniMax-M3", "provider": "together_ai", "input": 0.3, "output": 1.2, "ctx": "524288", "tier": "basic"}, {"id": "together_ai/Qwen/Qwen2.5-7B-Instruct-Turbo", "provider": "together_ai", "input": 0.3, "output": 0.3, "ctx": "32768", "tier": "basic"}, {"id": "xai/grok-3-mini-latest", "provider": "xai", "input": 0.3, "output": 0.5, "ctx": "131072", "tier": "basic"}, {"id": "deepinfra/Qwen/Qwen3.6-27B", "provider": "deepinfra", "input": 0.32, "output": 3.2, "ctx": "262144", "tier": "basic"}, {"id": "deepinfra/deepseek-ai/DeepSeek-V3", "provider": "deepinfra", "input": 0.32, "output": 0.89, "ctx": "163840", "tier": "basic"}, {"id": "qwen/qwen3.6-plus", "provider": "qwen", "input": 0.325, "output": 1.95, "ctx": "1000000", "tier": "basic"}, {"id": "qwen/qwen3.6-plus-2026-04-02", "provider": "qwen", "input": 0.325, "output": 1.95, "ctx": "1000000", "tier": "basic"}, {"id": "dashscope/qwen-vl-max", "provider": "dashscope", "input": 0.338, "output": 1.352, "ctx": "131072", "tier": "basic"}, {"id": "scaleway/holo2-30b-a3b", "provider": "scaleway", "input": 0.344, "output": 0.8027, "ctx": "22000", "tier": "basic"}, {"id": "deepinfra/meta-llama/Llama-3.2-11B-Vision-Instruct", "provider": "deepinfra", "input": 0.345, "output": 0.345, "ctx": "131072", "tier": "basic"}, {"id": "cerebras/gpt-oss-120b", "provider": "cerebras", "input": 0.35, "output": 0.75, "ctx": "131072", "tier": "basic"}, {"id": "cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct", "provider": "cloudflare", "input": 0.351, "output": 0.555, "ctx": "128000", "tier": "basic"}, {"id": "amazon/meta.llama3-8b-instruct-v1:0", "provider": "amazon", "input": 0.36, "output": 0.72, "ctx": "8192", "tier": "basic"}, {"id": "amazon/minimax.minimax-m2.1", "provider": "amazon", "input": 0.36, "output": 1.44, "ctx": "196000", "tier": "basic"}, {"id": "amazon/minimax.minimax-m2.1@us", "provider": "amazon", "input": 0.36, "output": 1.44, "ctx": "196000", "tier": "basic"}, {"id": "amazon/minimax.minimax-m2.5", "provider": "amazon", "input": 0.36, "output": 1.44, "ctx": "1000000", "tier": "basic"}, {"id": "amazon/minimax.minimax-m2.5@us", "provider": "amazon", "input": 0.36, "output": 1.44, "ctx": "1000000", "tier": "basic"}, {"id": "deepinfra/Qwen/Qwen2.5-72B-Instruct", "provider": "deepinfra", "input": 0.36, "output": 0.4, "ctx": "32768", "tier": "basic"}, {"id": "qwen/deepseek-v3.2", "provider": "qwen", "input": 0.3705, "output": 1.1115, "ctx": "131072", "tier": "basic"}, {"id": "qwen/qwen3.5-397b-a17b", "provider": "qwen", "input": 0.39, "output": 2.34, "ctx": "262144", "tier": "basic"}, {"id": "qwen/qwen3.6-27b", "provider": "qwen", "input": 0.39, "output": 2.34, "ctx": "262144", "tier": "basic"}, {"id": "together_ai/google/gemma-4-31B-it", "provider": "together_ai", "input": 0.39, "output": 0.97, "ctx": "262144", "tier": "basic"}, {"id": "amazon/mistral.devstral-2-123b", "provider": "amazon", "input": 0.4, "output": 2.0, "ctx": "256000", "tier": "basic"}, {"id": "amazon/mistral.devstral-2-123b@us", "provider": "amazon", "input": 0.4, "output": 2.0, "ctx": "256000", "tier": "basic"}, {"id": "deepinfra/Gryphe/MythoMax-L2-13b", "provider": "deepinfra", "input": 0.4, "output": 0.4, "ctx": "4096", "tier": "basic"}, {"id": "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct", "provider": "deepinfra", "input": 0.4, "output": 1.6, "ctx": "262144", "tier": "basic"}, {"id": "deepinfra/XiaomiMiMo/MiMo-V2.5", "provider": "deepinfra", "input": 0.4, "output": 2.0, "ctx": "262144", "tier": "basic"}, {"id": "deepinfra/meta-llama/Meta-Llama-3.1-70B-Instruct", "provider": "deepinfra", "input": 0.4, "output": 0.4, "ctx": "131072", "tier": "basic"}, {"id": "deepinfra/meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo", "provider": "deepinfra", "input": 0.4, "output": 0.4, "ctx": "131072", "tier": "basic"}, {"id": "deepinfra/mistralai/Mixtral-8x7B-Instruct-v0.1", "provider": "deepinfra", "input": 0.4, "output": 0.4, "ctx": "32768", "tier": "basic"}, {"id": "deepinfra/nvidia/Llama-3.3-Nemotron-Super-49B-v1.5", "provider": "deepinfra", "input": 0.4, "output": 0.4, "ctx": "131072", "tier": "basic"}, {"id": "deepinfra/zai-org/GLM-4.5", "provider": "deepinfra", "input": 0.4, "output": 1.6, "ctx": "131072", "tier": "basic"}, {"id": "deepinfra/zai-org/GLM-4.7", "provider": "deepinfra", "input": 0.4, "output": 1.75, "ctx": "202752", "tier": "basic"}, {"id": "minimax/minimax-m1", "provider": "minimax", "input": 0.4, "output": 2.2, "ctx": "1000000", "tier": "basic"}, {"id": "mistral/devstral-2512", "provider": "mistral", "input": 0.4, "output": 2.0, "ctx": "262144", "tier": "basic"}, {"id": "mistral/devstral-latest", "provider": "mistral", "input": 0.4, "output": 2.0, "ctx": "262144", "tier": "basic"}, {"id": "mistral/devstral-medium-2507", "provider": "mistral", "input": 0.4, "output": 2.0, "ctx": "128000", "tier": "basic"}, {"id": "mistral/devstral-medium-latest", "provider": "mistral", "input": 0.4, "output": 2.0, "ctx": "262144", "tier": "basic"}, {"id": "mistral/mistral-medium-2505", "provider": "mistral", "input": 0.4, "output": 2.0, "ctx": "131072", "tier": "basic"}, {"id": "mistral/mistral-medium-3", "provider": "mistral", "input": 0.4, "output": 2.0, "ctx": "262144", "tier": "basic"}, {"id": "mistral/mistral-medium-latest", "provider": "mistral", "input": 0.4, "output": 2.0, "ctx": "262144", "tier": "basic"}, {"id": "nebius/deepseek-ai/DeepSeek-V3.2-fast", "provider": "nebius", "input": 0.4, "output": 2.0, "ctx": "8000", "tier": "basic"}, {"id": "openai/gpt-4.1-mini", "provider": "openai", "input": 0.4, "output": 1.6, "ctx": "1047576", "tier": "basic"}, {"id": "openai/gpt-4.1-mini-2025-04-14", "provider": "openai", "input": 0.4, "output": 1.6, "ctx": "1047576", "tier": "basic"}, {"id": "dashscope/qwen3-coder-plus", "provider": "dashscope", "input": 0.4225, "output": 2.1125, "ctx": "1000000", "tier": "basic"}, {"id": "deepinfra/zai-org/GLM-4.6", "provider": "deepinfra", "input": 0.43, "output": 1.74, "ctx": "202752", "tier": "basic"}, {"id": "deepseek/deepseek-v4-pro", "provider": "deepseek", "input": 0.435, "output": 0.87, "ctx": "1048576", "tier": "basic"}, {"id": "deepinfra/Qwen/Qwen3.5-397B-A17B", "provider": "deepinfra", "input": 0.45, "output": 3.0, "ctx": "262144", "tier": "basic"}, {"id": "deepinfra/moonshotai/Kimi-K2.5", "provider": "deepinfra", "input": 0.45, "output": 2.25, "ctx": "262144", "tier": "basic"}, {"id": "qwen/qwen3-235b-a22b", "provider": "qwen", "input": 0.455, "output": 1.82, "ctx": "131072", "tier": "basic"}, {"id": "scaleway/devstral-2-123b-instruct-2512", "provider": "scaleway", "input": 0.4587, "output": 2.2934, "ctx": "200000", "tier": "basic"}, {"id": "ovhcloud/Qwen3.6-27B", "provider": "ovhcloud", "input": 0.47, "output": 3.19, "ctx": "262144", "tier": "basic"}, {"id": "deepinfra/microsoft/WizardLM-2-8x22B", "provider": "deepinfra", "input": 0.48, "output": 0.48, "ctx": "65536", "tier": "basic"}, {"id": "amazon/cohere.command-r-v1:0", "provider": "amazon", "input": 0.5, "output": 1.5, "ctx": "128000", "tier": "basic"}, {"id": "amazon/mistral.magistral-small-2509", "provider": "amazon", "input": 0.5, "output": 1.5, "ctx": "128000", "tier": "basic"}, {"id": "amazon/mistral.magistral-small-2509@us", "provider": "amazon", "input": 0.5, "output": 1.5, "ctx": "128000", "tier": "basic"}, {"id": "amazon/mistral.mistral-large-3-675b-instruct", "provider": "amazon", "input": 0.5, "output": 1.5, "ctx": "128000", "tier": "basic"}, {"id": "databricks/databricks-llama-4-maverick", "provider": "databricks", "input": 0.5, "output": 1.5, "ctx": "128000", "tier": "basic"}, {"id": "databricks/databricks-meta-llama-3-3-70b-instruct", "provider": "databricks", "input": 0.5, "output": 1.5, "ctx": "128000", "tier": "basic"}, {"id": "deepinfra/ByteDance/Seed-2.0-code", "provider": "deepinfra", "input": 0.5, "output": 3.0, "ctx": "256000", "tier": "basic"}, {"id": "deepinfra/ByteDance/Seed-2.0-pro", "provider": "deepinfra", "input": 0.5, "output": 3.0, "ctx": "256000", "tier": "basic"}, {"id": "deepinfra/MiniMaxAI/MiniMax-M2.7-Turbo", "provider": "deepinfra", "input": 0.5, "output": 2.25, "ctx": "196608", "tier": "basic"}, {"id": "deepinfra/deepseek-ai/DeepSeek-R1-0528", "provider": "deepinfra", "input": 0.5, "output": 2.15, "ctx": "163840", "tier": "basic"}, {"id": "deepinfra/moonshotai/Kimi-K2-Instruct", "provider": "deepinfra", "input": 0.5, "output": 2.0, "ctx": "131072", "tier": "basic"}, {"id": "deepinfra/moonshotai/Kimi-K2-Instruct-0905", "provider": "deepinfra", "input": 0.5, "output": 2.0, "ctx": "262144", "tier": "basic"}, {"id": "deepinfra/nemotron-3-ultra-550b-a55b", "provider": "deepinfra", "input": 0.5, "output": 2.2, "ctx": "262144", "tier": "basic"}, {"id": "deepinfra/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B", "provider": "deepinfra", "input": 0.5, "output": 2.2, "ctx": "262144", "tier": "basic"}, {"id": "google/gemini-3-flash-preview", "provider": "google", "input": 0.5, "output": 3.0, "ctx": "1048576", "tier": "basic"}, {"id": "google/gemini-3.1-flash-image", "provider": "google", "input": 0.5, "output": 3.0, "ctx": "65536", "tier": "basic"}, {"id": "google/gemini-3.1-flash-image-preview", "provider": "google", "input": 0.5, "output": 3.0, "ctx": "65536", "tier": "basic"}, {"id": "microsoft/gpt-35-turbo", "provider": "microsoft", "input": 0.5, "output": 1.5, "ctx": "4097", "tier": "basic"}, {"id": "mistral/magistral-small-latest", "provider": "mistral", "input": 0.5, "output": 1.5, "ctx": "262144", "tier": "basic"}, {"id": "mistral/mistral-large-2512", "provider": "mistral", "input": 0.5, "output": 1.5, "ctx": "262144", "tier": "basic"}, {"id": "nebius/Qwen/Qwen3-235B-A22B-Thinking-2507-fast", "provider": "nebius", "input": 0.5, "output": 2.0, "ctx": "8000", "tier": "basic"}, {"id": "nebius/moonshotai/Kimi-K2.5", "provider": "nebius", "input": 0.5, "output": 2.5, "ctx": "262144", "tier": "basic"}, {"id": "nebius/moonshotai/Kimi-K2.5-fast", "provider": "nebius", "input": 0.5, "output": 2.5, "ctx": "8000", "tier": "basic"}, {"id": "openai/gpt-3.5-turbo", "provider": "openai", "input": 0.5, "output": 1.5, "ctx": "16385", "tier": "basic"}, {"id": "openai/gpt-3.5-turbo-0125", "provider": "openai", "input": 0.5, "output": 1.5, "ctx": "16385", "tier": "basic"}, {"id": "dashscope/qwen3-max", "provider": "dashscope", "input": 0.507, "output": 2.535, "ctx": "262144", "tier": "basic"}, {"id": "dashscope/qwq-plus", "provider": "dashscope", "input": 0.52, "output": 1.56, "ctx": "98304", "tier": "basic"}, {"id": "lilac/moonshotai/kimi-k2.6", "provider": "lilac", "input": 0.525, "output": 2.625, "ctx": "262144", "tier": "basic"}, {"id": "amazon/qwen.qwen3-vl-235b-a22b", "provider": "amazon", "input": 0.53, "output": 2.66, "ctx": "128000", "tier": "basic"}, {"id": "amazon/qwen.qwen3-vl-235b-a22b@us", "provider": "amazon", "input": 0.53, "output": 2.66, "ctx": "128000", "tier": "basic"}, {"id": "amazon/mistral.mixtral-8x7b-instruct-v0:1", "provider": "amazon", "input": 0.59, "output": 0.91, "ctx": "32000", "tier": "basic"}, {"id": "amazon/mistral.mixtral-8x7b-instruct-v0:1@us", "provider": "amazon", "input": 0.59, "output": 0.91, "ctx": "32000", "tier": "basic"}, {"id": "groq/llama-3.3-70b-versatile", "provider": "groq", "input": 0.59, "output": 0.79, "ctx": "131072", "tier": "basic"}, {"id": "amazon/moonshot.kimi-k2-thinking", "provider": "amazon", "input": 0.6, "output": 2.5, "ctx": "128000", "tier": "basic"}, {"id": "amazon/qwen.qwen3-coder-next", "provider": "amazon", "input": 0.6, "output": 1.44, "ctx": "262144", "tier": "basic"}, {"id": "amazon/writer.palmyra-x5-v1:0", "provider": "amazon", "input": 0.6, "output": 6.0, "ctx": "1000000", "tier": "basic"}, {"id": "amazon/zai.glm-4.7", "provider": "amazon", "input": 0.6, "output": 2.2, "ctx": "200000", "tier": "basic"}, {"id": "deepinfra/nvidia/Llama-3.1-Nemotron-70B-Instruct", "provider": "deepinfra", "input": 0.6, "output": 0.6, "ctx": "131072", "tier": "basic"}, {"id": "deepinfra/zai-org/GLM-5", "provider": "deepinfra", "input": 0.6, "output": 2.08, "ctx": "202752", "tier": "basic"}, {"id": "fireworks_ai/accounts/fireworks/models/kimi-k2p5", "provider": "fireworks_ai", "input": 0.6, "output": 3.0, "ctx": "262144", "tier": "basic"}, {"id": "fireworks_ai/kimi-k2p5", "provider": "fireworks_ai", "input": 0.6, "output": 3.0, "ctx": "262144", "tier": "basic"}, {"id": "groq/qwen/qwen3.6-27b", "provider": "groq", "input": 0.6, "output": 3.0, "ctx": "131072", "tier": "basic"}, {"id": "nebius/Qwen/Qwen3.5-397B-A17B", "provider": "nebius", "input": 0.6, "output": 3.6, "ctx": "262144", "tier": "basic"}, {"id": "nebius/Qwen/Qwen3.5-397B-A17B-fast", "provider": "nebius", "input": 0.6, "output": 3.6, "ctx": "8000", "tier": "basic"}, {"id": "nebius/nvidia/Llama-3_1-Nemotron-Ultra-253B-v1", "provider": "nebius", "input": 0.6, "output": 1.8, "ctx": "8000", "tier": "basic"}, {"id": "together_ai/Qwen/Qwen3.5-397B-A17B", "provider": "together_ai", "input": 0.6, "output": 3.6, "ctx": "262144", "tier": "basic"}, {"id": "together_ai/nvidia/nemotron-3-ultra-550b-a55b", "provider": "together_ai", "input": 0.6, "output": 3.6, "ctx": "512288", "tier": "basic"}, {"id": "xai/grok-3-mini-fast", "provider": "xai", "input": 0.6, "output": 4.0, "ctx": "131072", "tier": "basic"}, {"id": "xai/grok-3-mini-fast-beta", "provider": "xai", "input": 0.6, "output": 4.0, "ctx": "131072", "tier": "basic"}, {"id": "xai/grok-3-mini-fast-latest", "provider": "xai", "input": 0.6, "output": 4.0, "ctx": "131072", "tier": "basic"}, {"id": "deepinfra/Sao10K/L3.3-70B-Euryale-v2.3", "provider": "deepinfra", "input": 0.65, "output": 0.75, "ctx": "131072", "tier": "basic"}, {"id": "qwen/qwen3-coder-plus", "provider": "qwen", "input": 0.65, "output": 3.25, "ctx": "1000000", "tier": "basic"}, {"id": "qwen/qwen3-coder-plus-2025-07-22", "provider": "qwen", "input": 0.65, "output": 3.25, "ctx": "1000000", "tier": "basic"}, {"id": "qwen/qwen3-coder-plus-2025-09-23", "provider": "qwen", "input": 0.65, "output": 3.25, "ctx": "1000000", "tier": "basic"}, {"id": "nebius/openbmb/MiniCPM-V-4_5", "provider": "nebius", "input": 0.658, "output": 1.11, "ctx": "32000", "tier": "basic"}, {"id": "cloudflare/@cf/qwen/qwen2.5-coder-32b-instruct", "provider": "cloudflare", "input": 0.66, "output": 1.0, "ctx": "32768", "tier": "basic"}, {"id": "lilac/zai-org/glm-5.1", "provider": "lilac", "input": 0.675, "output": 2.25, "ctx": "202752", "tier": "basic"}, {"id": "dashscope/qwen3.6-max-preview", "provider": "dashscope", "input": 0.676, "output": 4.056, "ctx": "262144", "tier": "basic"}, {"id": "scaleway/qwen3.5-397b-a17b", "provider": "scaleway", "input": 0.688, "output": 4.1281, "ctx": "250000", "tier": "basic"}, {"id": "deepinfra/NousResearch/Hermes-3-Llama-3.1-70B", "provider": "deepinfra", "input": 0.7, "output": 0.7, "ctx": "131072", "tier": "basic"}, {"id": "deepinfra/deepseek-ai/DeepSeek-R1", "provider": "deepinfra", "input": 0.7, "output": 2.4, "ctx": "163840", "tier": "basic"}, {"id": "deepinfra/deepseek-ai/DeepSeek-R1-Distill-Llama-70B", "provider": "deepinfra", "input": 0.7, "output": 0.8, "ctx": "131072", "tier": "basic"}, {"id": "mistral/open-mixtral-8x7b", "provider": "mistral", "input": 0.7, "output": 0.7, "ctx": "32000", "tier": "basic"}, {"id": "ovhcloud/Qwen3.5-397B-A17B", "provider": "ovhcloud", "input": 0.71, "output": 4.25, "ctx": "262144", "tier": "basic"}, {"id": "amazon/meta.llama3-3-70b-instruct-v1:0", "provider": "amazon", "input": 0.72, "output": 0.72, "ctx": "128000", "tier": "basic"}, {"id": "amazon/moonshotai.kimi-k2.5", "provider": "amazon", "input": 0.72, "output": 3.6, "ctx": "262144", "tier": "basic"}, {"id": "amazon/deepseek.v3.2", "provider": "amazon", "input": 0.74, "output": 2.22, "ctx": "163840", "tier": "basic"}, {"id": "deepinfra/moonshotai/Kimi-K2.7-Code", "provider": "deepinfra", "input": 0.74, "output": 3.5, "ctx": "262144", "tier": "basic"}, {"id": "ovhcloud/Meta-Llama-3_3-70B-Instruct", "provider": "ovhcloud", "input": 0.74, "output": 0.74, "ctx": "131072", "tier": "basic"}, {"id": "databricks/databricks-gpt-5-4-mini", "provider": "databricks", "input": 0.75, "output": 4.5, "ctx": "400000", "tier": "basic"}, {"id": "deepinfra/moonshotai/Kimi-K2.6", "provider": "deepinfra", "input": 0.75, "output": 3.5, "ctx": "262144", "tier": "basic"}, {"id": "openai/gpt-5.4-mini", "provider": "openai", "input": 0.75, "output": 4.5, "ctx": "400000", "tier": "basic"}, {"id": "openai/gpt-5.4-mini-2026-03-17", "provider": "openai", "input": 0.75, "output": 4.5, "ctx": "400000", "tier": "basic"}, {"id": "openai/gpt-mini-latest", "provider": "openai", "input": 0.75, "output": 4.5, "ctx": "400000", "tier": "basic"}, {"id": "qwen/qwen3-max", "provider": "qwen", "input": 0.78, "output": 3.9, "ctx": "262144", "tier": "basic"}, {"id": "qwen/qwen3-max-2025-09-23", "provider": "qwen", "input": 0.78, "output": 3.9, "ctx": "262144", "tier": "basic"}, {"id": "qwen/qwen3-max-2026-01-23", "provider": "qwen", "input": 0.78, "output": 3.9, "ctx": "262144", "tier": "basic"}, {"id": "qwen/qwen3-max-preview", "provider": "qwen", "input": 0.78, "output": 3.9, "ctx": "262144", "tier": "basic"}, {"id": "amazon/amazon.nova-pro-v1:0", "provider": "amazon", "input": 0.8, "output": 3.2, "ctx": "300000", "tier": "basic"}, {"id": "amazon/amazon.nova-pro-v1:0@us", "provider": "amazon", "input": 0.8, "output": 3.2, "ctx": "300000", "tier": "basic"}, {"id": "qwen/qwen3.6-max-preview", "provider": "qwen", "input": 0.845, "output": 5.07, "ctx": "262144", "tier": "basic"}, {"id": "deepinfra/Sao10K/L3.1-70B-Euryale-v2.2", "provider": "deepinfra", "input": 0.85, "output": 0.85, "ctx": "131072", "tier": "basic"}, {"id": "scaleway/qwen3-235b-a22b-instruct-2507", "provider": "scaleway", "input": 0.86, "output": 2.5801, "ctx": "250000", "tier": "basic"}, {"id": "cloudflare/@cf/moonshotai/kimi-k2.6", "provider": "cloudflare", "input": 0.95, "output": 4.0, "ctx": "262144", "tier": "basic"}, {"id": "cloudflare/@cf/moonshotai/kimi-k2.7-code", "provider": "cloudflare", "input": 0.95, "output": 4.0, "ctx": "262144", "tier": "basic"}, {"id": "nebius/moonshotai/Kimi-K2.6", "provider": "nebius", "input": 0.95, "output": 4.0, "ctx": "262144", "tier": "basic"}, {"id": "together_ai/moonshotai/Kimi-K2.7-Code", "provider": "together_ai", "input": 0.95, "output": 4.0, "ctx": "262144", "tier": "basic"}, {"id": "amazon/meta.llama3-1-70b-instruct-v1:0", "provider": "amazon", "input": 0.99, "output": 0.99, "ctx": "128000", "tier": "basic"}, {"id": "amazon/anthropic.claude-haiku-4-5-20251001-v1:0", "provider": "amazon", "input": 1.0, "output": 5.0, "ctx": "200000", "tier": "basic"}, {"id": "amazon/mistral.mistral-small-2402-v1:0", "provider": "amazon", "input": 1.0, "output": 3.0, "ctx": "32000", "tier": "basic"}, {"id": "amazon/zai.glm-5", "provider": "amazon", "input": 1.0, "output": 3.2, "ctx": "200000", "tier": "basic"}, {"id": "anthropic/claude-haiku-4-5", "provider": "anthropic", "input": 1.0, "output": 5.0, "ctx": "200000", "tier": "basic"}, {"id": "anthropic/claude-haiku-4-5-20251001", "provider": "anthropic", "input": 1.0, "output": 5.0, "ctx": "200000", "tier": "basic"}, {"id": "anthropic/claude-haiku-latest", "provider": "anthropic", "input": 1.0, "output": 5.0, "ctx": "200000", "tier": "basic"}, {"id": "databricks/databricks-claude-haiku-4-5", "provider": "databricks", "input": 1.0, "output": 5.0, "ctx": "200000", "tier": "basic"}, {"id": "deepinfra/NousResearch/Hermes-3-Llama-3.1-405B", "provider": "deepinfra", "input": 1.0, "output": 1.0, "ctx": "131072", "tier": "basic"}, {"id": "deepinfra/XiaomiMiMo/MiMo-V2.5-Pro", "provider": "deepinfra", "input": 1.0, "output": 3.0, "ctx": "1048576", "tier": "basic"}, {"id": "deepinfra/anthropic/claude-haiku-4-5", "provider": "deepinfra", "input": 1.0, "output": 5.0, "ctx": "200000", "tier": "basic"}, {"id": "deepinfra/deepseek-ai/DeepSeek-R1-0528-Turbo", "provider": "deepinfra", "input": 1.0, "output": 3.0, "ctx": "32768", "tier": "basic"}, {"id": "deepinfra/deepseek-ai/DeepSeek-R1-Turbo", "provider": "deepinfra", "input": 1.0, "output": 3.0, "ctx": "40960", "tier": "basic"}, {"id": "deepinfra/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16", "provider": "deepinfra", "input": 1.0, "output": 5.0, "ctx": "262144", "tier": "basic"}, {"id": "deepinfra/zai-org/GLM-5.2", "provider": "deepinfra", "input": 1.0, "output": 4.0, "ctx": "1048576", "tier": "basic"}, {"id": "mistral/codestral-2405", "provider": "mistral", "input": 1.0, "output": 3.0, "ctx": "32000", "tier": "basic"}, {"id": "mistral/codestral-latest", "provider": "mistral", "input": 1.0, "output": 3.0, "ctx": "256000", "tier": "basic"}, {"id": "nebius/NousResearch/Hermes-4-405B", "provider": "nebius", "input": 1.0, "output": 3.0, "ctx": "131072", "tier": "basic"}, {"id": "nebius/nvidia/Nemotron-3-Ultra-550b-a55b", "provider": "nebius", "input": 1.0, "output": 3.0, "ctx": "262144", "tier": "basic"}, {"id": "nebius/zai-org/GLM-5", "provider": "nebius", "input": 1.0, "output": 3.2, "ctx": "202752", "tier": "basic"}, {"id": "openai/gpt-3.5-turbo-1106", "provider": "openai", "input": 1.0, "output": 2.0, "ctx": "16385", "tier": "basic"}, {"id": "perplexityai/sonar", "provider": "perplexityai", "input": 1.0, "output": 1.0, "ctx": "127072", "tier": "basic"}, {"id": "together_ai/zai-org/GLM-5", "provider": "together_ai", "input": 1.0, "output": 3.2, "ctx": "202752", "tier": "basic"}, {"id": "xai/grok-build-0.1", "provider": "xai", "input": 1.0, "output": 2.0, "ctx": "256000", "tier": "basic"}, {"id": "ovhcloud/Qwen2.5-VL-72B-Instruct", "provider": "ovhcloud", "input": 1.01, "output": 1.01, "ctx": "32768", "tier": "pro"}, {"id": "scaleway/llama-3.3-70b-instruct", "provider": "scaleway", "input": 1.032, "output": 1.032, "ctx": "128000", "tier": "pro"}, {"id": "dashscope/qwen-max", "provider": "dashscope", "input": 1.04, "output": 4.16, "ctx": "30720", "tier": "pro"}, {"id": "together_ai/meta-llama/Llama-3.3-70B-Instruct-Turbo", "provider": "together_ai", "input": 1.04, "output": 1.04, "ctx": "131072", "tier": "pro"}, {"id": "deepinfra/zai-org/GLM-5.1", "provider": "deepinfra", "input": 1.05, "output": 3.5, "ctx": "202752", "tier": "pro"}, {"id": "dashscope/deepseek-v4-pro", "provider": "dashscope", "input": 1.092, "output": 2.184, "ctx": "1000000", "tier": "pro"}, {"id": "amazon/anthropic.claude-haiku-4-5-20251001-v1:0@eu", "provider": "amazon", "input": 1.1, "output": 5.5, "ctx": "200000", "tier": "pro"}, {"id": "amazon/anthropic.claude-haiku-4-5-20251001-v1:0@us", "provider": "amazon", "input": 1.1, "output": 5.5, "ctx": "200000", "tier": "pro"}, {"id": "microsoft/o3-mini", "provider": "microsoft", "input": 1.1, "output": 4.4, "ctx": "200000", "tier": "pro"}, {"id": "openai/o3-mini", "provider": "openai", "input": 1.1, "output": 4.4, "ctx": "200000", "tier": "pro"}, {"id": "openai/o3-mini-2025-01-31", "provider": "openai", "input": 1.1, "output": 4.4, "ctx": "200000", "tier": "pro"}, {"id": "openai/o4-mini", "provider": "openai", "input": 1.1, "output": 4.4, "ctx": "200000", "tier": "pro"}, {"id": "openai/o4-mini-2025-04-16", "provider": "openai", "input": 1.1, "output": 4.4, "ctx": "200000", "tier": "pro"}, {"id": "deepinfra/Qwen/Qwen3-Max", "provider": "deepinfra", "input": 1.2, "output": 6.0, "ctx": "256000", "tier": "pro"}, {"id": "deepinfra/Qwen/Qwen3-Max-Thinking", "provider": "deepinfra", "input": 1.2, "output": 6.0, "ctx": "256000", "tier": "pro"}, {"id": "together_ai/moonshotai/Kimi-K2.6", "provider": "together_ai", "input": 1.2, "output": 4.5, "ctx": "262144", "tier": "pro"}, {"id": "microsoft/o1-mini", "provider": "microsoft", "input": 1.21, "output": 4.84, "ctx": "128000", "tier": "pro"}, {"id": "databricks/databricks-gemini-2-5-pro", "provider": "databricks", "input": 1.25, "output": 10.0, "ctx": "1048576", "tier": "pro"}, {"id": "databricks/databricks-gpt-5", "provider": "databricks", "input": 1.25, "output": 10.0, "ctx": "272000", "tier": "pro"}, {"id": "databricks/databricks-gpt-5-1", "provider": "databricks", "input": 1.25, "output": 10.0, "ctx": "272000", "tier": "pro"}, {"id": "deepinfra/google/gemini-2.5-pro", "provider": "deepinfra", "input": 1.25, "output": 10.0, "ctx": "1000000", "tier": "pro"}, {"id": "google/gemini-2.5-pro", "provider": "google", "input": 1.25, "output": 10.0, "ctx": "1048576", "tier": "pro"}, {"id": "openai/gpt-5", "provider": "openai", "input": 1.25, "output": 10.0, "ctx": "400000", "tier": "pro"}, {"id": "openai/gpt-5-2025-08-07", "provider": "openai", "input": 1.25, "output": 10.0, "ctx": "400000", "tier": "pro"}, {"id": "openai/gpt-5-chat-latest", "provider": "openai", "input": 1.25, "output": 10.0, "ctx": "128000", "tier": "pro"}, {"id": "openai/gpt-5-codex", "provider": "openai", "input": 1.25, "output": 10.0, "ctx": "400000", "tier": "pro"}, {"id": "openai/gpt-5-search-api", "provider": "openai", "input": 1.25, "output": 10.0, "ctx": "272000", "tier": "pro"}, {"id": "openai/gpt-5-search-api-2025-10-14", "provider": "openai", "input": 1.25, "output": 10.0, "ctx": "272000", "tier": "pro"}, {"id": "openai/gpt-5.1", "provider": "openai", "input": 1.25, "output": 10.0, "ctx": "400000", "tier": "pro"}, {"id": "openai/gpt-5.1-2025-11-13", "provider": "openai", "input": 1.25, "output": 10.0, "ctx": "400000", "tier": "pro"}, {"id": "openai/gpt-5.1-chat-latest", "provider": "openai", "input": 1.25, "output": 10.0, "ctx": "128000", "tier": "pro"}, {"id": "openai/gpt-5.1-codex", "provider": "openai", "input": 1.25, "output": 10.0, "ctx": "400000", "tier": "pro"}, {"id": "openai/gpt-5.1-codex-max", "provider": "openai", "input": 1.25, "output": 10.0, "ctx": "400000", "tier": "pro"}, {"id": "together_ai/deepcogito/cogito-v2-1-671b", "provider": "together_ai", "input": 1.25, "output": 1.25, "ctx": "163840", "tier": "pro"}, {"id": "xai/grok-4.20", "provider": "xai", "input": 1.25, "output": 2.5, "ctx": "2000000", "tier": "pro"}, {"id": "xai/grok-4.20-0309-non-reasoning", "provider": "xai", "input": 1.25, "output": 2.5, "ctx": "2000000", "tier": "pro"}, {"id": "xai/grok-4.20-0309-reasoning", "provider": "xai", "input": 1.25, "output": 2.5, "ctx": "2000000", "tier": "pro"}, {"id": "xai/grok-4.3", "provider": "xai", "input": 1.25, "output": 2.5, "ctx": "1000000", "tier": "pro"}, {"id": "xai/grok-4.3-latest", "provider": "xai", "input": 1.25, "output": 2.5, "ctx": "1000000", "tier": "pro"}, {"id": "deepinfra/deepseek-ai/DeepSeek-V4-Pro", "provider": "deepinfra", "input": 1.3, "output": 2.6, "ctx": "1048576", "tier": "pro"}, {"id": "amazon/deepseek.r1-v1:0", "provider": "amazon", "input": 1.35, "output": 5.4, "ctx": "128000", "tier": "pro"}, {"id": "cloudflare/@cf/zai-org/glm-5.2", "provider": "cloudflare", "input": 1.4, "output": 4.4, "ctx": "262144", "tier": "pro"}, {"id": "fireworks_ai/accounts/fireworks/models/glm-5p1", "provider": "fireworks_ai", "input": 1.4, "output": 4.4, "ctx": "202752", "tier": "pro"}, {"id": "fireworks_ai/glm-5p1", "provider": "fireworks_ai", "input": 1.4, "output": 4.4, "ctx": "202752", "tier": "pro"}, {"id": "nebius/zai-org/GLM-5.1", "provider": "nebius", "input": 1.4, "output": 4.4, "ctx": "202752", "tier": "pro"}, {"id": "nebius/zai-org/GLM-5.2", "provider": "nebius", "input": 1.4, "output": 4.4, "ctx": "432000", "tier": "pro"}, {"id": "together_ai/zai-org/GLM-5.1", "provider": "together_ai", "input": 1.4, "output": 4.4, "ctx": "202752", "tier": "pro"}, {"id": "together_ai/zai-org/GLM-5.2", "provider": "together_ai", "input": 1.4, "output": 4.4, "ctx": "262144", "tier": "pro"}, {"id": "deepinfra/google/gemini-3.5-flash", "provider": "deepinfra", "input": 1.5, "output": 9.0, "ctx": "1000000", "tier": "pro"}, {"id": "google/gemini-3.5-flash", "provider": "google", "input": 1.5, "output": 9.0, "ctx": "1048576", "tier": "pro"}, {"id": "google/gemini-flash-latest", "provider": "google", "input": 1.5, "output": 9.0, "ctx": "1048576", "tier": "pro"}, {"id": "mistral/mistral-medium-3-5", "provider": "mistral", "input": 1.5, "output": 7.5, "ctx": "262144", "tier": "pro"}, {"id": "mistral/mistral-medium-3.5", "provider": "mistral", "input": 1.5, "output": 7.5, "ctx": "262144", "tier": "pro"}, {"id": "qwen/deepseek-v4-pro", "provider": "qwen", "input": 1.56, "output": 3.12, "ctx": "1000000", "tier": "pro"}, {"id": "dashscope/qwen3.7-max", "provider": "dashscope", "input": 1.625, "output": 4.875, "ctx": "1000000", "tier": "pro"}, {"id": "qwen/qwen3.7-max", "provider": "qwen", "input": 1.625, "output": 4.875, "ctx": "1000000", "tier": "pro"}, {"id": "qwen/qwen3.7-max-2026-05-17", "provider": "qwen", "input": 1.625, "output": 4.875, "ctx": "1000000", "tier": "pro"}, {"id": "qwen/qwen3.7-max-2026-05-20", "provider": "qwen", "input": 1.625, "output": 4.875, "ctx": "1000000", "tier": "pro"}, {"id": "qwen/qwen3.7-max-2026-06-08", "provider": "qwen", "input": 1.625, "output": 4.875, "ctx": "1000000", "tier": "pro"}, {"id": "qwen/qwen3.7-max-preview", "provider": "qwen", "input": 1.625, "output": 4.875, "ctx": "1000000", "tier": "pro"}, {"id": "scaleway/mistral-medium-3.5-128b", "provider": "scaleway", "input": 1.72, "output": 8.6002, "ctx": "256000", "tier": "pro"}, {"id": "fireworks_ai/accounts/fireworks/models/deepseek-v4-pro", "provider": "fireworks_ai", "input": 1.74, "output": 3.48, "ctx": "1048576", "tier": "pro"}, {"id": "fireworks_ai/deepseek-v4-pro", "provider": "fireworks_ai", "input": 1.74, "output": 3.48, "ctx": "1048576", "tier": "pro"}, {"id": "together_ai/deepseek-ai/DeepSeek-V4-Pro", "provider": "together_ai", "input": 1.74, "output": 3.48, "ctx": "512000", "tier": "pro"}, {"id": "nebius/deepseek-ai/DeepSeek-V4-Pro", "provider": "nebius", "input": 1.75, "output": 3.5, "ctx": "1048576", "tier": "pro"}, {"id": "openai/gpt-5.2", "provider": "openai", "input": 1.75, "output": 14.0, "ctx": "400000", "tier": "pro"}, {"id": "openai/gpt-5.2-2025-12-11", "provider": "openai", "input": 1.75, "output": 14.0, "ctx": "400000", "tier": "pro"}, {"id": "openai/gpt-5.2-chat-latest", "provider": "openai", "input": 1.75, "output": 14.0, "ctx": "128000", "tier": "pro"}, {"id": "openai/gpt-5.2-codex", "provider": "openai", "input": 1.75, "output": 14.0, "ctx": "400000", "tier": "pro"}, {"id": "openai/gpt-5.3-chat-latest", "provider": "openai", "input": 1.75, "output": 14.0, "ctx": "128000", "tier": "pro"}, {"id": "openai/gpt-5.3-codex", "provider": "openai", "input": 1.75, "output": 14.0, "ctx": "400000", "tier": "pro"}, {"id": "amazon/ai21.jamba-1-5-large-v1:0", "provider": "amazon", "input": 2.0, "output": 8.0, "ctx": "256000", "tier": "pro"}, {"id": "amazon/mistral.pixtral-large-2502-v1:0", "provider": "amazon", "input": 2.0, "output": 6.0, "ctx": "128000", "tier": "pro"}, {"id": "amazon/mistral.pixtral-large-2502-v1:0@us", "provider": "amazon", "input": 2.0, "output": 6.0, "ctx": "128000", "tier": "pro"}, {"id": "deepinfra/google/gemini-3.1-pro", "provider": "deepinfra", "input": 2.0, "output": 12.0, "ctx": "1000000", "tier": "pro"}, {"id": "google/gemini-3-pro-image", "provider": "google", "input": 2.0, "output": 12.0, "ctx": "65536", "tier": "pro"}, {"id": "google/gemini-3-pro-image-preview", "provider": "google", "input": 2.0, "output": 12.0, "ctx": "65536", "tier": "pro"}, {"id": "google/gemini-3.1-pro-preview", "provider": "google", "input": 2.0, "output": 12.0, "ctx": "1048576", "tier": "pro"}, {"id": "google/gemini-3.1-pro-preview-customtools", "provider": "google", "input": 2.0, "output": 12.0, "ctx": "1048576", "tier": "pro"}, {"id": "google/gemini-pro-latest", "provider": "google", "input": 2.0, "output": 12.0, "ctx": "1048576", "tier": "pro"}, {"id": "mistral/magistral-medium-2509", "provider": "mistral", "input": 2.0, "output": 5.0, "ctx": "131072", "tier": "pro"}, {"id": "mistral/magistral-medium-latest", "provider": "mistral", "input": 2.0, "output": 5.0, "ctx": "131072", "tier": "pro"}, {"id": "mistral/mistral-large-2407", "provider": "mistral", "input": 2.0, "output": 6.0, "ctx": "131072", "tier": "pro"}, {"id": "mistral/mistral-large-2411", "provider": "mistral", "input": 2.0, "output": 6.0, "ctx": "128000", "tier": "pro"}, {"id": "mistral/mistral-large-latest", "provider": "mistral", "input": 2.0, "output": 6.0, "ctx": "262144", "tier": "pro"}, {"id": "mistral/open-mixtral-8x22b", "provider": "mistral", "input": 2.0, "output": 6.0, "ctx": "65336", "tier": "pro"}, {"id": "mistral/pixtral-large-2411", "provider": "mistral", "input": 2.0, "output": 6.0, "ctx": "128000", "tier": "pro"}, {"id": "mistral/pixtral-large-latest", "provider": "mistral", "input": 2.0, "output": 6.0, "ctx": "128000", "tier": "pro"}, {"id": "openai/gpt-4.1", "provider": "openai", "input": 2.0, "output": 8.0, "ctx": "1047576", "tier": "pro"}, {"id": "openai/gpt-4.1-2025-04-14", "provider": "openai", "input": 2.0, "output": 8.0, "ctx": "1047576", "tier": "pro"}, {"id": "openai/o3", "provider": "openai", "input": 2.0, "output": 8.0, "ctx": "200000", "tier": "pro"}, {"id": "openai/o3-2025-04-16", "provider": "openai", "input": 2.0, "output": 8.0, "ctx": "200000", "tier": "pro"}, {"id": "openai/o4-mini-deep-research", "provider": "openai", "input": 2.0, "output": 8.0, "ctx": "200000", "tier": "pro"}, {"id": "openai/o4-mini-deep-research-2025-06-26", "provider": "openai", "input": 2.0, "output": 8.0, "ctx": "200000", "tier": "pro"}, {"id": "perplexityai/sonar-deep-research", "provider": "perplexityai", "input": 2.0, "output": 8.0, "ctx": "128000", "tier": "pro"}, {"id": "perplexityai/sonar-reasoning-pro", "provider": "perplexityai", "input": 2.0, "output": 8.0, "ctx": "128000", "tier": "pro"}, {"id": "xai/grok-4.20-beta-0309-non-reasoning", "provider": "xai", "input": 2.0, "output": 6.0, "ctx": "2000000", "tier": "pro"}, {"id": "xai/grok-4.20-beta-0309-reasoning", "provider": "xai", "input": 2.0, "output": 6.0, "ctx": "2000000", "tier": "pro"}, {"id": "cerebras/zai-glm-4.7", "provider": "cerebras", "input": 2.25, "output": 2.75, "ctx": "128000", "tier": "pro"}, {"id": "amazon/writer.palmyra-x4-v1:0", "provider": "amazon", "input": 2.5, "output": 10.0, "ctx": "128000", "tier": "pro"}, {"id": "cohere/command-a-03-2025", "provider": "cohere", "input": 2.5, "output": 10.0, "ctx": "288000", "tier": "pro"}, {"id": "cohere/command-r-plus-08-2024", "provider": "cohere", "input": 2.5, "output": 10.0, "ctx": "128000", "tier": "pro"}, {"id": "databricks/databricks-gpt-5-4", "provider": "databricks", "input": 2.5, "output": 15.0, "ctx": "1050000", "tier": "pro"}, {"id": "deepinfra/Qwen/Qwen3.7-Max", "provider": "deepinfra", "input": 2.5, "output": 7.5, "ctx": "256000", "tier": "pro"}, {"id": "microsoft/gpt-4o", "provider": "microsoft", "input": 2.5, "output": 10.0, "ctx": "128000", "tier": "pro"}, {"id": "openai/gpt-4o", "provider": "openai", "input": 2.5, "output": 10.0, "ctx": "128000", "tier": "pro"}, {"id": "openai/gpt-4o-2024-05-13", "provider": "openai", "input": 2.5, "output": 10.0, "ctx": "128000", "tier": "pro"}, {"id": "openai/gpt-4o-2024-08-06", "provider": "openai", "input": 2.5, "output": 10.0, "ctx": "128000", "tier": "pro"}, {"id": "openai/gpt-4o-2024-11-20", "provider": "openai", "input": 2.5, "output": 10.0, "ctx": "128000", "tier": "pro"}, {"id": "openai/gpt-4o-search-preview", "provider": "openai", "input": 2.5, "output": 10.0, "ctx": "128000", "tier": "pro"}, {"id": "openai/gpt-4o-search-preview-2025-03-11", "provider": "openai", "input": 2.5, "output": 10.0, "ctx": "128000", "tier": "pro"}, {"id": "openai/gpt-5.4", "provider": "openai", "input": 2.5, "output": 15.0, "ctx": "1050000", "tier": "pro"}, {"id": "openai/gpt-5.4-2026-03-05", "provider": "openai", "input": 2.5, "output": 15.0, "ctx": "1050000", "tier": "pro"}, {"id": "mistral/mistral-medium", "provider": "mistral", "input": 2.7, "output": 8.1, "ctx": "262144", "tier": "pro"}, {"id": "mistral/mistral-medium-2312", "provider": "mistral", "input": 2.7, "output": 8.1, "ctx": "32000", "tier": "pro"}, {"id": "amazon/anthropic.claude-3-sonnet-20240229-v1:0", "provider": "amazon", "input": 3.0, "output": 15.0, "ctx": "200000", "tier": "premium"}, {"id": "amazon/anthropic.claude-sonnet-4-5-20250929-v1:0", "provider": "amazon", "input": 3.0, "output": 15.0, "ctx": "200000", "tier": "premium"}, {"id": "amazon/anthropic.claude-sonnet-4-6", "provider": "amazon", "input": 3.0, "output": 15.0, "ctx": "1000000", "tier": "premium"}, {"id": "amazon/cohere.command-r-plus-v1:0", "provider": "amazon", "input": 3.0, "output": 15.0, "ctx": "128000", "tier": "premium"}, {"id": "anthropic/claude-sonnet-4-5", "provider": "anthropic", "input": 3.0, "output": 15.0, "ctx": "1000000", "tier": "premium"}, {"id": "anthropic/claude-sonnet-4-5-20250929", "provider": "anthropic", "input": 3.0, "output": 15.0, "ctx": "1000000", "tier": "premium"}, {"id": "anthropic/claude-sonnet-4-6", "provider": "anthropic", "input": 3.0, "output": 15.0, "ctx": "1000000", "tier": "premium"}, {"id": "anthropic/claude-sonnet-latest", "provider": "anthropic", "input": 3.0, "output": 15.0, "ctx": "1000000", "tier": "premium"}, {"id": "databricks/databricks-claude-sonnet-4", "provider": "databricks", "input": 3.0, "output": 15.0, "ctx": "200000", "tier": "premium"}, {"id": "databricks/databricks-claude-sonnet-4-5", "provider": "databricks", "input": 3.0, "output": 15.0, "ctx": "200000", "tier": "premium"}, {"id": "databricks/databricks-claude-sonnet-4-6", "provider": "databricks", "input": 3.0, "output": 15.0, "ctx": "1000000", "tier": "premium"}, {"id": "deepinfra/anthropic/claude-sonnet-4-6", "provider": "deepinfra", "input": 3.0, "output": 15.0, "ctx": "1000000", "tier": "premium"}, {"id": "microsoft/gpt-35-turbo-16k", "provider": "microsoft", "input": 3.0, "output": 4.0, "ctx": "16385", "tier": "premium"}, {"id": "openai/gpt-3.5-turbo-16k", "provider": "openai", "input": 3.0, "output": 4.0, "ctx": "16385", "tier": "premium"}, {"id": "perplexityai/sonar-pro", "provider": "perplexityai", "input": 3.0, "output": 15.0, "ctx": "200000", "tier": "premium"}, {"id": "xai/grok-3", "provider": "xai", "input": 3.0, "output": 15.0, "ctx": "131072", "tier": "premium"}, {"id": "xai/grok-3-beta", "provider": "xai", "input": 3.0, "output": 15.0, "ctx": "131072", "tier": "premium"}, {"id": "xai/grok-3-latest", "provider": "xai", "input": 3.0, "output": 15.0, "ctx": "131072", "tier": "premium"}, {"id": "xai/grok-4", "provider": "xai", "input": 3.0, "output": 15.0, "ctx": "256000", "tier": "premium"}, {"id": "xai/grok-4-0709", "provider": "xai", "input": 3.0, "output": 15.0, "ctx": "256000", "tier": "premium"}, {"id": "xai/grok-4-latest", "provider": "xai", "input": 3.0, "output": 15.0, "ctx": "256000", "tier": "premium"}, {"id": "amazon/meta.llama3-70b-instruct-v1:0", "provider": "amazon", "input": 3.18, "output": 4.2, "ctx": "8192", "tier": "premium"}, {"id": "amazon/anthropic.claude-sonnet-4-5-20250929-v1:0@eu", "provider": "amazon", "input": 3.3, "output": 16.5, "ctx": "200000", "tier": "premium"}, {"id": "amazon/anthropic.claude-sonnet-4-5-20250929-v1:0@us", "provider": "amazon", "input": 3.3, "output": 16.5, "ctx": "200000", "tier": "premium"}, {"id": "amazon/anthropic.claude-sonnet-4-6@eu", "provider": "amazon", "input": 3.3, "output": 16.5, "ctx": "1000000", "tier": "premium"}, {"id": "amazon/anthropic.claude-sonnet-4-6@us", "provider": "amazon", "input": 3.3, "output": 16.5, "ctx": "1000000", "tier": "premium"}, {"id": "deepinfra/anthropic/claude-3-7-sonnet-latest", "provider": "deepinfra", "input": 3.3, "output": 16.5, "ctx": "200000", "tier": "premium"}, {"id": "deepinfra/anthropic/claude-4-sonnet", "provider": "deepinfra", "input": 3.3, "output": 16.5, "ctx": "200000", "tier": "premium"}, {"id": "mistral/mistral-large-2402", "provider": "mistral", "input": 4.0, "output": 12.0, "ctx": "32000", "tier": "premium"}, {"id": "amazon/anthropic.claude-opus-4-5-20251101-v1:0", "provider": "amazon", "input": 5.0, "output": 25.0, "ctx": "200000", "tier": "premium"}, {"id": "amazon/anthropic.claude-opus-4-6-v1", "provider": "amazon", "input": 5.0, "output": 25.0, "ctx": "1000000", "tier": "premium"}, {"id": "amazon/anthropic.claude-opus-4-7", "provider": "amazon", "input": 5.0, "output": 25.0, "ctx": "1000000", "tier": "premium"}, {"id": "amazon/anthropic.claude-opus-4-8", "provider": "amazon", "input": 5.0, "output": 25.0, "ctx": "1000000", "tier": "premium"}, {"id": "anthropic/claude-opus-4-5", "provider": "anthropic", "input": 5.0, "output": 25.0, "ctx": "200000", "tier": "premium"}, {"id": "anthropic/claude-opus-4-5-20251101", "provider": "anthropic", "input": 5.0, "output": 25.0, "ctx": "200000", "tier": "premium"}, {"id": "anthropic/claude-opus-4-6", "provider": "anthropic", "input": 5.0, "output": 25.0, "ctx": "1000000", "tier": "premium"}, {"id": "anthropic/claude-opus-4-7", "provider": "anthropic", "input": 5.0, "output": 25.0, "ctx": "1000000", "tier": "premium"}, {"id": "anthropic/claude-opus-4-8", "provider": "anthropic", "input": 5.0, "output": 25.0, "ctx": "1000000", "tier": "premium"}, {"id": "anthropic/claude-opus-latest", "provider": "anthropic", "input": 5.0, "output": 25.0, "ctx": "1000000", "tier": "premium"}, {"id": "databricks/databricks-claude-opus-4-5", "provider": "databricks", "input": 5.0, "output": 25.0, "ctx": "200000", "tier": "premium"}, {"id": "databricks/databricks-claude-opus-4-6", "provider": "databricks", "input": 5.0, "output": 25.0, "ctx": "1000000", "tier": "premium"}, {"id": "databricks/databricks-claude-opus-4-7", "provider": "databricks", "input": 5.0, "output": 25.0, "ctx": "1000000", "tier": "premium"}, {"id": "databricks/databricks-claude-opus-4-8", "provider": "databricks", "input": 5.0, "output": 25.0, "ctx": "1000000", "tier": "premium"}, {"id": "databricks/databricks-gpt-5-5", "provider": "databricks", "input": 5.0, "output": 30.0, "ctx": "1050000", "tier": "premium"}, {"id": "deepinfra/anthropic/claude-opus-4-7", "provider": "deepinfra", "input": 5.0, "output": 25.0, "ctx": "1000000", "tier": "premium"}, {"id": "deepinfra/anthropic/claude-opus-4-8", "provider": "deepinfra", "input": 5.0, "output": 25.0, "ctx": "1000000", "tier": "premium"}, {"id": "openai/gpt-5.5", "provider": "openai", "input": 5.0, "output": 30.0, "ctx": "1050000", "tier": "premium"}, {"id": "openai/gpt-5.5-2026-04-23", "provider": "openai", "input": 5.0, "output": 30.0, "ctx": "1050000", "tier": "premium"}, {"id": "openai/gpt-latest", "provider": "openai", "input": 5.0, "output": 30.0, "ctx": "1050000", "tier": "premium"}, {"id": "xai/grok-3-fast-beta", "provider": "xai", "input": 5.0, "output": 25.0, "ctx": "131072", "tier": "premium"}, {"id": "xai/grok-3-fast-latest", "provider": "xai", "input": 5.0, "output": 25.0, "ctx": "131072", "tier": "premium"}, {"id": "amazon/anthropic.claude-opus-4-5-20251101-v1:0@eu", "provider": "amazon", "input": 5.5, "output": 27.5, "ctx": "200000", "tier": "premium"}, {"id": "amazon/anthropic.claude-opus-4-5-20251101-v1:0@us", "provider": "amazon", "input": 5.5, "output": 27.5, "ctx": "200000", "tier": "premium"}, {"id": "amazon/anthropic.claude-opus-4-6-v1@eu", "provider": "amazon", "input": 5.5, "output": 27.5, "ctx": "1000000", "tier": "premium"}, {"id": "amazon/anthropic.claude-opus-4-6-v1@us", "provider": "amazon", "input": 5.5, "output": 27.5, "ctx": "1000000", "tier": "premium"}, {"id": "amazon/anthropic.claude-opus-4-7@eu", "provider": "amazon", "input": 5.5, "output": 27.5, "ctx": "1000000", "tier": "premium"}, {"id": "amazon/anthropic.claude-opus-4-7@us", "provider": "amazon", "input": 5.5, "output": 27.5, "ctx": "1000000", "tier": "premium"}, {"id": "amazon/anthropic.claude-opus-4-8@eu", "provider": "amazon", "input": 5.5, "output": 27.5, "ctx": "1000000", "tier": "premium"}, {"id": "amazon/anthropic.claude-opus-4-8@us", "provider": "amazon", "input": 5.5, "output": 27.5, "ctx": "1000000", "tier": "premium"}, {"id": "openai/gpt-4-turbo", "provider": "openai", "input": 10.0, "output": 30.0, "ctx": "128000", "tier": "premium"}, {"id": "openai/gpt-4-turbo-2024-04-09", "provider": "openai", "input": 10.0, "output": 30.0, "ctx": "128000", "tier": "premium"}, {"id": "openai/o3-deep-research", "provider": "openai", "input": 10.0, "output": 40.0, "ctx": "200000", "tier": "premium"}, {"id": "openai/o3-deep-research-2025-06-26", "provider": "openai", "input": 10.0, "output": 40.0, "ctx": "200000", "tier": "premium"}, {"id": "amazon/mistral.mistral-large-2402-v1:0", "provider": "amazon", "input": 10.4, "output": 31.2, "ctx": "32000", "tier": "premium"}, {"id": "amazon/mistral.mistral-large-2402-v1:0@us", "provider": "amazon", "input": 10.4, "output": 31.2, "ctx": "32000", "tier": "premium"}, {"id": "anthropic/claude-opus-4-1", "provider": "anthropic", "input": 15.0, "output": 75.0, "ctx": "200000", "tier": "premium"}, {"id": "anthropic/claude-opus-4-1-20250805", "provider": "anthropic", "input": 15.0, "output": 75.0, "ctx": "200000", "tier": "premium"}, {"id": "databricks/databricks-claude-opus-4-1", "provider": "databricks", "input": 15.0, "output": 75.0, "ctx": "200000", "tier": "premium"}, {"id": "openai/gpt-5-pro", "provider": "openai", "input": 15.0, "output": 120.0, "ctx": "400000", "tier": "premium"}, {"id": "openai/gpt-5-pro-2025-10-06", "provider": "openai", "input": 15.0, "output": 120.0, "ctx": "400000", "tier": "premium"}, {"id": "openai/o1", "provider": "openai", "input": 15.0, "output": 60.0, "ctx": "200000", "tier": "premium"}, {"id": "openai/o1-2024-12-17", "provider": "openai", "input": 15.0, "output": 60.0, "ctx": "200000", "tier": "premium"}, {"id": "amazon/anthropic.claude-opus-4-1-20250805-v1:0", "provider": "amazon", "input": 16.5, "output": 82.5, "ctx": "200000", "tier": "premium"}, {"id": "deepinfra/anthropic/claude-4-opus", "provider": "deepinfra", "input": 16.5, "output": 82.5, "ctx": "200000", "tier": "premium"}, {"id": "openai/o3-pro", "provider": "openai", "input": 20.0, "output": 80.0, "ctx": "200000", "tier": "premium"}, {"id": "openai/o3-pro-2025-06-10", "provider": "openai", "input": 20.0, "output": 80.0, "ctx": "200000", "tier": "premium"}, {"id": "openai/gpt-5.2-pro", "provider": "openai", "input": 21.0, "output": 168.0, "ctx": "400000", "tier": "premium"}, {"id": "openai/gpt-5.2-pro-2025-12-11", "provider": "openai", "input": 21.0, "output": 168.0, "ctx": "400000", "tier": "premium"}, {"id": "microsoft/gpt-4", "provider": "microsoft", "input": 30.0, "output": 60.0, "ctx": "8191", "tier": "premium"}, {"id": "openai/gpt-4", "provider": "openai", "input": 30.0, "output": 60.0, "ctx": "8191", "tier": "premium"}, {"id": "openai/gpt-4-0613", "provider": "openai", "input": 30.0, "output": 60.0, "ctx": "8192", "tier": "premium"}, {"id": "openai/gpt-5.4-pro", "provider": "openai", "input": 30.0, "output": 180.0, "ctx": "1050000", "tier": "premium"}, {"id": "openai/gpt-5.4-pro-2026-03-05", "provider": "openai", "input": 30.0, "output": 180.0, "ctx": "1050000", "tier": "premium"}, {"id": "openai/gpt-5.5-pro", "provider": "openai", "input": 30.0, "output": 180.0, "ctx": "1050000", "tier": "premium"}, {"id": "openai/gpt-5.5-pro-2026-04-23", "provider": "openai", "input": 30.0, "output": 180.0, "ctx": "1050000", "tier": "premium"}, {"id": "openai/gpt-pro-latest", "provider": "openai", "input": 30.0, "output": 180.0, "ctx": "1050000", "tier": "premium"}, {"id": "openai/o1-pro", "provider": "openai", "input": 150.0, "output": 600.0, "ctx": "200000", "tier": "premium"}, {"id": "openai/o1-pro-2025-03-19", "provider": "openai", "input": 150.0, "output": 600.0, "ctx": "200000", "tier": "premium"}];
+
+    const tierNames = { free:'Always Free', basic:'Basic', pro:'Pro', premium:'Ultimate' };
+    const tierOrder = { free:0, basic:1, pro:2, premium:3 };
+
+    // Populate provider filter
+    const providers = [...new Set(ALL_MODELS.map(m => m.provider))].sort();
+    const providerSelect = document.getElementById('filterProvider');
+    providers.forEach(p => {
+        const opt = document.createElement('option');
+        opt.value = p; opt.textContent = p;
+        providerSelect.appendChild(opt);
+    });
+
+    let currentSort = { key: 'input', asc: true };
+    let filteredModels = [...ALL_MODELS];
+
+    function renderTable() {
+        const tbody = document.getElementById('modelTableBody');
+        let html = '';
+        filteredModels.forEach(m => {
+            html += '<tr>'
+                + '<td>' + m.id + '</td>'
+                + '<td><span class="provider-tag provider-' + m.provider + '">' + m.provider + '</span></td>'
+                + '<td><span class="tier-badge tier-' + m.tier + '">' + tierNames[m.tier] + '</span></td>'
+                + '<td class="price-green">$' + m.input + '</td>'
+                + '<td class="price-green">$' + m.output + '</td>'
+                + '<td>' + m.ctx + '</td>'
+                + '</tr>';
+        });
+        tbody.innerHTML = html;
+        document.getElementById('filterStats').innerHTML = 'Showing <strong>' + filteredModels.length + '</strong> of ' + ALL_MODELS.length + ' models';
+    }
+
+    function applyFilters() {
+        const q = document.getElementById('modelSearch').value.toLowerCase();
+        const tier = document.getElementById('filterTier').value;
+        const provider = document.getElementById('filterProvider').value;
+        filteredModels = ALL_MODELS.filter(m => {
+            if (tier !== 'all' && m.tier !== tier) return false;
+            if (provider !== 'all' && m.provider !== provider) return false;
+            if (q && !(m.id.toLowerCase().includes(q) || m.provider.toLowerCase().includes(q))) return false;
+            return true;
+        });
+        applySort();
+        renderTable();
+    }
+
+    function applySort() {
+        const key = currentSort.key;
+        const asc = currentSort.asc ? 1 : -1;
+        filteredModels.sort((a, b) => {
+            let va = a[key], vb = b[key];
+            if (key === 'input' || key === 'output') {
+                va = parseFloat(va) || 0;
+                vb = parseFloat(vb) || 0;
+            } else if (key === 'tier') {
+                va = tierOrder[va] || 0;
+                vb = tierOrder[vb] || 0;
+            } else {
+                va = String(va).toLowerCase();
+                vb = String(vb).toLowerCase();
+            }
+            if (va < vb) return -1 * asc;
+            if (va > vb) return 1 * asc;
+            return 0;
+        });
+    }
+
+    // Sort on header click
+    document.querySelectorAll('.model-table th[data-sort]').forEach(th => {
+        th.addEventListener('click', function() {
+            const key = this.dataset.sort;
+            if (currentSort.key === key) { currentSort.asc = !currentSort.asc; }
+            else { currentSort.key = key; currentSort.asc = true; }
+            document.querySelectorAll('.model-table th').forEach(h => h.classList.remove('sorted'));
+            this.classList.add('sorted');
+            this.querySelector('.sort-icon').textContent = currentSort.asc ? '▲' : '▼';
+            applySort();
+            renderTable();
+        });
+    });
+
+    document.getElementById('modelSearch').addEventListener('input', applyFilters);
+    document.getElementById('filterTier').addEventListener('change', applyFilters);
+    document.getElementById('filterProvider').addEventListener('change', applyFilters);
+
+    // Initial render
+    applyFilters();
+
+    // ===== Plan & Order Logic =====
+    const planConfig = {
+        free:    { name:'Always Free', bonusRate:0,      note:'🆓 The Always Free plan requires no payment. You get free access to 65 budget models.' },
+        basic:   { name:'Basic Plan',  bonusRate:0.25,   note:'⚡ Top up $100 and get $25 bonus — pay only 80% of official price (20% OFF). Access 501+ models.' },
+        pro:     { name:'Pro Plan',    bonusRate:0.4286, note:'🚀 Top up $100 and get ~$43 bonus — pay only 70% of official price (30% OFF). Access 616+ models.' },
+        premium: { name:'Ultimate Plan',bonusRate:0.6667,note:'👑 Top up $100 and get ~$67 bonus — pay only 60% of official price (40% OFF). Access ALL 704+ models.' }
+    };
+    let currentPlan = 'free';
+    let currentRecharge = 100;
+
+    function selectPlan(card, plan) {
+        document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        card.querySelector('input[type="radio"]').checked = true;
+        currentPlan = plan;
+        const cfg = planConfig[plan];
+        document.getElementById('planNote').innerHTML = cfg.note;
+        if (plan === 'free') {
+            document.getElementById('rechargeStep').style.display = 'none';
+            document.getElementById('summaryStepNum').textContent = '2';
+            document.getElementById('contactStepNum').textContent = '3';
+            updateSummary(0, 0);
+        } else {
+            document.getElementById('rechargeStep').style.display = 'block';
+            document.getElementById('summaryStepNum').textContent = '3';
+            document.getElementById('contactStepNum').textContent = '4';
+            updateRechargeLabels();
+            updateSummary(currentRecharge, currentRecharge * cfg.bonusRate);
+        }
+    }
+
+    function selectRecharge(el, amount) {
+        document.querySelectorAll('.recharge-option').forEach(o => o.classList.remove('selected'));
+        el.classList.add('selected');
+        el.querySelector('input[type="radio"]').checked = true;
+        currentRecharge = amount;
+        updateSummary(amount, amount * planConfig[currentPlan].bonusRate);
+    }
+
+    function updateRechargeLabels() {
+        const cfg = planConfig[currentPlan];
+                    [100,200,500,1000].forEach(amt => {
+                        const bonus = Math.round(amt * cfg.bonusRate);
+                        document.getElementById('bonus'+amt).textContent = '+$'+bonus+' bonus';
+                        document.getElementById('total'+amt).textContent = '= $'+(amt+bonus)+' total';
+                    });
+    }
+
+    function updateSummary(topup, bonus) {
+        const cfg = planConfig[currentPlan];
+        document.getElementById('summaryPlan').textContent = cfg.name;
+        if (currentPlan === 'free') {
+            document.getElementById('summaryTopup').textContent = '$0';
+            document.getElementById('summaryBonus').textContent = '$0';
+            document.getElementById('summaryTotal').textContent = '$0 (Free Tier)';
+        } else {
+                    document.getElementById('summaryTopup').textContent = '$'+topup;
+                    const bonusRounded = Math.round(topup * planConfig[currentPlan].bonusRate);
+                    document.getElementById('summaryBonus').textContent = '+$'+bonusRounded;
+                    document.getElementById('summaryTotal').textContent = '$'+(topup+bonusRounded);
+        }
+    }
+
+    // Form submit
+    const form = document.getElementById("order-form");
+    const statusEl = document.getElementById("order-form-status");
+
+    function showStatus(msg, tone) {
+        statusEl.style.display='block'; statusEl.textContent=msg;
+        if(tone==='success'){ statusEl.style.backgroundColor='#d1fae5'; statusEl.style.border='1px solid #6ee7b7'; statusEl.style.color='#065f46'; }
+        else if(tone==='error'){ statusEl.style.backgroundColor='#fee2e2'; statusEl.style.border='1px solid #fca5a5'; statusEl.style.color='#991b1b'; }
+        else{ statusEl.style.backgroundColor='#fef3c7'; statusEl.style.border='1px solid #fde68a'; statusEl.style.color='#92400e'; }
+    }
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const honeypot = document.querySelector('input[name="website"]');
+        if (honeypot && honeypot.value) return false;
+        const formData = new FormData(event.target);
+        const userName = (formData.get('userName')||'').trim();
+        const email = (formData.get('email')||'').trim();
+        const plan = formData.get('selectedPlan') || 'Always Free';
+        const rechargeAmount = currentPlan==='free' ? 0 : currentRecharge;
+        const cfg = planConfig[currentPlan];
+                const bonus = Math.round(rechargeAmount * cfg.bonusRate);
+        const totalCredits = rechargeAmount + bonus;
+
+        if (!userName || !email) { showStatus('Please fill in both your name and email address.','error'); return; }
+
+        const overlay = document.createElement('div');
+        overlay.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.55);z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box;';
+        overlay.innerHTML = `
+            <div style="background:#fff;padding:32px 28px;border-radius:16px;max-width:520px;width:100%;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,0.25);">
+                <div style="font-size:2.6rem;margin-bottom:10px;">🤖</div>
+                <h4 style="margin:0 0 14px;color:#333;">Confirm Your Order</h4>
+                <div style="background:#f8f9fa;border-radius:10px;padding:16px;text-align:left;margin-bottom:18px;font-size:.93rem;line-height:1.9;">
+                    <div><strong>Name:</strong> ${userName}</div>
+                    <div><strong>Email:</strong> ${email}</div>
+                    <div><strong>Plan:</strong> ${plan}</div>
+                    <div><strong>Top-Up:</strong> $${rechargeAmount}</div>
+                    <div><strong>Bonus:</strong> +$${bonus}</div>
+                    <div><strong>Total Credits:</strong> <span style="color:#059669;font-weight:700;">$${totalCredits}</span></div>
+                </div>
+                <p style="font-size:.85rem;color:#888;margin-bottom:18px;">Our team will contact you to confirm payment and deliver your API key.</p>
+                <button id="btn-confirm-ok" style="background:linear-gradient(135deg,#3b82f6,#6366f1);color:#fff;border:none;padding:12px 24px;border-radius:25px;font-weight:800;font-size:1rem;cursor:pointer;width:100%;margin-bottom:10px;">✅ Confirm &amp; Submit</button>
+                <button id="btn-confirm-cancel" style="background:#f8f9fa;color:#666;border:1px solid #ddd;padding:10px 20px;border-radius:20px;cursor:pointer;font-size:.9rem;width:100%;">❌ Go Back</button>
+            </div>`;
+        document.body.appendChild(overlay);
+        document.getElementById('btn-confirm-cancel').onclick = function(){ document.body.removeChild(overlay); };
+        document.getElementById('btn-confirm-ok').onclick = function() {
+            document.body.removeChild(overlay);
+            const comment = 'Name: '+userName+'\nEmail: '+email+'\nPlan: '+plan+'\nTop-Up: $'+rechargeAmount+'\nBonus: +$'+bonus+'\nTotal Credits: $'+totalCredits;
+            showStatus('Submitting your order…','info');
+            fetch('https://api.notificationapi.com/097bululbdjfm969xrmrijiz43/sender', {
+                method:'POST',
+                headers:{ 'Content-Type':'application/json', 'Accept':'application/json',
+                    'Authorization':'Basic MDk3YnVsdWxiZGpmbTk2OXhybXJpaml6NDM6c3c1MDFsdW1ib2w4ajNrYm1jMzJtdWd2aHNtdDBkd2NtaDQ3dDc3YXZ3enBvd3BiMTFjNXltdW1qeA==' },
+                body: JSON.stringify({ type:'awsdo_com_notification', to:{ id:'snaagk@gmail.com', email:'snaagk@gmail.com' }, parameters:{ comment:comment }, templateId:'awsdo_com' })
+            })
+            .then(r => r.json().catch(()=>null))
+            .then(() => {
+                window.location.href = 'usdt-payment.html?email=' + encodeURIComponent(email) + '&amount=' + encodeURIComponent(rechargeAmount);
+            })
+            .catch(err => {
+                console.error(err);
+                // Still redirect even if notification fails
+                window.location.href = 'usdt-payment.html?email=' + encodeURIComponent(email) + '&amount=' + encodeURIComponent(rechargeAmount);
+            });
+        };
+    });
+    </script>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AWSDO.COM. All rights reserved.</p>
+            <div class="footer-contact">
+                <a href="mailto:support@awsdo.com"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> support@awsdo.com</a>
+                <a href="https://t.me/ilovesunkeinfo" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 2L11 13H2l1.67-5.01L22 2zm-2.48 18.51L17 14l-4.2 4.13-1.67-5.01L2 13h9l2-2-8.5-8.5L22 2l-2.48 18.51z"/></svg> @ilovesunkeinfo</a>
+            </div>
+            <div class="footer-links">
+                <a href="refund-policy.html">Refund Policy</a>
+                <span style="color:#64748b;">|</span>
+                <a href="terms-of-service.html">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

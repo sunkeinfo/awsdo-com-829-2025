@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>高效能超級伺服器 - AWSDO.COM</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>High-Performance Servers — AWSDO.COM</title>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0SXZXT6FBM"></script>
@@ -13,561 +13,1226 @@
       gtag('js', new Date());
       gtag('config', 'G-0SXZXT6FBM');
     </script>
-    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* General Styles */
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f8f9fa; color: #343a40; }
-        .container { width: 85%; max-width: 1200px; margin: auto; overflow: hidden; }
-        .section { padding: 60px 0; }
-        .section-title { text-align: center; margin-bottom: 50px; font-size: 32px; color: #343a40; font-weight: 600; }
-        .section-subtitle { text-align:center; max-width:800px; margin:-30px auto 50px auto; color: #6c757d; }
-
-        /* Header & Navigation */
-        header { background: #ffffff; padding: 15px 0; border-bottom: 1px solid #e9ecef; text-align: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        header .logo img { max-width: 200px; vertical-align: middle; }
-        nav { margin-top: 15px; }
-        nav ul { padding: 0; list-style: none; }
-        nav ul li { display: inline; margin: 0 15px; }
-        nav a { color: #495057; text-decoration: none; font-size: 16px; font-weight: 500; transition: color 0.3s ease; }
-        nav a:hover, nav a.active { color: #007bff; }
-
-        /* Hero Section */
-        .hero { background: linear-gradient(45deg, #6610f2, #3c4cad); color: #ffffff; padding: 80px 20px; text-align: center; }
-        .hero h1 { font-size: 42px; margin-bottom: 15px; font-weight: 700; }
-        .hero p { font-size: 20px; font-weight: 300; max-width: 800px; margin: 0 auto; }
-
-        /* Order Form Section */
-        .form-section { background: #fff; padding: 50px 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.07); }
-        .form-group { margin-bottom: 25px; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 10px; font-size: 18px; }
-        .form-group input[type="text"], .form-group input[type="email"] { width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 4px; font-size: 16px; box-sizing: border-box; }
-        .radio-group { display: flex; flex-wrap: wrap; gap: 15px; }
-        .radio-label { display: flex; align-items: center; background: #f8f9fa; border: 1px solid #dee2e6; padding: 12px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease-in-out; flex-grow: 1; justify-content: center; text-align: center; }
-        .radio-label:hover { border-color: #007bff; transform: translateY(-2px); }
-        .radio-label input[type="radio"] { display: none; }
-        .radio-label.checked { background-color: #007bff; color: #fff; border-color: #007bff; box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3); }
-        .submit-button { display: block; width: 100%; background: #28a745; color: #fff; padding: 15px 35px; text-decoration: none; border-radius: 5px; font-size: 20px; font-weight: bold; transition: background-color 0.3s ease, transform 0.3s ease; cursor: pointer; border: none; text-align: center; margin-top: 30px; }
-        .submit-button:hover { background: #218838; transform: scale(1.02); }
-        #order-form-status {
-            display: none;
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 5px;
-            font-weight: bold;
-            text-align: center;
-            background-color: #d4edda;
-            border: 1px solid #c3e6cb;
-            color: #155724;
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #f4f7fa 100%);
+            color: #1e293b;
         }
-        .honeypot {
-            position: absolute;
-            left: -9999px;
-            opacity: 0;
-            pointer-events: none;
+        .container {
+            width: 85%;
+            max-width: 1300px;
+            margin: auto;
+            overflow: hidden;
         }
-
-        /* Instance Details Section */
-        .instance-family-section { background: #ffffff; border: 1px solid #e9ecef; border-radius: 8px; padding: 30px; margin-bottom: 30px; }
-        .instance-family-section h3 { font-size: 24px; color: #007bff; margin-top: 0; }
-        .instance-family-section ul { list-style-position: inside; padding-left: 0; }
-        .table-container { overflow-x: auto; margin-top: 20px; }
-        .spec-table { width: 100%; border-collapse: collapse; text-align: left; }
-        .spec-table th, .spec-table td { padding: 12px 15px; border: 1px solid #dee2e6; }
-        .spec-table th { background-color: #f8f9fa; font-weight: 600; }
-        .spec-table tr:nth-child(even) { background-color: #f8f9fa; }
-        .tech-highlight { background: #eef8f2; border-left: 5px solid #28a745; padding: 20px; margin-top: 20px; border-radius: 5px; }
-
-        /* Footer */
-        footer { background: #343a40; color: #f8f9fa; text-align: center; padding: 30px 0; margin-top: 60px; }
-        footer p { margin: 8px 0; }
-        .footer-contact { margin-top: 15px; }
-        .footer-contact a { color: #ffffff; text-decoration: none; transition: color 0.3s; margin: 0 15px; display: inline-flex; align-items: center; }
-        .footer-contact a:hover { color: #007bff; }
-        .footer-contact svg { width: 20px; height: 20px; margin-right: 8px; fill: currentColor; }
-
-        /* Pricing Grid */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-top: 20px;
+        header {
+            background: #ffffff;
+            padding: 12px 0;
+            border-bottom: 1px solid #e9ecef;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
-        .pricing-card {
-            background: #fff;
-            border: 2px solid #000;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        header .header-inner {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            justify-content: space-between;
+        }
+        header .logo { flex-shrink: 0; }
+        header .logo img { height: 44px; width: auto; display: block; }
+        nav { margin-top: 0; }
+        nav ul {
+            padding: 0;
+            list-style: none;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 4px;
+        }
+        nav ul li { display: inline; margin: 0 10px; }
+        nav a {
+            color: #495057;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+        nav a:hover, nav a.active {
+            color: #007bff; }
+
+        .hero {
+            background: linear-gradient(45deg, #1a237e, #283593);
+            color: #ffffff;
+            padding: 70px 0;
             position: relative;
         }
-        .pricing-card:hover {
-            border-color: #007bff;
-            box-shadow: 0 4px 15px rgba(0,123,255,0.1);
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 28px;
+            align-items: center;
         }
-        .pricing-card input[type="radio"] {
-            position: absolute;
-            top: 10px;
-            left: 10px;
+        .hero h1 { font-size: 42px; margin: 0 0 14px; font-weight: 800; }
+        .hero p { font-size: 19px; font-weight: 300; margin: 0; max-width: 720px; }
+        .hero-badges { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; }
+        .badge {
+            background: rgba(255,255,255,0.14);
+            border: 1px solid rgba(255,255,255,0.22);
+            color: #fff;
+            padding: 9px 14px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 13px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-        .pricing-card.selected {
-            border-color: #007bff;
-            background-color: #f8f9ff;
+        .hero-visual {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 18px 45px rgba(0,0,0,0.18);
         }
-        .pricing-card h4 {
-            margin: 0 0 10px 0;
-            color: #007bff;
-            font-size: 18px;
+        .hero-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
         }
-        .pricing-card .specs {
+        .hero-stat {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            padding: 16px 12px;
+            text-align: center;
+        }
+        .hero-stat .stat-value { font-size: 28px; font-weight: 800; color: #fff; line-height: 1; }
+        .hero-stat .stat-label { font-size: 12px; color: rgba(255,255,255,0.75); margin-top: 4px; }
+
+        .section { padding: 56px 0; }
+        .section-title { text-align: center; margin-bottom: 18px; font-size: 32px; color: #343a40; font-weight: 700; }
+        .section-subtitle { text-align: center; max-width: 820px; margin: 0 auto 42px; color: #6c757d; font-size: 16px; }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items: start; }
+        .cards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+        @media (max-width: 1100px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 720px) {
+            nav ul li { margin: 0 8px; }
+            .hero-inner { grid-template-columns: 1fr; }
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 420px) { .cards-grid { grid-template-columns: 1fr; } }
+
+        .feature-card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #eef1f4;
+            min-height: 150px;
+        }
+        .feature-card h3 { margin: 10px 0 10px; font-size: 17px; color: #1a237e; }
+        .feature-card p { margin: 0; color: #6c757d; font-size: 14px; }
+        .feature-top { display: flex; align-items: center; gap: 12px; }
+        .icon-wrap {
+            width: 54px; height: 54px; border-radius: 14px;
+            background: #e8eaf6; border: 1px solid #c5cae9;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .svg-icon { width: 32px; height: 32px; display: inline-block; flex-shrink: 0; }
+
+        /* Compare section */
+        .compare-block {
+            background: #fff;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+            border: 1px solid #eef1f4;
+        }
+        .compare-block h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .compare-block.highlight { border-color: #3b82f6; }
+        .compare-list { list-style: none; padding: 0; margin: 0; }
+        .compare-list li {
+            padding: 7px 0;
+            font-size: 14px;
+            color: #374151;
+            border-bottom: 1px solid #f3f4f6;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .compare-list li:last-child { border-bottom: none; }
+        .compare-list li .dot-good { color: #16a34a; font-weight: 700; flex-shrink: 0; }
+        .compare-list li .dot-bad  { color: #dc2626; font-weight: 700; flex-shrink: 0; }
+        .compare-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 14px;
+        }
+        .tag-perf  { background: #dbeafe; color: #1d4ed8; }
+        .tag-light { background: #f1f5f9; color: #475569; }
+        .tag-scene { background: #d1fae5; color: #065f46; margin-right: 6px; margin-bottom: 6px; display: inline-block; }
+        .tag-warn  { background: #fef3c7; color: #92400e; }
+
+        /* Network table */
+        .net-table-wrap { overflow-x: auto; }
+        .net-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        .net-table th {
+            background: #1a237e;
+            color: #fff;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+        }
+        .net-table td {
+            padding: 11px 16px;
+            border-bottom: 1px solid #e9ecef;
+            color: #374151;
+        }
+        .net-table tr:nth-child(even) td { background: #f8f9fa; }
+        .net-table tr:hover td { background: #e8eaf6; }
+
+        /* Specs table */
+        .specs-table-wrap { overflow-x: auto; margin-bottom: 32px; }
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        .specs-table th {
+            background: #283593;
+            color: #fff;
+            padding: 11px 14px;
+            text-align: left;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .specs-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #e9ecef;
+            color: #374151;
+        }
+        .specs-table tr:nth-child(even) td { background: #f8f9fa; }
+        .specs-table tr:hover td { background: #e8eaf6; }
+        .specs-section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a237e;
+            margin: 36px 0 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .specs-section-desc {
             color: #6c757d;
             font-size: 14px;
-            margin-bottom: 15px;
+            margin-bottom: 14px;
+            line-height: 1.7;
         }
-        .pricing-card .price {
-            font-size: 24px;
-            font-weight: bold;
-            color: #dc3545;
-            margin-bottom: 5px;
+        .specs-section-desc ul { margin: 8px 0 0 18px; padding: 0; }
+        .specs-section-desc li { margin-bottom: 4px; }
+
+        /* Nitro banner */
+        .nitro-banner {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            border-radius: 14px;
+            padding: 28px 32px;
+            color: #fff;
+            margin-top: 36px;
+            display: flex;
+            align-items: center;
+            gap: 22px;
         }
-        .pricing-card .original-price {
-            font-size: 12px;
-            color: #6c757d;
-            text-decoration: line-through;
+        .nitro-banner .nitro-icon { font-size: 48px; flex-shrink: 0; }
+        .nitro-banner h3 { margin: 0 0 8px; font-size: 20px; font-weight: 700; }
+        .nitro-banner p { margin: 0; font-size: 14px; color: rgba(255,255,255,0.85); }
+
+        /* Value summary cards */
+        .value-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        @media (max-width: 800px) { .value-cards { grid-template-columns: 1fr; } }
+        .value-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 24px 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            border: 1px solid #eef1f4;
+            text-align: center;
         }
-        @media (max-width: 1200px) {
-            .pricing-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .value-card .vc-icon { font-size: 36px; margin-bottom: 10px; }
+        .value-card h4 { margin: 0 0 8px; font-size: 18px; color: #1a237e; }
+        .value-card p { margin: 0; font-size: 14px; color: #6c757d; }
+        .value-card .vc-rating {
+            display: inline-block;
+            margin: 10px 0 8px;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 13px;
         }
-        @media (max-width: 768px) {
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
+        .rating-good  { background: #d1fae5; color: #065f46; }
+        .rating-avg   { background: #fef3c7; color: #92400e; }
+        .rating-tip   { background: #dbeafe; color: #1d4ed8; }
+
+        /* Order form */
+        .form-section {
+            background: #fff;
+            padding: 44px 40px;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+            border: 1px solid #eef1f4;
         }
+        .form-step { margin-bottom: 30px; }
+        .form-step h3 {
+            font-size: 22px;
+            color: #007bff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 0 16px;
+        }
+        .step-icon {
+            width: 34px; height: 34px; border-radius: 50%;
+            background: #007bff; color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 15px; flex-shrink: 0;
+        }
+        .section-note { margin: 0 0 14px; color: #6c757d; font-size: 14px; }
+        .form-group { margin-bottom: 18px; }
+        .form-group label { display: block; font-weight: 400; margin-bottom: 8px; color: #555; font-size: 14px; }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #e0e4ea;
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            box-sizing: border-box;
+            background: #fafbfc;
+            color: #2d3748;
+            transition: border-color 0.15s;
+        }
+        .form-group input:focus, .form-group select:focus {
+            outline: none; border-color: #007bff; background: #fff;
+        }
+        .radio-group { display: flex; flex-wrap: wrap; gap: 10px; }
+        .radio-label {
+            display: flex; align-items: center; gap: 8px;
+            background: #f5f7fa; border: 1.5px solid #e0e4ea;
+            padding: 8px 14px; border-radius: 10px; cursor: pointer;
+            transition: all 0.15s ease-in-out;
+            font-weight: 400; font-size: 14px; color: #374151;
+            user-select: none;
+        }
+        .radio-label input[type="radio"] { display: none; }
+        .radio-label.checked { background-color: #eff6ff; color: #1d4ed8; border-color: #3b82f6; }
+        .radio-label:hover { border-color: #3b82f6; background: #eff6ff; }
+
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+        @media (max-width: 900px) { .pricing-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 520px) { .pricing-grid { grid-template-columns: 1fr; } }
+        .pricing-card {
+            background: #fff; border: 1.5px solid #e0e4ea; border-radius: 14px;
+            padding: 20px 16px 18px; text-align: center; cursor: pointer;
+            transition: all 0.18s ease; position: relative;
+        }
+        .pricing-card input[type="radio"] { position: absolute; top: 14px; left: 14px; accent-color: #3b82f6; }
+        .pricing-card.selected { border-color: #3b82f6; background: linear-gradient(160deg,#eff6ff 0%,#fff 100%); box-shadow: 0 4px 20px rgba(59,130,246,0.12); }
+        .pricing-card h4 { margin: 32px 0 6px; color: #1e40af; font-size: 17px; font-weight: 600; }
+        .pricing-card .specs { color: #64748b; font-size: 13px; margin-bottom: 12px; line-height: 1.5; }
+        .pricing-card .price { font-size: 22px; font-weight: 700; color: #dc2626; margin-bottom: 4px; }
+        .pricing-card .price-note { font-size: 11px; color: #16a34a; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
+
+        .submit-button {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            width: 100%;
+            background: linear-gradient(135deg, #16a34a 0%, #059669 100%);
+            color: #fff; padding: 17px 32px; border-radius: 14px;
+            font-size: 17px; font-weight: 600; font-family: 'Inter', sans-serif;
+            border: none; cursor: pointer; margin-top: 20px;
+            box-shadow: 0 4px 18px rgba(22,163,74,0.28);
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+            position: relative; overflow: hidden;
+        }
+        .submit-button::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .submit-button:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(22,163,74,0.36); }
+        .submit-button svg { width: 22px; height: 22px; flex-shrink: 0; }
+        #order-form-status {
+            display: none; margin-top: 18px; padding: 14px;
+            border-radius: 10px; font-weight: 800; text-align: center;
+        }
+        .honeypot { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
+
+        /* location radio uses flag layout */
+        .radio-label .flag-icon {
+            width: 22px;
+            height: 16px;
+            border-radius: 2px;
+            flex-shrink: 0;
+            display: inline-block;
+            vertical-align: middle;
+            overflow: hidden;
+        }
+        .radio-label .os-icon {
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        footer {
+            background: #343a40; color: #f8f9fa;
+            text-align: center; padding: 30px 0; margin-top: 60px;
+        }
+        footer p { margin: 8px 0; }
+        .footer-contact { margin-top: 15px; }
+        .footer-contact a {
+            color: #ffffff; text-decoration: none; transition: color 0.3s;
+            margin: 0 15px; display: inline-flex; align-items: center; gap: 8px;
+        }
+        .footer-contact a:hover { color: #007bff; }
+        .footer-contact svg { width: 20px; height: 20px; fill: currentColor; }
+        .footer-links { margin-top: 12px; font-size: 13px; }
+        .footer-links a { color: #adb5bd; text-decoration: none; margin: 0 10px; transition: color 0.3s; }
+        .footer-links a:hover { color: #ffffff; text-decoration: underline; }
     </style>
 </head>
 <body>
-
-    <header>
+        <header>
         <div class="container">
-            <div class="logo">
-                <a href="index.html"><img src="awsdologo.png" alt="AWSDO.COM Logo"></a>
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="index.html"><img src="logo621.svg" alt="AWSDO.COM Logo" height="44"></a>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="linux-server.html">Linux Cloud</a></li>
+                        <li><a href="windows-server.html">Windows Servers</a></li>
+                        <li><a href="residential-ip-server.html">Residential IP Servers</a></li>
+                        <li><a href="performance-server.html" class="active">Performance Servers</a></li>
+                        <li><a href="api-tokens.html">AI API Tokens</a></li>
+                    
+                    </ul>
+                </nav>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">首頁</a></li>
-                    <li><a href="linux-server.html">Linux雲端伺服器</a></li>
-                    <li><a href="windows-server.html">Windows伺服器</a></li>
-                    <li><a href="residential-ip-server.html">住宅IP伺服器</a></li>
-                    <li><a href="performance-server.html" class="active">高效能伺服器</a></li>
-                    <li><a href="aws-billing.html">AWS帳戶服務</a></li>
-                    <li><a href="aws-ai.html">AWS智慧AI</a></li>
-                    <li><a href="aws-activate-credits.html">AWS積分申請</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
 
     <section class="hero">
-        <div class="container">
-            <h1>全球高效能超級伺服器</h1>
-            <p>AWSDO.COM 的 C5, C6 和 C7 等實例類型能以較低的運算比率提供經濟高效的高效能，適用於運行高級運算密集型工作負載。</p>
+        <div class="container hero-inner">
+            <div>
+                <h1>Global High-Performance Super Servers</h1>
+                <p>
+                    AWSDO.COM's C5, C6, and C7 instance types deliver cost-effective high performance at a lower
+                    compute ratio, ideal for running advanced compute-intensive workloads.
+                </p>
+                <div class="hero-badges">
+                    <span class="badge">🚀 C5 / C6 / C7 Instances</span>
+                    <span class="badge">⚡ Up to 100 Gbps Network</span>
+                    <span class="badge">🧠 AVX-512 &amp; AI Ready</span>
+                    <span class="badge">🏗️ AWS Nitro System</span>
+                </div>
+            </div>
+            <div class="hero-visual" aria-label="Performance server statistics">
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="stat-value">100<span style="font-size:16px;">Gbps</span></div>
+                        <div class="stat-label">Max Network Bandwidth</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="stat-value">32</div>
+                        <div class="stat-label">Max vCPU (4xlarge)</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="stat-value">96<span style="font-size:16px;">GB</span></div>
+                        <div class="stat-label">Max Memory</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="stat-value">3.9<span style="font-size:16px;">GHz</span></div>
+                        <div class="stat-label">Turbo Boost Frequency</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-
     <div class="main-content container">
-        
-        <!-- Why Choose High Performance Servers Section -->
-        <div class="section">
-            <h2 class="section-title">為什麼選擇C5、C6、M5等高效能雲服務機型？</h2>
-            <p class="section-subtitle">從CPU、記憶體和網路頻寬等關鍵維度深度解析高效能執行個體的優勢，助您做出最佳選擇</p>
-            
-            <div class="instance-family-section">
-                <h3>🚀 CPU效能優勢</h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
-                    <div>
-                        <h4 style="color: #007bff; margin-bottom: 15px;">高效能執行個體 (C5/C6/M5)</h4>
-                        <ul style="line-height: 1.8;">
-                            <li><strong>Intel Xeon Platinum 8000系列</strong> - 最新架构处理器</li>
-                            <li><strong>基础频率3.0GHz+</strong> - 睿频可达3.9GHz</li>
-                            <li><strong>專用CPU核心</strong> - 無資源爭奪，效能穩定</li>
-                            <li><strong>AVX-512指令集</strong> - 支援高級運算和AI工作負載</li>
-                            <li><strong>適合業務：</strong>大資料分析、機器學習、高頻交易、影片編碼</li>
-                        </ul>
+
+        <!-- Why Performance Instances section -->
+        <section class="section" style="padding-top: 52px;">
+            <h2 class="section-title">Why Choose C5, C6, M5 High-Performance Cloud Instances?</h2>
+            <p class="section-subtitle">
+                An in-depth comparison across CPU, memory, and network bandwidth dimensions—helping you make the best choice for your workloads.
+            </p>
+
+            <!-- CPU Compare -->
+            <h3 style="font-size:22px;font-weight:700;color:#343a40;margin:0 0 18px;display:flex;align-items:center;gap:10px;">
+                🚀 CPU Performance Advantage
+            </h3>
+            <div class="grid-2" style="margin-bottom:36px;">
+                <div class="compare-block highlight">
+                    <span class="compare-tag tag-perf">High-Performance Instances (C5/C6/M5)</span>
+                    <ul class="compare-list">
+                        <li><span class="dot-good">✔</span><span>Intel Xeon Platinum 8000 Series — latest-generation architecture</span></li>
+                        <li><span class="dot-good">✔</span><span>Base frequency 3.0 GHz+ — Turbo Boost up to 3.9 GHz</span></li>
+                        <li><span class="dot-good">✔</span><span>Dedicated CPU cores — no resource contention, stable performance</span></li>
+                        <li><span class="dot-good">✔</span><span>AVX-512 instruction set — supports advanced computing and AI workloads</span></li>
+                        <li><span class="dot-good">✔</span><span><strong>Best for:</strong> Big data analytics, machine learning, high-frequency trading, video encoding</span></li>
+                    </ul>
+                </div>
+                <div class="compare-block">
+                    <span class="compare-tag tag-light">Lightweight Instances (T2/T3)</span>
+                    <ul class="compare-list">
+                        <li><span class="dot-bad">✘</span><span>Shared CPU architecture — baseline performance is restricted</span></li>
+                        <li><span class="dot-bad">✘</span><span>Burstable performance mode — dependent on CPU credits, not sustainable</span></li>
+                        <li><span class="dot-bad">✘</span><span>Lower base frequency — typically 2.3–2.5 GHz</span></li>
+                        <li><span class="dot-bad">✘</span><span>High performance variability — noticeable degradation under heavy load</span></li>
+                        <li><span class="dot-bad">✘</span><span><strong>Suitable for:</strong> Lightweight websites, dev/test environments, small applications</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Memory Compare -->
+            <h3 style="font-size:22px;font-weight:700;color:#343a40;margin:0 0 18px;display:flex;align-items:center;gap:10px;">
+                💾 Memory Performance Comparison
+            </h3>
+            <div class="grid-2" style="margin-bottom:36px;">
+                <div class="compare-block highlight">
+                    <span class="compare-tag tag-perf">High-Performance Instances — Advantages</span>
+                    <ul class="compare-list">
+                        <li><span class="dot-good">✔</span><span>DDR4/DDR5 high-speed memory — bandwidth up to 2933 MHz+</span></li>
+                        <li><span class="dot-good">✔</span><span>Large capacity — up to 768 GB RAM per instance</span></li>
+                        <li><span class="dot-good">✔</span><span>ECC error-correcting memory — enterprise-grade reliability</span></li>
+                        <li><span class="dot-good">✔</span><span>NUMA optimized — lower memory access latency</span></li>
+                        <li><span class="dot-good">✔</span><span><strong>Ideal for:</strong> In-memory databases, big data caching, real-time analytics</span></li>
+                    </ul>
+                </div>
+                <div class="compare-block">
+                    <span class="compare-tag tag-light">Lightweight Instances — Limitations</span>
+                    <ul class="compare-list">
+                        <li><span class="dot-bad">✘</span><span>Limited memory capacity — max 8 GB only</span></li>
+                        <li><span class="dot-bad">✘</span><span>Restricted memory bandwidth — shared architecture impacts performance</span></li>
+                        <li><span class="dot-bad">✘</span><span>No ECC support — lower data reliability</span></li>
+                        <li><span class="dot-bad">✘</span><span>Poor scalability — cannot meet large application demands</span></li>
+                        <li><span class="dot-bad">✘</span><span><strong>Not suitable for:</strong> Large data volumes and high-concurrency scenarios</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Network Table -->
+            <h3 style="font-size:22px;font-weight:700;color:#343a40;margin:0 0 18px;display:flex;align-items:center;gap:10px;">
+                🌐 Network Bandwidth Performance
+            </h3>
+            <div class="net-table-wrap" style="margin-bottom:36px;">
+                <table class="net-table">
+                    <thead>
+                        <tr>
+                            <th>Instance Type</th>
+                            <th>Network Bandwidth</th>
+                            <th>Packet Processing</th>
+                            <th>Best Use Cases</th>
+                            <th>Performance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>C6in Series</strong></td>
+                            <td>25–50 Gbps</td>
+                            <td>12M PPS</td>
+                            <td>High-frequency trading, real-time streaming, CDN</td>
+                            <td>🟢 Excellent</td>
+                        </tr>
+                        <tr>
+                            <td><strong>M5zn Series</strong></td>
+                            <td>25–50 Gbps</td>
+                            <td>8M PPS</td>
+                            <td>Database clusters, distributed computing</td>
+                            <td>🟢 Outstanding</td>
+                        </tr>
+                        <tr>
+                            <td><strong>C5n Series</strong></td>
+                            <td>25–100 Gbps</td>
+                            <td>14M PPS</td>
+                            <td>HPC, large data transfers, AI training</td>
+                            <td>🟢 Top-tier</td>
+                        </tr>
+                        <tr>
+                            <td><strong>T2/T3 Series</strong></td>
+                            <td>Low to Medium</td>
+                            <td>250K PPS</td>
+                            <td>Lightweight websites, dev/test</td>
+                            <td>🟡 Basic</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Use Case Compare -->
+            <h3 style="font-size:22px;font-weight:700;color:#343a40;margin:0 0 18px;display:flex;align-items:center;gap:10px;">
+                🎯 Business Scenario Fit Comparison
+            </h3>
+            <div class="grid-2" style="margin-bottom:36px;">
+                <div class="compare-block highlight">
+                    <span class="compare-tag tag-perf">🚀 High-Performance Instances — Best Scenarios</span>
+                    <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                        <span class="compare-tag tag-scene">E-Commerce Platform</span>
+                        <span class="compare-tag tag-scene">Financial Trading</span>
+                        <span class="compare-tag tag-scene">Game Servers</span>
+                        <span class="compare-tag tag-scene">AI/ML Training</span>
+                        <span class="compare-tag tag-scene">Video Processing</span>
+                        <span class="compare-tag tag-scene">Big Data Analytics</span>
+                        <span class="compare-tag tag-scene">Enterprise Apps (ERP/CRM)</span>
                     </div>
-                    <div>
-                        <h4 style="color: #6c757d; margin-bottom: 15px;">輕量型執行個體 (T2/T3)</h4>
-                        <ul style="line-height: 1.8; color: #6c757d;">
-                            <li><strong>共享CPU架構</strong> - 基礎效能受限</li>
-                            <li><strong>突发性能模式</strong> - 依赖CPU积分，不可持续</li>
-                            <li><strong>基础频率较低</strong> - 通常在2.3-2.5GHz</li>
-                            <li><strong>效能波動大</strong> - 高負載時效能下降明顯</li>
-                            <li><strong>適合業務：</strong>輕量網站、開發測試、小型應用</li>
-                        </ul>
+                </div>
+                <div class="compare-block">
+                    <span class="compare-tag tag-light">💡 Lightweight Instances — Suitable Scenarios</span>
+                    <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                        <span class="compare-tag tag-light" style="background:#f1f5f9;color:#475569;">Personal Blog</span>
+                        <span class="compare-tag tag-light" style="background:#f1f5f9;color:#475569;">Dev/Test Environments</span>
+                        <span class="compare-tag tag-light" style="background:#f1f5f9;color:#475569;">Small Apps (&lt;1000 users)</span>
+                        <span class="compare-tag tag-light" style="background:#f1f5f9;color:#475569;">Learning &amp; Experiments</span>
+                        <span class="compare-tag tag-light" style="background:#f1f5f9;color:#475569;">Static Websites</span>
+                        <span class="compare-tag tag-light" style="background:#f1f5f9;color:#475569;">Simple API Services</span>
+                        <span class="compare-tag tag-warn">⚠️ Not Suitable — Production Critical Workloads</span>
                     </div>
                 </div>
             </div>
-            
-            <div class="instance-family-section">
-                <h3>💾 記憶體效能對比</h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
-                    <div>
-                        <h4 style="color: #007bff; margin-bottom: 15px;">高效能執行個體優勢</h4>
-                        <ul style="line-height: 1.8;">
-                            <li><strong>DDR4/DDR5高速記憶體</strong> - 頻寬高達2933MHz+</li>
-                            <li><strong>大容量配置</strong> - 單執行個體最高768GB記憶體</li>
-                            <li><strong>ECC納錯記憶體</strong> - 企業級可靠性保障</li>
-                            <li><strong>NUMA優化</strong> - 記憶體存取延遲更低</li>
-                            <li><strong>適合場景：</strong>記憶體資料庫、大資料快取、即時分析</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 style="color: #6c757d; margin-bottom: 15px;">輕量型執行個體限制</h4>
-                        <ul style="line-height: 1.8; color: #6c757d;">
-                            <li><strong>記憶體容量有限</strong> - 最大僅8GB</li>
-                            <li><strong>記憶體頻寬受限</strong> - 共享架構影響效能</li>
-                            <li><strong>無ECC支援</strong> - 資料可靠性較低</li>
-                            <li><strong>擴展性差</strong> - 無法滿足大型應用需求</li>
-                            <li><strong>限制場景：</strong>無法處理大資料量和高並發</li>
-                        </ul>
-                    </div>
+
+            <!-- Value Summary -->
+            <h3 style="font-size:22px;font-weight:700;color:#343a40;margin:0 0 18px;text-align:center;">
+                💰 Value-for-Money Summary
+            </h3>
+            <div class="value-cards">
+                <div class="value-card">
+                    <div class="vc-icon">🚀</div>
+                    <h4>High-Performance Instances</h4>
+                    <div class="vc-rating rating-good">Performance/Price = Excellent</div>
+                    <p>Higher unit cost, but powerful performance for critical workloads—delivers higher long-term ROI.</p>
+                </div>
+                <div class="value-card">
+                    <div class="vc-icon">💡</div>
+                    <h4>Lightweight Instances</h4>
+                    <div class="vc-rating rating-avg">Performance/Price = Average</div>
+                    <p>Cheaper pricing but limited performance. Suitable for non-critical workloads and dev/test environments.</p>
+                </div>
+                <div class="value-card">
+                    <div class="vc-icon">✅</div>
+                    <h4>Recommendation</h4>
+                    <div class="vc-rating rating-tip">Choose by Need</div>
+                    <p>Use high-performance for production, lightweight for dev/test—avoid performance bottlenecks where they matter.</p>
                 </div>
             </div>
-            
-            <div class="instance-family-section">
-                <h3>🌐 網路頻寬效能</h3>
-                <div class="table-container">
-                    <table class="spec-table">
-                        <thead>
-                            <tr>
-                                <th>執行個體類型</th>
-                                <th>網路頻寬</th>
-                                <th>資料包處理能力</th>
-                                <th>適用場景</th>
-                                <th>效能表現</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr style="background-color: #e8f5e8;">
-                                <td><strong>C6in系列</strong></td>
-                                <td><span style="color: #28a745; font-weight: bold;">25-50Gbps</span></td>
-                                <td>1200万PPS</td>
-                                <td>高頻交易、即時串流媒體、CDN</td>
-                                <td>🟢 极佳</td>
-                            </tr>
-                            <tr style="background-color: #e8f5e8;">
-                                <td><strong>M5zn系列</strong></td>
-                                <td><span style="color: #28a745; font-weight: bold;">25-50Gbps</span></td>
-                                <td>800万PPS</td>
-                                <td>資料庫叢集、分散式運算</td>
-                                <td>🟢 优秀</td>
-                            </tr>
-                            <tr style="background-color: #e8f5e8;">
-                                <td><strong>C5n系列</strong></td>
-                                <td><span style="color: #28a745; font-weight: bold;">25-100Gbps</span></td>
-                                <td>1400万PPS</td>
-                                <td>HPC、大資料傳輸、AI訓練</td>
-                                <td>🟢 顶级</td>
-                            </tr>
-                            <tr style="background-color: #fff3cd;">
-                                <td><strong>T2/T3系列</strong></td>
-                                <td><span style="color: #856404;">低至中等</span></td>
-                                <td>25万PPS</td>
-                                <td>輕量網站、開發測試</td>
-                                <td>🟡 基础</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            
-            <div class="instance-family-section">
-                <h3>🎯 業務場景適配對比</h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 25px; border-radius: 10px;">
-                        <h4 style="margin-top: 0; color: white;">🚀 高效能執行個體最佳場景</h4>
-                        <ul style="line-height: 1.8; margin-bottom: 0;">
-                            <li><strong>電商平台</strong> - 雙十一、黑五等高並發場景</li>
-                            <li><strong>金融交易</strong> - 毫秒級響應要求</li>
-                            <li><strong>遊戲服務器</strong> - 大型多人線上遊戲</li>
-                            <li><strong>AI/ML訓練</strong> - 深度學習模型訓練</li>
-                            <li><strong>影片處理</strong> - 4K/8K影片轉碼</li>
-                            <li><strong>大資料分析</strong> - 即時資料處理</li>
-                            <li><strong>企業應用</strong> - ERP、CRM等關鍵業務系統</li>
-                        </ul>
-                    </div>
-                    <div style="background: #f8f9fa; border: 2px solid #dee2e6; padding: 25px; border-radius: 10px;">
-                        <h4 style="margin-top: 0; color: #6c757d;">💡 輕量型執行個體適用場景</h4>
-                        <ul style="line-height: 1.8; margin-bottom: 0; color: #6c757d;">
-                            <li><strong>個人部落格</strong> - 低流量網站</li>
-                            <li><strong>開發測試</strong> - 非生產環境</li>
-                            <li><strong>小型應用</strong> - 用戶量<1000的應用</li>
-                            <li><strong>學習實驗</strong> - 技術學習和實驗</li>
-                            <li><strong>靜態網站</strong> - 企業官網展示</li>
-                            <li><strong>輕量服務</strong> - 簡單 API服務</li>
-                            <li><strong>⚠️ 不適合</strong> - 生產環境關鍵業務</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="tech-highlight">
-                <h3>💰 性價比分析總結</h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 20px;">
-                    <div style="text-align: center;">
-                        <h4 style="color: #28a745;">高效能執行個體</h4>
-                        <p style="font-size: 18px; font-weight: bold; color: #28a745;">效能/價格比 = 優秀</p>
-                        <p>雖然單價較高，但效能強勁，適合關鍵業務，長期ROI更高</p>
-                    </div>
-                    <div style="text-align: center;">
-                        <h4 style="color: #ffc107;">輕量型執行個體</h4>
-                        <p style="font-size: 18px; font-weight: bold; color: #ffc107;">效能/價格比 = 一般</p>
-                        <p>價格便宜但效能受限，適合非關鍵業務和開發測試</p>
-                    </div>
-                    <div style="text-align: center;">
-                        <h4 style="color: #007bff;">選擇建議</h4>
-                        <p style="font-size: 18px; font-weight: bold; color: #007bff;">按需選擇</p>
-                        <p>生產環境選高效能，開發測試可選輕量型，避免效能瓶頸</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
+        </section>
+
         <!-- Order Form Section -->
-        <div class="section">
-            <h2 class="section-title">立即訂購您的高效能服務器</h2>
+        <section class="section" style="padding-top:0;">
+            <h2 class="section-title">Order Your High-Performance Server Now</h2>
+            <p class="section-subtitle">
+                Select your region, OS, instance plan and payment method. We'll set up your high-performance cloud server and send you the details right away.
+            </p>
+
             <form id="order-form" class="form-section">
                 <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
-                <div class="form-group"><label>1. 選擇服務器所在地區</label><div class="radio-group"><label class="radio-label"><input type="radio" name="地区" value="日本" checked><span>日本</span></label><label class="radio-label"><input type="radio" name="地区" value="韩国"><span>韩国</span></label><label class="radio-label"><input type="radio" name="地区" value="美国"><span>美国</span></label><label class="radio-label"><input type="radio" name="地区" value="新加坡"><span>新加坡</span></label><label class="radio-label"><input type="radio" name="地区" value="台湾"><span>台湾</span></label><label class="radio-label"><input type="radio" name="地区" value="香港"><span>香港</span></label><label class="radio-label"><input type="radio" name="地区" value="德国"><span>德国</span></label><label class="radio-label"><input type="radio" name="地区" value="英国"><span>英国</span></label><label class="radio-label"><input type="radio" name="地区" value="其他"><span>其他</span></label></div><a href="all-regions.html" class="all-regions-link" target="_blank" style="display: inline-block; margin-top: 15px; padding: 8px 16px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 4px; color: #007bff; text-decoration: none; font-size: 14px;">🌍 查看所有可用區域 →</a><a href="local-zones.html" class="all-regions-link" target="_blank" style="display: inline-block; margin-top: 15px; margin-left: 10px; padding: 8px 16px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 4px; color: #007bff; text-decoration: none; font-size: 14px;">📍 查看本地區域 →</a></div>
-                <div class="form-group"><label>2. 選擇服務器作業系統</label><div class="radio-group"><label class="radio-label"><input type="radio" name="操作系统" value="Ubuntu 22" checked><span>Ubuntu 22</span></label><label class="radio-label"><input type="radio" name="操作系统" value="CentOS 9"><span>CentOS 9</span></label><label class="radio-label"><input type="radio" name="操作系统" value="Debian 11"><span>Debian 11</span></label><label class="radio-label"><input type="radio" name="操作系统" value="Windows 2022"><span>Windows 2022</span></label><label class="radio-label"><input type="radio" name="操作系统" value="其他"><span>其他</span></label></div></div>
-                <div class="form-group"><label>3. 選擇服務器的配置和規格</label><div class="pricing-grid"><div class="pricing-card"><input type="radio" name="配置規格" value="C7a.4xlarge (16核/32G/12.5Gbps), $390/月" checked><h4>C7a.4xlarge</h4><div class="specs">16核 / 32GB内存<br><span style="color: #28a745; font-weight: bold; font-size: 16px;">12.5Gbps 网络带宽</span></div><div class="price">$390 /月 (USD)</div><div class="price-note">美元定價</div></div><div class="pricing-card"><input type="radio" name="配置規格" value="C5n.4xlarge (16核/42G/25Gbps), $420/月"><h4>C5n.4xlarge</h4><div class="specs">16核 / 42GB内存<br><span style="color: #28a745; font-weight: bold; font-size: 16px;">25Gbps 网络带宽</span></div><div class="price">$420 /月 (USD)</div><div class="price-note">美元定價</div></div><div class="pricing-card"><input type="radio" name="配置規格" value="C6in.4xlarge (16核/32G/50Gbps), $430/月"><h4>C6in.4xlarge</h4><div class="specs">16核 / 32GB内存<br><span style="color: #28a745; font-weight: bold; font-size: 16px;">50Gbps 网络带宽</span></div><div class="price">$430 /月 (USD)</div><div class="price-note">美元定價</div></div><div class="pricing-card"><input type="radio" name="配置規格" value="C6in.8xlarge (32核/64G/50Gbps), $860/月"><h4>C6in.8xlarge</h4><div class="specs">32核 / 64GB内存<br><span style="color: #28a745; font-weight: bold; font-size: 16px;">50Gbps 网络带宽</span></div><div class="price">$860 /月 (USD)</div><div class="price-note">美元定價</div></div><div class="pricing-card"><input type="radio" name="配置規格" value="M5zn.3xlarge (12核/48G/25Gbps), $480/月"><h4>M5zn.3xlarge</h4><div class="specs">12核 / 48GB内存<br><span style="color: #28a745; font-weight: bold; font-size: 16px;">25Gbps 网络带宽</span></div><div class="price">$480 /月 (USD)</div><div class="price-note">美元定價</div></div><div class="pricing-card"><input type="radio" name="配置規格" value="M5zn.6xlarge (24核/96G/50Gbps), $965/月"><h4>M5zn.6xlarge</h4><div class="specs">24核 / 96GB内存<br><span style="color: #28a745; font-weight: bold; font-size: 16px;">50Gbps 网络带宽</span></div><div class="price">$965 /月 (USD)</div><div class="price-note">美元定價</div></div></div></div>
-                <div class="form-group"><label>4. 選擇付款方式</label><div class="radio-group"><label class="radio-label"><input type="radio" name="付款方式" value="USDT 數位加密貨幣" checked><span>USDT</span></label><label class="radio-label"><input type="radio" name="付款方式" value="轉數快– FPS 香港"><span>FPS 香港</span></label><label class="radio-label"><input type="radio" name="付款方式" value="信用卡"><span>信用卡</span></label><label class="radio-label"><input type="radio" name="付款方式" value="線上商城"><span>在线商城</span></label><label class="radio-label"><input type="radio" name="付款方式" value="PayPal"><span>PayPal</span></label></div></div>
-                <div class="form-group"><label for="email">5. 您的Email信箱 (必填)</label><input type="email" id="email" name="email" required placeholder="我們將透過此信箱與您聯絡"></div>
-                <div class="form-group"><label for="contact">您的Telegram或其他聯絡方式 (選填)</label><input type="text" id="contact" name="其他聯絡方式" placeholder="例如 Telegram: @your_id"></div>
-                <button type="submit" class="submit-button">提交訂單</button>
+
+                <!-- Step 1: Region -->
+                <div class="form-step">
+                    <h3><span class="step-icon">1</span> Select Server Region</h3>
+                    <p class="section-note">Choose the data center region closest to your target audience for best latency.</p>
+                    <div class="form-group">
+                        <div class="radio-group">
+                            <label class="radio-label checked"><input type="radio" name="region" value="Japan" checked>
+                                <svg class="flag-icon" viewBox="0 0 22 16" xmlns="http://www.w3.org/2000/svg"><rect width="22" height="16" fill="#fff"/><circle cx="11" cy="8" r="4.4" fill="#bc002d"/></svg>
+                                Japan
+                            </label>
+                            <label class="radio-label"><input type="radio" name="region" value="South Korea">
+                                <svg class="flag-icon" viewBox="0 0 22 16" xmlns="http://www.w3.org/2000/svg"><rect width="22" height="16" fill="#fff"/><circle cx="11" cy="8" r="4" fill="none" stroke="#cd2e3a" stroke-width="1.5"/><path d="M11 4c0 0-4 2.7-4 4s4 4 4 4" fill="#cd2e3a"/><path d="M11 4c0 0 4 2.7 4 4s-4 4-4 4" fill="#003478"/></svg>
+                                South Korea
+                            </label>
+                            <label class="radio-label"><input type="radio" name="region" value="United States">
+                                <svg class="flag-icon" viewBox="0 0 22 16" xmlns="http://www.w3.org/2000/svg"><rect width="22" height="16" fill="#b22234"/><rect y="1.8" width="22" height="1.8" fill="#fff"/><rect y="5.4" width="22" height="1.8" fill="#fff"/><rect y="9" width="22" height="1.8" fill="#fff"/><rect y="12.5" width="22" height="1.8" fill="#fff"/><rect width="9" height="8.5" fill="#3c3b6e"/></svg>
+                                United States
+                            </label>
+                            <label class="radio-label"><input type="radio" name="region" value="Singapore">
+                                <svg class="flag-icon" viewBox="0 0 22 16" xmlns="http://www.w3.org/2000/svg"><rect width="22" height="8" fill="#ef3340"/><rect y="8" width="22" height="8" fill="#fff"/><circle cx="5" cy="8" r="2.5" fill="#fff"/><circle cx="6.2" cy="8" r="2.5" fill="#ef3340"/><text x="8" y="9.5" font-size="5" fill="#fff">✦✦✦</text></svg>
+                                Singapore
+                            </label>
+                            <label class="radio-label"><input type="radio" name="region" value="Taiwan">
+                                <svg class="flag-icon" viewBox="0 0 22 16" xmlns="http://www.w3.org/2000/svg"><rect width="22" height="16" fill="#fe0000"/><rect width="11" height="8" fill="#000095"/><circle cx="5.5" cy="4" r="2.4" fill="#fff"/></svg>
+                                Taiwan
+                            </label>
+                            <label class="radio-label"><input type="radio" name="region" value="Hong Kong">
+                                <svg class="flag-icon" viewBox="0 0 22 16" xmlns="http://www.w3.org/2000/svg"><rect width="22" height="16" fill="#de2910"/><circle cx="9" cy="8" r="3.5" fill="none" stroke="#fff" stroke-width="0.5"/><text x="7" y="10" font-size="7" fill="#fff">✿</text></svg>
+                                Hong Kong
+                            </label>
+                            <label class="radio-label"><input type="radio" name="region" value="Germany">
+                                <svg class="flag-icon" viewBox="0 0 22 16" xmlns="http://www.w3.org/2000/svg"><rect width="22" height="5.3" fill="#000"/><rect y="5.3" width="22" height="5.3" fill="#dd0000"/><rect y="10.7" width="22" height="5.3" fill="#ffce00"/></svg>
+                                Germany
+                            </label>
+                            <label class="radio-label"><input type="radio" name="region" value="United Kingdom">
+                                <svg class="flag-icon" viewBox="0 0 22 16" xmlns="http://www.w3.org/2000/svg"><rect width="22" height="16" fill="#012169"/><path d="M0 0l22 16M22 0L0 16" stroke="#fff" stroke-width="3"/><path d="M0 0l22 16M22 0L0 16" stroke="#C8102E" stroke-width="1.8"/><path d="M11 0v16M0 8h22" stroke="#fff" stroke-width="4.5"/><path d="M11 0v16M0 8h22" stroke="#C8102E" stroke-width="3"/></svg>
+                                United Kingdom
+                            </label>
+                            <label class="radio-label"><input type="radio" name="region" value="Other">
+                                <svg class="flag-icon" viewBox="0 0 22 16" xmlns="http://www.w3.org/2000/svg"><rect width="22" height="16" rx="2" fill="#e0e4ea"/><circle cx="11" cy="8" r="5" fill="none" stroke="#9ca3af" stroke-width="1.2"/><path d="M11 3v10M6 8h10" stroke="#9ca3af" stroke-width="1.2"/><ellipse cx="11" cy="8" rx="2.5" ry="5" fill="none" stroke="#9ca3af" stroke-width="1"/></svg>
+                                Other
+                            </label>
+                        </div>
+                        <p style="margin:10px 0 0;font-size:13px;color:#6c757d;">
+                            🌍 <a href="all-regions.html" style="color:#007bff;">View all available regions →</a>
+                            &nbsp;&nbsp;📍 <a href="local-zones.html" style="color:#007bff;">View local zones →</a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 2: OS -->
+                <div class="form-step">
+                    <h3><span class="step-icon">2</span> Choose Operating System</h3>
+                    <div class="form-group">
+                        <div class="radio-group">
+                            <!-- Ubuntu -->
+                            <label class="radio-label checked"><input type="radio" name="os" value="Ubuntu 22.04 LTS" checked>
+                                <svg class="os-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="11" fill="#E95420"/>
+                                    <circle cx="12" cy="12" r="4.5" fill="none" stroke="#fff" stroke-width="2"/>
+                                    <circle cx="12" cy="3.5" r="2" fill="#fff"/>
+                                    <circle cx="19.8" cy="16.3" r="2" fill="#fff"/>
+                                    <circle cx="4.2" cy="16.3" r="2" fill="#fff"/>
+                                </svg>
+                                Ubuntu 22
+                            </label>
+                            <!-- CentOS -->
+                            <label class="radio-label"><input type="radio" name="os" value="CentOS 9">
+                                <svg class="os-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="24" height="24" rx="4" fill="#262577"/>
+                                    <polygon points="12,2 14,10 22,10 16,15 18,23 12,18 6,23 8,15 2,10 10,10" fill="#9B59B6" stroke="#fff" stroke-width="0.5"/>
+                                    <polygon points="12,2 12,18 2,10 10,10" fill="#fff" opacity="0.15"/>
+                                    <polygon points="12,2 12,18 22,10 14,10" fill="#fff" opacity="0.08"/>
+                                    <circle cx="12" cy="12" r="3" fill="#fff" opacity="0.9"/>
+                                </svg>
+                                CentOS 9
+                            </label>
+                            <!-- Debian -->
+                            <label class="radio-label"><input type="radio" name="os" value="Debian 11">
+                                <svg class="os-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="11" fill="#A80030"/>
+                                    <path d="M12 4c-2.8 0-5 1.5-6 4 1-1.2 2.4-2 4-2 2.2 0 4 1.8 4 4s-1.8 4-4 4c-1.6 0-3-.8-4-2 1 2.5 3.2 4 6 4 4 0 7-3 7-7s-3-5-7-5z" fill="#fff" opacity="0.9"/>
+                                </svg>
+                                Debian 11
+                            </label>
+                            <!-- Windows -->
+                            <label class="radio-label"><input type="radio" name="os" value="Windows Server 2022">
+                                <svg class="os-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="24" height="24" rx="3" fill="#0078D4"/>
+                                    <rect x="3" y="3" width="8" height="8" rx="1" fill="#fff" opacity="0.95"/>
+                                    <rect x="13" y="3" width="8" height="8" rx="1" fill="#fff" opacity="0.95"/>
+                                    <rect x="3" y="13" width="8" height="8" rx="1" fill="#fff" opacity="0.95"/>
+                                    <rect x="13" y="13" width="8" height="8" rx="1" fill="#fff" opacity="0.95"/>
+                                </svg>
+                                Windows 2022
+                            </label>
+                            <!-- Other OS -->
+                            <label class="radio-label"><input type="radio" name="os" value="Other (please specify in contact)">
+                                <svg class="os-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="24" height="24" rx="4" fill="#2d3748"/>
+                                    <rect x="3" y="6" width="18" height="2" rx="1" fill="#68d391"/>
+                                    <rect x="3" y="11" width="12" height="2" rx="1" fill="#68d391"/>
+                                    <rect x="3" y="16" width="15" height="2" rx="1" fill="#68d391"/>
+                                    <text x="4" y="5.5" font-size="3.5" fill="#68d391" font-family="monospace">$_</text>
+                                </svg>
+                                Other
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Plan -->
+                <div class="form-step">
+                    <h3><span class="step-icon">3</span> Select Server Configuration &amp; Specs</h3>
+                    <p class="section-note">Click a plan card to select it. Prices are shown in USD per month.</p>
+                    <div class="pricing-grid" style="grid-template-columns:repeat(3,1fr);">
+                        <div class="pricing-card">
+                            <input type="radio" name="plan" value="C7a.4xlarge, 16 vCPU/32GB, 12.5Gbps, $390/Month" required>
+                            <h4>C7a.4xlarge</h4>
+                            <div class="specs">16 vCPU / 32 GB RAM<br>12.5 Gbps Network</div>
+                            <div class="price">$390 / Month</div>
+                            <div class="price-note">USD Pricing</div>
+                        </div>
+                        <div class="pricing-card">
+                            <input type="radio" name="plan" value="C5n.4xlarge, 16 vCPU/42GB, 25Gbps, $420/Month">
+                            <h4>C5n.4xlarge</h4>
+                            <div class="specs">16 vCPU / 42 GB RAM<br>25 Gbps Network</div>
+                            <div class="price">$420 / Month</div>
+                            <div class="price-note">USD Pricing</div>
+                        </div>
+                        <div class="pricing-card">
+                            <input type="radio" name="plan" value="C6in.4xlarge, 16 vCPU/32GB, 50Gbps, $430/Month">
+                            <h4>C6in.4xlarge</h4>
+                            <div class="specs">16 vCPU / 32 GB RAM<br>50 Gbps Network</div>
+                            <div class="price">$430 / Month</div>
+                            <div class="price-note">USD Pricing</div>
+                        </div>
+                        <div class="pricing-card">
+                            <input type="radio" name="plan" value="C6in.8xlarge, 32 vCPU/64GB, 50Gbps, $860/Month">
+                            <h4>C6in.8xlarge</h4>
+                            <div class="specs">32 vCPU / 64 GB RAM<br>50 Gbps Network</div>
+                            <div class="price">$860 / Month</div>
+                            <div class="price-note">USD Pricing</div>
+                        </div>
+                        <div class="pricing-card">
+                            <input type="radio" name="plan" value="M5zn.3xlarge, 12 vCPU/48GB, 25Gbps, $480/Month">
+                            <h4>M5zn.3xlarge</h4>
+                            <div class="specs">12 vCPU / 48 GB RAM<br>25 Gbps Network</div>
+                            <div class="price">$480 / Month</div>
+                            <div class="price-note">USD Pricing</div>
+                        </div>
+                        <div class="pricing-card">
+                            <input type="radio" name="plan" value="M5zn.6xlarge, 24 vCPU/96GB, 50Gbps, $965/Month">
+                            <h4>M5zn.6xlarge</h4>
+                            <div class="specs">24 vCPU / 96 GB RAM<br>50 Gbps Network</div>
+                            <div class="price">$965 / Month</div>
+                            <div class="price-note">USD Pricing</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Payment -->
+                <div class="form-step">
+                    <h3><span class="step-icon">4</span> Payment Method</h3>
+                    <div class="form-group">
+                        <div class="radio-group">
+                            <label class="radio-label checked"><input type="radio" name="paymentMethod" value="USDT" checked><span>💎 USDT</span></label>
+                            <label class="radio-label"><input type="radio" name="paymentMethod" value="FPS (Hong Kong)"><span>🇭🇰 FPS Hong Kong</span></label>
+                            <label class="radio-label"><input type="radio" name="paymentMethod" value="Credit Card"><span>💳 Credit Card</span></label>
+                            <label class="radio-label"><input type="radio" name="paymentMethod" value="Online Store"><span>🛒 Online Store</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Contact -->
+                <div class="form-step">
+                    <h3><span class="step-icon">5</span> Contact Information</h3>
+                    <div class="form-group">
+                        <label for="email">Your Email Address (required)</label>
+                        <input type="email" id="email" name="email" required placeholder="you@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Telegram or other contact (optional)</label>
+                        <input type="text" id="contact" name="contact" placeholder="e.g., Telegram: @your_id">
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-button">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M9 12l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="12" r="9" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+                    </svg>
+                    Submit Order
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
                 <p id="order-form-status"></p>
             </form>
-        </div>
+        </section>
+        <!-- Specs / Technical Details Section -->
+        <section class="section" style="padding-top:0;">
+            <h2 class="section-title">Instance Details &amp; Technical Specifications</h2>
+            <p class="section-subtitle">
+                Suitable for high-performance web servers, HPC, batch processing, ad serving, multiplayer gaming,
+                video encoding, scientific modeling, distributed analytics, and machine learning workloads.
+            </p>
 
-        <div class="section">
-            <h2 class="section-title">執行個體詳情與技術規格</h2>
-            <p class="section-subtitle">適用於高效能 Web 服務器、HPC、批次處理、廣告投放、多人遊戲、影片編碼、科學建模、分散式分析和機器學習等工作負載。</p>
-
-            <div class="instance-family-section">
-                <h3>c6in系列 (高性能) & m5zn系列 (均衡)</h3>
-                <div class="table-container">
-                    <table class="spec-table">
-                        <thead><tr><th>CPU类型</th><th>配置类型</th><th>性能描述</th><th>流量</th></tr></thead>
-                        <tbody>
-                            <tr><td>Intel Xeon 8375C</td><td>16 个 CPU，32 GB</td><td>c6in.4xlarge 实例属于计算优化系列，配备 16 个 vCPU、32.0 GiB 内存，带宽最高可达 50 Gbps。</td><td>不计费</td></tr>
-                            <tr><td>Intel Xeon 8375C</td><td>32 个 CPU，64 GB</td><td>c6in.8xlarge 实例属于计算优化系列，配备 32 个 vCPU、64.0 GiB 内存和 50 Gbps 带宽。</td><td>不计费</td></tr>
-                            <tr><td>Intel Xeon Platinum 8252</td><td>12 个 CPU，48 GB</td><td>m5zn.3xlarge 实例属于高内存型系列，配备 12 个 vCPU、48.0 GiB 内存，带宽最高可达 25 Gbps。</td><td>不计费</td></tr>
-                            <tr><td>Intel Xeon Platinum 8252</td><td>24 个 CPU，96 GB</td><td>m5zn.6xlarge 实例属于高内存型系列，配备 24 个 vCPU、96.0 GiB 内存和 50 Gbps 带宽。</td><td>不计费</td></tr>
-                        </tbody>
-                    </table>
-                </div>
+            <!-- c6in & m5zn -->
+            <div class="specs-section-title">⚡ c6in Series (High Performance) &amp; m5zn Series (Balanced)</div>
+            <div class="specs-table-wrap">
+                <table class="specs-table">
+                    <thead>
+                        <tr>
+                            <th>CPU Type</th>
+                            <th>Configuration</th>
+                            <th>Performance Description</th>
+                            <th>Traffic</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Intel Xeon 8375C</td>
+                            <td>16 vCPUs, 32 GB</td>
+                            <td>c6in.4xlarge — compute-optimized series, 16 vCPUs, 32.0 GiB memory, up to 50 Gbps bandwidth.</td>
+                            <td>Unmetered</td>
+                        </tr>
+                        <tr>
+                            <td>Intel Xeon 8375C</td>
+                            <td>32 vCPUs, 64 GB</td>
+                            <td>c6in.8xlarge — compute-optimized series, 32 vCPUs, 64.0 GiB memory, 50 Gbps bandwidth.</td>
+                            <td>Unmetered</td>
+                        </tr>
+                        <tr>
+                            <td>Intel Xeon Platinum 8252</td>
+                            <td>12 vCPUs, 48 GB</td>
+                            <td>m5zn.3xlarge — high-memory series, 12 vCPUs, 48.0 GiB memory, up to 25 Gbps bandwidth.</td>
+                            <td>Unmetered</td>
+                        </tr>
+                        <tr>
+                            <td>Intel Xeon Platinum 8252</td>
+                            <td>24 vCPUs, 96 GB</td>
+                            <td>m5zn.6xlarge — high-memory series, 24 vCPUs, 96.0 GiB memory, 50 Gbps bandwidth.</td>
+                            <td>Unmetered</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <div class="instance-family-section">
-                <h3>C7a 系列 (最新AMD EPYC处理器)</h3>
-                <p>C7a 实例采用第 4 代 AMD EPYC（霄龙）处理器，与 C6a 实例相比，性能提高了 50%。</p>
+            <!-- C7a -->
+            <div class="specs-section-title">🔥 C7a Series (Latest AMD EPYC Processor)</div>
+            <div class="specs-section-desc">
+                C7a instances are powered by 4th generation AMD EPYC (Genoa) processors, delivering 50% better performance than C6a instances.
                 <ul>
-                    <li><b>搭载第 4 代 AMD EPYC 处理器：</b>代号为 Genoa，最高频率为 3.7GHz，支持 AMD 安全内存加密 (SME)。</li>
-                    <li><b>高性能接口：</b>使用领先的 DDR5 内存，内存带宽提高 2.25 倍。支持高达 40Gbps 的 EBS 带宽和高达 50Gbps 的网络带宽。</li>
-                    <li><b>支持各种工作负载：</b>支持 AVX-512、VNNI 和 bfloat16，可支持更多工作负载，包括AI、财务分析和视频编码。</li>
+                    <li><strong>4th Gen AMD EPYC processor:</strong> Codenamed Genoa, up to 3.7 GHz max frequency, supports AMD Secure Memory Encryption (SME).</li>
+                    <li><strong>High-performance interfaces:</strong> DDR5 memory with 2.25× greater memory bandwidth. Up to 40 Gbps EBS bandwidth and 50 Gbps network bandwidth.</li>
+                    <li><strong>Broad workload support:</strong> AVX-512, VNNI and bfloat16 support for AI, financial analytics, and video encoding workloads.</li>
                 </ul>
-                <div class="table-container">
-                    <table class="spec-table">
-                        <thead><tr><th>实例大小</th><th>vCPU</th><th>内存(GiB)</th><th>实例存储</th><th>网络带宽(Gbps)</th><th>EBS带宽(Gbps)</th></tr></thead>
-                        <tbody>
-                            <tr><td>c7a.medium</td><td>1</td><td>2</td><td>仅限 EBS</td><td>最高 12.5</td><td>最多 10 个</td></tr>
-                            <tr><td>c7a.large</td><td>2</td><td>4</td><td>仅限 EBS</td><td>最高 12.5</td><td>最多 10 个</td></tr>
-                            <tr><td>c7a.xlarge</td><td>4</td><td>8</td><td>仅限 EBS</td><td>最高 12.5</td><td>最多 10 个</td></tr>
-                            <tr><td>c7a.2xlarge</td><td>8</td><td>16</td><td>仅限 EBS</td><td>最高 12.5</td><td>最多 10 个</td></tr>
-                            <tr><td>c7a.4xlarge</td><td>16</td><td>32</td><td>仅限 EBS</td><td>最高 12.5</td><td>最多 10 个</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                 <div class="table-container">
-                    <table class="spec-table">
-                         <thead><tr><th>API Name</th><th>vCPUs</th><th>内存</th><th>网络带宽</th><th>按月价格（美元）</th></tr></thead>
-                         <tbody>
-                            <tr><td>c7a.medium</td><td>1 vCPUs</td><td>2.0 GiB</td><td>Up to 12.5 Gigabit</td><td>$37.4636 monthly</td></tr>
-                            <tr><td>c7a.large</td><td>2 vCPUs</td><td>4.0 GiB</td><td>Up to 12.5 Gigabit</td><td>$74.9272 monthly</td></tr>
-                            <tr><td>c7a.xlarge</td><td>4 vCPUs</td><td>8.0 GiB</td><td>Up to 12.5 Gigabit</td><td>$149.8544 monthly</td></tr>
-                            <tr><td>c7a.2xlarge</td><td>8 vCPUs</td><td>16.0 GiB</td><td>Up to 12.5 Gigabit</td><td>$299.7088 monthly</td></tr>
-                            <tr><td>c7a.4xlarge</td><td>16 vCPUs</td><td>32.0 GiB</td><td>Up to 12.5 Gigabit</td><td>$599.4176 monthly</td></tr>
-                            <tr><td>c7a.8xlarge</td><td>32 vCPUs</td><td>64.0 GiB</td><td>12.5 Gigabit</td><td>$1198.8352 monthly</td></tr>
-                         </tbody>
-                    </table>
-                </div>
+            </div>
+            <div class="specs-table-wrap">
+                <table class="specs-table">
+                    <thead>
+                        <tr>
+                            <th>Instance Size</th>
+                            <th>vCPU</th>
+                            <th>Memory (GiB)</th>
+                            <th>Storage</th>
+                            <th>Network (Gbps)</th>
+                            <th>EBS (Gbps)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>c7a.medium</td><td>1</td><td>2</td><td>EBS Only</td><td>Up to 12.5</td><td>Up to 10</td></tr>
+                        <tr><td>c7a.large</td><td>2</td><td>4</td><td>EBS Only</td><td>Up to 12.5</td><td>Up to 10</td></tr>
+                        <tr><td>c7a.xlarge</td><td>4</td><td>8</td><td>EBS Only</td><td>Up to 12.5</td><td>Up to 10</td></tr>
+                        <tr><td>c7a.2xlarge</td><td>8</td><td>16</td><td>EBS Only</td><td>Up to 12.5</td><td>Up to 10</td></tr>
+                        <tr><td>c7a.4xlarge</td><td>16</td><td>32</td><td>EBS Only</td><td>Up to 12.5</td><td>Up to 10</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="specs-table-wrap">
+                <table class="specs-table">
+                    <thead>
+                        <tr>
+                            <th>API Name</th>
+                            <th>vCPUs</th>
+                            <th>Memory</th>
+                            <th>Network Bandwidth</th>
+                            <th>Monthly Price (USD)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>c7a.medium</td><td>1 vCPU</td><td>2.0 GiB</td><td>Up to 12.5 Gigabit</td><td>$37.46 / month</td></tr>
+                        <tr><td>c7a.large</td><td>2 vCPUs</td><td>4.0 GiB</td><td>Up to 12.5 Gigabit</td><td>$74.93 / month</td></tr>
+                        <tr><td>c7a.xlarge</td><td>4 vCPUs</td><td>8.0 GiB</td><td>Up to 12.5 Gigabit</td><td>$149.85 / month</td></tr>
+                        <tr><td>c7a.2xlarge</td><td>8 vCPUs</td><td>16.0 GiB</td><td>Up to 12.5 Gigabit</td><td>$299.71 / month</td></tr>
+                        <tr><td>c7a.4xlarge</td><td>16 vCPUs</td><td>32.0 GiB</td><td>Up to 12.5 Gigabit</td><td>$599.42 / month</td></tr>
+                        <tr><td>c7a.8xlarge</td><td>32 vCPUs</td><td>64.0 GiB</td><td>12.5 Gigabit</td><td>$1,198.84 / month</td></tr>
+                    </tbody>
+                </table>
             </div>
 
-             <div class="instance-family-section">
-                <h3>C5n 系列 (高达100Gbps网络)</h3>
-                <p>C5n 实例利用第四代定制 Nitro 卡和 ENA 设备为单个实例提供 100Gbps 的网络吞吐量，非常适合网络密集型应用程序。</p>
-                <div class="table-container">
-                    <table class="spec-table">
-                        <thead><tr><th>型号</th><th>vCPU</th><th>内存(GiB)</th><th>网络带宽(Gbps)</th><th>EBS 带宽(Mbps)</th></tr></thead>
-                        <tbody>
-                           <tr><td>c5n.large</td><td>2</td><td>5.25</td><td>最高 25</td><td>最高 4750</td></tr>
-                           <tr><td>c5n.xlarge</td><td>4</td><td>10.5</td><td>最高 25</td><td>最高 4750</td></tr>
-                           <tr><td>c5n.2xlarge</td><td>8</td><td>21</td><td>最高 25</td><td>最高 4750</td></tr>
-                           <tr><td>c5n.4xlarge</td><td>16</td><td>42</td><td>最高 25</td><td>4750</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                 <div class="table-container">
-                    <table class="spec-table">
-                         <thead><tr><th>API Name</th><th>vCPUs</th><th>内存</th><th>网络带宽</th><th>按月价格（美元）</th></tr></thead>
-                         <tbody>
-                            <tr><td>c5n.large</td><td>2 vCPUs</td><td>5.25 GiB</td><td>Up to 25 Gigabit</td><td>$78.8400 monthly</td></tr>
-                            <tr><td>c5n.xlarge</td><td>4 vCPUs</td><td>10.5 GiB</td><td>Up to 25 Gigabit</td><td>$157.6800 monthly</td></tr>
-                            <tr><td>c5n.2xlarge</td><td>8 vCPUs</td><td>21.0 GiB</td><td>Up to 25 Gigabit</td><td>$315.3600 monthly</td></tr>
-                            <tr><td>c5n.4xlarge</td><td>16 vCPUs</td><td>42.0 GiB</td><td>Up to 25 Gigabit</td><td>$630.7200 monthly</td></tr>
-                         </tbody>
-                    </table>
-                </div>
+            <!-- C5n -->
+            <div class="specs-section-title">🌐 C5n Series (Up to 100 Gbps Network)</div>
+            <div class="specs-section-desc">
+                C5n instances utilize 4th-generation custom Nitro cards and ENA devices to provide up to 100 Gbps network throughput for a single instance—ideal for network-intensive applications.
             </div>
-            
-            <div class="instance-family-section">
-                <h3>C5 / C5a 系列 (Intel & AMD 高性价比)</h3>
-                <p>C5 实例采用 Intel Xeon 处理器，C5a 实例则采用 AMD EPYC 处理器，以降低 10% 的成本提供领先的 x86 性价比。</p>
-                 <div class="table-container">
-                    <table class="spec-table">
-                        <thead><tr><th>型号</th><th>vCPU</th><th>内存(GiB)</th><th>网络带宽(Gbps)</th><th>EBS 带宽(Mbps)</th></tr></thead>
-                        <tbody>
-                           <tr><td>c5.large / c5a.large</td><td>2</td><td>4</td><td>最高 10</td><td>最高 4750</td></tr>
-                           <tr><td>c5.xlarge / c5a.xlarge</td><td>4</td><td>8</td><td>最高 10</td><td>最高 4750</td></tr>
-                           <tr><td>c5.2xlarge / c5a.2xlarge</td><td>8</td><td>16</td><td>最高 10</td><td>最高 4750</td></tr>
-                           <tr><td>c5.4xlarge / c5a.4xlarge</td><td>16</td><td>32</td><td>最高 10</td><td>4750</td></tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="specs-table-wrap">
+                <table class="specs-table">
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>vCPU</th>
+                            <th>Memory (GiB)</th>
+                            <th>Network (Gbps)</th>
+                            <th>EBS (Mbps)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>c5n.large</td><td>2</td><td>5.25</td><td>Up to 25</td><td>Up to 4750</td></tr>
+                        <tr><td>c5n.xlarge</td><td>4</td><td>10.5</td><td>Up to 25</td><td>Up to 4750</td></tr>
+                        <tr><td>c5n.2xlarge</td><td>8</td><td>21</td><td>Up to 25</td><td>Up to 4750</td></tr>
+                        <tr><td>c5n.4xlarge</td><td>16</td><td>42</td><td>Up to 25</td><td>4750</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="specs-table-wrap">
+                <table class="specs-table">
+                    <thead>
+                        <tr>
+                            <th>API Name</th>
+                            <th>vCPUs</th>
+                            <th>Memory</th>
+                            <th>Network Bandwidth</th>
+                            <th>Monthly Price (USD)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>c5n.large</td><td>2 vCPUs</td><td>5.25 GiB</td><td>Up to 25 Gigabit</td><td>$78.84 / month</td></tr>
+                        <tr><td>c5n.xlarge</td><td>4 vCPUs</td><td>10.5 GiB</td><td>Up to 25 Gigabit</td><td>$157.68 / month</td></tr>
+                        <tr><td>c5n.2xlarge</td><td>8 vCPUs</td><td>21.0 GiB</td><td>Up to 25 Gigabit</td><td>$315.36 / month</td></tr>
+                        <tr><td>c5n.4xlarge</td><td>16 vCPUs</td><td>42.0 GiB</td><td>Up to 25 Gigabit</td><td>$630.72 / month</td></tr>
+                    </tbody>
+                </table>
             </div>
 
-            <div class="tech-highlight">
-                <h3>基于 AWS Nitro 系统构建</h3>
-                <p>AWS Nitro 系统是一个丰富的构建块集合，可将许多传统虚拟化功能卸载到专用硬件和软件中，以提供高性能、高可用性和高安全性，同时还可降低虚拟化开销。</p>
+            <!-- C5 / C5a -->
+            <div class="specs-section-title">💡 C5 / C5a Series (Intel &amp; AMD Cost-Effective)</div>
+            <div class="specs-section-desc">
+                C5 instances use Intel Xeon processors; C5a instances use AMD EPYC processors—delivering leading x86 performance at 10% lower cost.
             </div>
-        </div>
+            <div class="specs-table-wrap">
+                <table class="specs-table">
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>vCPU</th>
+                            <th>Memory (GiB)</th>
+                            <th>Network (Gbps)</th>
+                            <th>EBS (Mbps)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>c5.large / c5a.large</td><td>2</td><td>4</td><td>Up to 10</td><td>Up to 4750</td></tr>
+                        <tr><td>c5.xlarge / c5a.xlarge</td><td>4</td><td>8</td><td>Up to 10</td><td>Up to 4750</td></tr>
+                        <tr><td>c5.2xlarge / c5a.2xlarge</td><td>8</td><td>16</td><td>Up to 10</td><td>Up to 4750</td></tr>
+                        <tr><td>c5.4xlarge / c5a.4xlarge</td><td>16</td><td>32</td><td>Up to 10</td><td>4750</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Nitro Banner -->
+            <div class="nitro-banner">
+                <div class="nitro-icon">🏗️</div>
+                <div>
+                    <h3>Built on the AWS Nitro System</h3>
+                    <p>
+                        The AWS Nitro System is a rich collection of building blocks that offloads many traditional virtualization functions
+                        to dedicated hardware and software—delivering high performance, high availability, and high security while reducing
+                        virtualization overhead.
+                    </p>
+                </div>
+            </div>
+        </section>
+
     </div>
-
-    <footer>
-        <div class="container">
-            <p>版權所有 &copy; 2025 AWSDO.COM</p>
-            <div class="footer-contact">
-                <a href="mailto:support@awsdo.com"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> support@awsdo.com</a>
-                <a href="https://t.me/ilovesunkeinfo" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 2L11 13H2l1.67-5.01L22 2zm-2.48 18.51L17 14l-4.2 4.13-1.67-5.01L2 13h9l2-2-8.5-8.5L22 2l-2.48 18.51z"/></svg> @ilovesunkeinfo</a>
-            </div>
-        </div>
-    </footer>
-
-    <!--聊天模組-->
+    <!-- Chatwoot -->
     <script>
-      window.chatwootSettings = {"position":"right","type":"expanded_bubble","launcherTitle":"線上聊天"};
-      (function(d,t) { var BASE_URL="https://app.chatwoot.com/"; var g=d.createElement(t),s=d.getElementsByTagName(t)[0]; g.src=BASE_URL+"/packs/js/sdk.js"; g.defer = true; g.async = true; s.parentNode.insertBefore(g,s); g.onload=function(){ window.chatwootSDK.run({ websiteToken: 'c3stLVCV9GDjtvHcBMLdjRjU', baseUrl: BASE_URL }) } })(document,"script");
+      window.chatwootSettings = {"position":"right","type":"expanded_bubble","launcherTitle":"Online Chat"};
+      (function(d,t) {
+        var BASE_URL="https://app.chatwoot.com/";
+        var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=BASE_URL+"/packs/js/sdk.js";
+        g.defer = true;
+        g.async = true;
+        s.parentNode.insertBefore(g,s);
+        g.onload=function(){
+          window.chatwootSDK.run({
+            websiteToken: 'c3stLVCV9GDjtvHcBMLdjRjU',
+            baseUrl: BASE_URL
+          })
+        }
+      })(document,"script");
     </script>
-    
-    <!-- UI Enhancement Script -->
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const radioGroups = document.querySelectorAll('.radio-group');
-            radioGroups.forEach(group => {
-                const updateStyles = () => {
-                    const labels = group.querySelectorAll('.radio-label');
-                    labels.forEach(label => {
-                        const radio = label.querySelector('input[type="radio"]');
-                        label.classList.toggle('checked', radio.checked);
-                    });
-                };
-                group.addEventListener('change', updateStyles);
-                updateStyles();
-            });
-            
+            // Pricing card selection => sync radio
             const pricingCards = document.querySelectorAll('.pricing-card');
             pricingCards.forEach(card => {
                 card.addEventListener('click', function() {
                     pricingCards.forEach(c => c.classList.remove('selected'));
                     this.classList.add('selected');
                     const radio = this.querySelector('input[type="radio"]');
-                    if (radio) {
-                        radio.checked = true;
-                    }
+                    if (radio) radio.checked = true;
                 });
             });
+
+            // Radio label checked styles
+            const radioGroups = document.querySelectorAll('.radio-group');
+            radioGroups.forEach(group => {
+                const updateStyles = () => {
+                    const labels = group.querySelectorAll('.radio-label');
+                    labels.forEach(label => {
+                        const radio = label.querySelector('input[type="radio"]');
+                        if (radio && radio.checked) label.classList.add('checked');
+                        else label.classList.remove('checked');
+                    });
+                };
+                group.addEventListener('change', updateStyles);
+                updateStyles();
+            });
+
+            // Pre-select first pricing card if checked
+            const selectedRadio = document.querySelector('.pricing-card input[type="radio"]:checked');
+            if (selectedRadio) selectedRadio.closest('.pricing-card').classList.add('selected');
+        });
+
+        const form = document.getElementById("order-form");
+        const statusEl = document.getElementById("order-form-status");
+
+        function showStatus(msg, tone) {
+            statusEl.style.display = 'block';
+            statusEl.textContent = msg;
+            if (tone === 'success') {
+                statusEl.style.backgroundColor = '#d4edda';
+                statusEl.style.border = '1px solid #c3e6cb';
+                statusEl.style.color = '#155724';
+            } else if (tone === 'error') {
+                statusEl.style.backgroundColor = '#f8d7da';
+                statusEl.style.border = '1px solid #f5c6cb';
+                statusEl.style.color = '#721c24';
+            } else {
+                statusEl.style.backgroundColor = '#fff3cd';
+                statusEl.style.border = '1px solid #ffeeba';
+                statusEl.style.color = '#856404';
+            }
+        }
+
+        function extractAmountFromPlan(planValue) {
+            const planStr = String(planValue || '');
+            const match = planStr.match(/\$([0-9]+(?:\.[0-9]+)?)/);
+            const amount = match ? match[1] : '0.00';
+            return amount.includes('.') ? amount : (amount + '.00');
+        }
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const honeypot = document.querySelector('input[name="website"]');
+            if (honeypot && honeypot.value) return false;
+
+            const formData = new FormData(event.target);
+            const region = formData.get('region');
+            const os = formData.get('os');
+            const plan = formData.get('plan');
+            const paymentMethod = formData.get('paymentMethod');
+            const email = (formData.get('email') || '').trim();
+            const contact = (formData.get('contact') || 'N/A').trim();
+
+            if (!email || !region || !os || !plan) {
+                showStatus('Please complete all required fields before continuing.', 'error');
+                return;
+            }
+
+            const amount = extractAmountFromPlan(plan);
+
+            const overlay = document.createElement('div');
+            overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.55);z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box;';
+            overlay.innerHTML = `
+                <div style="background:#fff;padding:32px 28px;border-radius:16px;max-width:520px;width:100%;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,0.25);">
+                    <div style="font-size:2.6rem;margin-bottom:10px;">📋</div>
+                    <h4 style="margin:0 0 14px;color:#333;">Confirm your order</h4>
+                    <div style="background:#f8f9fa;border-radius:10px;padding:16px;text-align:left;margin-bottom:18px;font-size:.93rem;line-height:1.9;">
+                        <div><strong>Email:</strong> ${email}</div>
+                        <div><strong>Region:</strong> ${region}</div>
+                        <div><strong>Operating System:</strong> ${os}</div>
+                        <div><strong>Plan:</strong> ${plan}</div>
+                        <div><strong>Payment Method:</strong> ${paymentMethod}</div>
+                        <div><strong>Amount:</strong> $${amount}</div>
+                    </div>
+                    <p style="font-size:.85rem;color:#888;margin-bottom:18px;">Our team will contact you shortly to confirm your order and provide payment instructions based on your selected payment method.</p>
+                    <button id="btn-confirm-ok" style="background:linear-gradient(135deg,#1a237e,#283593);color:#fff;border:none;padding:12px 24px;border-radius:25px;font-weight:800;font-size:1rem;cursor:pointer;width:100%;margin-bottom:10px;">✅ Confirm &amp; Submit Order</button>
+                    <button id="btn-confirm-cancel" style="background:#f8f9fa;color:#666;border:1px solid #ddd;padding:10px 20px;border-radius:20px;cursor:pointer;font-size:.9rem;width:100%;">❌ Go Back</button>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+
+            document.getElementById('btn-confirm-cancel').onclick = function() {
+                document.body.removeChild(overlay);
+            };
+
+            document.getElementById('btn-confirm-ok').onclick = function() {
+                document.body.removeChild(overlay);
+
+                const comment =
+                    'Region: ' + region + '\n' +
+                    'Operating System: ' + os + '\n' +
+                    'Plan: ' + plan + '\n' +
+                    'Payment Method: ' + paymentMethod + '\n' +
+                    'Email: ' + email + '\n' +
+                    'Contact: ' + contact;
+
+                showStatus('Submitting your order… Redirecting to USDT payment shortly.', 'info');
+
+                fetch('https://api.notificationapi.com/097bululbdjfm969xrmrijiz43/sender', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'Authorization': 'Basic MDk3YnVsdWxiZGpmbTk2OXhybXJpaml6NDM6c3c1MDFsdW1ib2w4ajNrYm1jMzJtdWd2aHNtdDBkd2NtaDQ3dDc3YXZ3enBvd3BiMTFjNXltdW1qeA=='
+                    },
+                    body: JSON.stringify({
+                        type: 'awsdo_com_notification',
+                        to: { id: 'snaagk@gmail.com', email: 'snaagk@gmail.com' },
+                        parameters: { comment: comment },
+                        templateId: 'awsdo_com'
+                    })
+                })
+                .then(function(response) {
+                    return response.json().catch(() => null);
+                })
+                .then(function() {
+                    window.location.href = 'usdt-payment.html?email=' + encodeURIComponent(email) + '&amount=' + encodeURIComponent(amount);
+                })
+                .catch(function(err) {
+                    console.error('Notification error:', err);
+                    // Still redirect even if notification fails
+                    window.location.href = 'usdt-payment.html?email=' + encodeURIComponent(email) + '&amount=' + encodeURIComponent(amount);
+                });
+            };
         });
     </script>
 
-    <!-- AJAX Form Submission Script -->
-    <script>
-        var form = document.getElementById("order-form");
-        
-        async function handleSubmit(event) {
-          event.preventDefault();
-          var status = document.getElementById("order-form-status");
-          
-          // 蜜罐檢查
-          var honeypot = document.querySelector('input[name="website"]');
-          if (honeypot.value) {
-            return false; // 靜默拒絕機器人提交
-          }
-          
-          var formData = new FormData(event.target);
-          var comment = `地區: ${formData.get('地區')}\n作業系統: ${formData.get('作業系統')}\n配置規格: ${formData.get('配置規格')}\n付款方式: ${formData.get('付款方式')}\n信箱: ${formData.get('email')}\n其他聯絡方式: ${formData.get('其他聯絡方式') || '無'}`;
-          
-          fetch('https://api.notificationapi.com/097bululbdjfm969xrmrijiz43/sender', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json',
-              'Authorization': 'Basic MDk3YnVsdWxiZGpmbTk2OXhybXJpaml6NDM6c3c1MDFsdW1ib2w4ajNrYm1jMzJtdWd2aHNtdDBkd2NtaDQ3dDc3YXZ3enBvd3BiMTFjNXltdW1qeA=='
-            },
-            body: JSON.stringify({
-              type: 'awsdo_com_notification',
-              to: {
-                id: 'snaagk@gmail.com',
-                email: 'snaagk@gmail.com'
-              },
-              parameters: {
-                comment: comment
-              },
-              templateId: 'awsdo_com'
-            })
-          }).then(response => {
-            if (response.ok) {
-              status.innerHTML = "訂單提交成功！我們的客戶經理將很快透過您留下的聯絡方式與您確認。";
-              status.style.display = 'block';
-              status.style.backgroundColor = '#d4edda';
-              status.style.borderColor = '#c3e6cb';
-              status.style.color = '#155724';
-              form.reset();
-              document.querySelectorAll('.radio-label.checked').forEach(l => l.classList.remove('checked'));
-            } else {
-              response.json().then(data => {
-                if (Object.hasOwn(data, 'errors')) {
-                  status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
-                } else {
-                  status.innerHTML = "糟糕！提交時出現問題，請稍後再試。";
-                }
-                status.style.display = 'block';
-                status.style.backgroundColor = '#f8d7da';
-                status.style.borderColor = '#f5c6cb';
-                status.style.color = '#721c24';
-              })
-            }
-          }).catch(error => {
-            status.innerHTML = "糟糕！提交時出現網路錯誤，請檢查您的連線。";
-            status.style.display = 'block';
-            status.style.backgroundColor = '#f8d7da';
-            status.style.borderColor = '#f5c6cb';
-            status.style.color = '#721c24';
-          });
-        }
-        form.addEventListener("submit", handleSubmit)
-    </script>
-
+        <footer>
+        <div class="container">
+            <p>&copy; 2026 AWSDO.COM. All rights reserved.</p>
+            <div class="footer-contact">
+                <a href="mailto:support@awsdo.com"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> support@awsdo.com</a>
+                <a href="https://t.me/ilovesunkeinfo" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 2L11 13H2l1.67-5.01L22 2zm-2.48 18.51L17 14l-4.2 4.13-1.67-5.01L2 13h9l2-2-8.5-8.5L22 2l-2.48 18.51z"/></svg> @ilovesunkeinfo</a>
+            </div>
+            <div class="footer-links">
+                                <a href="refund-policy.html">Refund Policy</a>
+                <span style="color:#64748b;">|</span>
+                <a href="terms-of-service.html">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
