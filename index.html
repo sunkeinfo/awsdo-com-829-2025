@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AWSDO.COM — Your AWS Cloud Solutions Partner</title>
+    <title>AWSDO.COM - 您的 AWS 雲端服務專家</title>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0SXZXT6FBM"></script>
@@ -14,239 +14,70 @@
       gtag('config', 'G-0SXZXT6FBM');
     </script>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #f8fafc 0%, #f4f7fa 100%);
-            color: #1e293b;
+            background-color: #f8f9fa;
+            color: #343a40;
         }
         .container {
             width: 85%;
-            max-width: 1300px;
+            max-width: 1200px;
             margin: auto;
             overflow: hidden;
         }
         header {
             background: #ffffff;
-            padding: 12px 0;
+            padding: 15px 0;
             border-bottom: 1px solid #e9ecef;
+            text-align: center;
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
-        header .header-inner {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            justify-content: space-between;
-        }
-        header .logo {
-            flex-shrink: 0;
-        }
         header .logo img {
-            height: 44px;
-            width: auto;
-            display: block;
+            max-width: 200px;
+            vertical-align: middle;
         }
         nav {
-            margin-top: 0;
+            margin-top: 15px;
         }
         nav ul {
             padding: 0;
             list-style: none;
-            margin: 0;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 4px;
         }
         nav ul li {
             display: inline;
-            margin: 0 10px;
+            margin: 0 15px;
         }
         nav a {
             color: #495057;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 500;
             transition: color 0.3s ease;
-            white-space: nowrap;
         }
         nav a:hover, nav a.active {
             color: #007bff;
         }
         .hero {
-            background: linear-gradient(135deg, #0a1628 0%, #0d2a5e 50%, #0056b3 100%);
+            background: linear-gradient(45deg, #007bff, #0056b3);
             color: #ffffff;
-            padding: 90px 0 80px;
+            padding: 80px 0;
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(ellipse at center, rgba(0,123,255,0.15) 0%, transparent 60%);
-            animation: pulse-bg 6s ease-in-out infinite alternate;
-        }
-        @keyframes pulse-bg {
-            from { transform: scale(1); opacity: 0.6; }
-            to   { transform: scale(1.1); opacity: 1; }
-        }
-        .hero .container { position: relative; z-index: 1; }
         .hero h1 {
-            font-size: 46px;
-            margin-bottom: 18px;
-            font-weight: 800;
-            line-height: 1.2;
-        }
-        .hero h1 .highlight-cloud {
-            color: #60c0ff;
-        }
-        .hero h1 .highlight-ai {
-            color: #a78bfa;
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 700;
         }
         .hero p {
             font-size: 20px;
             font-weight: 300;
-            max-width: 700px;
-            margin: 0 auto 30px;
-        }
-        /* Free Trial Banner */
-        .trial-banner {
-            display: inline-flex;
-            align-items: center;
-            gap: 18px;
-            background: rgba(255,255,255,0.10);
-            border: 1.5px solid rgba(255,255,255,0.25);
-            border-radius: 60px;
-            padding: 14px 32px;
-            margin-top: 10px;
-            backdrop-filter: blur(6px);
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .trial-badge {
-            background: linear-gradient(135deg, #28a745, #20c997);
-            color: #fff;
-            font-weight: 800;
-            font-size: 15px;
-            padding: 6px 18px;
-            border-radius: 50px;
-            white-space: nowrap;
-            letter-spacing: 0.3px;
-            box-shadow: 0 2px 12px rgba(40,167,69,0.4);
-        }
-        .trial-meta {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .trial-meta span {
-            font-size: 14px;
-            font-weight: 500;
-            opacity: 0.92;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .trial-meta .sep {
-            opacity: 0.35;
-            font-size: 16px;
-        }
-        .hero-cta-row {
-            margin-top: 32px;
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .hero-btn-primary {
-            display: inline-block;
-            background: linear-gradient(135deg, #28a745, #20c997);
-            color: #fff;
-            padding: 16px 40px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 17px;
-            font-weight: 700;
-            transition: transform 0.25s, box-shadow 0.25s;
-            box-shadow: 0 4px 18px rgba(40,167,69,0.35);
-        }
-        .hero-btn-primary:hover {
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 8px 28px rgba(40,167,69,0.5);
-        }
-        .hero-btn-secondary {
-            display: inline-block;
-            background: transparent;
-            color: #fff;
-            padding: 15px 36px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 17px;
-            font-weight: 600;
-            border: 2px solid rgba(255,255,255,0.5);
-            transition: background 0.25s, border-color 0.25s, transform 0.25s;
-        }
-        .hero-btn-secondary:hover {
-            background: rgba(255,255,255,0.12);
-            border-color: #fff;
-            transform: translateY(-2px);
-        }
-        /* Pillars Strip */
-        .pillars-strip {
-            background: #fff;
-            border-bottom: 1px solid #e9ecef;
-            padding: 22px 0;
-        }
-        .pillars-inner {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0;
-        }
-        .pillar-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 12px 20px;
-            border-right: 1px solid #e9ecef;
-            font-size: 14px;
-            color: #495057;
-            font-weight: 500;
-            text-align: center;
-        }
-        .pillar-item:last-child { border-right: none; }
-        .pillar-item .pillar-icon {
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-        .pillar-item strong { color: #212529; }
-        @media (max-width: 700px) {
-            .hero h1 { font-size: 30px; }
-            .pillars-inner {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .pillar-item {
-                border-right: none;
-                border-bottom: 1px solid #e9ecef;
-            }
-            .pillar-item:nth-child(odd) { border-right: 1px solid #e9ecef; }
-            .pillar-item:nth-last-child(-n+2) { border-bottom: none; }
         }
         .main-content {
             padding: 50px 0;
@@ -267,14 +98,13 @@
             gap: 30px;
         }
         .service-card {
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            border-radius: 12px;
+            background: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
             padding: 30px;
             text-align: center;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03), 0 0 20px rgba(99, 102, 241, 0.05);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
             text-decoration: none;
             color: inherit;
             display: flex;
@@ -282,10 +112,10 @@
             justify-content: center;
         }
         .service-card:hover {
-            transform: translateY(-4px);
-            border-color: #6366f1;
-            background: rgba(99, 102, 241, 0.08);
-            box-shadow: 0 8px 40px rgba(99, 102, 241, 0.15), 0 0 25px rgba(99, 102, 241, 0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+            background-color: #007bff;
+            color: #ffffff;
         }
         .service-card h3 {
             font-size: 22px;
@@ -326,11 +156,6 @@
         .partner-section img {
             max-width: 100%;
             border-radius: 8px;
-        }
-        .partner-svg {
-            width: 100%;
-            max-width: 420px;
-            height: auto;
         }
         .cta-section {
             text-align: center;
@@ -418,86 +243,6 @@
         footer p {
             margin: 8px 0;
         }
-
-        /* ===== Sprite Icons (from icon-png-explain.txt) ===== */
-        .sprite {
-            background-image: url('imgs/Copilot_20260319_071622.png');
-            background-repeat: no-repeat;
-            display: inline-block;
-            transform: scale(0.32);
-            transform-origin: left top;
-        }
-
-        .sprite-search { background-position: -189px -184px; width: 118px; height: 119px; }
-        .sprite-home { background-position: -340px -184px; width: 132px; height: 110px; }
-        .sprite-gear { background-position: -509px -183px; width: 138px; height: 114px; }
-        .sprite-chat { background-position: -678px -195px; width: 133px; height: 101px; }
-        .sprite-heart { background-position: -840px -186px; width: 126px; height: 106px; }
-        .sprite-cart { background-position: -996px -190px; width: 131px; height: 106px; }
-        .sprite-email { background-position: -1166px -191px; width: 137px; height: 101px; }
-        .sprite-earth { background-position: -343px -338px; width: 130px; height: 128px; }
-        .sprite-lock-blue { background-position: -686px -336px; width: 109px; height: 120px; }
-        .sprite-chart { background-position: -986px -341px; width: 145px; height: 115px; }
-        .sprite-computer { background-position: -1158px -357px; width: 155px; height: 96px; }
-
-        .svc-icon {
-            margin: 0 auto 20px;
-            width: 72px;
-            height: 72px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 16px;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(99, 102, 241, 0.04));
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-        .svc-icon .sprite {
-            transform: scale(0.42);
-            transform-origin: center center;
-            flex-shrink: 0;
-        }
-        .service-card:hover .svc-icon {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.18), rgba(99, 102, 241, 0.08));
-            transform: scale(1.08);
-        }
-
-        .service-card {
-            text-align: left;
-            padding: 32px 28px;
-            position: relative;
-            overflow: hidden;
-        }
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #6366f1, #8b5cf6, #a78bfa);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .service-card:hover::before {
-            opacity: 1;
-        }
-        .service-card h3 {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .service-card .card-arrow {
-            margin-left: auto;
-            opacity: 0;
-            transform: translateX(-8px);
-            transition: all 0.3s ease;
-            color: #6366f1;
-        }
-        .service-card:hover .card-arrow {
-            opacity: 1;
-            transform: translateX(0);
-        }
         .footer-contact {
             margin-top: 15px;
         }
@@ -518,236 +263,125 @@
             margin-right: 8px;
             fill: currentColor;
         }
-        .footer-links {
-            margin-top: 12px;
-            font-size: 13px;
-        }
-        .footer-links a {
-            color: #adb5bd;
-            text-decoration: none;
-            margin: 0 10px;
-            transition: color 0.3s;
-        }
-        .footer-links a:hover {
-            color: #ffffff;
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
 
-        <header>
+    <header>
         <div class="container">
-            <div class="header-inner">
-                <div class="logo">
-                    <a href="index.html"><img src="logo621.svg" alt="AWSDO.COM Logo" height="44"></a>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="index.html" class="active">Home</a></li>
-                        <li><a href="linux-server.html">Linux Cloud</a></li>
-                        <li><a href="windows-server.html">Windows Servers</a></li>
-                        <li><a href="residential-ip-server.html">Residential IP Servers</a></li>
-                        <li><a href="performance-server.html">Performance Servers</a></li>
-                        <li><a href="api-tokens.html">AI API Tokens</a></li>
-                    
-                    </ul>
-                </nav>
+            <div class="logo">
+                <a href="index.html"><img src="awsdologo.png" alt="AWSDO.COM Logo"></a>
             </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">首頁</a></li>
+                    <li><a href="linux-server.html">Linux雲端伺服器</a></li>
+                    <li><a href="windows-server.html">Windows伺服器</a></li>
+                    <li><a href="residential-ip-server.html">住宅IP伺服器</a></li>
+                    <li><a href="performance-server.html">高效能伺服器</a></li>
+                    <li><a href="aws-billing.html">AWS帳戶服務</a></li>
+                    <li><a href="aws-ai.html">AWS智慧AI</a></li>
+                    <li><a href="aws-activate-credits.html">AWS積分申請</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
     <section class="hero">
         <div class="container">
-            <h1>
-                <span class="highlight-cloud">Cloud Servers</span> &amp;
-                <span class="highlight-ai">AI Tokens</span><br>
-                — Built for Speed &amp; Scale.
-            </h1>
-            <p>
-                Deploy blazing-fast cloud servers or tap into cutting-edge AI model tokens.
-                AWSDO.COM gives your team the infrastructure it needs — from Linux &amp; Windows servers to Claude, GPT and beyond.
-            </p>
-
-            <!-- Free Trial Banner -->
-            <div class="trial-banner">
-                <span class="trial-badge">🎁 7-Day Free Trial</span>
-                <div class="trial-meta">
-                    <span>✅ <strong>No Credit Card Required</strong></span>
-                    <span class="sep">|</span>
-                    <span>🚀 Start in Minutes</span>
-                    <span class="sep">|</span>
-                    <span>🔒 Cancel Anytime</span>
-                </div>
-            </div>
-
-            <!-- CTA Buttons -->
-            <div class="hero-cta-row">
-                <a href="linux-server.html" class="hero-btn-primary">Start Free Trial →</a>
-                <a href="#services" class="hero-btn-secondary">Explore Services</a>
-            </div>
+            <h1>專業、可靠、高效的雲端服務解決方案</h1>
+            <p>我們是 AWS 註冊合作夥伴，為您提供一站式的雲端產品與服務</p>
         </div>
     </section>
 
-    <!-- Trust Pillars -->
-    <div class="pillars-strip">
-        <div class="container">
-            <div class="pillars-inner">
-                <div class="pillar-item">
-                    <span class="pillar-icon">☁️</span>
-                    <span><strong>Cloud Servers</strong> — Linux &amp; Windows</span>
-                </div>
-                <div class="pillar-item">
-                    <span class="pillar-icon">🤖</span>
-                    <span><strong>AI Tokens</strong> — Claude, GPT &amp; More</span>
-                </div>
-                <div class="pillar-item">
-                    <span class="pillar-icon">🎁</span>
-                    <span><strong>7 Days Free</strong> — No card needed</span>
-                </div>
-                <div class="pillar-item">
-                    <span class="pillar-icon">🌍</span>
-                    <span><strong>Global Regions</strong> — Deploy anywhere</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="main-content container">
-        <div class="section" id="services">
-            <h2 class="section-title">Our Core Services</h2>
+        <div class="section">
+            <h2 class="section-title">我們的核心服務</h2>
             <div class="services-grid">
                 <a href="linux-server.html" class="service-card">
-                    <div class="svc-icon"><span class="sprite sprite-computer" aria-hidden="true"></span></div>
-                    <h3>Linux Cloud Servers <span class="card-arrow">→</span></h3>
-                    <p>Stable, secure, and optimized for web apps, automation, and production workloads.</p>
+                    <h3>簡單 Linux 雲端伺服器</h3>
+                    <p>穩定、高效、安全的 Linux 雲端伺服器，滿足您多樣化的業務需求。</p>
                 </a>
                 <a href="windows-server.html" class="service-card">
-                    <div class="svc-icon"><span class="sprite sprite-home" aria-hidden="true"></span></div>
-                    <h3>Windows Servers <span class="card-arrow">→</span></h3>
-                    <p>Remote desktop-ready infrastructure—easy to manage, simple to scale.</p>
+                    <h3>Windows 遠端桌面伺服器</h3>
+                    <p>提供圖形化介面的 Windows 遠端桌面伺服器，易於管理和操作。</p>
                 </a>
                 <a href="residential-ip-server.html" class="service-card">
-                    <div class="svc-icon"><span class="sprite sprite-earth" aria-hidden="true"></span></div>
-                    <h3>Residential IP Servers <span class="card-arrow">→</span></h3>
-                    <p>Native IP-style workflows for business scenarios that require realistic source identity behavior.</p>
+                    <h3>住宅 IP 電腦伺服器</h3>
+                    <p>使用純淨的住宅 IP，適用於各種需要原生 IP 環境的特殊業務場景。</p>
                 </a>
                 <a href="performance-server.html" class="service-card">
-                    <div class="svc-icon"><span class="sprite sprite-chart" aria-hidden="true"></span></div>
-                    <h3>Performance Servers <span class="card-arrow">→</span></h3>
-                    <p>Compute-friendly platforms for high throughput, data processing, and low-latency needs.</p>
+                    <h3>高效能超級伺服器</h3>
+                    <p>為計算密集型應用和大規模資料處理提供頂級的計算能力和效能。</p>
                 </a>
-                <a href="api-tokens.html" class="service-card">
-                    <div class="svc-icon"><span class="sprite sprite-chat" aria-hidden="true"></span></div>
-                    <h3>AI API Tokens <span class="card-arrow">→</span></h3>
-                    <p>Access powerful AI model tokens—Claude, GPT, and more—to build intelligent applications at scale.</p>
+                <a href="aws-billing.html" class="service-card">
+                    <h3>AWS 帳戶服務</h3>
+                    <p>便捷的多幣種帳單代付服務，無額外費用，簡化您的財務流程。</p>
+                </a>
+                <a href="aws-ai.html" class="service-card">
+                    <h3>AWS 智慧 AI 模型</h3>
+                    <p>利用 AWS 強大的 AI 模型，為您的應用注入前沿的人工智慧能力。</p>
+                </a>
+                <a href="aws-activate-credits.html" class="service-card">
+                    <h3>AWS Activate 積分申請</h3>
+                    <p>為初創企業提供最高 10 萬美元 AWS 積分申請指導，助力企業快速成長。</p>
                 </a>
             </div>
         </div>
 
         <div class="info-section">
-            <h2>Why Teams Choose AWSDO.COM</h2>
-            <p>
-                As an AWS partner, AWSDO.COM focuses on delivering real outcomes: region-aware recommendations,
-                security-minded guidance, and smooth onboarding.
-                You’ll also get practical support for account and billing workflows, with clear communication from planning to deployment.
-            </p>
+            <h2>AWSDO.COM 的優勢</h2>
+            <p>AWSDO.COM 作為 AWS 合作夥伴網路 (APN) 的註冊成員，致力於為您提供卓越的雲服務體驗。選擇我們，您將獲得獨家價格優惠、專業技術支援、專屬客戶服務和便捷的多幣種支付等一系列優勢。我們還可以協助您註冊或管理 AWS 帳號，並配備專屬客戶經理全程協助。</p>
         </div>
 
         <div class="info-section">
-             <h2>Why Work With an AWS Partner?</h2>
+             <h2>為什麼選擇與 AWS 合作夥伴合作？</h2>
             <div class="partner-section">
                 <div class="text-content">
-                    <p>
-                        The AWS Partner Network has hundreds of thousands of partners designed to help customers accelerate their cloud transformation.
-                        As a partner, AWSDO.COM can help deliver AWS solutions and integrate them into a practical setup for your team.
-                    </p>
-                    <p>
-                        By working with AWSDO.COM, you get direct access to AWS services with professional guidance—so your projects move faster with fewer surprises.
-                    </p>
+                    <p>AWS 合作夥伴網路擁有超過 13 萬家合作夥伴，旨在幫助客戶加速雲端轉型。作為 AWS 合作夥伴，AWSDO.COM 能夠直接轉售和交付 AWS 解決方案，並將其整合到我們獨特的產品中。這種合作模式專為系統整合商、託管服務提供商和增值經銷商等設計。</p>
+                    <p>透過與 AWSDO.COM 合作，您可以充分利用 AWS 的廣泛服務，並借助我們的專業支援，加速您的創新之旅。</p>
                 </div>
                 <div class="image-content">
-                    <svg class="partner-svg" viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AWS Partner Network illustration">
-                        <!-- Background -->
-                        <rect width="420" height="300" rx="16" fill="#eef4ff"/>
-                        <!-- Central cloud shape -->
-                        <ellipse cx="210" cy="148" rx="80" ry="52" fill="#ffffff" stroke="#007bff" stroke-width="2.5"/>
-                        <ellipse cx="165" cy="155" rx="48" ry="38" fill="#ffffff" stroke="#007bff" stroke-width="2"/>
-                        <ellipse cx="255" cy="155" rx="48" ry="38" fill="#ffffff" stroke="#007bff" stroke-width="2"/>
-                        <!-- Cloud highlight -->
-                        <ellipse cx="210" cy="148" rx="80" ry="52" fill="url(#cloudGrad)"/>
-                        <defs>
-                            <linearGradient id="cloudGrad" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
-                                <stop offset="100%" stop-color="#dbeafe" stop-opacity="0.7"/>
-                            </linearGradient>
-                        </defs>
-                        <!-- AWS text in cloud -->
-                        <text x="210" y="144" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#0056b3">AWS</text>
-                        <text x="210" y="163" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#007bff">Partner Network</text>
-                        <!-- Left node: Speed -->
-                        <circle cx="68" cy="110" r="38" fill="#ffffff" stroke="#007bff" stroke-width="2"/>
-                        <text x="68" y="106" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#343a40">⚡ Speed</text>
-                        <text x="68" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#6c757d">Fast deploy</text>
-                        <!-- Right node: Security -->
-                        <circle cx="352" cy="110" r="38" fill="#ffffff" stroke="#28a745" stroke-width="2"/>
-                        <text x="352" y="106" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#343a40">🔒 Secure</text>
-                        <text x="352" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#6c757d">Compliant</text>
-                        <!-- Bottom node: Support -->
-                        <circle cx="210" cy="248" r="38" fill="#ffffff" stroke="#ff9900" stroke-width="2"/>
-                        <text x="210" y="244" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#343a40">🤝 Support</text>
-                        <text x="210" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#6c757d">24/7 guidance</text>
-                        <!-- Connector lines -->
-                        <line x1="106" y1="120" x2="148" y2="138" stroke="#007bff" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.6"/>
-                        <line x1="314" y1="120" x2="272" y2="138" stroke="#28a745" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.6"/>
-                        <line x1="210" y1="200" x2="210" y2="210" stroke="#ff9900" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.6"/>
-                        <!-- Decorative dots -->
-                        <circle cx="40" cy="260" r="5" fill="#007bff" opacity="0.3"/>
-                        <circle cx="60" cy="250" r="3" fill="#007bff" opacity="0.2"/>
-                        <circle cx="380" cy="260" r="5" fill="#28a745" opacity="0.3"/>
-                        <circle cx="360" cy="270" r="3" fill="#28a745" opacity="0.2"/>
-                        <circle cx="100" cy="270" r="4" fill="#ff9900" opacity="0.25"/>
-                        <circle cx="320" cy="42" r="4" fill="#0056b3" opacity="0.25"/>
-                        <circle cx="90" cy="40" r="6" fill="#007bff" opacity="0.15"/>
-                    </svg>
+                    <img src="https://hosting.sunke.info/files/banner11171.png" alt="Why partner with AWS">
                 </div>
             </div>
         </div>
         
         <div class="cta-section">
-            <h2>Contact Us</h2>
-            <p>Have a question or want a tailored cloud setup? Send your message—our experts will get back to you soon.</p>
+            <h2>聯絡我們</h2>
+            <p>有任何問題或需要定製方案？請給我們留言，我們的專家將盡快與您聯絡。</p>
             <form id="contact-form" class="contact-form">
                 <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
                 <div class="form-row">
-                    <input type="text" name="name" placeholder="Your name" required>
-                    <input type="email" name="email" placeholder="Your email" required>
+                    <input type="text" name="名字" placeholder="您的姓名" required>
+                    <input type="email" name="email" placeholder="您的電子信箱" required>
                 </div>
-                <textarea name="message" placeholder="Tell us what you need (region, timeline, workload)..." required></textarea>
-                <button type="submit" class="cta-button">Send Message</button>
+                <textarea name="信息" placeholder="您想請詢的內容..." required></textarea>
+                <button type="submit" class="cta-button">發送訊息</button>
             </form>
             <p id="contact-form-status"></p>
         </div>
     </div>
 
-        <footer>
+    <footer>
         <div class="container">
-            <p>&copy; 2026 AWSDO.COM. All rights reserved.</p>
+            <p>版權所有 &copy; 2025 AWSDO.COM</p>
             <div class="footer-contact">
-                <a href="mailto:support@awsdo.com"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> support@awsdo.com</a>
-                <a href="https://t.me/ilovesunkeinfo" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 2L11 13H2l1.67-5.01L22 2zm-2.48 18.51L17 14l-4.2 4.13-1.67-5.01L2 13h9l2-2-8.5-8.5L22 2l-2.48 18.51z"/></svg> @ilovesunkeinfo</a>
-            </div>
-            <div class="footer-links">
-                                <a href="refund-policy.html">Refund Policy</a>
-                <span style="color:#64748b;">|</span>
-                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="mailto:support@awsdo.com">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    support@awsdo.com
+                </a>
+                <a href="https://t.me/ilovesunkeinfo" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 2L11 13H2l1.67-5.01L22 2zm-2.48 18.51L17 14l-4.2 4.13-1.67-5.01L2 13h9l2-2-8.5-8.5L22 2l-2.48 18.51z"/></svg>
+                    @ilovesunkeinfo
+                </a>
             </div>
         </div>
     </footer>
 
     <!--聊天模块-->
     <script>
-      window.chatwootSettings = {"position":"right","type":"expanded_bubble","launcherTitle":"Online Chat"};
+      window.chatwootSettings = {"position":"right","type":"expanded_bubble","launcherTitle":"線上聊天"};
       (function(d,t) {
         var BASE_URL="https://app.chatwoot.com/";
         var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
@@ -779,7 +413,7 @@
           }
           
           var formData = new FormData(event.target);
-          var comment = `Name: ${formData.get('name')}\nEmail: ${formData.get('email')}\nMessage: ${formData.get('message')}`;
+          var comment = `姓名: ${formData.get('名字')}\n信箱: ${formData.get('email')}\n信息: ${formData.get('信息')}`;
           
           fetch('https://api.notificationapi.com/097bululbdjfm969xrmrijiz43/sender', {
             method: 'POST',
@@ -801,18 +435,18 @@
             })
           }).then(response => {
             if (response.ok) {
-              status.innerHTML = "Thank you! Your message has been received.";
+              status.innerHTML = "感謝您的留言，我們已收到您的訊息！";
               status.style.display = 'block';
               form.reset()
             } else {
-              status.innerHTML = "Oops! Something went wrong. Please try again later.";
+              status.innerHTML = "糟糕！提交時出現問題，請稍後再試。";
               status.style.display = 'block';
               status.style.backgroundColor = '#f8d7da';
               status.style.borderColor = '#f5c6cb';
               status.style.color = '#721c24';
             }
           }).catch(error => {
-            status.innerHTML = "Network error. Please check your connection and try again.";
+            status.innerHTML = "糟糕！提交時出現網路錯誤，請檢查您的連線。";
             status.style.display = 'block';
             status.style.backgroundColor = '#f8d7da';
             status.style.borderColor = '#f5c6cb';
